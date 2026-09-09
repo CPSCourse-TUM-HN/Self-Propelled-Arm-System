@@ -1,0 +1,814 @@
+
+>>> run_full_background log=/workspace/robot_code/temp_car/logs/integration_run_full_20260907_044442.log
+[fsm] IDLE --START--> INITIALIZING
+[depth] loading network fcn-mobilenet
+[camera] starting JetBot Camera 320x240
+[warmup] frame 1/2 processed
+[warmup] frame 2/2 processed
+[depth] started enabled=True
+[arm] pose safe_home
+[arm] TTLServo connected
+[arm] safe_home servo=5 angle=0 speed=85
+[arm] safe_home servo=4 angle=0 speed=85
+[arm] safe_home servo=3 angle=0 speed=85
+[arm] safe_home servo=2 angle=0 speed=85
+[arm] safe_home servo=1 angle=-16 speed=85
+[base] stop
+[fsm] INITIALIZING --INITIALIZED--> PLANNING
+[fsm] PLANNING --TARGET_REQUIRED--> SEARCHING
+[can] loading native detectNet model=/workspace/robot_code/temp_car/assets/models/detectnet_native_can/can_ssd_mobilenet_v1.onnx
+[can] native detectNet loaded threshold=0.200 clustering=0.300
+[can] backend=detectnet_native no detections
+[base] Robot connected
+[base] continuous start label=search_can_routine_2_step_0 direction=forward requested_speed=0.6 effective_speed=0.6
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.06811380386352539 pose={'x_m': 0.0, 'y_m': 0.007066807150840759, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.0661611557006836 pose={'x_m': 0.0, 'y_m': 0.01393102705478668, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.06362771987915039 pose={'x_m': 0.0, 'y_m': 0.02053240299224853, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.062485456466674805 pose={'x_m': 0.0, 'y_m': 0.027015269100666043, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.06090593338012695 pose={'x_m': 0.0, 'y_m': 0.033334259688854215, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.057353973388671875 pose={'x_m': 0.0, 'y_m': 0.03928473442792892, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.05736732482910156 pose={'x_m': 0.0, 'y_m': 0.04523659437894821, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.05960559844970703 pose={'x_m': 0.0, 'y_m': 0.05142067521810532, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.046785593032836914 pose={'x_m': 0.0, 'y_m': 0.056274680495262144, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.050740718841552734 pose={'x_m': 0.0, 'y_m': 0.06153903007507324, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.05066370964050293 pose={'x_m': 0.0, 'y_m': 0.06679538995027542, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.05079245567321777 pose={'x_m': 0.0, 'y_m': 0.07206510722637177, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04885101318359375 pose={'x_m': 0.0, 'y_m': 0.07713339984416963, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.0494074821472168 pose={'x_m': 0.0, 'y_m': 0.08225942611694337, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.049216508865356445 pose={'x_m': 0.0, 'y_m': 0.0873656389117241, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.049396514892578125 pose={'x_m': 0.0, 'y_m': 0.09249052733182908, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04865312576293945 pose={'x_m': 0.0, 'y_m': 0.09753828912973404, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.05025768280029297 pose={'x_m': 0.0, 'y_m': 0.10275252372026444, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04895162582397461 pose={'x_m': 0.0, 'y_m': 0.10783125489950181, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04749464988708496 pose={'x_m': 0.0, 'y_m': 0.11275882482528687, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.048274993896484375 pose={'x_m': 0.0, 'y_m': 0.11776735544204713, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.0473177433013916 pose={'x_m': 0.0, 'y_m': 0.12267657130956651, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04757332801818848 pose={'x_m': 0.0, 'y_m': 0.12761230409145358, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.047239065170288086 pose={'x_m': 0.0, 'y_m': 0.13251335710287096, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.046880245208740234 pose={'x_m': 0.0, 'y_m': 0.13737718254327777, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04710841178894043 pose={'x_m': 0.0, 'y_m': 0.14226468026638034, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04731559753417969 pose={'x_m': 0.0, 'y_m': 0.1471736735105515, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04746556282043457 pose={'x_m': 0.0, 'y_m': 0.15209822565317158, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04756045341491699 pose={'x_m': 0.0, 'y_m': 0.1570326226949692, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04769158363342285 pose={'x_m': 0.0, 'y_m': 0.16198062449693681, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04711484909057617 pose={'x_m': 0.0, 'y_m': 0.1668687900900841, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.0478205680847168 pose={'x_m': 0.0, 'y_m': 0.17183017402887346, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.046671390533447266 pose={'x_m': 0.0, 'y_m': 0.17667233079671862, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.047074317932128906 pose={'x_m': 0.0, 'y_m': 0.18155629128217698, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.047272443771362305 pose={'x_m': 0.0, 'y_m': 0.18646080732345582, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04712510108947754 pose={'x_m': 0.0, 'y_m': 0.1913500365614891, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04758572578430176 pose={'x_m': 0.0, 'y_m': 0.19628705561161042, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04765462875366211 pose={'x_m': 0.0, 'y_m': 0.20123122334480287, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04746103286743164 pose={'x_m': 0.0, 'y_m': 0.2061553055047989, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04736065864562988 pose={'x_m': 0.0, 'y_m': 0.211068973839283, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04740571975708008 pose={'x_m': 0.0, 'y_m': 0.21598731726408005, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.0472259521484375 pose={'x_m': 0.0, 'y_m': 0.22088700979948045, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04713749885559082 pose={'x_m': 0.0, 'y_m': 0.225777525305748, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04785037040710449 pose={'x_m': 0.0, 'y_m': 0.23074200123548508, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04752707481384277 pose={'x_m': 0.0, 'y_m': 0.23567293524742128, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04800701141357422 pose={'x_m': 0.0, 'y_m': 0.24065366268157962, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04756641387939453 pose={'x_m': 0.0, 'y_m': 0.2455886781215668, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04785871505737305 pose={'x_m': 0.0, 'y_m': 0.25055401980876923, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.047020912170410156 pose={'x_m': 0.0, 'y_m': 0.2554324394464493, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04723644256591797 pose={'x_m': 0.0, 'y_m': 0.26033322036266326, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04857325553894043 pose={'x_m': 0.0, 'y_m': 0.26537269562482835, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04728388786315918 pose={'x_m': 0.0, 'y_m': 0.2702783989906311, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04780411720275879 pose={'x_m': 0.0, 'y_m': 0.27523807615041734, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.046767473220825195 pose={'x_m': 0.0, 'y_m': 0.280090201497078, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04711341857910156 pose={'x_m': 0.0, 'y_m': 0.2849782186746598, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04704403877258301 pose={'x_m': 0.0, 'y_m': 0.28985903769731525, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.0468447208404541 pose={'x_m': 0.0, 'y_m': 0.2947191774845124, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.047452688217163086 pose={'x_m': 0.0, 'y_m': 0.29964239388704306, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04725480079650879 pose={'x_m': 0.0, 'y_m': 0.30454507946968085, 'heading_rad': 0.0}
+[map] motion direction=forward speed=0.6 effective_seconds=0.01704573631286621 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': 0.0}
+[base] continuous stop label=search_can_routine_2_step_0 elapsed=0.017s
+[base] stop
+[can] backend=detectnet_native no detections
+[base] continuous start label=search_can_routine_2_step_1 direction=left requested_speed=0.15 effective_speed=0.15
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.0471491813659668 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.007121323163562732}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04722476005554199 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.014254061589430211}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.0496060848236084 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.02174647080362302}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.046973228454589844 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.028841218372293476}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04929804801940918 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.036287102290279094}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04720783233642578 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.04341728398547273}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.047423601150512695 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.05058005499418572}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04741191864013672 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.05774106149863112}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04766702651977539 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.064940599014641}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.047376155853271484 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.07209620397540872}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04711771011352539 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.07921277378053526}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.046922922134399414 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.08629992317776614}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04742598533630371 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.09346305428939106}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04738306999206543 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.10061970354860339}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.0475006103515625 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.10779410588136829}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04730486869812012 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.11493894376507274}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04732036590576172 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.12208612231770388}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04733729362487793 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.1292358576010093}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.047200918197631836 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.13636499499775834}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04699993133544922 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.14346377571904112}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04738306999206543 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.15062042497825345}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04735684394836426 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.15777311310543585}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04725837707519531 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.16491092898235982}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04764533042907715 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.172107189561872}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04739999771118164 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.17926639555175816}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04768085479736328 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.1864680216646568}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04701709747314453 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.19356939512690463}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.046866655349731445 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.20064804609541653}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.047258615493774414 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.2077858979826317}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.047389984130859375 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.2149435915402882}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.047608375549316406 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.22213427052466717}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.047220706939697266 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.22926639677558436}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04739999771118164 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.23642560276547053}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.047466278076171875 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.24359481961630536}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04711651802062988 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.25071120936997593}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04686474800109863 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.2577895722561587}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04720258712768555 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.2649189617249461}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04734086990356445 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.272069237162619}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.0472562313079834 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.2792067289469222}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.047368526458740234 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.2863611815783722}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.0473484992980957 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.29351260934536283}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04732370376586914 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.3006602920420707}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04732561111450195 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.30780826282110807}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.046828269958496094 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.3148811161327396}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04727792739868164 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.32202188485354055}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.047438621520996094 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.3291869245105983}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04725337028503418 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.33632398417140763}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.0475924015045166 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.34351225046627754}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.047322750091552734 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.3506597891218206}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04767322540283203 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.35786026290540107}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04882335662841797 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.3652344503336433}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04729008674621582 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.3723770555792947}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04738044738769531 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.3795333087253039}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04735231399536133 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.3866853126569536}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04756760597229004 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.39386983388154073}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04737424850463867 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.40102515075997935}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04747128486633301 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.4081951238269288}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04728221893310547 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.4153365407329712}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04861783981323242 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.42267968729021455}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04694056510925293 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.42976950144899284}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04735231399536133 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.43692150538064256}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04752802848815918 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.44410004889689336}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04711627960205078 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.45121640264027274}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04735732078552246 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.4583691627880375}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.048168182373046875 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.4656443939361119}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04745316505432129 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.47281163022093153}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.046907901763916016 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.4798965109698181}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.046942710876464844 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.48698664922121715}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04721379280090332 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.4941177311736902}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.047194719314575195 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.5012459323028686}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04788970947265625 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.5084791034308425}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04739117622375488 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.5156369770399549}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04743027687072754 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.5228007563368209}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.047272682189941406 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.529940732831216}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.047055959701538086 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.5370479759709266}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04688668251037598 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.5441296518038978}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04738640785217285 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.5512868052071864}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04741811752319336 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.5584487479792024}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.047254323959350586 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.5655859516811761}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04724717140197754 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.5727220750744144}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04792308807373047 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.5799602876431535}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04721355438232422 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.5870913335853354}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04740095138549805 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.5942506836163863}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04702043533325195 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.6013525612227109}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04740095138549805 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.6085119112537618}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04703497886657715 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.6156159854878482}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.047246456146240234 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.6227520008502134}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.047528743743896484 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.6299306523973378}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04764604568481445 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.6371270210077236}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04726886749267578 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.6442664213374596}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04713129997253418 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.6513850437291837}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.047200918197631836 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.6585141811259327}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04767036437988281 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.6657142227860193}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.0474247932434082 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.6728771738461883}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04753994941711426 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.6800575178769983}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.047502994537353516 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.6872322803126751}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04729437828063965 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.6943755337435675}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04724860191345215 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.701511873198553}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.049233198165893555 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.7089479623173371}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.0471043586730957 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.7160625155461577}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.0472867488861084 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.7232046166477324}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04729056358337402 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.7303472939139661}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.047478675842285156 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.7375183832999421}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.0473475456237793 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.744669667025768}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.047310829162597656 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.7518154051667523}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04733872413635254 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.7589653565118049}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04766583442687988 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.7661647139763588}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04703807830810547 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.7732692563442307}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.047477006912231445 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.7804400936581688}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04735517501831055 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.7875925297133128}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04741811752319336 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.7947544724853288}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04753541946411133 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.8019341323206062}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04764914512634277 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.8091309690647774}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04744267463684082 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.816296620896785}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.046907663345336914 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.8233814656353804}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04716753959655762 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.8305055615913641}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.047425270080566406 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.8376685846721155}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04724836349487305 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.8448048881168098}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.0475003719329834 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.8519792544392835}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.047487497329711914 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.8591516762060332}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04723405838012695 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.8662858190332567}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.04726052284240723 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.8734239590028015}
+[can] backend=detectnet_native no detections
+[map] motion direction=left speed=0.15 effective_seconds=0.046930789947509766 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.8805122967396413}
+[can] backend=detectnet_native detections=1 best_confidence=0.204
+[can] backend=detectnet_native confidence=0.204 class_id=1 center=(126.2,119.9) error_x=-0.105 bbox=[115.9375, 97.91015625, 136.5625, 141.796875]
+[map] motion direction=left speed=0.15 effective_seconds=0.06462550163269043 pose={'x_m': 0.0, 'y_m': 0.3063135746121407, 'heading_rad': -0.8902732102571331}
+[base] continuous stop label=search_can_routine_2_step_1 elapsed=0.065s
+[base] stop
+[fsm] SEARCHING --TARGET_FOUND--> ALIGNING
+[can] backend=detectnet_native no detections
+[base] stop
+[can] backend=detectnet_native detections=1 best_confidence=0.327
+[can] backend=detectnet_native confidence=0.327 class_id=1 center=(129.7,118.0) error_x=-0.095 bbox=[119.6875, 97.6171875, 139.6875, 138.3984375]
+[base] stop
+[fsm] ALIGNING --TARGET_ALIGNED--> APPROACHING
+[can] backend=detectnet_native no detections
+[base] stop
+[can] backend=detectnet_native no detections
+[base] stop
+[can] backend=detectnet_native no detections
+[base] stop
+[can] backend=detectnet_native detections=1 best_confidence=0.213
+[can] backend=detectnet_native confidence=0.213 class_id=1 center=(129.1,118.7) error_x=-0.096 bbox=[119.53125, 98.14453125, 138.75, 139.3359375]
+[approach] target=can mode=bbox_height bbox=0.172/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.096
+[base] continuous start label=approach_can_forward direction=forward requested_speed=0.6 effective_speed=0.6
+[can] backend=detectnet_native detections=1 best_confidence=0.267
+[can] backend=detectnet_native confidence=0.267 class_id=1 center=(129.9,118.9) error_x=-0.094 bbox=[119.453125, 98.02734375, 140.390625, 139.6875]
+[approach] target=can mode=bbox_height bbox=0.174/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.094
+[can] backend=detectnet_native detections=1 best_confidence=0.237
+[can] backend=detectnet_native confidence=0.237 class_id=1 center=(130.4,119.2) error_x=-0.093 bbox=[120.234375, 99.7265625, 140.546875, 138.6328125]
+[approach] target=can mode=bbox_height bbox=0.162/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.093
+[can] backend=detectnet_native detections=1 best_confidence=0.316
+[can] backend=detectnet_native confidence=0.316 class_id=1 center=(132.0,119.5) error_x=-0.087 bbox=[121.40625, 98.203125, 142.65625, 140.859375]
+[approach] target=can mode=bbox_height bbox=0.178/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.087
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.20912885665893555 pose={'x_m': -0.01686394852989212, 'y_m': 0.31996539528203793, 'heading_rad': -0.8902732102571331}
+[base] continuous stop label=approach_can_forward elapsed=0.209s
+[base] stop
+[can] backend=detectnet_native no detections
+[base] stop
+[can] backend=detectnet_native no detections
+[base] stop
+[can] backend=detectnet_native no detections
+[base] stop
+[fsm] APPROACHING --TARGET_MISSING--> SEARCHING reason=approach target lost
+[can] backend=detectnet_native no detections
+[base] continuous start label=search_can_routine_2_step_0 direction=forward requested_speed=0.6 effective_speed=0.6
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.046977996826171875 pose={'x_m': -0.020652208711537154, 'y_m': 0.3230320939593412, 'heading_rad': -0.8902732102571331}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04740166664123535 pose={'x_m': -0.024474633216886935, 'y_m': 0.3261264495771112, 'heading_rad': -0.8902732102571331}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04749655723571777 pose={'x_m': -0.028304709607906098, 'y_m': 0.3292269996024815, 'heading_rad': -0.8902732102571331}
+[can] backend=detectnet_native detections=1 best_confidence=0.218
+[can] backend=detectnet_native confidence=0.218 class_id=1 center=(132.4,119.2) error_x=-0.086 bbox=[120.78125, 95.625, 144.0625, 142.734375]
+[map] motion direction=forward speed=0.6 effective_seconds=0.06506824493408203 pose={'x_m': -0.03355174988264136, 'y_m': 0.33347462006642226, 'heading_rad': -0.8902732102571331}
+[base] continuous stop label=search_can_routine_2_step_0 elapsed=0.065s
+[base] stop
+[fsm] SEARCHING --TARGET_FOUND--> ALIGNING
+[can] backend=detectnet_native no detections
+[base] stop
+[can] backend=detectnet_native no detections
+[base] stop
+[can] backend=detectnet_native no detections
+[base] stop
+[can] backend=detectnet_native no detections
+[base] stop
+[can] backend=detectnet_native detections=1 best_confidence=0.240
+[can] backend=detectnet_native confidence=0.240 class_id=1 center=(133.0,121.5) error_x=-0.084 bbox=[122.265625, 97.8515625, 143.828125, 145.1953125]
+[base] stop
+[fsm] ALIGNING --TARGET_ALIGNED--> APPROACHING
+[can] backend=detectnet_native no detections
+[base] stop
+[can] backend=detectnet_native no detections
+[base] stop
+[can] backend=detectnet_native detections=1 best_confidence=0.212
+[can] backend=detectnet_native confidence=0.212 class_id=1 center=(132.6,122.0) error_x=-0.086 bbox=[122.34375, 99.08203125, 142.8125, 144.84375]
+[approach] target=can mode=bbox_height bbox=0.191/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.086
+[base] continuous start label=approach_can_forward direction=forward requested_speed=0.6 effective_speed=0.6
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.0643162727355957 pose={'x_m': -0.03873815184732329, 'y_m': 0.3376731521847063, 'heading_rad': -0.8902732102571331}
+[base] continuous stop label=approach_can_forward elapsed=0.064s
+[base] stop
+[can] backend=detectnet_native no detections
+[base] stop
+[can] backend=detectnet_native no detections
+[base] stop
+[can] backend=detectnet_native detections=1 best_confidence=0.222
+[can] backend=detectnet_native confidence=0.222 class_id=1 center=(133.1,117.3) error_x=-0.084 bbox=[121.171875, 93.57421875, 145.078125, 141.09375]
+[approach] target=can mode=bbox_height bbox=0.198/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.084
+[base] continuous start label=approach_can_forward direction=forward requested_speed=0.6 effective_speed=0.6
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.06334543228149414 pose={'x_m': -0.04384626617771951, 'y_m': 0.3418083083538735, 'heading_rad': -0.8902732102571331}
+[base] continuous stop label=approach_can_forward elapsed=0.063s
+[base] stop
+[can] backend=detectnet_native detections=1 best_confidence=0.217
+[can] backend=detectnet_native confidence=0.217 class_id=1 center=(132.7,123.6) error_x=-0.085 bbox=[122.34375, 100.8984375, 143.125, 146.3671875]
+[approach] target=can mode=bbox_height bbox=0.189/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.085
+[base] continuous start label=approach_can_forward direction=forward requested_speed=0.6 effective_speed=0.6
+[can] backend=detectnet_native detections=1 best_confidence=0.240
+[can] backend=detectnet_native confidence=0.240 class_id=1 center=(133.1,123.4) error_x=-0.084 bbox=[122.8125, 101.19140625, 143.4375, 145.546875]
+[approach] target=can mode=bbox_height bbox=0.185/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.084
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.11378192901611328 pose={'x_m': -0.053021530773981945, 'y_m': 0.3492359322371535, 'heading_rad': -0.8902732102571331}
+[base] continuous stop label=approach_can_forward elapsed=0.114s
+[base] stop
+[can] backend=detectnet_native no detections
+[base] stop
+[can] backend=detectnet_native detections=1 best_confidence=0.202
+[can] backend=detectnet_native confidence=0.202 class_id=1 center=(134.1,120.4) error_x=-0.081 bbox=[123.28125, 97.5, 145.0, 143.203125]
+[approach] target=can mode=bbox_height bbox=0.190/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.081
+[base] continuous start label=approach_can_forward direction=forward requested_speed=0.6 effective_speed=0.6
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.0643775463104248 pose={'x_m': -0.05821287378041521, 'y_m': 0.35343846426185277, 'heading_rad': -0.8902732102571331}
+[base] continuous stop label=approach_can_forward elapsed=0.064s
+[base] stop
+[can] backend=detectnet_native no detections
+[base] stop
+[can] backend=detectnet_native no detections
+[base] stop
+[can] backend=detectnet_native no detections
+[base] stop
+[fsm] APPROACHING --TARGET_MISSING--> SEARCHING reason=approach target lost
+[can] backend=detectnet_native no detections
+[base] continuous start label=search_can_routine_2_step_0 direction=forward requested_speed=0.6 effective_speed=0.6
+[can] backend=detectnet_native detections=1 best_confidence=0.246
+[can] backend=detectnet_native confidence=0.246 class_id=1 center=(134.6,126.4) error_x=-0.079 bbox=[122.03125, 102.12890625, 147.1875, 150.703125]
+[map] motion direction=forward speed=0.6 effective_seconds=0.07006216049194336 pose={'x_m': -0.06386261857080586, 'y_m': 0.3580120848805581, 'heading_rad': -0.8902732102571331}
+[base] continuous stop label=search_can_routine_2_step_0 elapsed=0.070s
+[base] stop
+[fsm] SEARCHING --TARGET_FOUND--> ALIGNING
+[can] backend=detectnet_native detections=1 best_confidence=0.205
+[can] backend=detectnet_native confidence=0.205 class_id=1 center=(135.9,127.1) error_x=-0.075 bbox=[123.828125, 103.18359375, 147.890625, 151.0546875]
+[base] stop
+[fsm] ALIGNING --TARGET_ALIGNED--> APPROACHING
+[can] backend=detectnet_native no detections
+[base] stop
+[can] backend=detectnet_native no detections
+[base] stop
+[can] backend=detectnet_native no detections
+[base] stop
+[can] backend=detectnet_native no detections
+[base] stop
+[fsm] APPROACHING --TARGET_MISSING--> SEARCHING reason=approach target lost
+[can] backend=detectnet_native no detections
+[base] continuous start label=search_can_routine_2_step_0 direction=forward requested_speed=0.6 effective_speed=0.6
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04749774932861328 pose={'x_m': -0.06769279109104197, 'y_m': 0.36111271272511936, 'heading_rad': -0.8902732102571331}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.046753644943237305 pose={'x_m': -0.07146295975405663, 'y_m': 0.3641647658306842, 'heading_rad': -0.8902732102571331}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04701972007751465 pose={'x_m': -0.07525458445829498, 'y_m': 0.367234188179671, 'heading_rad': -0.8902732102571331}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.046833038330078125 pose={'x_m': -0.07903115532715865, 'y_m': 0.3702914240433537, 'heading_rad': -0.8902732102571331}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.046967506408691406 pose={'x_m': -0.0828185695716945, 'y_m': 0.3733574379117765, 'heading_rad': -0.8902732102571331}
+[can] backend=detectnet_native detections=1 best_confidence=0.283
+[can] backend=detectnet_native confidence=0.283 class_id=1 center=(134.4,125.4) error_x=-0.080 bbox=[122.34375, 98.7890625, 146.484375, 151.9921875]
+[map] motion direction=forward speed=0.6 effective_seconds=0.06506609916687012 pose={'x_m': -0.08806543681383926, 'y_m': 0.3776049183011736, 'heading_rad': -0.8902732102571331}
+[base] continuous stop label=search_can_routine_2_step_0 elapsed=0.065s
+[base] stop
+[fsm] SEARCHING --TARGET_FOUND--> ALIGNING
+[can] backend=detectnet_native detections=1 best_confidence=0.266
+[can] backend=detectnet_native confidence=0.266 class_id=1 center=(132.8,122.5) error_x=-0.085 bbox=[121.5625, 98.61328125, 144.0625, 146.484375]
+[base] stop
+[fsm] ALIGNING --TARGET_ALIGNED--> APPROACHING
+[can] backend=detectnet_native detections=1 best_confidence=0.208
+[can] backend=detectnet_native confidence=0.208 class_id=1 center=(132.9,121.1) error_x=-0.085 bbox=[122.5, 98.26171875, 143.28125, 143.90625]
+[approach] target=can mode=bbox_height bbox=0.190/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.085
+[base] continuous start label=approach_can_forward direction=forward requested_speed=0.6 effective_speed=0.6
+[can] backend=detectnet_native detections=1 best_confidence=0.305
+[can] backend=detectnet_native confidence=0.305 class_id=1 center=(132.7,123.5) error_x=-0.085 bbox=[121.015625, 97.96875, 144.296875, 149.0625]
+[approach] target=can mode=bbox_height bbox=0.213/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.085
+[can] backend=detectnet_native detections=1 best_confidence=0.329
+[can] backend=detectnet_native confidence=0.329 class_id=1 center=(133.6,124.7) error_x=-0.082 bbox=[120.625, 97.08984375, 146.640625, 152.2265625]
+[approach] target=can mode=bbox_height bbox=0.230/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.082
+[can] backend=detectnet_native detections=1 best_confidence=0.321
+[can] backend=detectnet_native confidence=0.321 class_id=1 center=(133.7,124.5) error_x=-0.082 bbox=[121.09375, 96.15234375, 146.25, 152.9296875]
+[approach] target=can mode=bbox_height bbox=0.237/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.082
+[can] backend=detectnet_native detections=1 best_confidence=0.301
+[can] backend=detectnet_native confidence=0.301 class_id=1 center=(133.4,125.4) error_x=-0.083 bbox=[120.625, 97.96875, 146.25, 152.9296875]
+[approach] target=can mode=bbox_height bbox=0.229/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.083
+[can] backend=detectnet_native detections=1 best_confidence=0.443
+[can] backend=detectnet_native confidence=0.443 class_id=1 center=(133.2,124.0) error_x=-0.084 bbox=[120.0, 95.68359375, 146.40625, 152.34375]
+[approach] target=can mode=bbox_height bbox=0.236/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.084
+[can] backend=detectnet_native detections=1 best_confidence=0.379
+[can] backend=detectnet_native confidence=0.379 class_id=1 center=(132.4,125.2) error_x=-0.086 bbox=[120.0, 97.03125, 144.765625, 153.28125]
+[approach] target=can mode=bbox_height bbox=0.234/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.086
+[can] backend=detectnet_native detections=1 best_confidence=0.342
+[can] backend=detectnet_native confidence=0.342 class_id=1 center=(131.1,123.7) error_x=-0.090 bbox=[118.125, 94.74609375, 144.140625, 152.578125]
+[approach] target=can mode=bbox_height bbox=0.241/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.090
+[can] backend=detectnet_native detections=1 best_confidence=0.438
+[can] backend=detectnet_native confidence=0.438 class_id=1 center=(132.5,124.7) error_x=-0.086 bbox=[118.59375, 96.09375, 146.40625, 153.28125]
+[approach] target=can mode=bbox_height bbox=0.238/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.086
+[can] backend=detectnet_native detections=1 best_confidence=0.716
+[can] backend=detectnet_native confidence=0.716 class_id=1 center=(131.6,124.8) error_x=-0.089 bbox=[116.953125, 94.51171875, 146.328125, 155.15625]
+[approach] target=can mode=bbox_height bbox=0.253/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.089
+[can] backend=detectnet_native detections=1 best_confidence=0.570
+[can] backend=detectnet_native confidence=0.570 class_id=1 center=(133.0,125.5) error_x=-0.084 bbox=[118.515625, 95.859375, 147.578125, 155.15625]
+[approach] target=can mode=bbox_height bbox=0.247/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.084
+[can] backend=detectnet_native detections=1 best_confidence=0.650
+[can] backend=detectnet_native confidence=0.650 class_id=1 center=(132.3,125.2) error_x=-0.086 bbox=[117.03125, 95.21484375, 147.65625, 155.15625]
+[approach] target=can mode=bbox_height bbox=0.250/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.086
+[can] backend=detectnet_native detections=1 best_confidence=0.675
+[can] backend=detectnet_native confidence=0.675 class_id=1 center=(131.6,123.7) error_x=-0.089 bbox=[117.578125, 93.515625, 145.625, 153.8671875]
+[approach] target=can mode=bbox_height bbox=0.251/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.089
+[can] backend=detectnet_native detections=1 best_confidence=0.709
+[can] backend=detectnet_native confidence=0.709 class_id=1 center=(132.1,125.4) error_x=-0.087 bbox=[118.046875, 97.20703125, 146.171875, 153.6328125]
+[approach] target=can mode=bbox_height bbox=0.235/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.087
+[can] backend=detectnet_native detections=1 best_confidence=0.824
+[can] backend=detectnet_native confidence=0.824 class_id=1 center=(131.6,124.5) error_x=-0.089 bbox=[117.03125, 94.1015625, 146.25, 154.921875]
+[approach] target=can mode=bbox_height bbox=0.253/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.089
+[can] backend=detectnet_native detections=1 best_confidence=0.801
+[can] backend=detectnet_native confidence=0.801 class_id=1 center=(132.0,124.5) error_x=-0.088 bbox=[117.421875, 92.8125, 146.5625, 156.09375]
+[approach] target=can mode=bbox_height bbox=0.264/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.088
+[can] backend=detectnet_native detections=1 best_confidence=0.839
+[can] backend=detectnet_native confidence=0.839 class_id=1 center=(132.4,123.1) error_x=-0.086 bbox=[117.1875, 91.34765625, 147.65625, 154.921875]
+[approach] target=can mode=bbox_height bbox=0.265/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.086
+[can] backend=detectnet_native detections=1 best_confidence=0.816
+[can] backend=detectnet_native confidence=0.816 class_id=1 center=(130.8,124.0) error_x=-0.091 bbox=[116.5625, 92.2265625, 145.0, 155.859375]
+[approach] target=can mode=bbox_height bbox=0.265/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.091
+[can] backend=detectnet_native detections=1 best_confidence=0.623
+[can] backend=detectnet_native confidence=0.623 class_id=1 center=(130.2,125.1) error_x=-0.093 bbox=[115.703125, 93.10546875, 144.765625, 157.03125]
+[approach] target=can mode=bbox_height bbox=0.266/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.093
+[can] backend=detectnet_native detections=1 best_confidence=0.847
+[can] backend=detectnet_native confidence=0.847 class_id=1 center=(129.8,125.8) error_x=-0.094 bbox=[114.140625, 92.16796875, 145.546875, 159.4921875]
+[approach] target=can mode=bbox_height bbox=0.281/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.094
+[can] backend=detectnet_native detections=1 best_confidence=0.865
+[can] backend=detectnet_native confidence=0.865 class_id=1 center=(130.4,126.2) error_x=-0.092 bbox=[115.390625, 93.6328125, 145.46875, 158.7890625]
+[approach] target=can mode=bbox_height bbox=0.271/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.092
+[can] backend=detectnet_native detections=1 best_confidence=0.804
+[can] backend=detectnet_native confidence=0.804 class_id=1 center=(130.9,126.4) error_x=-0.091 bbox=[115.859375, 92.578125, 145.859375, 160.1953125]
+[approach] target=can mode=bbox_height bbox=0.282/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.091
+[can] backend=detectnet_native detections=1 best_confidence=0.921
+[can] backend=detectnet_native confidence=0.921 class_id=1 center=(130.2,126.1) error_x=-0.093 bbox=[114.140625, 90.87890625, 146.25, 161.25]
+[approach] target=can mode=bbox_height bbox=0.293/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.093
+[can] backend=detectnet_native detections=1 best_confidence=0.939
+[can] backend=detectnet_native confidence=0.939 class_id=1 center=(129.6,124.7) error_x=-0.095 bbox=[113.515625, 89.1796875, 145.78125, 160.1953125]
+[approach] target=can mode=bbox_height bbox=0.296/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.095
+[can] backend=detectnet_native detections=1 best_confidence=0.846
+[can] backend=detectnet_native confidence=0.846 class_id=1 center=(128.7,125.5) error_x=-0.098 bbox=[112.265625, 89.82421875, 145.078125, 161.1328125]
+[approach] target=can mode=bbox_height bbox=0.297/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.098
+[can] backend=detectnet_native detections=1 best_confidence=0.861
+[can] backend=detectnet_native confidence=0.861 class_id=1 center=(127.4,125.9) error_x=-0.102 bbox=[111.71875, 90.5859375, 143.125, 161.1328125]
+[approach] target=can mode=bbox_height bbox=0.294/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.102
+[can] backend=detectnet_native detections=1 best_confidence=0.931
+[can] backend=detectnet_native confidence=0.931 class_id=1 center=(128.4,127.4) error_x=-0.099 bbox=[112.65625, 92.4609375, 144.140625, 162.421875]
+[approach] target=can mode=bbox_height bbox=0.292/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.099
+[can] backend=detectnet_native detections=1 best_confidence=0.946
+[can] backend=detectnet_native confidence=0.946 class_id=1 center=(128.6,128.6) error_x=-0.098 bbox=[112.109375, 94.3359375, 145.15625, 162.7734375]
+[approach] target=can mode=bbox_height bbox=0.285/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.098
+[can] backend=detectnet_native detections=1 best_confidence=0.921
+[can] backend=detectnet_native confidence=0.921 class_id=1 center=(127.4,128.5) error_x=-0.102 bbox=[111.40625, 93.3984375, 143.4375, 163.59375]
+[approach] target=can mode=bbox_height bbox=0.292/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.102
+[can] backend=detectnet_native detections=1 best_confidence=0.963
+[can] backend=detectnet_native confidence=0.963 class_id=1 center=(127.0,129.4) error_x=-0.103 bbox=[110.234375, 94.1015625, 143.75, 164.6484375]
+[approach] target=can mode=bbox_height bbox=0.294/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.103
+[can] backend=detectnet_native detections=1 best_confidence=0.968
+[can] backend=detectnet_native confidence=0.968 class_id=1 center=(127.4,128.7) error_x=-0.102 bbox=[110.625, 92.6953125, 144.140625, 164.765625]
+[approach] target=can mode=bbox_height bbox=0.300/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.102
+[can] backend=detectnet_native detections=1 best_confidence=0.984
+[can] backend=detectnet_native confidence=0.984 class_id=1 center=(126.5,128.8) error_x=-0.105 bbox=[109.53125, 92.4609375, 143.515625, 165.234375]
+[approach] target=can mode=bbox_height bbox=0.303/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.105
+[can] backend=detectnet_native detections=1 best_confidence=0.980
+[can] backend=detectnet_native confidence=0.980 class_id=1 center=(126.8,131.0) error_x=-0.104 bbox=[110.0, 94.8046875, 143.515625, 167.109375]
+[approach] target=can mode=bbox_height bbox=0.301/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.104
+[can] backend=detectnet_native detections=1 best_confidence=0.985
+[can] backend=detectnet_native confidence=0.985 class_id=1 center=(126.6,131.7) error_x=-0.104 bbox=[108.90625, 94.3359375, 144.21875, 168.984375]
+[approach] target=can mode=bbox_height bbox=0.311/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.104
+[can] backend=detectnet_native detections=1 best_confidence=0.965
+[can] backend=detectnet_native confidence=0.965 class_id=1 center=(125.5,130.9) error_x=-0.108 bbox=[108.359375, 96.50390625, 142.65625, 165.3515625]
+[approach] target=can mode=bbox_height bbox=0.287/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.108
+[can] backend=detectnet_native detections=1 best_confidence=0.866
+[can] backend=detectnet_native confidence=0.866 class_id=1 center=(124.6,130.8) error_x=-0.110 bbox=[107.96875, 95.21484375, 141.328125, 166.2890625]
+[approach] target=can mode=bbox_height bbox=0.296/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.110
+[can] backend=detectnet_native detections=1 best_confidence=0.976
+[can] backend=detectnet_native confidence=0.976 class_id=1 center=(125.2,130.9) error_x=-0.109 bbox=[107.5, 93.57421875, 142.8125, 168.28125]
+[approach] target=can mode=bbox_height bbox=0.311/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.109
+[can] backend=detectnet_native detections=1 best_confidence=0.929
+[can] backend=detectnet_native confidence=0.929 class_id=1 center=(124.1,131.5) error_x=-0.112 bbox=[106.5625, 94.8046875, 141.5625, 168.1640625]
+[approach] target=can mode=bbox_height bbox=0.306/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.112
+[can] backend=detectnet_native detections=1 best_confidence=0.784
+[can] backend=detectnet_native confidence=0.784 class_id=1 center=(124.3,130.9) error_x=-0.112 bbox=[107.5, 96.09375, 141.09375, 165.703125]
+[approach] target=can mode=bbox_height bbox=0.290/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.112
+[can] backend=detectnet_native detections=1 best_confidence=0.523
+[can] backend=detectnet_native confidence=0.523 class_id=1 center=(122.7,133.9) error_x=-0.116 bbox=[105.3125, 98.14453125, 140.15625, 169.6875]
+[approach] target=can mode=bbox_height bbox=0.298/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.116
+[can] backend=detectnet_native detections=1 best_confidence=0.661
+[can] backend=detectnet_native confidence=0.661 class_id=1 center=(119.1,133.2) error_x=-0.128 bbox=[98.4375, 94.21875, 139.6875, 172.265625]
+[approach] target=can mode=bbox_height bbox=0.325/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.128
+[map] motion direction=forward speed=0.6 effective_seconds=1.9190645217895508 pose={'x_m': -0.24281694188126884, 'y_m': 0.5028804308439503, 'heading_rad': -0.8902732102571331}
+[base] continuous stop label=approach_can_forward elapsed=1.919s
+[base] stop
+[base] continuous start label=approach_can_steer direction=left requested_speed=0.15 effective_speed=0.15
+[visual-turn] label=approach_can_steer direction=left speed=0.15
+[can] backend=detectnet_native detections=1 best_confidence=0.660
+[can] backend=detectnet_native confidence=0.660 class_id=1 center=(118.9,132.0) error_x=-0.128 bbox=[98.59375, 91.2890625, 139.21875, 172.734375]
+[approach] target=can mode=bbox_height bbox=0.339/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.128
+[can] backend=detectnet_native detections=1 best_confidence=0.959
+[can] backend=detectnet_native confidence=0.959 class_id=1 center=(117.9,133.5) error_x=-0.132 bbox=[96.953125, 91.171875, 138.828125, 175.78125]
+[approach] target=can mode=bbox_height bbox=0.353/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.132
+[can] backend=detectnet_native detections=1 best_confidence=0.864
+[can] backend=detectnet_native confidence=0.864 class_id=1 center=(118.6,133.7) error_x=-0.129 bbox=[96.5625, 90.99609375, 140.703125, 176.484375]
+[approach] target=can mode=bbox_height bbox=0.356/0.36 bbox_ok=False depth_raw=n/a/2.05 depth_ok=False error_x=-0.129
+[can] backend=detectnet_native detections=1 best_confidence=0.926
+[can] backend=detectnet_native confidence=0.926 class_id=1 center=(120.2,132.5) error_x=-0.124 bbox=[98.28125, 88.59375, 142.109375, 176.484375]
+[approach] target=can mode=bbox_height bbox=0.366/0.36 bbox_ok=True depth_raw=n/a/2.05 depth_ok=False error_x=-0.124
+[map] motion direction=left speed=0.15 effective_seconds=0.20796442031860352 pose={'x_m': -0.24281694188126884, 'y_m': 0.5028804308439503, 'heading_rad': -0.9216837629052597}
+[base] continuous stop label=approach_can_steer elapsed=0.208s
+[base] stop
+[fsm] APPROACHING --TARGET_REACHED--> FINAL_VERIFY
+[can] backend=detectnet_native detections=1 best_confidence=0.933
+[can] backend=detectnet_native confidence=0.933 class_id=1 center=(120.7,133.7) error_x=-0.123 bbox=[98.4375, 90.1171875, 142.96875, 177.1875]
+[base] continuous start label=align_can direction=left requested_speed=0.15 effective_speed=0.15
+[visual-turn] label=align_can direction=left speed=0.15
+[can] backend=detectnet_native detections=1 best_confidence=0.963
+[can] backend=detectnet_native confidence=0.963 class_id=1 center=(124.0,135.7) error_x=-0.113 bbox=[104.453125, 94.1015625, 143.515625, 177.3046875]
+[can] backend=detectnet_native detections=1 best_confidence=0.989
+[can] backend=detectnet_native confidence=0.989 class_id=1 center=(123.6,135.1) error_x=-0.114 bbox=[103.28125, 92.8125, 143.90625, 177.3046875]
+[can] backend=detectnet_native detections=1 best_confidence=0.998
+[can] backend=detectnet_native confidence=0.998 class_id=1 center=(125.4,135.4) error_x=-0.108 bbox=[105.625, 92.4609375, 145.234375, 178.2421875]
+[can] backend=detectnet_native detections=1 best_confidence=0.999
+[can] backend=detectnet_native confidence=0.999 class_id=1 center=(126.2,135.1) error_x=-0.106 bbox=[106.171875, 91.875, 146.171875, 178.359375]
+[can] backend=detectnet_native detections=1 best_confidence=1.000
+[can] backend=detectnet_native confidence=1.000 class_id=1 center=(126.4,134.5) error_x=-0.105 bbox=[106.171875, 90.5859375, 146.71875, 178.359375]
+[can] backend=detectnet_native detections=1 best_confidence=0.999
+[can] backend=detectnet_native confidence=0.999 class_id=1 center=(128.0,135.5) error_x=-0.100 bbox=[107.5, 91.875, 148.4375, 179.1796875]
+[can] backend=detectnet_native detections=1 best_confidence=1.000
+[can] backend=detectnet_native confidence=1.000 class_id=1 center=(129.0,135.2) error_x=-0.097 bbox=[108.515625, 90.5859375, 149.453125, 179.765625]
+[can] backend=detectnet_native detections=1 best_confidence=0.999
+[can] backend=detectnet_native confidence=0.999 class_id=1 center=(130.3,134.2) error_x=-0.093 bbox=[109.453125, 91.2890625, 151.171875, 177.0703125]
+[can] backend=detectnet_native detections=1 best_confidence=0.999
+[can] backend=detectnet_native confidence=0.999 class_id=1 center=(131.0,134.1) error_x=-0.091 bbox=[109.140625, 88.828125, 152.890625, 179.296875]
+[can] backend=detectnet_native detections=1 best_confidence=0.996
+[can] backend=detectnet_native confidence=0.996 class_id=1 center=(133.4,133.6) error_x=-0.083 bbox=[112.109375, 90.703125, 154.609375, 176.484375]
+[can] backend=detectnet_native detections=1 best_confidence=0.991
+[can] backend=detectnet_native confidence=0.991 class_id=1 center=(135.4,134.0) error_x=-0.077 bbox=[113.28125, 90.8203125, 157.421875, 177.1875]
+[can] backend=detectnet_native detections=1 best_confidence=0.809
+[can] backend=detectnet_native confidence=0.809 class_id=1 center=(136.4,132.2) error_x=-0.074 bbox=[115.15625, 89.00390625, 157.578125, 175.4296875]
+[can] backend=detectnet_native detections=1 best_confidence=0.859
+[can] backend=detectnet_native confidence=0.859 class_id=1 center=(137.4,133.9) error_x=-0.071 bbox=[114.609375, 91.7578125, 160.15625, 176.1328125]
+[can] backend=detectnet_native detections=1 best_confidence=0.876
+[can] backend=detectnet_native confidence=0.876 class_id=1 center=(140.4,133.8) error_x=-0.061 bbox=[120.625, 90.703125, 160.15625, 176.953125]
+[can] backend=detectnet_native detections=1 best_confidence=0.962
+[can] backend=detectnet_native confidence=0.962 class_id=1 center=(140.9,134.4) error_x=-0.060 bbox=[122.1875, 92.109375, 159.6875, 176.71875]
+[can] backend=detectnet_native detections=1 best_confidence=0.989
+[can] backend=detectnet_native confidence=0.989 class_id=1 center=(142.0,134.8) error_x=-0.056 bbox=[122.96875, 92.87109375, 161.09375, 176.71875]
+[can] backend=detectnet_native detections=1 best_confidence=0.999
+[can] backend=detectnet_native confidence=0.999 class_id=1 center=(144.1,135.0) error_x=-0.050 bbox=[123.515625, 90.234375, 164.6875, 179.765625]
+[can] backend=detectnet_native detections=1 best_confidence=0.999
+[can] backend=detectnet_native confidence=0.999 class_id=1 center=(144.6,133.5) error_x=-0.048 bbox=[123.984375, 89.53125, 165.15625, 177.5390625]
+[can] backend=detectnet_native detections=1 best_confidence=0.999
+[can] backend=detectnet_native confidence=0.999 class_id=1 center=(145.5,133.2) error_x=-0.045 bbox=[125.546875, 90.46875, 165.46875, 176.015625]
+[can] backend=detectnet_native detections=1 best_confidence=0.998
+[can] backend=detectnet_native confidence=0.998 class_id=1 center=(147.3,133.2) error_x=-0.040 bbox=[126.25, 89.8828125, 168.28125, 176.6015625]
+[can] backend=detectnet_native detections=1 best_confidence=0.998
+[can] backend=detectnet_native confidence=0.998 class_id=1 center=(147.8,133.1) error_x=-0.038 bbox=[126.40625, 89.8828125, 169.21875, 176.25]
+[can] backend=detectnet_native detections=1 best_confidence=0.954
+[can] backend=detectnet_native confidence=0.954 class_id=1 center=(148.1,134.0) error_x=-0.037 bbox=[126.484375, 91.9921875, 169.6875, 176.015625]
+[can] backend=detectnet_native detections=1 best_confidence=0.991
+[can] backend=detectnet_native confidence=0.991 class_id=1 center=(149.8,132.2) error_x=-0.032 bbox=[127.96875, 87.71484375, 171.71875, 176.6015625]
+[can] backend=detectnet_native detections=1 best_confidence=0.754
+[can] backend=detectnet_native confidence=0.754 class_id=1 center=(151.8,132.4) error_x=-0.026 bbox=[130.3125, 91.171875, 173.28125, 173.671875]
+[map] motion direction=left speed=0.15 effective_seconds=1.1603620052337646 pose={'x_m': -0.24281694188126884, 'y_m': 0.5028804308439503, 'heading_rad': -1.0969426451719597}
+[base] continuous stop label=align_can elapsed=1.160s
+[base] stop
+[can] backend=detectnet_native detections=1 best_confidence=0.928
+[can] backend=detectnet_native confidence=0.928 class_id=1 center=(157.0,133.9) error_x=-0.009 bbox=[138.046875, 93.22265625, 175.9375, 174.4921875]
+[base] stop
+[fsm] FINAL_VERIFY --TARGET_STABLE--> FINALIZING
+[arm] pose arm_down
+[arm] arm_down servo=5 angle=0 speed=85
+[arm] arm_down servo=4 angle=0 speed=85
+[arm] arm_down servo=3 angle=45 speed=85
+[arm] arm_down servo=2 angle=105 speed=85
+[arm] arm_down servo=1 angle=-16 speed=85
+[arm-position] arm_down waiting for motion to settle servos=[1, 2, 3, 4, 5] stability_delta=3 min_wait=0.5 timeout=10.0 stable_samples=2
+[arm-position] arm_down waiting positions={1: 440, 2: 612, 3: 641, 4: 499, 5: 509} movement={} read_errors=[]
+[arm-position] arm_down waiting positions={1: 440, 2: 626, 3: 655, 4: 499, 5: 508} movement={1: 0, 2: 14, 3: 14, 4: 0, 5: 1} read_errors=[]
+[arm-position] arm_down waiting positions={1: 440, 2: 639, 3: 667, 4: 499, 5: 508} movement={1: 0, 2: 13, 3: 12, 4: 0, 5: 0} read_errors=[]
+[arm-position] arm_down waiting positions={1: 440, 2: 653, 3: 680, 4: 499, 5: 509} movement={1: 0, 2: 14, 3: 13, 4: 0, 5: 1} read_errors=[]
+[arm-position] arm_down waiting positions={1: 440, 2: 666, 3: 693, 4: 499, 5: 508} movement={1: 0, 2: 13, 3: 13, 4: 0, 5: 1} read_errors=[]
+[arm-position] arm_down waiting positions={1: 440, 2: 680, 3: 706, 4: 499, 5: 509} movement={1: 0, 2: 14, 3: 13, 4: 0, 5: 1} read_errors=[]
+[arm-position] arm_down waiting positions={1: 440, 2: 693, 3: 717, 4: 499, 5: 508} movement={1: 0, 2: 13, 3: 11, 4: 0, 5: 1} read_errors=[]
+[arm-position] arm_down waiting positions={1: 440, 2: 707, 3: 717, 4: 499, 5: 508} movement={1: 0, 2: 14, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] arm_down waiting positions={1: 440, 2: 722, 3: 717, 4: 499, 5: 508} movement={1: 0, 2: 15, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] arm_down waiting positions={1: 440, 2: 733, 3: 717, 4: 499, 5: 508} movement={1: 0, 2: 11, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] arm_down waiting positions={1: 440, 2: 747, 3: 717, 4: 499, 5: 508} movement={1: 0, 2: 14, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] arm_down waiting positions={1: 440, 2: 761, 3: 717, 4: 499, 5: 509} movement={1: 0, 2: 14, 3: 0, 4: 0, 5: 1} read_errors=[]
+[arm-position] arm_down waiting positions={1: 440, 2: 773, 3: 717, 4: 499, 5: 509} movement={1: 0, 2: 12, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] arm_down waiting positions={1: 440, 2: 787, 3: 717, 4: 499, 5: 509} movement={1: 0, 2: 14, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] arm_down waiting positions={1: 440, 2: 800, 3: 717, 4: 499, 5: 509} movement={1: 0, 2: 13, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] arm_down waiting positions={1: 440, 2: 812, 3: 717, 4: 499, 5: 509} movement={1: 0, 2: 12, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] arm_down waiting positions={1: 440, 2: 828, 3: 717, 4: 499, 5: 509} movement={1: 0, 2: 16, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] arm_down waiting positions={1: 440, 2: 839, 3: 717, 4: 499, 5: 509} movement={1: 0, 2: 11, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] arm_down waiting positions={1: 440, 2: 854, 3: 717, 4: 499, 5: 509} movement={1: 0, 2: 15, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] arm_down waiting positions={1: 440, 2: 867, 3: 717, 4: 499, 5: 508} movement={1: 0, 2: 13, 3: 0, 4: 0, 5: 1} read_errors=[]
+[arm-position] arm_down waiting positions={1: 440, 2: 881, 3: 717, 4: 499, 5: 508} movement={1: 0, 2: 14, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] arm_down waiting positions={1: 440, 2: 892, 3: 717, 4: 499, 5: 508} movement={1: 0, 2: 11, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] arm_down waiting positions={1: 440, 2: 905, 3: 717, 4: 499, 5: 509} movement={1: 0, 2: 13, 3: 0, 4: 0, 5: 1} read_errors=[]
+[arm-position] arm_down waiting positions={1: 440, 2: 918, 3: 717, 4: 499, 5: 509} movement={1: 0, 2: 13, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] arm_down waiting positions={1: 440, 2: 934, 3: 717, 4: 499, 5: 509} movement={1: 0, 2: 16, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] arm_down waiting positions={1: 440, 2: 947, 3: 717, 4: 499, 5: 509} movement={1: 0, 2: 13, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] arm_down waiting positions={1: 440, 2: 958, 3: 717, 4: 499, 5: 509} movement={1: 0, 2: 11, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] arm_down waiting positions={1: 440, 2: 971, 3: 717, 4: 499, 5: 508} movement={1: 0, 2: 13, 3: 0, 4: 0, 5: 1} read_errors=[]
+[arm-position] arm_down waiting positions={1: 440, 2: 985, 3: 717, 4: 499, 5: 508} movement={1: 0, 2: 14, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] arm_down waiting positions={1: 440, 2: 997, 3: 717, 4: 499, 5: 508} movement={1: 0, 2: 12, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] arm_down waiting positions={1: 440, 2: 1005, 3: 717, 4: 499, 5: 508} movement={1: 0, 2: 8, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] arm_down settled positions={1: 440, 2: 1006, 3: 717, 4: 499, 5: 508} movement={1: 0, 2: 1, 3: 0, 4: 0, 5: 0} elapsed=4.94s
+[base] pickup_push direction=forward requested_speed=0.2 effective_speed=0.2 seconds=3.9
+[map] motion direction=forward speed=0.2 effective_seconds=3.9 pose={'x_m': -0.35560116965463284, 'y_m': 0.5607188304204077, 'heading_rad': -1.0969426451719597}
+[fsm] stop requested; ending run without mission failure
+[media] shutdown result={'stopped': True, 'stopping': False, 'last_recording': '/workspace/robot_code/temp_car/diagnostic_outputs/full_demo_1788756283609.avi', 'last_events': '/workspace/robot_code/temp_car/diagnostic_outputs/full_demo_1788756283609.events.csv'}
+[fsm] stop_all owner=Thread-51
+[base] stop
+[arm] pose safe_home
+[arm] safe_home servo=5 angle=0 speed=85
+[arm] safe_home servo=4 angle=0 speed=85
+[arm] safe_home servo=3 angle=0 speed=85
+[arm] safe_home servo=2 angle=0 speed=85
+[arm] safe_home servo=1 angle=-16 speed=85
+[camera] stopped
+[depth] stop
+[result] False
+[integration] STOPPED elapsed=45.0s

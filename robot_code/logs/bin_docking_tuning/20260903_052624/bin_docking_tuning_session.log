@@ -1,0 +1,72 @@
+[bin-tune] session=20260903_052624 project=/workspace/robot_code/temp_car
+
+>>> reload_parameters
+[base] stop
+[depth] stop
+[result] {'parameters': '/workspace/robot_code/temp_car/empirical_parameters.json', 'dry_run': {'camera': False, 'base': False, 'arm': False}, 'exp2_forced_in_memory': True, 'disk_write': False}
+
+>>> start_camera_and_tag
+[camera] starting camera-only mode 320x240 (DepthNet disabled)
+[warmup] camera-only frame 1/2 ready
+[warmup] camera-only frame 2/2 ready
+[depth] started enabled=False
+[tag] cv2=4.1.1
+[tag] has pupil_apriltags=True
+[tag] has aruco=False
+[tag] has ArucoDetector=False
+[tag] has DICT_APRILTAG_36h11=False
+[tag] calibration not loaded; pose distance disabled
+[tag] detector loaded backend=pupil_apriltags family=tag36h11 dictionary=DICT_APRILTAG_36h11
+[result] {'frame_shape': (240, 320, 3), 'tag_loaded': True}
+
+>>> clear_log
+[result] True
+
+>>> run_search
+[error] search requires state SEARCHING, current state is IDLE
+Traceback (most recent call last):
+  File "<ipython-input-1-ab5faeeb1fb2>", line 100, in wrapped
+    print('[result] {}'.format(fn()))
+  File "<ipython-input-1-ab5faeeb1fb2>", line 442, in run_search
+    return start_node(MissionState.SEARCHING, 'search')
+  File "<ipython-input-1-ab5faeeb1fb2>", line 432, in start_node
+    raise RuntimeError('{} requires state {}, current state is {}'.format(label, expected_state.value, rt.state.value))
+RuntimeError: search requires state SEARCHING, current state is IDLE
+
+>>> show_state
+[result] {'state': 'IDLE', 'target': None, 'grabbed': False, 'state_data': {'entered_at': 1788413198.8392498, 'steps': 0, 'lost_frames': 0}, 'last_error': None}
+
+>>> step_current_state
+[fsm] IDLE --START--> INITIALIZING
+[result] {'state': 'INITIALIZING', 'event': 'START', 'reason': None}
+
+>>> step_current_state
+[camera] switching depth_enabled=False -> True
+[camera] camera-only stopped
+[depth] stop
+[depth] loading network fcn-mobilenet
+[camera] starting JetBot Camera 320x240
+[warmup] frame 1/2 processed
+[warmup] frame 2/2 processed
+[depth] started enabled=True
+[arm] pose safe_home
+Succeeded to open the port
+Succeeded to change the baudrate
+[arm] TTLServo connected
+[arm] safe_home servo=5 angle=0 speed=85
+[arm] safe_home servo=4 angle=0 speed=85
+[arm] safe_home servo=3 angle=0 speed=85
+[arm] safe_home servo=2 angle=0 speed=85
+[arm] safe_home servo=1 angle=-16 speed=85
+[base] stop
+[fsm] INITIALIZING --INITIALIZED--> PLANNING
+[result] {'state': 'PLANNING', 'event': 'INITIALIZED', 'reason': None}
+
+>>> step_current_state
+[fsm] PLANNING --TARGET_REQUIRED--> SEARCHING
+[result] {'state': 'SEARCHING', 'event': 'TARGET_REQUIRED', 'reason': None}
+
+>>> run_search
+[result] {'started': True, 'node': 'search', 'state': 'SEARCHING', 'log': '/workspace/robot_code/temp_car/logs/bin_docking_tuning/20260903_052624/node_search_052934.log'}
+>>> node=search expected=SEARCHING log=/workspace/robot_code/temp_car/logs/bin_docking_tuning/20260903_052624/node_search_052934.log
+

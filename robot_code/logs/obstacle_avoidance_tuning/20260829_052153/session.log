@@ -1,0 +1,22 @@
+05:21:53 [job] start full_bypass
+05:21:56 [camera] DepthNet camera started
+05:21:56 [phase] CRUISING
+05:21:56 [phase] DETECTED selected_side=left geometry={'detected': True, 'path_blocked': True, 'unsafe': False, 'bbox': [104, 94, 12, 24], 'center': [110, 106], 'width_norm': 0.05357142857142857, 'height_norm': 0.10714285714285714, 'center_x_norm': 0.49107142857142855, 'bbox_left_norm': 0.4642857142857143, 'bbox_right_norm': 0.5178571428571429, 'background_depth': 3.1443138122558594, 'obstacle_depth': 2.177657127380371, 'left_clearance_norm': 0.4642857142857143, 'right_clearance_norm': 0.48214285714285715, 'selected_side': 'left', 'reason': 'supported obstacle'}
+05:21:56 [phase] TURN_TO_TANGENT direction=left
+05:21:57 [error] full_bypass: unsafe obstacle geometry: center obstacle outside supported cylinder geometry
+05:21:57 Traceback (most recent call last):
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 591, in target
+    result = operation()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 568, in run_full
+    self.run_next_phase()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 559, in run_next_phase
+    phases[self.state]()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 422, in _phase_turn_to_tangent
+    minimum_seconds=settings["minimum_tangent_turn_seconds"],
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 320, in _run_visual_motion
+    raise RuntimeError("unsafe obstacle geometry: {}".format(analysis.reason))
+RuntimeError: unsafe obstacle geometry: center obstacle outside supported cylinder geometry
+
+05:24:30 [job] start live_monitor
+05:25:24 [job] finish live_monitor result=True
+05:25:25 [camera] stopped and released

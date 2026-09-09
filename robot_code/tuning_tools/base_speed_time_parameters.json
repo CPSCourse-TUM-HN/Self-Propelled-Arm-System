@@ -1,0 +1,37 @@
+{
+  "dry_run": true,
+  "settle_seconds_between_runs": 1.0,
+  "maximum_speed": 0.8,
+  "maximum_seconds": 5.0,
+  "prompt_for_measurement": false,
+  "cases": [
+    {
+      "name": "forward_slow_1s",
+      "motion": "forward",
+      "speed": 0.2,
+      "seconds": 1.0,
+      "repeat": 1
+    },
+    {
+      "name": "forward_fast_05s",
+      "motion": "forward",
+      "speed": 0.6,
+      "seconds": 0.5,
+      "repeat": 1
+    },
+    {
+      "name": "turn_left_slow_1s",
+      "motion": "left",
+      "speed": 0.15,
+      "seconds": 1.0,
+      "repeat": 1
+    },
+    {
+      "name": "turn_right_slow_1s",
+      "motion": "right",
+      "speed": 0.15,
+      "seconds": 1.0,
+      "repeat": 1
+    }
+  ]
+}

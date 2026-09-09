@@ -1,0 +1,136 @@
+[bin-tune] session=20260829_031505 project=/workspace/robot_code/temp_car
+
+>>> print_parameter_names
+[parameter names] edit these paths in empirical_parameters.json
+{
+  "arm.poses.safe_home": {
+    "angles": {
+      "s1": -16,
+      "s2": 0,
+      "s3": 0,
+      "s4": 0,
+      "s5": 0
+    },
+    "order": [
+      5,
+      4,
+      3,
+      2,
+      1
+    ],
+    "pause_seconds": 0.6
+  },
+  "arm.poses.side_view_grabbing": {
+    "angles": {
+      "s1": 70,
+      "s2": 60,
+      "s3": 45,
+      "s4": -40,
+      "s5": 0
+    },
+    "order": [
+      5,
+      4,
+      3,
+      2,
+      1
+    ],
+    "pause_seconds": 0.6
+  },
+  "arm.poses.side_view_release_low": {
+    "angles": {
+      "s1": 70,
+      "s2": 90,
+      "s3": 40,
+      "s4": 0,
+      "s5": 0
+    },
+    "order": [
+      5,
+      4,
+      3,
+      2,
+      1
+    ],
+    "pause_seconds": 0.6
+  },
+  "detectors.bin": {
+    "backend": "pupil_apriltags",
+    "calibration_yaml": "",
+    "dictionary": "DICT_APRILTAG_36h11",
+    "family": "tag36h11",
+    "marker_length_m": 0.08,
+    "tag_id": 0
+  },
+  "navigation.bin.align": {
+    "lost_frame_limit": 8,
+    "max_steps": 400,
+    "pulse_seconds": 0.18,
+    "speed": 0.15,
+    "tolerance_norm": 0.08
+  },
+  "navigation.bin.approach": {
+    "lost_frame_limit": 5,
+    "max_pulses": 400,
+    "min_pulses": 0,
+    "pulse_seconds": 0.18,
+    "speed": 0.6,
+    "steering_pulse_seconds": 0.06,
+    "steering_speed": 0.15,
+    "steering_tolerance_norm": 0.1,
+    "stop": {
+      "depth_scale": 1.0,
+      "mode": "bbox_height",
+      "threshold": 0.15
+    },
+    "timeout_seconds": 15.0
+  },
+  "navigation.bin.search": {
+    "direction": "left",
+    "pulse_seconds": 0.12,
+    "speed": 0.3,
+    "timeout_seconds": 15.0
+  },
+  "navigation.bin.side_docking.experimental": {
+    "center_positive_drive_direction": "backward",
+    "center_tolerance_norm": 0.04,
+    "corner_angle_tolerance_deg": 8.0,
+    "drive_pulse_seconds": 0.08,
+    "drive_speed": 0.2,
+    "enabled": true,
+    "height_tolerance_norm": 0.02,
+    "lost_frame_limit": 10,
+    "max_steps": 300,
+    "perspective_positive_turn_direction": "left",
+    "perspective_tolerance": 0.08,
+    "stable_frames": 5,
+    "standoff_correction_enabled": false,
+    "standoff_drive_seconds": 0.12,
+    "standoff_drive_speed": 0.2,
+    "standoff_toward_turn_direction": "right",
+    "standoff_turn_seconds": 0.35,
+    "standoff_turn_speed": 0.15,
+    "supportive_turn_direction": "left",
+    "supportive_turn_seconds": 0.75,
+    "supportive_turn_speed": 0.15,
+    "target_height_norm": 0.15,
+    "timeout_seconds": 30.0,
+    "turn_pulse_seconds": 0.06,
+    "turn_speed": 0.15
+  },
+  "vague_map.bin_side_docking_pose": {
+    "heading_rad": 0.0,
+    "x_m": 0.0,
+    "y_m": -0.5
+  }
+}
+[result] {'printed': ['detectors.bin', 'navigation.bin.search', 'navigation.bin.align', 'navigation.bin.approach', 'navigation.bin.side_docking.experimental', 'arm.poses.side_view_grabbing', 'arm.poses.side_view_release_low', 'arm.poses.safe_home', 'vague_map.bin_side_docking_pose'], 'disk_write': False}
+
+>>> stop_all
+[base] stop
+[arm] cancellation requested
+[base] stop
+[arm] dry_run=True
+[arm] stop_and_hold dry_run=True
+[depth] stop
+[result] {'stop_requested': True, 'arm_positions': {}, 'camera_released': True}

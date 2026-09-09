@@ -1,0 +1,26 @@
+02:55:15 [job] start full_bypass
+02:55:45 [error] full_bypass: Could not initialize camera.  Please see error trace.
+02:55:45 Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/jetbot-0.4.3-py3.6.egg/jetbot/camera/opencv_gst_camera.py", line 30, in __init__
+    raise RuntimeError('Could not read image from camera.')
+RuntimeError: Could not read image from camera.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 1088, in target
+    result = operation()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 1060, in run_full
+    self.start_camera()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 189, in start_camera
+    self.depth.start(camera_only=False)
+  File "/workspace/robot_code/temp_car/demo_core/perception.py", line 548, in start
+    self.depth.start(warmup_frames=2)
+  File "/workspace/robot_code/temp_car/demo_core/depth_vision.py", line 78, in start
+    self.camera = self._camera_cls.instance(width=self.width, height=self.height)
+  File "/usr/local/lib/python3.6/dist-packages/jetbot-0.4.3-py3.6.egg/jetbot/camera/opencv_gst_camera.py", line 72, in instance
+    return OpenCvGstCamera(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/jetbot-0.4.3-py3.6.egg/jetbot/camera/opencv_gst_camera.py", line 37, in __init__
+    'Could not initialize camera.  Please see error trace.')
+RuntimeError: Could not initialize camera.  Please see error trace.
+

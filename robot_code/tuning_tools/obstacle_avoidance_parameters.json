@@ -1,0 +1,74 @@
+{
+  "camera": {
+    "width": 320,
+    "height": 240,
+    "depth_network": "fcn-mobilenet"
+  },
+  "perception": {
+    "obstacle_top_ignore_ratio": 0.3,
+    "obstacle_bottom_ignore_ratio": 0.15,
+    "contour_row_start": 0.0,
+    "contour_row_end": 1.0,
+    "profile_row_start": 0.0,
+    "profile_row_end": 1.0,
+    "profile_columns": 80,
+    "smoothing_window": 5,
+    "background_side_fraction": 0.2,
+    "relative_depth_drop": 0.22,
+    "maximum_obstacle_depth": 2.4,
+    "morphology_kernel": 4,
+    "center_corridor_width_norm": 0.24,
+    "wall_width_threshold_norm": 0.6,
+    "absolute_center_stop_depth": 1.0,
+    "center_depth_percentile": 20.0,
+    "tangent_margin_norm": 0.06,
+    "tracking_max_center_shift_norm": 0.2,
+    "tracking_min_area_ratio": 0.45,
+    "tracking_max_area_ratio": 2.2,
+    "tracking_depth_tolerance_ratio": 0.45,
+    "side_selection_tie_norm": 0.03,
+    "default_side": "left"
+  },
+  "motion": {
+    "linear_speed": 0.3,
+    "turn_speed": 0.15,
+    "linear_meters_per_speed_second": 1.0,
+    "angular_radians_per_speed_second": 3.14159265359,
+    "depth_to_segment_time_factor": 4,
+    "pass_depth_to_time_factor": 1.5,
+    "side_override": "auto",
+    "minimum_tangent_turn_seconds": 0.15,
+    "maximum_tangent_turn_seconds": 6.0,
+    "minimum_offset_seconds": 0.5,
+    "maximum_offset_seconds": 30.0,
+    "pass_min_seconds": 0.8,
+    "pass_max_seconds": 25.0,
+    "verification_forward_seconds": 0.35
+  },
+  "control": {
+    "control_fps": 6.0,
+    "cruise_timeout_seconds": 15.0,
+    "obstacle_confirmation_frames": 15,
+    "linear_obstacle_confirmation_frames": 3,
+    "blocked_failure_frames": 12,
+    "post_turn_clear_frames": 3,
+    "tangent_safe_frames": 6,
+    "maximum_lateral_corrections": 3,
+    "timed_motion_grace_seconds": 1.0,
+    "missing_frame_limit": 8
+  },
+  "safety": {
+    "emergency_depth": 0.65,
+    "maximum_total_seconds": 85.0
+  },
+  "media": {
+    "preview_fps": 1.0,
+    "record_fps": 5.0,
+    "preview_width": 320,
+    "preview_height": 240,
+    "record_width": 640,
+    "record_height": 480,
+    "jpeg_quality": 60,
+    "video_codec": "MJPG"
+  }
+}

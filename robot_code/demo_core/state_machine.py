@@ -1,5 +1,6 @@
 from __future__ import print_function
 
+import math
 import os
 import threading
 import time
@@ -12,7 +13,8 @@ from .perception import AprilTagBinDetector, CanDetector, DepthSensor
 from .fsm_types import MissionContext, MissionEvent, MissionState, TargetType
 from .navigation import BinSideDockingNavigator, StepOutcome, TargetNavigator
 from .tangentbug import DepthTangentBugPlanner
-from .vague_map import CommandOdometry, Point2D, VagueMap, VagueMapNavigator
+from .turn_response import TurnResponseModel
+from .vague_map import CommandOdometry, Point2D, VagueMap, VagueMapNavigator, normalize_heading
 
 
 class StopRequested(Exception):
@@ -45,17 +47,14 @@ class DemoStateMachine(object):
         (MissionState.IDLE, MissionEvent.START): MissionState.INITIALIZING,
         (MissionState.INITIALIZING, MissionEvent.INITIALIZED): MissionState.PLANNING,
         (MissionState.PLANNING, MissionEvent.TARGET_REQUIRED): MissionState.SEARCHING,
-        (MissionState.PLANNING, MissionEvent.PATROL_REQUIRED): MissionState.PATROLLING,
         (MissionState.PLANNING, MissionEvent.MAP_TARGET_AVAILABLE): MissionState.MAP_NAVIGATING,
         (MissionState.PLANNING, MissionEvent.MISSION_COMPLETE): MissionState.DONE,
         (MissionState.VERIFY_TARGET, MissionEvent.TARGET_FOUND): MissionState.ALIGNING,
         (MissionState.VERIFY_TARGET, MissionEvent.TARGET_MISSING): MissionState.SEARCHING,
         (MissionState.SEARCHING, MissionEvent.TARGET_FOUND): MissionState.ALIGNING,
         (MissionState.SEARCHING, MissionEvent.REPLAN): MissionState.PLANNING,
+        (MissionState.SEARCHING, MissionEvent.OBSTACLE_FOUND): MissionState.AVOIDING,
         (MissionState.SEARCHING, MissionEvent.TIMEOUT): MissionState.INTERMEDIATE,
-        (MissionState.PATROLLING, MissionEvent.TARGET_FOUND): MissionState.ALIGNING,
-        (MissionState.PATROLLING, MissionEvent.PATROL_COMPLETE): MissionState.PLANNING,
-        (MissionState.PATROLLING, MissionEvent.TIMEOUT): MissionState.INTERMEDIATE,
         (MissionState.MAP_NAVIGATING, MissionEvent.TARGET_FOUND): MissionState.ALIGNING,
         (MissionState.MAP_NAVIGATING, MissionEvent.MAP_DESTINATION_REACHED): MissionState.SEARCHING,
         (MissionState.MAP_NAVIGATING, MissionEvent.REPLAN): MissionState.PLANNING,
@@ -75,6 +74,7 @@ class DemoStateMachine(object):
         (MissionState.BIN_SIDE_DOCKING, MissionEvent.TARGET_MISSING): MissionState.INTERMEDIATE,
         (MissionState.BIN_SIDE_DOCKING, MissionEvent.TIMEOUT): MissionState.INTERMEDIATE,
         (MissionState.AVOIDING, MissionEvent.PATH_CLEAR): MissionState.VERIFY_TARGET,
+        (MissionState.AVOIDING, MissionEvent.ROUTINE_RESUME): MissionState.SEARCHING,
         (MissionState.AVOIDING, MissionEvent.TIMEOUT): MissionState.INTERMEDIATE,
         (MissionState.FINALIZING, MissionEvent.FINALIZED): MissionState.PLANNING,
         (MissionState.INTERMEDIATE, MissionEvent.RETRY): MissionState.PLANNING,
@@ -91,7 +91,11 @@ class DemoStateMachine(object):
         if self.map_enabled:
             self.vague_map = self.context.vague_map or VagueMap(config.section("vague_map"))
             self.context.vague_map = self.vague_map
-            odometry = CommandOdometry(self.vague_map, config.section("vague_map")["odometry"])
+            odometry = CommandOdometry(
+                self.vague_map,
+                config.section("vague_map")["odometry"],
+                config.section("base_turn_response"),
+            )
             if hasattr(self.services.base, "attach_motion_tracker"):
                 self.services.base.attach_motion_tracker(odometry)
             self.map_navigator = VagueMapNavigator(
@@ -105,6 +109,12 @@ class DemoStateMachine(object):
         self._cleanup_lock = threading.Lock()
         self._cleanup_complete = False
         self.previous_state = None
+        self.turn_response = TurnResponseModel(
+            config.section("base_turn_response"),
+            config.get("vague_map.odometry.angular_radians_per_speed_second", math.pi),
+        )
+        self.last_transition = None
+        self.current_action = None
         self.navigator = TargetNavigator(
             config,
             self.context,
@@ -113,6 +123,7 @@ class DemoStateMachine(object):
             self.services.can_detector,
             self.services.bin_detector,
             frame_observer=self._observe_navigation_frame,
+            vague_map=self.vague_map,
         )
         self.tangentbug = DepthTangentBugPlanner(config.section("avoidance"))
         self.side_docking = BinSideDockingNavigator(
@@ -123,9 +134,12 @@ class DemoStateMachine(object):
             self.services.bin_detector,
         )
         self.exp2_side_docked = False
+        self.bin_pose_corrected_from_tag = False
+        self._incidental_can_tracks = []
         self.context.begin_state(self.state)
 
     def transition(self, event, reason=None):
+        previous_state = self.state
         if event == MissionEvent.FAIL:
             next_state = MissionState.FAILED
         else:
@@ -144,6 +158,18 @@ class DemoStateMachine(object):
         ))
         self.previous_state = self.state
         self.state = next_state
+        if previous_state == MissionState.SEARCHING and next_state != MissionState.AVOIDING:
+            self.context.searching_routine_data = {}
+        if next_state == MissionState.SEARCHING and event != MissionEvent.ROUTINE_RESUME:
+            self.context.searching_routine_data = {}
+        self.last_transition = {
+            "timestamp": time.time(),
+            "from_state": previous_state.value,
+            "event": event.value,
+            "to_state": next_state.value,
+            "reason": reason,
+        }
+        self.current_action = None
         self.context.begin_state(self.state)
 
     def request_stop(self):
@@ -169,15 +195,17 @@ class DemoStateMachine(object):
             if self.stop_requested:
                 raise StopRequested("stop requested")
 
-    def _pose(self, name):
+    def _pose(self, name, pose=None):
+        self.current_action = "arm_pose:{}".format(name)
         while True:
-            targets = self.services.arm.pose(name)
+            targets = self.services.arm.pose(name, pose=pose)
             if not getattr(self.services.arm, "last_pose_interrupted", False):
                 return targets
             print("[fsm] arm pose {} paused after interruption; Resume retries the pose".format(name))
             self.interrupt_point()
 
     def _wait_for_pose(self, name, targets):
+        self.current_action = "arm_wait:{}".format(name)
         while True:
             if self.services.arm.wait_for_positions(targets, name):
                 return True
@@ -227,20 +255,61 @@ class DemoStateMachine(object):
                 self.context.target_type = TargetType.CAN
                 return StepOutcome(MissionEvent.MAP_TARGET_AVAILABLE)
 
-            if not self.vague_map.initial_scan_complete:
-                self.context.target_type = TargetType.CAN
-                return StepOutcome(MissionEvent.TARGET_REQUIRED)
-            if self.vague_map.patrol_complete:
-                return StepOutcome(MissionEvent.MISSION_COMPLETE)
             self.context.target_type = TargetType.CAN
-            return StepOutcome(MissionEvent.PATROL_REQUIRED)
+            return StepOutcome(MissionEvent.TARGET_REQUIRED)
 
         target = TargetType.BIN if self.context.grabbed else TargetType.CAN
         self.context.target_type = target
         return StepOutcome(MissionEvent.TARGET_REQUIRED)
 
-    def _map_can_detections(self, frame, detections):
+    def _incidental_can_confirmation_frames(self):
+        normal_frames = int(self.config.get("navigation.can.near_align.required_stable_frames"))
+        return max(1, int(math.ceil(normal_frames / 2.0)))
+
+    def _confirm_can_positions(self, candidates, required_frames):
+        required_frames = max(1, int(required_frames))
+        if required_frames == 1:
+            self._incidental_can_tracks = []
+            return list(candidates)
+        previous = list(self._incidental_can_tracks)
+        used = set()
+        current = []
+        confirmed = []
+        association_radius = float(self.config.get("vague_map.can_merge_radius_m", 0.3))
+        for candidate in candidates:
+            position = candidate["position"]
+            matches = [
+                (track["position"].distance_to(position), index, track)
+                for index, track in enumerate(previous)
+                if index not in used
+            ]
+            matches = [item for item in matches if item[0] <= association_radius]
+            if matches:
+                _, index, track = min(matches, key=lambda item: item[0])
+                used.add(index)
+                count = int(track["count"]) + 1
+            else:
+                count = 1
+            tracked = dict(candidate)
+            tracked["count"] = count
+            current.append(tracked)
+            if count >= required_frames:
+                confirmed.append(candidate)
+        self._incidental_can_tracks = current
+        return confirmed
+
+    def _map_can_detections(self, frame, detections, confirmation_frames=1):
         if not self.map_enabled or frame is None or not detections:
+            if int(confirmation_frames) > 1:
+                self._incidental_can_tracks = []
+            return []
+        detections = [
+            observation for observation in detections
+            if self.navigator._accepted(TargetType.CAN, observation, tracking=False)
+        ]
+        if not detections:
+            if int(confirmation_frames) > 1:
+                self._incidental_can_tracks = []
             return []
         depth_map = self.services.depth.depth_map_frame(frame)
         if depth_map is None:
@@ -248,7 +317,7 @@ class DemoStateMachine(object):
             return []
         height, width = frame.shape[:2]
         settings = self.config.section("vague_map")
-        mapped = []
+        candidates = []
         for index, observation in enumerate(detections):
             stats = self.services.depth.observe_center_depth_map(
                 "map_can_{}_depth".format(index),
@@ -259,16 +328,22 @@ class DemoStateMachine(object):
                 height,
                 float(settings.get("can_depth_roi_width", 0.12)),
                 float(settings.get("can_depth_roi_height", 0.18)),
+                source_space=observation.get("frame_space", "raw"),
             )
             if not stats:
                 continue
             position = self.vague_map.estimate_can_position(
                 observation,
                 stats.get("mean"),
-                height,
             )
             if position is None:
                 continue
+            candidates.append({"position": position, "observation": observation})
+        confirmed = self._confirm_can_positions(candidates, confirmation_frames)
+        mapped = []
+        for candidate in confirmed:
+            position = candidate["position"]
+            observation = candidate["observation"]
             mapped_can = self.vague_map.remember_can(
                 position,
                 observation.get("confidence", 0.0),
@@ -282,7 +357,8 @@ class DemoStateMachine(object):
         if not self.map_enabled or not self.context.grabbed or target_type != TargetType.BIN:
             return
         detections = self.services.can_detector.detect_all(frame)
-        self._map_can_detections(frame, detections)
+        required = self._incidental_can_confirmation_frames()
+        self._map_can_detections(frame, detections, confirmation_frames=required)
 
     def _best_can_observation(self, detections):
         accepted = [
@@ -303,13 +379,20 @@ class DemoStateMachine(object):
         return StepOutcome(MissionEvent.TARGET_MISSING, observation)
 
     def _handle_searching_state(self):
-        outcome = self.navigator.search_step(self.context.target_type)
+        routine_identifier = None
+        if (
+            self.context.target_type == TargetType.BIN
+            and self.previous_state == MissionState.MAP_NAVIGATING
+        ):
+            routine_identifier = self.config.get("navigation.bin.search.map_arrival_routine")
+            if routine_identifier is not None:
+                self.current_action = "map_bin_arrival_scan"
+        outcome = self.navigator.search_step(
+            self.context.target_type, routine_identifier=routine_identifier
+        )
         if outcome.event == MissionEvent.TARGET_FOUND:
             self.context.remember_target(self.context.target_type, outcome.observation)
-            if self.map_enabled and self.context.target_type == TargetType.CAN:
-                self.vague_map.initial_scan_complete = True
         elif self.map_enabled and self.context.target_type == TargetType.CAN and outcome.event == MissionEvent.TIMEOUT:
-            self.vague_map.initial_scan_complete = True
             if self.vague_map.selected_can_id is not None:
                 self.vague_map.remove_can(self.vague_map.selected_can_id, "not_found_near_cached_position")
             return StepOutcome(MissionEvent.REPLAN, reason="can search completed without target")
@@ -320,25 +403,6 @@ class DemoStateMachine(object):
         if self.context.increment_step() > int(navigation.get("max_steps", 1000)):
             return True
         return self.context.elapsed() >= float(navigation.get("timeout_seconds", 30.0))
-
-    def _handle_patrolling_state(self):
-        if self._map_state_timed_out():
-            self.services.base.stop()
-            return StepOutcome(MissionEvent.TIMEOUT, reason="patrol navigation timeout")
-        frame = self.services.depth.read_frame()
-        if frame is None:
-            return StepOutcome(MissionEvent.TIMEOUT, reason="patrol camera frame unavailable")
-        detections = self.services.can_detector.detect_all(frame)
-        self._map_can_detections(frame, detections)
-        best = self._best_can_observation(detections)
-        if best is not None:
-            self.services.base.stop()
-            self.context.remember_target(TargetType.CAN, best)
-            self.vague_map.nearest_can()
-            return StepOutcome(MissionEvent.TARGET_FOUND, best)
-        if self.map_navigator.patrol_step():
-            return StepOutcome(MissionEvent.PATROL_COMPLETE)
-        return StepOutcome()
 
     def _map_destination(self):
         if self.context.target_type == TargetType.BIN:
@@ -405,63 +469,160 @@ class DemoStateMachine(object):
             and outcome.event == MissionEvent.TARGET_STABLE
             and not exp2_enabled
         ):
-            self.vague_map.set_robot_pose(self.vague_map.bin_docking_pose, "bin_visual_docking")
+            corrected = self._localize_from_bin_tag(
+                outcome.observation, "front", self.vague_map.bin_docking_pose
+            )
+            if not corrected:
+                self.vague_map.correct_robot_pose(self.vague_map.bin_docking_pose, "bin_visual_docking")
         if (
             self.context.target_type == TargetType.BIN
             and outcome.event == MissionEvent.TARGET_STABLE
             and exp2_enabled
         ):
+            self.bin_pose_corrected_from_tag = False
             return StepOutcome(MissionEvent.SIDE_DOCK_REQUIRED, outcome.observation)
         return outcome
+
+    def _localize_from_bin_tag(self, observation, camera_name, expected_pose):
+        settings = self.config.get("vague_map.bin_tag_localization", {})
+        if not self.map_enabled or not bool(settings.get("enabled", False)):
+            return False
+        if not observation or not observation.get("found") or not observation.get("pose"):
+            print("[map] bin tag localization skipped reason=pose_unavailable camera={}".format(camera_name))
+            return False
+        distance = observation.get("distance")
+        if distance is None:
+            print("[map] bin tag localization skipped reason=distance_unavailable camera={}".format(camera_name))
+            return False
+        distance = float(distance)
+        if not (
+            float(settings["minimum_tag_distance_m"])
+            <= distance
+            <= float(settings["maximum_tag_distance_m"])
+        ):
+            print("[map] bin tag localization rejected reason=tag_distance value={:.3f}".format(distance))
+            return False
+        try:
+            camera_mount = dict(settings["camera_mounts"][camera_name])
+            candidate = self.vague_map.localize_robot_from_bin_tag(observation, camera_mount)
+        except (KeyError, TypeError, ValueError) as exc:
+            print("[map] bin tag localization rejected reason=geometry error={}".format(exc))
+            return False
+        if candidate is None or not self.vague_map.contains(candidate):
+            print("[map] bin tag localization rejected reason=out_of_bounds")
+            return False
+        position_error = candidate.distance_to(expected_pose)
+        heading_error = abs(normalize_heading(candidate.heading_rad - expected_pose.heading_rad))
+        if position_error > float(settings["maximum_position_error_m"]):
+            print("[map] bin tag localization rejected reason=position_jump error_m={:.3f}".format(position_error))
+            return False
+        if heading_error > float(settings["maximum_heading_error_rad"]):
+            print("[map] bin tag localization rejected reason=heading_jump error_rad={:.3f}".format(heading_error))
+            return False
+        self.vague_map.correct_robot_pose(candidate, "bin_tag_{}_localization".format(camera_name))
+        self.bin_pose_corrected_from_tag = True
+        print("[map] bin tag localization accepted camera={} position_error_m={:.3f} heading_error_rad={:.3f}".format(
+            camera_name, position_error, heading_error
+        ))
+        return True
 
     def _handle_bin_side_docking_state(self):
         settings = self.config.get("navigation.bin.side_docking.experimental")
         if not self.context.state_data.get("entry_complete", False):
             self.services.base.stop()
-            print("[exp2] phase=side_view_pose")
-            targets = self._pose("side_view_grabbing")
+            reference_angle = float(self.config.get("base_turn_response.reference_angle_rad"))
+            entry_angle = reference_angle
+            direction = settings["side_entry_base_turn_direction"]
+            servo_target = int(round(float(
+                self.config.get("arm.poses.side_view_grabbing.angles.s1")
+            )))
+            self.current_action = "side_view_pose"
+            print(
+                "[exp2] phase=side_view_pose base_direction={} reference_base_angle_deg={:.2f} "
+                "servo1_fixed={}".format(
+                    direction, math.degrees(entry_angle), servo_target,
+                )
+            )
+            side_pose = dict(self.config.get("arm.poses.side_view_grabbing.angles"))
+            targets = self._pose("side_view_grabbing", pose=side_pose)
             if not self._wait_for_pose("side_view_grabbing", targets):
                 return StepOutcome(MissionEvent.FAIL, reason="exp2 side-view arm pose did not settle")
             self.interrupt_point()
-            print("[exp2] phase=supportive_base_turn")
+            turn_speed = float(settings["yaw_turn_speed"])
+            turn_seconds = self.turn_response.seconds_for_angle(entry_angle, direction, turn_speed)
+            self.current_action = "side_entry_turn"
             self.services.base.pulse(
-                settings["supportive_turn_direction"],
-                settings["supportive_turn_speed"],
-                settings["supportive_turn_seconds"],
-                "exp2_supportive_base_turn",
+                direction, turn_speed, turn_seconds, "exp2_side_entry_turn"
             )
+            print(
+                "[exp2] side entry direction={} angle_deg={:.2f} speed={} seconds={:.3f}".format(
+                    direction, math.degrees(entry_angle), turn_speed, turn_seconds
+                )
+            )
+            settle_seconds = float(settings.get("post_entry_camera_settle_seconds", 0.0))
+            discard_frames = int(settings.get("post_entry_camera_discard_frames", 0))
+            ready_at = time.time() + settle_seconds
             self.context.state_data["entry_complete"] = True
-            print("[exp2] phase=geometry_alignment_ready")
+            self.context.state_data["entry_camera_ready_at"] = ready_at
+            self.context.state_data["entry_camera_next_discard_at"] = ready_at
+            self.context.state_data["entry_camera_discard_remaining"] = discard_frames
+            self.current_action = "entry_camera_settle"
+            print(
+                "[exp2] phase=camera_settle seconds={:.2f} discard_frames={}".format(
+                    settle_seconds, discard_frames
+                )
+            )
             return StepOutcome()
+        now = time.time()
+        ready_at = float(self.context.state_data.get("entry_camera_ready_at", 0.0))
+        if now < ready_at:
+            self.services.base.stop()
+            self.current_action = "entry_camera_settle"
+            return StepOutcome(reason="exp2 waiting for camera motion to settle")
+        discard_remaining = int(self.context.state_data.get("entry_camera_discard_remaining", 0))
+        next_discard_at = float(self.context.state_data.get("entry_camera_next_discard_at", 0.0))
+        if discard_remaining > 0:
+            if now < next_discard_at:
+                return StepOutcome(reason="exp2 waiting for next fresh camera frame")
+            self.services.depth.read_frame()
+            discard_remaining -= 1
+            self.context.state_data["entry_camera_discard_remaining"] = discard_remaining
+            self.context.state_data["entry_camera_next_discard_at"] = (
+                now + float(self.config.get("camera.observation_pause_seconds", 0.1))
+            )
+            self.current_action = "entry_camera_discard"
+            return StepOutcome(reason="exp2 discarding post-motion camera frame")
+        if now < next_discard_at:
+            return StepOutcome(reason="exp2 waiting after final discarded frame")
+        if not self.context.state_data.get("entry_camera_ready_logged", False):
+            self.context.state_data["entry_camera_ready_logged"] = True
+            self.current_action = "geometry_alignment"
+            print("[exp2] phase=geometry_alignment_ready")
         outcome = self.side_docking.step(settings)
         if outcome.observation and outcome.observation.get("found"):
             self.context.remember_target(TargetType.BIN, outcome.observation)
         if outcome.event == MissionEvent.TARGET_STABLE:
             self.exp2_side_docked = True
+            self.bin_pose_corrected_from_tag = False
+            if self.map_enabled:
+                self.bin_pose_corrected_from_tag = self._localize_from_bin_tag(
+                    outcome.observation, "side", self.vague_map.bin_side_docking_pose
+                )
         elif outcome.event in (MissionEvent.TARGET_MISSING, MissionEvent.TIMEOUT, MissionEvent.FAIL):
             self.services.base.stop()
             self._pose("carry")
             self.interrupt_point()
-            opposite = {
-                "left": "right",
-                "right": "left",
-                "forward": "backward",
-                "backward": "forward",
-            }[settings["supportive_turn_direction"]]
-            self.services.base.pulse(
-                opposite,
-                settings["supportive_turn_speed"],
-                settings["supportive_turn_seconds"],
-                "exp2_abort_reset_heading",
-            )
-            print("[exp2] side docking aborted; forward camera pose and heading restored")
+            print("[exp2] side docking aborted; forward camera pose restored")
         return outcome
 
     def _scripted_avoidance(self):
         settings = self.config.section("avoidance")
         self.services.base.pulse("left", settings["turn_speed"], settings["turn_pulse_seconds"], "avoid_left")
         self.services.base.pulse("forward", settings["forward_speed"], settings["forward_pulse_seconds"], "avoid_forward")
-        self.services.base.pulse("right", settings["turn_speed"], settings["turn_pulse_seconds"], "avoid_rejoin")
+        rejoin_seconds = self.turn_response.matching_seconds(
+            "left", "right", settings["turn_speed"], settings["turn_pulse_seconds"]
+        )
+        self.services.base.pulse("right", settings["turn_speed"], rejoin_seconds, "avoid_rejoin")
         self.context.obstacle_found = False
         return StepOutcome(MissionEvent.PATH_CLEAR)
 
@@ -471,18 +632,26 @@ class DemoStateMachine(object):
             self.services.base.stop()
             return StepOutcome(MissionEvent.TIMEOUT, reason="tangentbug max steps")
         frame = self.services.depth.read_frame()
-        depth_map = self.services.depth.depth_map_frame(frame)
+        depth_frame = self.services.depth.depth_input_frame(frame)
+        depth_map = self.services.depth.depth_map_frame(
+            depth_frame, frame_space=self.services.depth.depth_frame_space
+        )
         target_error = 0.0
-        if self.context.last_observation:
-            target_error = float(self.context.last_observation.get("error_x", 0.0))
+        if self.context.last_observation and depth_frame is not None:
+            target_error = self.services.depth.error_x_in_depth_space(
+                self.context.last_observation,
+                depth_frame.shape[1],
+                depth_frame.shape[0],
+            )
         plan = self.tangentbug.plan(depth_map, target_error)
+        self.current_action = "tangentbug:{}".format(plan.action)
         print("[tangentbug] {}".format(plan.as_dict()))
         debug_path = self.config.resolve_path(settings.get("debug_overlay_path"))
-        if debug_path and frame is not None:
+        if debug_path and depth_frame is not None:
             parent = os.path.dirname(debug_path)
             if parent and not os.path.exists(parent):
                 os.makedirs(parent)
-            cv2.imwrite(debug_path, self.tangentbug.draw_debug(frame, plan))
+            cv2.imwrite(debug_path, self.tangentbug.draw_debug(depth_frame, plan))
         if plan.path_clear:
             self.services.base.stop()
             self.context.obstacle_found = False
@@ -498,11 +667,20 @@ class DemoStateMachine(object):
     def _handle_avoiding_state(self):
         strategy = self.config.get("avoidance.strategy", "disabled")
         if strategy == "scripted":
-            return self._scripted_avoidance()
-        if strategy == "tangentbug_depth":
-            return self._tangentbug_avoidance()
-        self.context.obstacle_found = False
-        return StepOutcome(MissionEvent.PATH_CLEAR)
+            outcome = self._scripted_avoidance()
+        elif strategy == "tangentbug_depth":
+            outcome = self._tangentbug_avoidance()
+        else:
+            self.context.obstacle_found = False
+            outcome = StepOutcome(MissionEvent.PATH_CLEAR)
+        if outcome.event == MissionEvent.PATH_CLEAR and self.previous_state == MissionState.SEARCHING:
+            settings = self.config.target_navigation(self.context.target_type)["search"]
+            routine = self.navigator.searching_routines.library.get(settings["routine"])
+            self.navigator.searching_routines.resume_after_avoidance(
+                routine, self.context.searching_routine_data
+            )
+            return StepOutcome(MissionEvent.ROUTINE_RESUME, reason="search routine avoidance complete")
+        return outcome
 
     def _run_pickup_sequence(self):
         arm = self.config.section("arm")
@@ -525,9 +703,6 @@ class DemoStateMachine(object):
         self._pose("grab")
         self.interrupt_point()
         self._pose("carry")
-        if bool(arm.get("verify_enabled", False)) and not self.config.get("runtime.dry_run.arm", True):
-            if not self.services.depth.grab_verified():
-                return StepOutcome(MissionEvent.FAIL, reason="pickup verification failed")
         self.context.mark_pickup()
         if hasattr(self.services.can_detector, "mark_dry_run_target_consumed"):
             self.services.can_detector.mark_dry_run_target_consumed()
@@ -539,18 +714,30 @@ class DemoStateMachine(object):
 
     def _run_release_sequence(self):
         if self.exp2_side_docked:
-            print("[exp2] phase=release_low")
-            targets = self._pose("side_view_release_low")
-            if not self._wait_for_pose("side_view_release_low", targets):
-                return StepOutcome(MissionEvent.FAIL, reason="exp2 release pose did not settle")
+            # Arm insertion intentionally blocks the camera; freeze the already-docked base
+            # before entering this non-visual sequence and never command it again here.
+            self.services.base.stop()
+            print("[exp2] phase=bin_insert")
+            targets = self._pose("side_view_bin_insert")
+            if not self._wait_for_pose("side_view_bin_insert", targets):
+                return StepOutcome(MissionEvent.FAIL, reason="exp2 bin-insert pose did not settle")
+            self.interrupt_point()
+            print("[exp2] phase=release")
+            release_pose = {"s4": self.config.get("arm.poses.release.angles.s4")}
+            targets = self._pose("release", pose=release_pose)
+            if not self._wait_for_pose("release", targets):
+                return StepOutcome(MissionEvent.FAIL, reason="exp2 gripper release did not settle")
             self.interrupt_point()
             print("[exp2] phase=safe_home")
             targets = self._pose("safe_home")
             if not self._wait_for_pose("safe_home", targets):
                 return StepOutcome(MissionEvent.FAIL, reason="exp2 safe_home pose did not settle")
             if self.map_enabled:
-                pose = self.vague_map.bin_side_docking_pose
-                self.vague_map.set_robot_pose(pose, "exp2_side_parked_after_release")
+                if self.bin_pose_corrected_from_tag:
+                    print("[map] preserving bin tag localized pose after release")
+                else:
+                    pose = self.vague_map.bin_side_docking_pose
+                    self.vague_map.correct_robot_pose(pose, "exp2_side_parked_after_release")
             print("[exp2] phase=side_parked")
         else:
             self._pose("release")
@@ -559,6 +746,7 @@ class DemoStateMachine(object):
         self.context.mark_release()
         self.context.forget_target(TargetType.BIN)
         self.exp2_side_docked = False
+        self.bin_pose_corrected_from_tag = False
         return StepOutcome(MissionEvent.FINALIZED)
 
     def _handle_finalizing_state(self):
@@ -589,8 +777,6 @@ class DemoStateMachine(object):
             return self._handle_verify_target_state()
         if self.state == MissionState.SEARCHING:
             return self._handle_searching_state()
-        if self.state == MissionState.PATROLLING:
-            return self._handle_patrolling_state()
         if self.state == MissionState.MAP_NAVIGATING:
             return self._handle_map_navigating_state()
         if self.state == MissionState.ALIGNING:

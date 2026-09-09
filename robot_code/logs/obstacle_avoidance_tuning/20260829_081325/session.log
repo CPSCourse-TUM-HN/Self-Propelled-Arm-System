@@ -1,0 +1,86 @@
+08:13:25 [job] start full_bypass
+08:13:27 [camera] DepthNet camera started frame=320x240 obstacle_roi_ignore=(top=0.300, bottom=0.150)
+08:13:27 [phase] CRUISING
+08:13:27 [media] recording started /workspace/robot_code/temp_car/logs/obstacle_avoidance_tuning/20260829_081325/obstacle_avoidance_1787991207362.avi
+08:13:30 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+08:13:30 [candidate] avoidance_cruise left center corridor after 2 frames
+08:13:31 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+08:13:31 [candidate] avoidance_cruise confirmation 2/15
+08:13:31 [candidate] avoidance_cruise confirmation 3/15
+08:13:32 [candidate] avoidance_cruise confirmation 4/15
+08:13:32 [candidate] avoidance_cruise confirmation 5/15
+08:13:32 [candidate] avoidance_cruise confirmation 6/15
+08:13:32 [candidate] avoidance_cruise confirmation 7/15
+08:13:33 [candidate] avoidance_cruise confirmation 8/15
+08:13:33 [candidate] avoidance_cruise confirmation 9/15
+08:13:33 [candidate] avoidance_cruise confirmation 10/15
+08:13:33 [candidate] avoidance_cruise confirmation 11/15
+08:13:33 [candidate] avoidance_cruise confirmation 12/15
+08:13:34 [candidate] avoidance_cruise confirmation 13/15
+08:13:34 [candidate] avoidance_cruise confirmation 14/15
+08:13:34 [candidate] avoidance_cruise confirmation 15/15
+08:13:34 [candidate] avoidance_cruise confirmed frames=15
+08:13:34 [phase] DETECTED selected_side=left locked_obstacle_depth=2.049706220626831 depth_time_factor=3.500 segment_base_seconds=7.174 geometry={'detected': True, 'path_blocked': True, 'unsafe': False, 'bbox': [114, 96, 16, 38], 'center': [122, 115], 'width_norm': 0.07142857142857142, 'height_norm': 0.16964285714285715, 'center_x_norm': 0.5446428571428571, 'bbox_left_norm': 0.5089285714285714, 'bbox_right_norm': 0.5803571428571429, 'background_depth': 3.600543975830078, 'obstacle_depth': 2.049706220626831, 'left_clearance_norm': 0.5089285714285714, 'right_clearance_norm': 0.41964285714285715, 'selected_side': 'left', 'reason': 'center bbox confirmed for 15 frames', 'status': 'OBSTACLE', 'center_depth': 2.653141736984253}
+08:13:34 [phase] TURN_TO_TANGENT direction=left
+08:13:36 [tangent] reached_streak=1/3
+08:13:37 [tangent] reached_streak=2/3
+08:13:37 [tangent] reached_streak=3/3
+08:13:37 [phase] tangent reached seconds=2.701
+08:13:37 [phase] OFFSET_OUT
+08:13:37 [phase] OFFSET_OUT minimum_seconds=7.174 timeout_seconds=30.000
+08:13:44 [phase] offset clear seconds=7.233 segments=1 estimated_lateral_m=2.075
+08:13:44 [phase] TURN_PARALLEL
+08:13:44 [motion] turn_parallel target_seconds=2.701 timeout_seconds=3.701
+08:13:47 [check] turn_parallel blocked_streak=1/5
+08:13:48 [check] turn_parallel blocked_streak=2/5
+08:13:48 [check] turn_parallel clear sample resets blocked streak
+08:13:48 [check] turn_parallel blocked_streak=1/5
+08:13:48 [check] turn_parallel blocked_streak=2/5
+08:13:48 [check] turn_parallel blocked_streak=3/5
+08:13:49 [check] turn_parallel blocked_streak=4/5
+08:13:49 [check] turn_parallel blocked_streak=5/5
+08:13:49 [check] turn_parallel persistently blocked
+08:13:49 [correction] turn_parallel blocked; repeat tangent/offset correction=1/3
+08:13:49 [phase] TURN_TO_TANGENT direction=left
+08:13:50 [tangent] reached_streak=1/3
+08:13:50 [tangent] reached_streak=2/3
+08:13:50 [tangent] reached_streak=1/3
+08:13:51 [tangent] reached_streak=2/3
+08:13:51 [tangent] reached_streak=3/3
+08:13:51 [phase] tangent reached seconds=1.755
+08:13:51 [phase] OFFSET_OUT
+08:13:51 [phase] OFFSET_OUT minimum_seconds=7.174 timeout_seconds=30.000
+08:13:58 [phase] offset clear seconds=7.252 segments=2 estimated_lateral_m=3.675
+08:13:58 [phase] TURN_PARALLEL
+08:13:58 [motion] turn_parallel target_seconds=1.755 timeout_seconds=2.755
+08:14:00 [check] turn_parallel blocked_streak=1/5
+08:14:00 [check] turn_parallel blocked_streak=2/5
+08:14:01 [check] turn_parallel blocked_streak=3/5
+08:14:01 [check] turn_parallel blocked_streak=4/5
+08:14:01 [check] turn_parallel blocked_streak=5/5
+08:14:01 [check] turn_parallel persistently blocked
+08:14:01 [correction] turn_parallel blocked; repeat tangent/offset correction=2/3
+08:14:01 [phase] TURN_TO_TANGENT direction=left
+08:14:03 [tangent] reached_streak=1/3
+08:14:03 [tangent] reached_streak=2/3
+08:14:04 [tangent] reached_streak=3/3
+08:14:04 [phase] tangent reached seconds=2.480
+08:14:04 [phase] OFFSET_OUT
+08:14:04 [phase] OFFSET_OUT minimum_seconds=7.174 timeout_seconds=30.000
+08:14:05 [stop] base stop requested
+08:14:05 [error] full_bypass: stop requested
+08:14:05 Traceback (most recent call last):
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 755, in target
+    result = operation()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 732, in run_full
+    self.run_next_phase()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 723, in run_next_phase
+    phases[self.state]()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 565, in _phase_offset_out
+    minimum_seconds=minimum_seconds,
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 325, in _run_visual_motion
+    raise RuntimeError("stop requested")
+RuntimeError: stop requested
+
+08:14:05 [media] recording finalized /workspace/robot_code/temp_car/logs/obstacle_avoidance_tuning/20260829_081325/obstacle_avoidance_1787991207362.avi
+08:14:55 [camera] stopped and released

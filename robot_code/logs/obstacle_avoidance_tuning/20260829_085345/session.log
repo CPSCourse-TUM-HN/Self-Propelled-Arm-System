@@ -1,0 +1,66 @@
+08:53:45 [job] start full_bypass
+08:53:47 [camera] DepthNet camera started frame=320x240 obstacle_roi_ignore=(top=0.300, bottom=0.150)
+08:53:47 [phase] CRUISING
+08:53:47 [media] recording started /workspace/robot_code/temp_car/logs/obstacle_avoidance_tuning/20260829_085345/obstacle_avoidance_1787993627870.avi
+08:53:47 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+08:53:48 [candidate] avoidance_cruise left center corridor after 2 frames
+08:53:48 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+08:53:48 [candidate] avoidance_cruise left center corridor after 2 frames
+08:53:49 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+08:53:49 [candidate] avoidance_cruise confirmation 2/15
+08:53:49 [candidate] avoidance_cruise confirmation 3/15
+08:53:49 [candidate] avoidance_cruise confirmation 4/15
+08:53:50 [candidate] avoidance_cruise confirmation 5/15
+08:53:50 [candidate] avoidance_cruise confirmation 6/15
+08:53:50 [candidate] avoidance_cruise confirmation 7/15
+08:53:50 [candidate] avoidance_cruise confirmation 8/15
+08:53:50 [candidate] avoidance_cruise confirmation 9/15
+08:53:51 [candidate] avoidance_cruise confirmation 10/15
+08:53:51 [candidate] avoidance_cruise confirmation 11/15
+08:53:51 [candidate] avoidance_cruise confirmation 12/15
+08:53:51 [candidate] avoidance_cruise confirmation 13/15
+08:53:52 [candidate] avoidance_cruise confirmation 14/15
+08:53:52 [candidate] avoidance_cruise confirmation 15/15
+08:53:52 [candidate] avoidance_cruise locked frames=15 bbox=(112, 96, 10, 22) depth=2.1921443939208984 side=left
+08:53:52 [phase] DETECTED selected_side=left locked_obstacle_depth=2.1921443939208984 depth_time_factor=3.500 segment_base_seconds=7.673 geometry={'detected': True, 'path_blocked': True, 'unsafe': False, 'bbox': [112, 96, 10, 22], 'center': [117, 107], 'width_norm': 0.044642857142857144, 'height_norm': 0.09821428571428571, 'center_x_norm': 0.5223214285714286, 'bbox_left_norm': 0.5, 'bbox_right_norm': 0.5446428571428571, 'background_depth': 3.556032419204712, 'obstacle_depth': 2.1921443939208984, 'left_clearance_norm': 0.5, 'right_clearance_norm': 0.45535714285714285, 'selected_side': 'left', 'reason': 'same bbox confirmed for 15 frames', 'status': 'OBSTACLE', 'center_depth': 2.708019971847534, 'candidate_bboxes': [[112, 96, 10, 22]]}
+08:53:52 [phase] TURN_TO_TANGENT direction=left locked_bbox=(112, 96, 10, 22)
+08:53:53 [tangent] unrelated or missing bbox ignored
+08:53:53 [tangent] unrelated or missing bbox ignored
+08:53:53 [tangent] unrelated or missing bbox ignored
+08:53:53 [tangent] unrelated or missing bbox ignored
+08:53:54 [tangent] unrelated or missing bbox ignored
+08:53:54 [tangent] unrelated or missing bbox ignored
+08:53:54 [tangent] unrelated or missing bbox ignored
+08:53:54 [tangent] unrelated or missing bbox ignored
+08:53:54 [tangent] unrelated or missing bbox ignored
+08:53:55 [tangent] unrelated or missing bbox ignored
+08:53:55 [tangent] unrelated or missing bbox ignored
+08:53:55 [tangent] unrelated or missing bbox ignored
+08:53:55 [tangent] unrelated or missing bbox ignored
+08:53:56 [tangent] unrelated or missing bbox ignored
+08:53:56 [tangent] unrelated or missing bbox ignored
+08:53:56 [tangent] unrelated or missing bbox ignored
+08:53:56 [tangent] unrelated or missing bbox ignored
+08:53:57 [tangent] unrelated or missing bbox ignored
+08:53:57 [tangent] unrelated or missing bbox ignored
+08:53:57 [tangent] unrelated or missing bbox ignored
+08:53:57 [tangent] unrelated or missing bbox ignored
+08:53:58 [tangent] unrelated or missing bbox ignored
+08:53:58 [tangent] unrelated or missing bbox ignored
+08:53:58 [error] full_bypass: turn_to_tangent timeout
+08:53:58 Traceback (most recent call last):
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 900, in target
+    result = operation()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 877, in run_full
+    self.run_next_phase()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 868, in run_next_phase
+    phases[self.state]()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 654, in _phase_turn_to_tangent
+    ignore_obstacle_failures=True,
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 377, in _run_visual_motion
+    raise RuntimeError("{} timeout".format(label))
+RuntimeError: turn_to_tangent timeout
+
+08:53:58 [media] recording finalized /workspace/robot_code/temp_car/logs/obstacle_avoidance_tuning/20260829_085345/obstacle_avoidance_1787993627870.avi
+08:54:02 [stop] base stop requested
+08:59:33 [camera] stopped and released

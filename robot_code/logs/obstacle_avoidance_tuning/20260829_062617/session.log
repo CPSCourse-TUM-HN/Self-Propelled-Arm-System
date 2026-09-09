@@ -1,0 +1,28 @@
+06:26:17 [job] start full_bypass
+06:26:20 [camera] DepthNet camera started frame=320x240 obstacle_roi_ignore=(top=0.300, bottom=0.150)
+06:26:20 [phase] CRUISING
+06:26:20 [media] recording started /workspace/robot_code/temp_car/logs/obstacle_avoidance_tuning/20260829_062617/obstacle_avoidance_1787984780334.avi
+06:26:20 [phase] DETECTED selected_side=left geometry={'detected': True, 'path_blocked': True, 'unsafe': False, 'bbox': [120, 86, 60, 64], 'center': [150, 118], 'width_norm': 0.26785714285714285, 'height_norm': 0.2857142857142857, 'center_x_norm': 0.6696428571428571, 'bbox_left_norm': 0.5357142857142857, 'bbox_right_norm': 0.8035714285714286, 'background_depth': 2.8335208892822266, 'obstacle_depth': 1.9512691497802734, 'left_clearance_norm': 0.5357142857142857, 'right_clearance_norm': 0.19642857142857142, 'selected_side': 'left', 'reason': 'obstacle with traversable tangent', 'status': 'OBSTACLE', 'center_depth': 2.406254768371582}
+06:26:20 [phase] TURN_TO_TANGENT direction=left
+06:26:22 [phase] tangent reached seconds=1.727
+06:26:22 [phase] OFFSET_OUT
+06:26:23 [phase] offset clear seconds=1.680 stable_frames=3 estimated_lateral_m=0.244
+06:26:23 [phase] TURN_PARALLEL
+06:26:23 [motion] turn_parallel target_seconds=1.727 timeout_seconds=2.727
+06:26:30 [error] full_bypass: turn_parallel center path still blocked; increase motion.maximum_offset_seconds
+06:26:30 Traceback (most recent call last):
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 623, in target
+    result = operation()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 600, in run_full
+    self.run_next_phase()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 591, in run_next_phase
+    phases[self.state]()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 506, in _phase_turn_parallel
+    self._verify_clear_while_stopped("turn_parallel")
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 407, in _verify_clear_while_stopped
+    "{} center path still blocked; increase motion.maximum_offset_seconds".format(label)
+RuntimeError: turn_parallel center path still blocked; increase motion.maximum_offset_seconds
+
+06:26:30 [media] recording finalized /workspace/robot_code/temp_car/logs/obstacle_avoidance_tuning/20260829_062617/obstacle_avoidance_1787984780334.avi
+06:30:04 [parameters] reloaded /workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_parameters.json
+06:30:07 [camera] stopped and released

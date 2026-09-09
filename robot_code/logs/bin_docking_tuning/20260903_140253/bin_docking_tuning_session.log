@@ -1,0 +1,146 @@
+[bin-tune] session=20260903_140253 project=/workspace/robot_code/temp_car
+
+>>> reload_parameters
+[base] stop
+[depth] stop
+[result] {'parameters': '/workspace/robot_code/temp_car/empirical_parameters.json', 'dry_run': {'camera': False, 'base': False, 'arm': False}, 'exp2_forced_in_memory': True, 'disk_write': False}
+
+>>> clear_log
+[result] True
+
+>>> run_full_pipeline
+[base] stop
+[depth] stop
+[bin-tune] incidental can mapping disabled for bin-only stages
+[camera] starting camera-only mode 320x240 (DepthNet disabled)
+[warmup] camera-only frame 1/2 ready
+[warmup] camera-only frame 2/2 ready
+[depth] started enabled=False
+[tag] cv2=4.1.1
+[tag] has pupil_apriltags=True
+[tag] has aruco=False
+[tag] has ArucoDetector=False
+[tag] has DICT_APRILTAG_36h11=False
+[tag] calibration not loaded; pose distance disabled
+[tag] detector loaded backend=pupil_apriltags family=tag36h11 dictionary=DICT_APRILTAG_36h11
+[base] stop
+[bin-tune] prepared full bin pipeline state=SEARCHING grabbed=True
+
+>>> one-click bin pipeline log=/workspace/robot_code/temp_car/logs/bin_docking_tuning/20260903_140253/one_click_full_140312.log
+[result] {'started': True, 'from': 'SEARCHING', 'through': 'FINALIZING', 'live': True, 'recording': False, 'log': '/workspace/robot_code/temp_car/logs/bin_docking_tuning/20260903_140253/one_click_full_140312.log'}
+[tag] backend=pupil_apriltags id=0 center=(133.7,145.2) error_x=-0.082 yaw_deg=-28.31 height=27.8px height_norm=0.116 margin=52.19 distance=None
+[base] stop
+[fsm] SEARCHING --TARGET_FOUND--> ALIGNING
+[tag] backend=pupil_apriltags id=0 center=(133.7,145.2) error_x=-0.082 yaw_deg=-28.05 height=27.7px height_norm=0.116 margin=52.79 distance=None
+[base] Robot connected
+[base] continuous start label=align_bin direction=left requested_speed=0.15 effective_speed=0.15
+[visual-turn] label=align_bin direction=left speed=0.15
+[tag] backend=pupil_apriltags id=0 center=(133.7,145.2) error_x=-0.082 yaw_deg=-28.1 height=27.7px height_norm=0.116 margin=53.22 distance=None
+[tag] backend=pupil_apriltags id=0 center=(133.8,145.2) error_x=-0.082 yaw_deg=-28.21 height=27.8px height_norm=0.116 margin=53.03 distance=None
+[tag] backend=pupil_apriltags id=0 center=(133.8,145.1) error_x=-0.082 yaw_deg=-27.51 height=27.6px height_norm=0.115 margin=53.25 distance=None
+[tag] backend=pupil_apriltags id=0 center=(134.4,145.1) error_x=-0.080 yaw_deg=-25.85 height=27.5px height_norm=0.115 margin=53.18 distance=None
+[map] motion direction=left speed=0.15 effective_seconds=0.2714540958404541 pose={'x_m': 0.0, 'y_m': 0.0, 'heading_rad': -0.050164599604663795}
+[base] continuous stop label=align_bin elapsed=0.271s
+[base] stop
+[fsm] ALIGNING --TARGET_ALIGNED--> APPROACHING
+[tag] backend=pupil_apriltags id=0 center=(136.8,145.0) error_x=-0.072 yaw_deg=-23.98 height=27.6px height_norm=0.115 margin=53.26 distance=None
+[approach] target=bin mode=bbox_height value=0.115 threshold=0.15 error_x=-0.072
+[base] continuous start label=approach_bin_forward direction=forward requested_speed=0.6 effective_speed=0.6
+[tag] backend=pupil_apriltags id=0 center=(136.8,145.1) error_x=-0.073 yaw_deg=-24.56 height=27.7px height_norm=0.115 margin=52.94 distance=None
+[approach] target=bin mode=bbox_height value=0.115 threshold=0.15 error_x=-0.073
+[tag] backend=pupil_apriltags id=0 center=(138.4,145.5) error_x=-0.067 yaw_deg=-25.4 height=27.9px height_norm=0.116 margin=51.87 distance=None
+[approach] target=bin mode=bbox_height value=0.116 threshold=0.15 error_x=-0.067
+[tag] backend=pupil_apriltags id=0 center=(138.5,146.7) error_x=-0.067 yaw_deg=-26.52 height=29.1px height_norm=0.121 margin=51.53 distance=None
+[approach] target=bin mode=bbox_height value=0.121 threshold=0.15 error_x=-0.067
+[tag] backend=pupil_apriltags id=0 center=(137.8,148.5) error_x=-0.069 yaw_deg=-23.71 height=29.5px height_norm=0.123 margin=50.32 distance=None
+[approach] target=bin mode=bbox_height value=0.123 threshold=0.15 error_x=-0.069
+[tag] backend=pupil_apriltags id=0 center=(137.4,150.6) error_x=-0.071 yaw_deg=-22.86 height=30.6px height_norm=0.127 margin=49.40 distance=None
+[approach] target=bin mode=bbox_height value=0.127 threshold=0.15 error_x=-0.071
+[tag] backend=pupil_apriltags id=0 center=(135.8,152.8) error_x=-0.076 yaw_deg=-25.15 height=32.2px height_norm=0.134 margin=48.42 distance=None
+[approach] target=bin mode=bbox_height value=0.134 threshold=0.15 error_x=-0.076
+[tag] backend=pupil_apriltags id=0 center=(135.1,154.2) error_x=-0.078 yaw_deg=-25.09 height=33.5px height_norm=0.140 margin=47.01 distance=None
+[approach] target=bin mode=bbox_height value=0.140 threshold=0.15 error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(133.9,156.4) error_x=-0.082 yaw_deg=-23.94 height=35.2px height_norm=0.147 margin=45.68 distance=None
+[approach] target=bin mode=bbox_height value=0.147 threshold=0.15 error_x=-0.082
+[tag] backend=pupil_apriltags id=0 center=(133.6,158.8) error_x=-0.083 yaw_deg=-22.63 height=36.8px height_norm=0.153 margin=43.85 distance=None
+[approach] target=bin mode=bbox_height value=0.153 threshold=0.15 error_x=-0.083
+[map] motion direction=forward speed=0.6 effective_seconds=0.8551769256591797 pose={'x_m': -0.0257289705675459, 'y_m': 0.5124606782752149, 'heading_rad': -0.050164599604663795}
+[base] continuous stop label=approach_bin_forward elapsed=0.855s
+[base] stop
+[fsm] APPROACHING --TARGET_REACHED--> FINAL_VERIFY
+[tag] backend=pupil_apriltags id=0 center=(134.0,164.6) error_x=-0.081 yaw_deg=-20.86 height=41.8px height_norm=0.174 margin=40.18 distance=None
+[base] continuous start label=align_bin direction=left requested_speed=0.15 effective_speed=0.15
+[visual-turn] label=align_bin direction=left speed=0.15
+[tag] backend=pupil_apriltags id=0 center=(134.9,164.8) error_x=-0.078 yaw_deg=-20.21 height=41.3px height_norm=0.172 margin=40.50 distance=None
+[map] motion direction=left speed=0.15 effective_seconds=0.15259838104248047 pose={'x_m': -0.0257289705675459, 'y_m': 0.5124606782752149, 'heading_rad': -0.07836471447718063}
+[base] continuous stop label=align_bin elapsed=0.153s
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(135.9,164.0) error_x=-0.075 yaw_deg=-21.09 height=41.2px height_norm=0.172 margin=40.79 distance=None
+[base] stop
+[fsm] FINAL_VERIFY --SIDE_DOCK_REQUIRED--> BIN_SIDE_DOCKING
+[base] stop
+[exp2] phase=side_view_pose
+[arm] pose side_view_grabbing
+Succeeded to open the port
+Succeeded to change the baudrate
+[arm] TTLServo connected
+[arm] side_view_grabbing servo=5 angle=0 speed=85
+[arm] side_view_grabbing servo=4 angle=-40 speed=85
+[arm] side_view_grabbing servo=3 angle=45 speed=85
+[arm] side_view_grabbing servo=2 angle=60 speed=85
+[arm] side_view_grabbing servo=1 angle=70 speed=85
+[arm-position] side_view_grabbing waiting for motion to settle servos=[1, 2, 3, 4, 5] stability_delta=3 min_wait=0.5 timeout=10.0 stable_samples=2
+[arm-position] side_view_grabbing waiting positions={1: 512, 2: 801, 3: 718, 4: 325, 5: 510} movement={} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 527, 2: 801, 3: 718, 4: 325, 5: 510} movement={1: 15, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 547, 2: 801, 3: 718, 4: 325, 5: 510} movement={1: 20, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 560, 2: 802, 3: 718, 4: 325, 5: 510} movement={1: 13, 2: 1, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 579, 2: 802, 3: 718, 4: 325, 5: 510} movement={1: 19, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 597, 2: 801, 3: 718, 4: 325, 5: 510} movement={1: 18, 2: 1, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 614, 2: 802, 3: 718, 4: 325, 5: 510} movement={1: 17, 2: 1, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 628, 2: 802, 3: 718, 4: 325, 5: 510} movement={1: 14, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 647, 2: 802, 3: 718, 4: 325, 5: 510} movement={1: 19, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 665, 2: 801, 3: 718, 4: 325, 5: 510} movement={1: 18, 2: 1, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 680, 2: 801, 3: 718, 4: 325, 5: 510} movement={1: 15, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 698, 2: 801, 3: 718, 4: 325, 5: 510} movement={1: 18, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 717, 2: 802, 3: 718, 4: 325, 5: 510} movement={1: 19, 2: 1, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 733, 2: 802, 3: 718, 4: 325, 5: 510} movement={1: 16, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 750, 2: 802, 3: 718, 4: 325, 5: 510} movement={1: 17, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 766, 2: 801, 3: 718, 4: 325, 5: 510} movement={1: 16, 2: 1, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 783, 2: 801, 3: 718, 4: 325, 5: 510} movement={1: 17, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 801, 2: 802, 3: 718, 4: 325, 5: 510} movement={1: 18, 2: 1, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 819, 2: 801, 3: 718, 4: 325, 5: 510} movement={1: 18, 2: 1, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 836, 2: 801, 3: 718, 4: 325, 5: 510} movement={1: 17, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing settled positions={1: 836, 2: 802, 3: 718, 4: 325, 5: 510} movement={1: 0, 2: 0, 3: 0, 4: 0, 5: 0} elapsed=4.24s
+[exp2] phase=geometry_alignment_ready
+[tag] no detections
+[base] stop
+[tag] no detections
+[base] stop
+[tag] no detections
+[base] stop
+[tag] no detections
+[base] stop
+[tag] no detections
+[base] stop
+[tag] no detections
+[base] stop
+[tag] no detections
+[base] stop
+[tag] no detections
+[base] stop
+[tag] no detections
+[base] stop
+[tag] no detections
+[base] stop
+[base] stop
+[arm] pose carry
+[arm] carry servo=5 angle=0 speed=85
+[arm] carry servo=4 angle=-40 speed=85
+[arm] carry servo=3 angle=45 speed=85
+[arm] carry servo=2 angle=60 speed=85
+[arm] carry servo=1 angle=-16 speed=85
+[exp2] side docking aborted; forward camera pose restored
+[fsm] BIN_SIDE_DOCKING --TARGET_MISSING--> INTERMEDIATE reason=exp2 side tag lost
+[bin-tune] full pipeline stopped state=INTERMEDIATE reason=exp2 side tag lost
+[bin-tune] full pipeline FAILED state=INTERMEDIATE elapsed=14.85s
+[bin-tune] FULL PIPELINE FINISHED status=FAILED log=/workspace/robot_code/temp_car/logs/bin_docking_tuning/20260903_140253/one_click_full_140312.log

@@ -1,0 +1,182 @@
+[bin-tune] session=20260903_040822 project=/workspace/robot_code/temp_car
+
+>>> reload_parameters
+[base] stop
+[depth] stop
+[result] {'parameters': '/workspace/robot_code/temp_car/empirical_parameters.json', 'dry_run': {'camera': False, 'base': False, 'arm': False}, 'exp2_forced_in_memory': True, 'disk_write': False}
+
+>>> clear_log
+[result] True
+
+>>> start_camera_and_tag
+[camera] starting camera-only mode 320x240 (DepthNet disabled)
+[warmup] camera-only frame 1/2 ready
+[warmup] camera-only frame 2/2 ready
+[depth] started enabled=False
+[tag] cv2=4.1.1
+[tag] has pupil_apriltags=True
+[tag] has aruco=False
+[tag] has ArucoDetector=False
+[tag] has DICT_APRILTAG_36h11=False
+[tag] calibration not loaded; pose distance disabled
+[tag] detector loaded backend=pupil_apriltags family=tag36h11 dictionary=DICT_APRILTAG_36h11
+[result] {'frame_shape': (240, 320, 3), 'tag_loaded': True}
+
+>>> test_tag_once
+[tag] backend=pupil_apriltags id=0 center=(90.8,165.8) error_x=-0.216 height=40.0px height_norm=0.167 margin=47.29 distance=None
+{
+  "backend": "pupil_apriltags",
+  "bbox": [
+    70.08767700195312,
+    145.8181915283203,
+    111.47518157958984,
+    185.85687255859375
+  ],
+  "bbox_height_norm": 0.1668278376261393,
+  "bbox_height_px": 40.03868103027344,
+  "bbox_width_norm": 0.12933595180511476,
+  "bbox_width_px": 41.38750457763672,
+  "center_x": 90.78142929077148,
+  "center_y": 165.83753204345703,
+  "confidence": 1.0,
+  "corners": [
+    [
+      105.19808959960938,
+      145.8181915283203
+    ],
+    [
+      70.08767700195312,
+      152.40328979492188
+    ],
+    [
+      78.76399993896484,
+      185.85687255859375
+    ],
+    [
+      111.47518157958984,
+      179.19044494628906
+    ]
+  ],
+  "decision_margin": 47.28702926635742,
+  "distance": null,
+  "edge_length_norm": 0.1433583656946818,
+  "edge_length_px": 34.40600776672363,
+  "edge_lengths_px": [
+    35.72260665893555,
+    34.560394287109375,
+    33.383567810058594,
+    33.957462310791016
+  ],
+  "error_x": -0.21630803346633912,
+  "found": true,
+  "hamming": 0,
+  "horizontal_edge_error": -0.06769406255953032,
+  "id": 0,
+  "kind": "bin_tag",
+  "max_corner_angle_error_deg": 3.916900380739932,
+  "pose": null,
+  "timestamp": 1788408548.2564979,
+  "vertical_edge_error": -0.01759926554202325
+}
+[result] {'kind': 'bin_tag', 'found': True, 'confidence': 1.0, 'bbox': [70.08767700195312, 145.8181915283203, 111.47518157958984, 185.85687255859375], 'center_x': 90.78142929077148, 'center_y': 165.83753204345703, 'error_x': -0.21630803346633912, 'bbox_width_px': 41.38750457763672, 'bbox_height_px': 40.03868103027344, 'bbox_width_norm': 0.12933595180511476, 'bbox_height_norm': 0.1668278376261393, 'timestamp': 1788408548.2564979, 'id': 0, 'pose': None, 'distance': None, 'decision_margin': 47.28702926635742, 'hamming': 0, 'backend': 'pupil_apriltags', 'corners': [[105.19808959960938, 145.8181915283203], [70.08767700195312, 152.40328979492188], [78.76399993896484, 185.85687255859375], [111.47518157958984, 179.19044494628906]], 'edge_lengths_px': [35.72260665893555, 34.560394287109375, 33.383567810058594, 33.957462310791016], 'edge_length_px': 34.40600776672363, 'edge_length_norm': 0.1433583656946818, 'vertical_edge_error': -0.01759926554202325, 'horizontal_edge_error': -0.06769406255953032, 'max_corner_angle_error_deg': 3.916900380739932}
+
+>>> clear_log
+[result] True
+
+>>> prepare_bin_mission
+[camera] already started depth_enabled=False
+[tag] cv2=4.1.1
+[tag] has pupil_apriltags=True
+[tag] has aruco=False
+[tag] has ArucoDetector=False
+[tag] has DICT_APRILTAG_36h11=False
+[tag] calibration not loaded; pose distance disabled
+[tag] detector loaded backend=pupil_apriltags family=tag36h11 dictionary=DICT_APRILTAG_36h11
+[base] stop
+[bin-tune] prepared at SEARCHING; exp2 is forced on in memory only
+[result] {'state': 'SEARCHING', 'target': 'bin', 'grabbed': True, 'state_data': {'entered_at': 1788408557.878314, 'steps': 0, 'lost_frames': 0}, 'last_error': None}
+
+>>> test_tag_once
+[tag] backend=pupil_apriltags id=0 center=(90.8,165.8) error_x=-0.216 height=40.1px height_norm=0.167 margin=47.01 distance=None
+{
+  "backend": "pupil_apriltags",
+  "bbox": [
+    70.06497192382812,
+    145.7926483154297,
+    111.45659637451172,
+    185.88343811035156
+  ],
+  "bbox_height_norm": 0.16704495747884116,
+  "bbox_height_px": 40.090789794921875,
+  "bbox_width_norm": 0.12934882640838624,
+  "bbox_width_px": 41.391624450683594,
+  "center_x": 90.76078414916992,
+  "center_y": 165.83804321289062,
+  "confidence": 1.0,
+  "corners": [
+    [
+      105.1824951171875,
+      145.7926483154297
+    ],
+    [
+      70.06497192382812,
+      152.41920471191406
+    ],
+    [
+      78.78690338134766,
+      185.88343811035156
+    ],
+    [
+      111.45659637451172,
+      179.2096710205078
+    ]
+  ],
+  "decision_margin": 47.01459884643555,
+  "distance": null,
+  "edge_length_norm": 0.14340076049168904,
+  "edge_length_px": 34.41618251800537,
+  "edge_lengths_px": [
+    35.73725891113281,
+    34.582176208496094,
+    33.34438705444336,
+    34.00090789794922
+  ],
+  "error_x": -0.216372549533844,
+  "found": true,
+  "hamming": 0,
+  "horizontal_edge_error": -0.06927663124534805,
+  "id": 0,
+  "kind": "bin_tag",
+  "max_corner_angle_error_deg": 3.922388782476162,
+  "pose": null,
+  "timestamp": 1788408560.960849,
+  "vertical_edge_error": -0.016950777822843592
+}
+[result] {'kind': 'bin_tag', 'found': True, 'confidence': 1.0, 'bbox': [70.06497192382812, 145.7926483154297, 111.45659637451172, 185.88343811035156], 'center_x': 90.76078414916992, 'center_y': 165.83804321289062, 'error_x': -0.216372549533844, 'bbox_width_px': 41.391624450683594, 'bbox_height_px': 40.090789794921875, 'bbox_width_norm': 0.12934882640838624, 'bbox_height_norm': 0.16704495747884116, 'timestamp': 1788408560.960849, 'id': 0, 'pose': None, 'distance': None, 'decision_margin': 47.01459884643555, 'hamming': 0, 'backend': 'pupil_apriltags', 'corners': [[105.1824951171875, 145.7926483154297], [70.06497192382812, 152.41920471191406], [78.78690338134766, 185.88343811035156], [111.45659637451172, 179.2096710205078]], 'edge_lengths_px': [35.73725891113281, 34.582176208496094, 33.34438705444336, 34.00090789794922], 'edge_length_px': 34.41618251800537, 'edge_length_norm': 0.14340076049168904, 'vertical_edge_error': -0.016950777822843592, 'horizontal_edge_error': -0.06927663124534805, 'max_corner_angle_error_deg': 3.922388782476162}
+
+>>> clear_log
+[result] True
+
+>>> run_search
+[result] {'started': True, 'node': 'search', 'state': 'SEARCHING', 'log': '/workspace/robot_code/temp_car/logs/bin_docking_tuning/20260903_040822/node_search_040926.log'}
+>>> node=search expected=SEARCHING log=/workspace/robot_code/temp_car/logs/bin_docking_tuning/20260903_040822/node_search_040926.log
+
+
+>>> run_front_align
+[result] {'started': False, 'reason': 'another node is running'}
+
+>>> pause_node
+[base] stop
+[result] {'paused': True, 'state': 'SEARCHING'}
+
+>>> stop_all
+[base] stop
+[arm] cancellation requested
+[base] stop
+Succeeded to open the port
+Succeeded to change the baudrate
+[arm] TTLServo connected
+[arm] stop_and_hold positions={1: 439, 2: 802, 3: 718, 4: 460, 5: 510}
+[camera] camera-only stopped
+[depth] stop
+[result] {'stop_requested': True, 'arm_positions': {1: 439, 2: 802, 3: 718, 4: 460, 5: 510}, 'camera_released': True}

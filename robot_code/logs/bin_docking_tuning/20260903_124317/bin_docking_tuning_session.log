@@ -1,0 +1,112 @@
+[bin-tune] session=20260903_124317 project=/workspace/robot_code/temp_car
+
+>>> reload_parameters
+[base] stop
+[depth] stop
+[result] {'parameters': '/workspace/robot_code/temp_car/empirical_parameters.json', 'dry_run': {'camera': False, 'base': False, 'arm': False}, 'exp2_forced_in_memory': True, 'disk_write': False}
+
+>>> clear_log
+[result] True
+
+>>> run_full_pipeline
+[base] stop
+[depth] stop
+[camera] starting camera-only mode 320x240 (DepthNet disabled)
+[warmup] camera-only frame 1/2 ready
+[warmup] camera-only frame 2/2 ready
+[depth] started enabled=False
+[tag] cv2=4.1.1
+[tag] has pupil_apriltags=True
+[tag] has aruco=False
+[tag] has ArucoDetector=False
+[tag] has DICT_APRILTAG_36h11=False
+[tag] calibration not loaded; pose distance disabled
+[tag] detector loaded backend=pupil_apriltags family=tag36h11 dictionary=DICT_APRILTAG_36h11
+[base] stop
+[bin-tune] prepared bin-only state=SEARCHING grabbed=True entry_complete=False side_docked=False
+[camera] already started depth_enabled=False
+
+>>> one-click bin pipeline log=/workspace/robot_code/temp_car/logs/bin_docking_tuning/20260903_124317/one_click_full_124352.log
+[result] {'started': True, 'from': 'SEARCHING', 'through': 'FINALIZING', 'live': True, 'recording': False, 'log': '/workspace/robot_code/temp_car/logs/bin_docking_tuning/20260903_124317/one_click_full_124352.log'}[can] loading native detectNet model=/workspace/robot_code/temp_car/assets/models/detectnet_native_can/can_ssd_mobilenet_v1.onnx
+
+
+>>> stop_all
+[base] stop
+[arm] cancellation requested
+[base] stop
+Succeeded to open the port
+Succeeded to change the baudrate
+[arm] TTLServo connected
+[arm] stop_and_hold positions={1: 440, 2: 513, 3: 516, 4: 446, 5: 510}
+[camera] camera-only stopped
+[depth] stop
+[result] {'stop_requested': True, 'arm_positions': {1: 440, 2: 513, 3: 516, 4: 446, 5: 510}, 'camera_released': True}
+
+>>> clear_log
+[result] True
+
+>>> prepare_bin_mission
+[error] another stage is running
+Traceback (most recent call last):
+  File "<ipython-input-1-7da1432fa989>", line 100, in wrapped
+    print('[result] {}'.format(fn()))
+  File "<ipython-input-1-7da1432fa989>", line 349, in prepare_bin_mission
+    _prepare_bin_state(MissionState.SEARCHING)
+  File "<ipython-input-1-7da1432fa989>", line 327, in _prepare_bin_state
+    raise RuntimeError('another stage is running')
+RuntimeError: another stage is running
+
+>>> stop_all
+[base] stop
+[arm] cancellation requested
+[base] stop
+[arm] stop_and_hold positions={1: 440, 2: 513, 3: 516, 4: 446, 5: 510}
+[depth] stop
+[result] {'stop_requested': True, 'arm_positions': {1: 440, 2: 513, 3: 516, 4: 446, 5: 510}, 'camera_released': True}
+
+>>> clear_log
+[result] True
+
+>>> prepare_bin_mission
+[error] another stage is running
+Traceback (most recent call last):
+  File "<ipython-input-1-7da1432fa989>", line 100, in wrapped
+    print('[result] {}'.format(fn()))
+  File "<ipython-input-1-7da1432fa989>", line 349, in prepare_bin_mission
+    _prepare_bin_state(MissionState.SEARCHING)
+  File "<ipython-input-1-7da1432fa989>", line 327, in _prepare_bin_state
+    raise RuntimeError('another stage is running')
+RuntimeError: another stage is running
+
+>>> start_camera_and_tag
+[camera] starting camera-only mode 320x240 (DepthNet disabled)
+[warmup] camera-only frame 1/2 ready
+[warmup] camera-only frame 2/2 ready
+[depth] started enabled=False
+[result] {'frame_shape': (240, 320, 3), 'tag_loaded': True}
+
+>>> start_live
+[error] cannot reload live hardware settings while a stage is running
+Traceback (most recent call last):
+  File "<ipython-input-1-7da1432fa989>", line 100, in wrapped
+    print('[result] {}'.format(fn()))
+  File "<ipython-input-1-7da1432fa989>", line 291, in start_live
+    raise RuntimeError('cannot reload live hardware settings while a stage is running')
+RuntimeError: cannot reload live hardware settings while a stage is running
+
+>>> stop_all
+[base] stop
+[arm] cancellation requested
+[base] stop
+[arm] stop_and_hold positions={1: 440, 2: 513, 3: 516, 4: 446, 5: 510}
+[camera] camera-only stopped
+[depth] stop
+[result] {'stop_requested': True, 'arm_positions': {1: 440, 2: 513, 3: 516, 4: 446, 5: 510}, 'camera_released': True}
+
+>>> stop_all
+[base] stop
+[arm] cancellation requested
+[base] stop
+[arm] stop_and_hold positions={1: 440, 2: 513, 3: 516, 4: 446, 5: 510}
+[depth] stop
+[result] {'stop_requested': True, 'arm_positions': {1: 440, 2: 513, 3: 516, 4: 446, 5: 510}, 'camera_released': True}

@@ -1,0 +1,75 @@
+08:46:18 [job] start full_bypass
+08:46:20 [camera] DepthNet camera started frame=320x240 obstacle_roi_ignore=(top=0.300, bottom=0.150)
+08:46:20 [phase] CRUISING
+08:46:21 [media] recording started /workspace/robot_code/temp_car/logs/obstacle_avoidance_tuning/20260829_084618/obstacle_avoidance_1787993181085.avi
+08:46:23 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+08:46:24 [candidate] avoidance_cruise confirmation 2/15
+08:46:24 [candidate] avoidance_cruise bbox identity changed after 3 frames
+08:46:25 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+08:46:25 [candidate] avoidance_cruise confirmation 2/15
+08:46:25 [candidate] avoidance_cruise left center corridor after 3 frames
+08:46:25 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+08:46:26 [candidate] avoidance_cruise confirmation 2/15
+08:46:26 [candidate] avoidance_cruise bbox identity changed after 3 frames
+08:46:26 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+08:46:27 [candidate] avoidance_cruise confirmation 2/15
+08:46:27 [candidate] avoidance_cruise confirmation 3/15
+08:46:27 [candidate] avoidance_cruise left center corridor after 4 frames
+08:46:27 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+08:46:28 [candidate] avoidance_cruise confirmation 2/15
+08:46:28 [candidate] avoidance_cruise confirmation 3/15
+08:46:28 [candidate] avoidance_cruise confirmation 4/15
+08:46:28 [candidate] avoidance_cruise confirmation 5/15
+08:46:29 [candidate] avoidance_cruise confirmation 6/15
+08:46:29 [candidate] avoidance_cruise confirmation 7/15
+08:46:29 [candidate] avoidance_cruise confirmation 8/15
+08:46:29 [candidate] avoidance_cruise confirmation 9/15
+08:46:30 [candidate] avoidance_cruise confirmation 10/15
+08:46:30 [candidate] avoidance_cruise confirmation 11/15
+08:46:30 [candidate] avoidance_cruise confirmation 12/15
+08:46:30 [candidate] avoidance_cruise confirmation 13/15
+08:46:31 [candidate] avoidance_cruise confirmation 14/15
+08:46:31 [candidate] avoidance_cruise confirmation 15/15
+08:46:31 [candidate] avoidance_cruise locked frames=15 bbox=(132, 90, 18, 50) depth=2.061586618423462 side=left
+08:46:31 [phase] DETECTED selected_side=left locked_obstacle_depth=2.061586618423462 depth_time_factor=3.500 segment_base_seconds=7.216 geometry={'detected': True, 'path_blocked': True, 'unsafe': False, 'bbox': [132, 90, 18, 50], 'center': [141, 115], 'width_norm': 0.08035714285714286, 'height_norm': 0.22321428571428573, 'center_x_norm': 0.6294642857142857, 'bbox_left_norm': 0.5892857142857143, 'bbox_right_norm': 0.6696428571428571, 'background_depth': 3.5846493244171143, 'obstacle_depth': 2.061586618423462, 'left_clearance_norm': 0.5892857142857143, 'right_clearance_norm': 0.33035714285714285, 'selected_side': 'left', 'reason': 'same bbox confirmed for 15 frames', 'status': 'OBSTACLE', 'center_depth': 2.6998822689056396, 'candidate_bboxes': [[132, 92, 18, 48]]}
+08:46:31 [phase] TURN_TO_TANGENT direction=left locked_bbox=(132, 90, 18, 50)
+08:46:31 [tangent] unrelated or missing bbox ignored
+08:46:32 [tangent] unrelated or missing bbox ignored
+08:46:32 [tangent] unrelated or missing bbox ignored
+08:46:32 [tangent] unrelated or missing bbox ignored
+08:46:32 [tangent] reached_streak=1/3
+08:46:33 [tangent] reached_streak=2/3
+08:46:33 [tangent] unrelated or missing bbox ignored
+08:46:33 [tangent] unrelated or missing bbox ignored
+08:46:33 [tangent] unrelated or missing bbox ignored
+08:46:34 [tangent] reached_streak=1/3
+08:46:34 [tangent] unrelated or missing bbox ignored
+08:46:34 [tangent] reached_streak=1/3
+08:46:34 [tangent] reached_streak=2/3
+08:46:35 [tangent] unrelated or missing bbox ignored
+08:46:35 [tangent] unrelated or missing bbox ignored
+08:46:35 [tangent] unrelated or missing bbox ignored
+08:46:35 [tangent] unrelated or missing bbox ignored
+08:46:36 [tangent] unrelated or missing bbox ignored
+08:46:36 [tangent] unrelated or missing bbox ignored
+08:46:36 [tangent] reached_streak=1/3
+08:46:36 [tangent] unrelated or missing bbox ignored
+08:46:37 [tangent] unrelated or missing bbox ignored
+08:46:37 [tangent] reached_streak=1/3
+08:46:37 [error] full_bypass: turn_to_tangent timeout
+08:46:37 Traceback (most recent call last):
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 900, in target
+    result = operation()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 877, in run_full
+    self.run_next_phase()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 868, in run_next_phase
+    phases[self.state]()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 654, in _phase_turn_to_tangent
+    ignore_obstacle_failures=True,
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 377, in _run_visual_motion
+    raise RuntimeError("{} timeout".format(label))
+RuntimeError: turn_to_tangent timeout
+
+08:46:37 [media] recording finalized /workspace/robot_code/temp_car/logs/obstacle_avoidance_tuning/20260829_084618/obstacle_avoidance_1787993181085.avi
+08:46:39 [stop] base stop requested
+08:51:06 [camera] stopped and released

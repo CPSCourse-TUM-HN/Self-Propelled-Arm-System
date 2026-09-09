@@ -1,0 +1,47 @@
+07:30:14 [parameters] reloaded /workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_parameters.json
+07:30:28 [job] start full_bypass
+07:30:51 [camera] DepthNet camera started frame=320x240 obstacle_roi_ignore=(top=0.300, bottom=0.150)
+07:30:51 [phase] CRUISING
+07:30:51 [media] recording started /workspace/robot_code/temp_car/logs/obstacle_avoidance_tuning/20260829_073014/obstacle_avoidance_1787988651440.avi
+07:30:55 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+07:30:55 [candidate] avoidance_cruise left center corridor after 2 frames
+07:30:56 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+07:30:56 [candidate] avoidance_cruise confirmation 2/15
+07:30:56 [candidate] avoidance_cruise confirmation 3/15
+07:30:56 [candidate] avoidance_cruise confirmation 4/15
+07:30:57 [candidate] avoidance_cruise confirmation 5/15
+07:30:57 [candidate] avoidance_cruise confirmation 6/15
+07:30:57 [candidate] avoidance_cruise confirmation 7/15
+07:30:57 [candidate] avoidance_cruise confirmation 8/15
+07:30:58 [candidate] avoidance_cruise confirmation 9/15
+07:30:58 [candidate] avoidance_cruise confirmation 10/15
+07:30:58 [candidate] avoidance_cruise confirmation 11/15
+07:30:58 [candidate] avoidance_cruise confirmation 12/15
+07:30:59 [candidate] avoidance_cruise confirmation 13/15
+07:30:59 [candidate] avoidance_cruise confirmation 14/15
+07:30:59 [candidate] avoidance_cruise confirmation 15/15
+07:30:59 [candidate] avoidance_cruise confirmed frames=15
+07:30:59 [phase] DETECTED selected_side=left locked_obstacle_depth=2.2692227363586426 depth_time_factor=1.000 segment_base_seconds=2.269 geometry={'detected': True, 'path_blocked': True, 'unsafe': False, 'bbox': [124, 100, 12, 32], 'center': [130, 116], 'width_norm': 0.05357142857142857, 'height_norm': 0.14285714285714285, 'center_x_norm': 0.5803571428571429, 'bbox_left_norm': 0.5535714285714286, 'bbox_right_norm': 0.6071428571428571, 'background_depth': 3.5539803504943848, 'obstacle_depth': 2.2692227363586426, 'left_clearance_norm': 0.5535714285714286, 'right_clearance_norm': 0.39285714285714285, 'selected_side': 'left', 'reason': 'center bbox confirmed for 15 frames', 'status': 'OBSTACLE', 'center_depth': 2.6799216270446777}
+07:30:59 [phase] TURN_TO_TANGENT direction=left
+07:31:01 [phase] tangent reached seconds=2.209
+07:31:01 [phase] OFFSET_OUT
+07:31:01 [phase] OFFSET_OUT minimum_seconds=2.269 timeout_seconds=30.000
+07:31:07 [phase] offset clear seconds=5.778 stable_frames=15 estimated_lateral_m=1.496
+07:31:07 [phase] TURN_PARALLEL
+07:31:07 [motion] turn_parallel target_seconds=2.209 timeout_seconds=3.209
+07:31:15 [error] full_bypass: turn_parallel center path still blocked; increase motion.maximum_offset_seconds
+07:31:15 Traceback (most recent call last):
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 696, in target
+    result = operation()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 673, in run_full
+    self.run_next_phase()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 664, in run_next_phase
+    phases[self.state]()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 560, in _phase_turn_parallel
+    self._verify_clear_while_stopped("turn_parallel")
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 418, in _verify_clear_while_stopped
+    "{} center path still blocked; increase motion.maximum_offset_seconds".format(label)
+RuntimeError: turn_parallel center path still blocked; increase motion.maximum_offset_seconds
+
+07:31:15 [media] recording finalized /workspace/robot_code/temp_car/logs/obstacle_avoidance_tuning/20260829_073014/obstacle_avoidance_1787988651440.avi
+07:32:48 [camera] stopped and released

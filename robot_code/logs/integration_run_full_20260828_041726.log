@@ -1,0 +1,1352 @@
+
+>>> run_full log=/workspace/robot_code/can_video_demo_draft/logs/integration_run_full_20260828_041726.log
+[fsm] IDLE --START--> INITIALIZING
+[depth] camera dry-run
+[arm] pose safe_home
+[arm] dry_run=True
+[arm] safe_home servo=5 angle=0 speed=85
+[arm] dry_run=True
+[arm] safe_home servo=4 angle=0 speed=85
+[arm] dry_run=True
+[arm] safe_home servo=3 angle=0 speed=85
+[arm] dry_run=True
+[arm] safe_home servo=2 angle=0 speed=85
+[arm] dry_run=True
+[arm] safe_home servo=1 angle=-16 speed=85
+[base] stop
+[fsm] INITIALIZING --INITIALIZED--> PLANNING
+[fsm] PLANNING --TARGET_REQUIRED--> SEARCHING
+[can] backend=detectnet_native confidence=0.950 class_id=1 center=(160.0,120.0) error_x=0.000 bbox=[112.0, 36.0, 208.0, 204.0]
+[base] stop
+[fsm] SEARCHING --TARGET_FOUND--> ALIGNING
+[can] backend=detectnet_native confidence=0.950 class_id=1 center=(160.0,120.0) error_x=0.000 bbox=[112.0, 36.0, 208.0, 204.0]
+[base] stop
+[fsm] ALIGNING --TARGET_ALIGNED--> APPROACHING
+[can] backend=detectnet_native confidence=0.950 class_id=1 center=(160.0,120.0) error_x=0.000 bbox=[112.0, 36.0, 208.0, 204.0]
+[approach] target=can mode=bbox_height value=0.700 threshold=0.36 error_x=0.000
+[base] stop
+[fsm] APPROACHING --TARGET_REACHED--> FINAL_VERIFY
+[can] backend=detectnet_native confidence=0.950 class_id=1 center=(160.0,120.0) error_x=0.000 bbox=[112.0, 36.0, 208.0, 204.0]
+[base] stop
+[can] backend=detectnet_native confidence=0.950 class_id=1 center=(160.0,120.0) error_x=0.000 bbox=[112.0, 36.0, 208.0, 204.0]
+[base] stop
+[fsm] FINAL_VERIFY --TARGET_STABLE--> FINALIZING
+[arm] pose arm_down
+[arm] dry_run=True
+[arm] arm_down servo=5 angle=0 speed=85
+[arm] dry_run=True
+[arm] arm_down servo=4 angle=0 speed=85
+[arm] dry_run=True
+[arm] arm_down servo=3 angle=45 speed=85
+[arm] dry_run=True
+[arm] arm_down servo=2 angle=105 speed=85
+[arm] dry_run=True
+[arm] arm_down servo=1 angle=-16 speed=85
+[arm-position] arm_down dry_run=True; position wait skipped
+[base] dry_run=True
+[base] pickup_push direction=forward speed=0.1 seconds=7.0
+[map] motion direction=forward speed=0.1 effective_seconds=7.0 pose={'x_m': 0.7000000000000001, 'y_m': 0.0, 'heading_rad': 0.0}
+[arm] pose grab
+[arm] dry_run=True
+[arm] grab servo=5 angle=0 speed=85
+[arm] dry_run=True
+[arm] grab servo=4 angle=-40 speed=85
+[arm] dry_run=True
+[arm] grab servo=3 angle=45 speed=85
+[arm] dry_run=True
+[arm] grab servo=2 angle=105 speed=85
+[arm] dry_run=True
+[arm] grab servo=1 angle=-16 speed=85
+[arm] pose carry
+[arm] dry_run=True
+[arm] carry servo=5 angle=0 speed=85
+[arm] dry_run=True
+[arm] carry servo=4 angle=-40 speed=85
+[arm] dry_run=True
+[arm] carry servo=3 angle=45 speed=85
+[arm] dry_run=True
+[arm] carry servo=2 angle=60 speed=85
+[arm] dry_run=True
+[arm] carry servo=1 angle=-16 speed=85
+[mission] completed_pickups=1
+[fsm] FINALIZING --FINALIZED--> PLANNING
+[fsm] PLANNING --MAP_TARGET_AVAILABLE--> MAP_NAVIGATING
+[base] stop
+[fsm] MAP_NAVIGATING --TARGET_FOUND--> ALIGNING
+[base] stop
+[fsm] ALIGNING --TARGET_ALIGNED--> APPROACHING
+[approach] target=bin mode=bbox_height value=0.700 threshold=0.15 error_x=0.000
+[base] stop
+[fsm] APPROACHING --TARGET_REACHED--> FINAL_VERIFY
+[base] stop
+[base] stop
+[map] pose reset reason=bin_visual_docking pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': -1.57079632679}
+[fsm] FINAL_VERIFY --TARGET_STABLE--> FINALIZING
+[arm] pose release
+[arm] dry_run=True
+[arm] release servo=5 angle=0 speed=85
+[arm] dry_run=True
+[arm] release servo=4 angle=0 speed=85
+[arm] dry_run=True
+[arm] release servo=3 angle=45 speed=85
+[arm] dry_run=True
+[arm] release servo=2 angle=60 speed=85
+[arm] dry_run=True
+[arm] release servo=1 angle=-16 speed=85
+[arm] pose safe_home
+[arm] dry_run=True
+[arm] safe_home servo=5 angle=0 speed=85
+[arm] dry_run=True
+[arm] safe_home servo=4 angle=0 speed=85
+[arm] dry_run=True
+[arm] safe_home servo=3 angle=0 speed=85
+[arm] dry_run=True
+[arm] safe_home servo=2 angle=0 speed=85
+[arm] dry_run=True
+[arm] safe_home servo=1 angle=-16 speed=85
+[fsm] FINALIZING --FINALIZED--> PLANNING
+[fsm] PLANNING --PATROL_REQUIRED--> PATROLLING
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=2.356
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': -1.51424765902538}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=2.300
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': -1.4576989912607599}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=2.243
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': -1.4011503234961398}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=2.187
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': -1.3446016557315197}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=2.130
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': -1.2880529879668996}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=2.073
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': -1.2315043202022795}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=2.017
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': -1.1749556524376594}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=1.960
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': -1.1184069846730393}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=1.904
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': -1.0618583169084195}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=1.847
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': -1.0053096491437996}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=1.791
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': -0.9487609813791797}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=1.734
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': -0.8922123136145599}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=1.678
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': -0.83566364584994}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=1.621
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': -0.7791149780853202}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=1.565
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': -0.7225663103207003}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=1.508
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': -0.6660176425560804}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=1.451
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': -0.6094689747914606}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=1.395
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': -0.5529203070268407}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=1.338
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': -0.49637163926222083}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=1.282
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': -0.43982297149760097}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=1.225
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': -0.3832743037329811}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=1.169
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': -0.32672563596836124}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=1.112
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': -0.2701769682037414}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=1.056
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': -0.2136283004391215}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=0.999
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': -0.15707963267450165}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=0.942
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': -0.10053096490988178}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=0.886
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': -0.04398229714526192}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=0.829
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': 0.012566370619357947}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=0.773
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': 0.06911503838397781}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=0.716
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': 0.12566370614859768}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=0.660
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': 0.18221237391321754}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=0.603
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': 0.2387610416778374}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=0.547
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': 0.29530970944245727}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=0.490
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': 0.35185837720707713}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=0.434
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': 0.408407044971697}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=0.377
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': 0.46495571273631686}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=0.320
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': 0.5215043805009367}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=0.264
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': 0.5780530482655566}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=0.207
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': 0.6346017160301765}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=0.151
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': 0.6911503837947963}
+[map] navigate label=patrol_0 distance_m=0.707 heading_error_rad=0.094
+[base] dry_run=True
+[base] map_forward_patrol_0 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.030820529710903027, 'y_m': -0.474503040409897, 'heading_rad': 0.6911503837947963}
+[map] navigate label=patrol_0 distance_m=0.667 heading_error_rad=0.100
+[base] dry_run=True
+[base] map_forward_patrol_0 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.06164105942180605, 'y_m': -0.449006080819794, 'heading_rad': 0.6911503837947963}
+[map] navigate label=patrol_0 distance_m=0.628 heading_error_rad=0.106
+[base] dry_run=True
+[base] map_forward_patrol_0 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.09246158913270908, 'y_m': -0.423509121229691, 'heading_rad': 0.6911503837947963}
+[map] navigate label=patrol_0 distance_m=0.588 heading_error_rad=0.113
+[base] dry_run=True
+[base] map_forward_patrol_0 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.1232821188436121, 'y_m': -0.39801216163958797, 'heading_rad': 0.6911503837947963}
+[map] navigate label=patrol_0 distance_m=0.548 heading_error_rad=0.122
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.1232821188436121, 'y_m': -0.39801216163958797, 'heading_rad': 0.7476990515594162}
+[map] navigate label=patrol_0 distance_m=0.548 heading_error_rad=0.065
+[base] dry_run=True
+[base] map_forward_patrol_0 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.15261233269237728, 'y_m': -0.37081402649054324, 'heading_rad': 0.7476990515594162}
+[map] navigate label=patrol_0 distance_m=0.508 heading_error_rad=0.070
+[base] dry_run=True
+[base] map_forward_patrol_0 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.18194254654114247, 'y_m': -0.3436158913414985, 'heading_rad': 0.7476990515594162}
+[map] navigate label=patrol_0 distance_m=0.468 heading_error_rad=0.076
+[base] dry_run=True
+[base] map_forward_patrol_0 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.21127276038990767, 'y_m': -0.31641775619245377, 'heading_rad': 0.7476990515594162}
+[map] navigate label=patrol_0 distance_m=0.428 heading_error_rad=0.083
+[base] dry_run=True
+[base] map_forward_patrol_0 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.24060297423867286, 'y_m': -0.28921962104340904, 'heading_rad': 0.7476990515594162}
+[map] navigate label=patrol_0 distance_m=0.389 heading_error_rad=0.092
+[base] dry_run=True
+[base] map_forward_patrol_0 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.26993318808743805, 'y_m': -0.2620214858943643, 'heading_rad': 0.7476990515594162}
+[map] navigate label=patrol_0 distance_m=0.349 heading_error_rad=0.103
+[base] dry_run=True
+[base] map_forward_patrol_0 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.2992634019362032, 'y_m': -0.23482335074531954, 'heading_rad': 0.7476990515594162}
+[map] navigate label=patrol_0 distance_m=0.309 heading_error_rad=0.116
+[base] dry_run=True
+[base] map_forward_patrol_0 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.3285936157849684, 'y_m': -0.20762521559627478, 'heading_rad': 0.7476990515594162}
+[map] navigate label=patrol_0 distance_m=0.269 heading_error_rad=0.133
+[base] dry_run=True
+[base] map_turn_patrol_0 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.3285936157849684, 'y_m': -0.20762521559627478, 'heading_rad': 0.804247719324036}
+[map] navigate label=patrol_0 distance_m=0.269 heading_error_rad=0.076
+[base] dry_run=True
+[base] map_forward_patrol_0 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.3563397480173351, 'y_m': -0.1788128546006184, 'heading_rad': 0.804247719324036}
+[map] navigate label=patrol_0 distance_m=0.229 heading_error_rad=0.090
+[base] dry_run=True
+[base] map_forward_patrol_0 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.3840858802497018, 'y_m': -0.15000049360496204, 'heading_rad': 0.804247719324036}
+[map] navigate label=patrol_0 distance_m=0.190 heading_error_rad=0.109
+[base] dry_run=True
+[base] map_forward_patrol_0 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.4118320124820685, 'y_m': -0.12118813260930567, 'heading_rad': 0.804247719324036}
+[base] stop
+[map] destination reached label=patrol_0 distance_m=0.150
+[map] patrol index=1 complete=False
+[map] navigate label=patrol_1 distance_m=0.627 heading_error_rad=0.626
+[base] dry_run=True
+[base] map_turn_patrol_1 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.4118320124820685, 'y_m': -0.12118813260930567, 'heading_rad': 0.8607963870886559}
+[map] navigate label=patrol_1 distance_m=0.627 heading_error_rad=0.569
+[base] dry_run=True
+[base] map_turn_patrol_1 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.4118320124820685, 'y_m': -0.12118813260930567, 'heading_rad': 0.9173450548532758}
+[map] navigate label=patrol_1 distance_m=0.627 heading_error_rad=0.512
+[base] dry_run=True
+[base] map_turn_patrol_1 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.4118320124820685, 'y_m': -0.12118813260930567, 'heading_rad': 0.9738937226178956}
+[map] navigate label=patrol_1 distance_m=0.627 heading_error_rad=0.456
+[base] dry_run=True
+[base] map_turn_patrol_1 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.4118320124820685, 'y_m': -0.12118813260930567, 'heading_rad': 1.0304423903825155}
+[map] navigate label=patrol_1 distance_m=0.627 heading_error_rad=0.399
+[base] dry_run=True
+[base] map_turn_patrol_1 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.4118320124820685, 'y_m': -0.12118813260930567, 'heading_rad': 1.0869910581471354}
+[map] navigate label=patrol_1 distance_m=0.627 heading_error_rad=0.343
+[base] dry_run=True
+[base] map_turn_patrol_1 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.4118320124820685, 'y_m': -0.12118813260930567, 'heading_rad': 1.1435397259117552}
+[map] navigate label=patrol_1 distance_m=0.627 heading_error_rad=0.286
+[base] dry_run=True
+[base] map_turn_patrol_1 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.4118320124820685, 'y_m': -0.12118813260930567, 'heading_rad': 1.200088393676375}
+[map] navigate label=patrol_1 distance_m=0.627 heading_error_rad=0.230
+[base] dry_run=True
+[base] map_turn_patrol_1 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.4118320124820685, 'y_m': -0.12118813260930567, 'heading_rad': 1.256637061440995}
+[map] navigate label=patrol_1 distance_m=0.627 heading_error_rad=0.173
+[base] dry_run=True
+[base] map_turn_patrol_1 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.4118320124820685, 'y_m': -0.12118813260930567, 'heading_rad': 1.3131857292056148}
+[map] navigate label=patrol_1 distance_m=0.627 heading_error_rad=0.117
+[base] dry_run=True
+[base] map_forward_patrol_1 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.42202284150920727, 'y_m': -0.08250807309875646, 'heading_rad': 1.3131857292056148}
+[map] navigate label=patrol_1 distance_m=0.588 heading_error_rad=0.125
+[base] dry_run=True
+[base] map_turn_patrol_1 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.42202284150920727, 'y_m': -0.08250807309875646, 'heading_rad': 1.3697343969702347}
+[map] navigate label=patrol_1 distance_m=0.588 heading_error_rad=0.068
+[base] dry_run=True
+[base] map_forward_patrol_1 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.43001124072958424, 'y_m': -0.04331387100334596, 'heading_rad': 1.3697343969702347}
+[map] navigate label=patrol_1 distance_m=0.548 heading_error_rad=0.073
+[base] dry_run=True
+[base] map_forward_patrol_1 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.4379996399499612, 'y_m': -0.004119668907935456, 'heading_rad': 1.3697343969702347}
+[map] navigate label=patrol_1 distance_m=0.508 heading_error_rad=0.079
+[base] dry_run=True
+[base] map_forward_patrol_1 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.4459880391703382, 'y_m': 0.03507453318747505, 'heading_rad': 1.3697343969702347}
+[map] navigate label=patrol_1 distance_m=0.468 heading_error_rad=0.085
+[base] dry_run=True
+[base] map_forward_patrol_1 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.45397643839071516, 'y_m': 0.07426873528288555, 'heading_rad': 1.3697343969702347}
+[map] navigate label=patrol_1 distance_m=0.428 heading_error_rad=0.093
+[base] dry_run=True
+[base] map_forward_patrol_1 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.46196483761109214, 'y_m': 0.11346293737829605, 'heading_rad': 1.3697343969702347}
+[map] navigate label=patrol_1 distance_m=0.388 heading_error_rad=0.103
+[base] dry_run=True
+[base] map_forward_patrol_1 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.4699532368314691, 'y_m': 0.15265713947370654, 'heading_rad': 1.3697343969702347}
+[map] navigate label=patrol_1 distance_m=0.349 heading_error_rad=0.115
+[base] dry_run=True
+[base] map_forward_patrol_1 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.4779416360518461, 'y_m': 0.19185134156911704, 'heading_rad': 1.3697343969702347}
+[map] navigate label=patrol_1 distance_m=0.309 heading_error_rad=0.130
+[base] dry_run=True
+[base] map_turn_patrol_1 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.4779416360518461, 'y_m': 0.19185134156911704, 'heading_rad': 1.4262830647348546}
+[map] navigate label=patrol_1 distance_m=0.309 heading_error_rad=0.073
+[base] dry_run=True
+[base] map_forward_patrol_1 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.4837020673537348, 'y_m': 0.23143438631325242, 'heading_rad': 1.4262830647348546}
+[map] navigate label=patrol_1 distance_m=0.269 heading_error_rad=0.084
+[base] dry_run=True
+[base] map_forward_patrol_1 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.48946249865562347, 'y_m': 0.2710174310573878, 'heading_rad': 1.4262830647348546}
+[map] navigate label=patrol_1 distance_m=0.229 heading_error_rad=0.099
+[base] dry_run=True
+[base] map_forward_patrol_1 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.49522292995751216, 'y_m': 0.31060047580152317, 'heading_rad': 1.4262830647348546}
+[map] navigate label=patrol_1 distance_m=0.189 heading_error_rad=0.119
+[base] dry_run=True
+[base] map_forward_patrol_1 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.5009833612594008, 'y_m': 0.35018352054565854, 'heading_rad': 1.4262830647348546}
+[base] stop
+[map] destination reached label=patrol_1 distance_m=0.150
+[map] patrol index=2 complete=False
+[map] navigate label=patrol_2 distance_m=1.012 heading_error_rad=1.567
+[base] dry_run=True
+[base] map_turn_patrol_2 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.5009833612594008, 'y_m': 0.35018352054565854, 'heading_rad': 1.4828317324994744}
+[map] navigate label=patrol_2 distance_m=1.012 heading_error_rad=1.510
+[base] dry_run=True
+[base] map_turn_patrol_2 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.5009833612594008, 'y_m': 0.35018352054565854, 'heading_rad': 1.5393804002640943}
+[map] navigate label=patrol_2 distance_m=1.012 heading_error_rad=1.454
+[base] dry_run=True
+[base] map_turn_patrol_2 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.5009833612594008, 'y_m': 0.35018352054565854, 'heading_rad': 1.5959290680287141}
+[map] navigate label=patrol_2 distance_m=1.012 heading_error_rad=1.397
+[base] dry_run=True
+[base] map_turn_patrol_2 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.5009833612594008, 'y_m': 0.35018352054565854, 'heading_rad': 1.652477735793334}
+[map] navigate label=patrol_2 distance_m=1.012 heading_error_rad=1.341
+[base] dry_run=True
+[base] map_turn_patrol_2 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.5009833612594008, 'y_m': 0.35018352054565854, 'heading_rad': 1.7090264035579539}
+[map] navigate label=patrol_2 distance_m=1.012 heading_error_rad=1.284
+[base] dry_run=True
+[base] map_turn_patrol_2 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.5009833612594008, 'y_m': 0.35018352054565854, 'heading_rad': 1.7655750713225737}
+[map] navigate label=patrol_2 distance_m=1.012 heading_error_rad=1.227
+[base] dry_run=True
+[base] map_turn_patrol_2 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.5009833612594008, 'y_m': 0.35018352054565854, 'heading_rad': 1.8221237390871936}
+[map] navigate label=patrol_2 distance_m=1.012 heading_error_rad=1.171
+[base] dry_run=True
+[base] map_turn_patrol_2 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.5009833612594008, 'y_m': 0.35018352054565854, 'heading_rad': 1.8786724068518135}
+[map] navigate label=patrol_2 distance_m=1.012 heading_error_rad=1.114
+[base] dry_run=True
+[base] map_turn_patrol_2 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.5009833612594008, 'y_m': 0.35018352054565854, 'heading_rad': 1.9352210746164333}
+[map] navigate label=patrol_2 distance_m=1.012 heading_error_rad=1.058
+[base] dry_run=True
+[base] map_turn_patrol_2 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.5009833612594008, 'y_m': 0.35018352054565854, 'heading_rad': 1.9917697423810532}
+[map] navigate label=patrol_2 distance_m=1.012 heading_error_rad=1.001
+[base] dry_run=True
+[base] map_turn_patrol_2 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.5009833612594008, 'y_m': 0.35018352054565854, 'heading_rad': 2.048318410145673}
+[map] navigate label=patrol_2 distance_m=1.012 heading_error_rad=0.945
+[base] dry_run=True
+[base] map_turn_patrol_2 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.5009833612594008, 'y_m': 0.35018352054565854, 'heading_rad': 2.104867077910293}
+[map] navigate label=patrol_2 distance_m=1.012 heading_error_rad=0.888
+[base] dry_run=True
+[base] map_turn_patrol_2 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.5009833612594008, 'y_m': 0.35018352054565854, 'heading_rad': 2.161415745674913}
+[map] navigate label=patrol_2 distance_m=1.012 heading_error_rad=0.832
+[base] dry_run=True
+[base] map_turn_patrol_2 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.5009833612594008, 'y_m': 0.35018352054565854, 'heading_rad': 2.2179644134395327}
+[map] navigate label=patrol_2 distance_m=1.012 heading_error_rad=0.775
+[base] dry_run=True
+[base] map_turn_patrol_2 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.5009833612594008, 'y_m': 0.35018352054565854, 'heading_rad': 2.2745130812041525}
+[map] navigate label=patrol_2 distance_m=1.012 heading_error_rad=0.719
+[base] dry_run=True
+[base] map_turn_patrol_2 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.5009833612594008, 'y_m': 0.35018352054565854, 'heading_rad': 2.3310617489687724}
+[map] navigate label=patrol_2 distance_m=1.012 heading_error_rad=0.662
+[base] dry_run=True
+[base] map_turn_patrol_2 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.5009833612594008, 'y_m': 0.35018352054565854, 'heading_rad': 2.3876104167333922}
+[map] navigate label=patrol_2 distance_m=1.012 heading_error_rad=0.605
+[base] dry_run=True
+[base] map_turn_patrol_2 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.5009833612594008, 'y_m': 0.35018352054565854, 'heading_rad': 2.444159084498012}
+[map] navigate label=patrol_2 distance_m=1.012 heading_error_rad=0.549
+[base] dry_run=True
+[base] map_turn_patrol_2 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.5009833612594008, 'y_m': 0.35018352054565854, 'heading_rad': 2.500707752262632}
+[map] navigate label=patrol_2 distance_m=1.012 heading_error_rad=0.492
+[base] dry_run=True
+[base] map_turn_patrol_2 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.5009833612594008, 'y_m': 0.35018352054565854, 'heading_rad': 2.557256420027252}
+[map] navigate label=patrol_2 distance_m=1.012 heading_error_rad=0.436
+[base] dry_run=True
+[base] map_turn_patrol_2 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.5009833612594008, 'y_m': 0.35018352054565854, 'heading_rad': 2.6138050877918717}
+[map] navigate label=patrol_2 distance_m=1.012 heading_error_rad=0.379
+[base] dry_run=True
+[base] map_turn_patrol_2 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.5009833612594008, 'y_m': 0.35018352054565854, 'heading_rad': 2.6703537555564916}
+[map] navigate label=patrol_2 distance_m=1.012 heading_error_rad=0.323
+[base] dry_run=True
+[base] map_turn_patrol_2 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.5009833612594008, 'y_m': 0.35018352054565854, 'heading_rad': 2.7269024233211114}
+[map] navigate label=patrol_2 distance_m=1.012 heading_error_rad=0.266
+[base] dry_run=True
+[base] map_turn_patrol_2 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.5009833612594008, 'y_m': 0.35018352054565854, 'heading_rad': 2.7834510910857313}
+[map] navigate label=patrol_2 distance_m=1.012 heading_error_rad=0.210
+[base] dry_run=True
+[base] map_turn_patrol_2 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.5009833612594008, 'y_m': 0.35018352054565854, 'heading_rad': 2.839999758850351}
+[map] navigate label=patrol_2 distance_m=1.012 heading_error_rad=0.153
+[base] dry_run=True
+[base] map_turn_patrol_2 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.5009833612594008, 'y_m': 0.35018352054565854, 'heading_rad': 2.896548426614971}
+[map] navigate label=patrol_2 distance_m=1.012 heading_error_rad=0.096
+[base] dry_run=True
+[base] map_forward_patrol_2 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.46217829739974625, 'y_m': 0.35988748977727375, 'heading_rad': 2.896548426614971}
+[map] navigate label=patrol_2 distance_m=0.972 heading_error_rad=0.100
+[base] dry_run=True
+[base] map_forward_patrol_2 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.4233732335400917, 'y_m': 0.36959145900888896, 'heading_rad': 2.896548426614971}
+[map] navigate label=patrol_2 distance_m=0.933 heading_error_rad=0.105
+[base] dry_run=True
+[base] map_forward_patrol_2 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.38456816968043717, 'y_m': 0.37929542824050416, 'heading_rad': 2.896548426614971}
+[map] navigate label=patrol_2 distance_m=0.893 heading_error_rad=0.109
+[base] dry_run=True
+[base] map_forward_patrol_2 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.3457631058207826, 'y_m': 0.38899939747211937, 'heading_rad': 2.896548426614971}
+[map] navigate label=patrol_2 distance_m=0.853 heading_error_rad=0.115
+[base] dry_run=True
+[base] map_forward_patrol_2 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.3069580419611281, 'y_m': 0.3987033667037346, 'heading_rad': 2.896548426614971}
+[map] navigate label=patrol_2 distance_m=0.813 heading_error_rad=0.120
+[base] dry_run=True
+[base] map_turn_patrol_2 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.3069580419611281, 'y_m': 0.3987033667037346, 'heading_rad': 2.953097094379591}
+[map] navigate label=patrol_2 distance_m=0.813 heading_error_rad=0.064
+[base] dry_run=True
+[base] map_forward_patrol_2 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.26766655193194167, 'y_m': 0.40619861928695983, 'heading_rad': 2.953097094379591}
+[map] navigate label=patrol_2 distance_m=0.773 heading_error_rad=0.067
+[base] dry_run=True
+[base] map_forward_patrol_2 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.22837506190275525, 'y_m': 0.4136938718701851, 'heading_rad': 2.953097094379591}
+[map] navigate label=patrol_2 distance_m=0.733 heading_error_rad=0.071
+[base] dry_run=True
+[base] map_forward_patrol_2 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.18908357187356883, 'y_m': 0.42118912445341034, 'heading_rad': 2.953097094379591}
+[map] navigate label=patrol_2 distance_m=0.694 heading_error_rad=0.075
+[base] dry_run=True
+[base] map_forward_patrol_2 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.14979208184438242, 'y_m': 0.4286843770366356, 'heading_rad': 2.953097094379591}
+[map] navigate label=patrol_2 distance_m=0.654 heading_error_rad=0.079
+[base] dry_run=True
+[base] map_forward_patrol_2 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.110500591815196, 'y_m': 0.43617962961986084, 'heading_rad': 2.953097094379591}
+[map] navigate label=patrol_2 distance_m=0.614 heading_error_rad=0.084
+[base] dry_run=True
+[base] map_forward_patrol_2 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.07120910178600959, 'y_m': 0.4436748822030861, 'heading_rad': 2.953097094379591}
+[map] navigate label=patrol_2 distance_m=0.574 heading_error_rad=0.090
+[base] dry_run=True
+[base] map_forward_patrol_2 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.03191761175682317, 'y_m': 0.45117013478631135, 'heading_rad': 2.953097094379591}
+[map] navigate label=patrol_2 distance_m=0.534 heading_error_rad=0.097
+[base] dry_run=True
+[base] map_forward_patrol_2 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.0073738782723632434, 'y_m': 0.4586653873695366, 'heading_rad': 2.953097094379591}
+[map] navigate label=patrol_2 distance_m=0.494 heading_error_rad=0.105
+[base] dry_run=True
+[base] map_forward_patrol_2 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.04666536830154966, 'y_m': 0.46616063995276186, 'heading_rad': 2.953097094379591}
+[map] navigate label=patrol_2 distance_m=0.455 heading_error_rad=0.114
+[base] dry_run=True
+[base] map_forward_patrol_2 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.08595685833073607, 'y_m': 0.4736558925359871, 'heading_rad': 2.953097094379591}
+[map] navigate label=patrol_2 distance_m=0.415 heading_error_rad=0.125
+[base] dry_run=True
+[base] map_turn_patrol_2 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.08595685833073607, 'y_m': 0.4736558925359871, 'heading_rad': 3.0096457621442108}
+[map] navigate label=patrol_2 distance_m=0.415 heading_error_rad=0.068
+[base] dry_run=True
+[base] map_forward_patrol_2 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.12560916357354365, 'y_m': 0.47891846689947265, 'heading_rad': 3.0096457621442108}
+[map] navigate label=patrol_2 distance_m=0.375 heading_error_rad=0.076
+[base] dry_run=True
+[base] map_forward_patrol_2 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.16526146881635123, 'y_m': 0.4841810412629582, 'heading_rad': 3.0096457621442108}
+[map] navigate label=patrol_2 distance_m=0.335 heading_error_rad=0.085
+[base] dry_run=True
+[base] map_forward_patrol_2 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.2049137740591588, 'y_m': 0.48944361562644373, 'heading_rad': 3.0096457621442108}
+[map] navigate label=patrol_2 distance_m=0.295 heading_error_rad=0.096
+[base] dry_run=True
+[base] map_forward_patrol_2 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.2445660793019664, 'y_m': 0.49470618998992927, 'heading_rad': 3.0096457621442108}
+[map] navigate label=patrol_2 distance_m=0.255 heading_error_rad=0.111
+[base] dry_run=True
+[base] map_forward_patrol_2 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.284218384544774, 'y_m': 0.4999687643534148, 'heading_rad': 3.0096457621442108}
+[map] navigate label=patrol_2 distance_m=0.216 heading_error_rad=0.132
+[base] dry_run=True
+[base] map_turn_patrol_2 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.284218384544774, 'y_m': 0.4999687643534148, 'heading_rad': 3.0661944299088306}
+[map] navigate label=patrol_2 distance_m=0.216 heading_error_rad=0.075
+[base] dry_run=True
+[base] map_forward_patrol_2 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.3241047405552142, 'y_m': 0.502981836574325, 'heading_rad': 3.0661944299088306}
+[map] navigate label=patrol_2 distance_m=0.176 heading_error_rad=0.092
+[base] dry_run=True
+[base] map_forward_patrol_2 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.3639910965656544, 'y_m': 0.5059949087952352, 'heading_rad': 3.0661944299088306}
+[base] stop
+[map] destination reached label=patrol_2 distance_m=0.136
+[map] patrol index=3 complete=False
+[map] navigate label=patrol_3 distance_m=1.015 heading_error_rad=1.512
+[base] dry_run=True
+[base] map_turn_patrol_3 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.3639910965656544, 'y_m': 0.5059949087952352, 'heading_rad': 3.1227430976734505}
+[map] navigate label=patrol_3 distance_m=1.015 heading_error_rad=1.455
+[base] dry_run=True
+[base] map_turn_patrol_3 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.3639910965656544, 'y_m': 0.5059949087952352, 'heading_rad': -3.103893541741516}
+[map] navigate label=patrol_3 distance_m=1.015 heading_error_rad=1.399
+[base] dry_run=True
+[base] map_turn_patrol_3 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.3639910965656544, 'y_m': 0.5059949087952352, 'heading_rad': -3.047344873976896}
+[map] navigate label=patrol_3 distance_m=1.015 heading_error_rad=1.342
+[base] dry_run=True
+[base] map_turn_patrol_3 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.3639910965656544, 'y_m': 0.5059949087952352, 'heading_rad': -2.990796206212276}
+[map] navigate label=patrol_3 distance_m=1.015 heading_error_rad=1.286
+[base] dry_run=True
+[base] map_turn_patrol_3 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.3639910965656544, 'y_m': 0.5059949087952352, 'heading_rad': -2.9342475384476563}
+[map] navigate label=patrol_3 distance_m=1.015 heading_error_rad=1.229
+[base] dry_run=True
+[base] map_turn_patrol_3 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.3639910965656544, 'y_m': 0.5059949087952352, 'heading_rad': -2.8776988706830364}
+[map] navigate label=patrol_3 distance_m=1.015 heading_error_rad=1.173
+[base] dry_run=True
+[base] map_turn_patrol_3 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.3639910965656544, 'y_m': 0.5059949087952352, 'heading_rad': -2.8211502029184166}
+[map] navigate label=patrol_3 distance_m=1.015 heading_error_rad=1.116
+[base] dry_run=True
+[base] map_turn_patrol_3 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.3639910965656544, 'y_m': 0.5059949087952352, 'heading_rad': -2.7646015351537967}
+[map] navigate label=patrol_3 distance_m=1.015 heading_error_rad=1.059
+[base] dry_run=True
+[base] map_turn_patrol_3 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.3639910965656544, 'y_m': 0.5059949087952352, 'heading_rad': -2.708052867389177}
+[map] navigate label=patrol_3 distance_m=1.015 heading_error_rad=1.003
+[base] dry_run=True
+[base] map_turn_patrol_3 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.3639910965656544, 'y_m': 0.5059949087952352, 'heading_rad': -2.651504199624557}
+[map] navigate label=patrol_3 distance_m=1.015 heading_error_rad=0.946
+[base] dry_run=True
+[base] map_turn_patrol_3 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.3639910965656544, 'y_m': 0.5059949087952352, 'heading_rad': -2.594955531859937}
+[map] navigate label=patrol_3 distance_m=1.015 heading_error_rad=0.890
+[base] dry_run=True
+[base] map_turn_patrol_3 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.3639910965656544, 'y_m': 0.5059949087952352, 'heading_rad': -2.5384068640953172}
+[map] navigate label=patrol_3 distance_m=1.015 heading_error_rad=0.833
+[base] dry_run=True
+[base] map_turn_patrol_3 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.3639910965656544, 'y_m': 0.5059949087952352, 'heading_rad': -2.4818581963306974}
+[map] navigate label=patrol_3 distance_m=1.015 heading_error_rad=0.777
+[base] dry_run=True
+[base] map_turn_patrol_3 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.3639910965656544, 'y_m': 0.5059949087952352, 'heading_rad': -2.4253095285660775}
+[map] navigate label=patrol_3 distance_m=1.015 heading_error_rad=0.720
+[base] dry_run=True
+[base] map_turn_patrol_3 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.3639910965656544, 'y_m': 0.5059949087952352, 'heading_rad': -2.3687608608014576}
+[map] navigate label=patrol_3 distance_m=1.015 heading_error_rad=0.664
+[base] dry_run=True
+[base] map_turn_patrol_3 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.3639910965656544, 'y_m': 0.5059949087952352, 'heading_rad': -2.312212193036838}
+[map] navigate label=patrol_3 distance_m=1.015 heading_error_rad=0.607
+[base] dry_run=True
+[base] map_turn_patrol_3 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.3639910965656544, 'y_m': 0.5059949087952352, 'heading_rad': -2.255663525272218}
+[map] navigate label=patrol_3 distance_m=1.015 heading_error_rad=0.550
+[base] dry_run=True
+[base] map_turn_patrol_3 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.3639910965656544, 'y_m': 0.5059949087952352, 'heading_rad': -2.199114857507598}
+[map] navigate label=patrol_3 distance_m=1.015 heading_error_rad=0.494
+[base] dry_run=True
+[base] map_turn_patrol_3 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.3639910965656544, 'y_m': 0.5059949087952352, 'heading_rad': -2.142566189742978}
+[map] navigate label=patrol_3 distance_m=1.015 heading_error_rad=0.437
+[base] dry_run=True
+[base] map_turn_patrol_3 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.3639910965656544, 'y_m': 0.5059949087952352, 'heading_rad': -2.0860175219783583}
+[map] navigate label=patrol_3 distance_m=1.015 heading_error_rad=0.381
+[base] dry_run=True
+[base] map_turn_patrol_3 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.3639910965656544, 'y_m': 0.5059949087952352, 'heading_rad': -2.0294688542137385}
+[map] navigate label=patrol_3 distance_m=1.015 heading_error_rad=0.324
+[base] dry_run=True
+[base] map_turn_patrol_3 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.3639910965656544, 'y_m': 0.5059949087952352, 'heading_rad': -1.9729201864491184}
+[map] navigate label=patrol_3 distance_m=1.015 heading_error_rad=0.268
+[base] dry_run=True
+[base] map_turn_patrol_3 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.3639910965656544, 'y_m': 0.5059949087952352, 'heading_rad': -1.9163715186844983}
+[map] navigate label=patrol_3 distance_m=1.015 heading_error_rad=0.211
+[base] dry_run=True
+[base] map_turn_patrol_3 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.3639910965656544, 'y_m': 0.5059949087952352, 'heading_rad': -1.8598228509198782}
+[map] navigate label=patrol_3 distance_m=1.015 heading_error_rad=0.155
+[base] dry_run=True
+[base] map_turn_patrol_3 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.3639910965656544, 'y_m': 0.5059949087952352, 'heading_rad': -1.8032741831552581}
+[map] navigate label=patrol_3 distance_m=1.015 heading_error_rad=0.098
+[base] dry_run=True
+[base] map_forward_patrol_3 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.3732066736325124, 'y_m': 0.46707096835590145, 'heading_rad': -1.8032741831552581}
+[map] navigate label=patrol_3 distance_m=0.975 heading_error_rad=0.102
+[base] dry_run=True
+[base] map_forward_patrol_3 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.3824222506993704, 'y_m': 0.42814702791656767, 'heading_rad': -1.8032741831552581}
+[map] navigate label=patrol_3 distance_m=0.936 heading_error_rad=0.106
+[base] dry_run=True
+[base] map_forward_patrol_3 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.3916378277662284, 'y_m': 0.3892230874772339, 'heading_rad': -1.8032741831552581}
+[map] navigate label=patrol_3 distance_m=0.896 heading_error_rad=0.111
+[base] dry_run=True
+[base] map_forward_patrol_3 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.4008534048330864, 'y_m': 0.3502991470379001, 'heading_rad': -1.8032741831552581}
+[map] navigate label=patrol_3 distance_m=0.856 heading_error_rad=0.116
+[base] dry_run=True
+[base] map_forward_patrol_3 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.4100689818999444, 'y_m': 0.3113752065985663, 'heading_rad': -1.8032741831552581}
+[map] navigate label=patrol_3 distance_m=0.816 heading_error_rad=0.122
+[base] dry_run=True
+[base] map_turn_patrol_3 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.4100689818999444, 'y_m': 0.3113752065985663, 'heading_rad': -1.746725515390638}
+[map] navigate label=patrol_3 distance_m=0.816 heading_error_rad=0.066
+[base] dry_run=True
+[base] map_forward_patrol_3 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.41706990425874724, 'y_m': 0.2719926332173611, 'heading_rad': -1.746725515390638}
+[map] navigate label=patrol_3 distance_m=0.776 heading_error_rad=0.069
+[base] dry_run=True
+[base] map_forward_patrol_3 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.4240708266175501, 'y_m': 0.23261005983615587, 'heading_rad': -1.746725515390638}
+[map] navigate label=patrol_3 distance_m=0.737 heading_error_rad=0.073
+[base] dry_run=True
+[base] map_forward_patrol_3 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.4310717489763529, 'y_m': 0.19322748645495064, 'heading_rad': -1.746725515390638}
+[map] navigate label=patrol_3 distance_m=0.697 heading_error_rad=0.077
+[base] dry_run=True
+[base] map_forward_patrol_3 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.43807267133515576, 'y_m': 0.1538449130737454, 'heading_rad': -1.746725515390638}
+[map] navigate label=patrol_3 distance_m=0.657 heading_error_rad=0.081
+[base] dry_run=True
+[base] map_forward_patrol_3 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.4450735936939586, 'y_m': 0.11446233969254016, 'heading_rad': -1.746725515390638}
+[map] navigate label=patrol_3 distance_m=0.617 heading_error_rad=0.087
+[base] dry_run=True
+[base] map_forward_patrol_3 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.45207451605276144, 'y_m': 0.07507976631133492, 'heading_rad': -1.746725515390638}
+[map] navigate label=patrol_3 distance_m=0.577 heading_error_rad=0.093
+[base] dry_run=True
+[base] map_forward_patrol_3 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.4590754384115643, 'y_m': 0.035697192930129684, 'heading_rad': -1.746725515390638}
+[map] navigate label=patrol_3 distance_m=0.537 heading_error_rad=0.100
+[base] dry_run=True
+[base] map_forward_patrol_3 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.4660763607703671, 'y_m': -0.003685380451075554, 'heading_rad': -1.746725515390638}
+[map] navigate label=patrol_3 distance_m=0.497 heading_error_rad=0.108
+[base] dry_run=True
+[base] map_forward_patrol_3 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.47307728312916997, 'y_m': -0.04306795383228079, 'heading_rad': -1.746725515390638}
+[map] navigate label=patrol_3 distance_m=0.458 heading_error_rad=0.117
+[base] dry_run=True
+[base] map_forward_patrol_3 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.4800782054879728, 'y_m': -0.08245052721348603, 'heading_rad': -1.746725515390638}
+[map] navigate label=patrol_3 distance_m=0.418 heading_error_rad=0.128
+[base] dry_run=True
+[base] map_turn_patrol_3 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.4800782054879728, 'y_m': -0.08245052721348603, 'heading_rad': -1.690176847626018}
+[map] navigate label=patrol_3 distance_m=0.418 heading_error_rad=0.072
+[base] dry_run=True
+[base] map_forward_patrol_3 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.48484209189155747, 'y_m': -0.1221658313963038, 'heading_rad': -1.690176847626018}
+[map] navigate label=patrol_3 distance_m=0.378 heading_error_rad=0.079
+[base] dry_run=True
+[base] map_forward_patrol_3 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.48960597829514213, 'y_m': -0.16188113557912157, 'heading_rad': -1.690176847626018}
+[map] navigate label=patrol_3 distance_m=0.338 heading_error_rad=0.089
+[base] dry_run=True
+[base] map_forward_patrol_3 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.4943698646987268, 'y_m': -0.20159643976193933, 'heading_rad': -1.690176847626018}
+[map] navigate label=patrol_3 distance_m=0.298 heading_error_rad=0.101
+[base] dry_run=True
+[base] map_forward_patrol_3 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.49913375110231145, 'y_m': -0.2413117439447571, 'heading_rad': -1.690176847626018}
+[map] navigate label=patrol_3 distance_m=0.259 heading_error_rad=0.116
+[base] dry_run=True
+[base] map_forward_patrol_3 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.5038976375058961, 'y_m': -0.28102704812757484, 'heading_rad': -1.690176847626018}
+[map] navigate label=patrol_3 distance_m=0.219 heading_error_rad=0.137
+[base] dry_run=True
+[base] map_turn_patrol_3 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.5038976375058961, 'y_m': -0.28102704812757484, 'heading_rad': -1.6336281798613979}
+[map] navigate label=patrol_3 distance_m=0.219 heading_error_rad=0.081
+[base] dry_run=True
+[base] map_forward_patrol_3 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.5064092582868572, 'y_m': -0.320948117264719, 'heading_rad': -1.6336281798613979}
+[map] navigate label=patrol_3 distance_m=0.179 heading_error_rad=0.099
+[base] dry_run=True
+[base] map_forward_patrol_3 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.5089208790678184, 'y_m': -0.36086918640186316, 'heading_rad': -1.6336281798613979}
+[base] stop
+[map] destination reached label=patrol_3 distance_m=0.139
+[map] patrol index=4 complete=False
+[map] navigate label=patrol_4 distance_m=1.018 heading_error_rad=1.497
+[base] dry_run=True
+[base] map_turn_patrol_4 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.5089208790678184, 'y_m': -0.36086918640186316, 'heading_rad': -1.5770795120967778}
+[map] navigate label=patrol_4 distance_m=1.018 heading_error_rad=1.440
+[base] dry_run=True
+[base] map_turn_patrol_4 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.5089208790678184, 'y_m': -0.36086918640186316, 'heading_rad': -1.5205308443321577}
+[map] navigate label=patrol_4 distance_m=1.018 heading_error_rad=1.383
+[base] dry_run=True
+[base] map_turn_patrol_4 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.5089208790678184, 'y_m': -0.36086918640186316, 'heading_rad': -1.4639821765675376}
+[map] navigate label=patrol_4 distance_m=1.018 heading_error_rad=1.327
+[base] dry_run=True
+[base] map_turn_patrol_4 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.5089208790678184, 'y_m': -0.36086918640186316, 'heading_rad': -1.4074335088029175}
+[map] navigate label=patrol_4 distance_m=1.018 heading_error_rad=1.270
+[base] dry_run=True
+[base] map_turn_patrol_4 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.5089208790678184, 'y_m': -0.36086918640186316, 'heading_rad': -1.3508848410382974}
+[map] navigate label=patrol_4 distance_m=1.018 heading_error_rad=1.214
+[base] dry_run=True
+[base] map_turn_patrol_4 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.5089208790678184, 'y_m': -0.36086918640186316, 'heading_rad': -1.2943361732736773}
+[map] navigate label=patrol_4 distance_m=1.018 heading_error_rad=1.157
+[base] dry_run=True
+[base] map_turn_patrol_4 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.5089208790678184, 'y_m': -0.36086918640186316, 'heading_rad': -1.2377875055090573}
+[map] navigate label=patrol_4 distance_m=1.018 heading_error_rad=1.101
+[base] dry_run=True
+[base] map_turn_patrol_4 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.5089208790678184, 'y_m': -0.36086918640186316, 'heading_rad': -1.1812388377444372}
+[map] navigate label=patrol_4 distance_m=1.018 heading_error_rad=1.044
+[base] dry_run=True
+[base] map_turn_patrol_4 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.5089208790678184, 'y_m': -0.36086918640186316, 'heading_rad': -1.124690169979817}
+[map] navigate label=patrol_4 distance_m=1.018 heading_error_rad=0.988
+[base] dry_run=True
+[base] map_turn_patrol_4 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.5089208790678184, 'y_m': -0.36086918640186316, 'heading_rad': -1.0681415022151972}
+[map] navigate label=patrol_4 distance_m=1.018 heading_error_rad=0.931
+[base] dry_run=True
+[base] map_turn_patrol_4 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.5089208790678184, 'y_m': -0.36086918640186316, 'heading_rad': -1.0115928344505773}
+[map] navigate label=patrol_4 distance_m=1.018 heading_error_rad=0.875
+[base] dry_run=True
+[base] map_turn_patrol_4 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.5089208790678184, 'y_m': -0.36086918640186316, 'heading_rad': -0.9550441666859575}
+[map] navigate label=patrol_4 distance_m=1.018 heading_error_rad=0.818
+[base] dry_run=True
+[base] map_turn_patrol_4 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.5089208790678184, 'y_m': -0.36086918640186316, 'heading_rad': -0.8984954989213376}
+[map] navigate label=patrol_4 distance_m=1.018 heading_error_rad=0.761
+[base] dry_run=True
+[base] map_turn_patrol_4 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.5089208790678184, 'y_m': -0.36086918640186316, 'heading_rad': -0.8419468311567178}
+[map] navigate label=patrol_4 distance_m=1.018 heading_error_rad=0.705
+[base] dry_run=True
+[base] map_turn_patrol_4 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.5089208790678184, 'y_m': -0.36086918640186316, 'heading_rad': -0.7853981633920979}
+[map] navigate label=patrol_4 distance_m=1.018 heading_error_rad=0.648
+[base] dry_run=True
+[base] map_turn_patrol_4 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.5089208790678184, 'y_m': -0.36086918640186316, 'heading_rad': -0.728849495627478}
+[map] navigate label=patrol_4 distance_m=1.018 heading_error_rad=0.592
+[base] dry_run=True
+[base] map_turn_patrol_4 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.5089208790678184, 'y_m': -0.36086918640186316, 'heading_rad': -0.6723008278628582}
+[map] navigate label=patrol_4 distance_m=1.018 heading_error_rad=0.535
+[base] dry_run=True
+[base] map_turn_patrol_4 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.5089208790678184, 'y_m': -0.36086918640186316, 'heading_rad': -0.6157521600982383}
+[map] navigate label=patrol_4 distance_m=1.018 heading_error_rad=0.479
+[base] dry_run=True
+[base] map_turn_patrol_4 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.5089208790678184, 'y_m': -0.36086918640186316, 'heading_rad': -0.5592034923336184}
+[map] navigate label=patrol_4 distance_m=1.018 heading_error_rad=0.422
+[base] dry_run=True
+[base] map_turn_patrol_4 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.5089208790678184, 'y_m': -0.36086918640186316, 'heading_rad': -0.5026548245689986}
+[map] navigate label=patrol_4 distance_m=1.018 heading_error_rad=0.366
+[base] dry_run=True
+[base] map_turn_patrol_4 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.5089208790678184, 'y_m': -0.36086918640186316, 'heading_rad': -0.4461061568043787}
+[map] navigate label=patrol_4 distance_m=1.018 heading_error_rad=0.309
+[base] dry_run=True
+[base] map_turn_patrol_4 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.5089208790678184, 'y_m': -0.36086918640186316, 'heading_rad': -0.38955748903975884}
+[map] navigate label=patrol_4 distance_m=1.018 heading_error_rad=0.253
+[base] dry_run=True
+[base] map_turn_patrol_4 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.5089208790678184, 'y_m': -0.36086918640186316, 'heading_rad': -0.333008821275139}
+[map] navigate label=patrol_4 distance_m=1.018 heading_error_rad=0.196
+[base] dry_run=True
+[base] map_turn_patrol_4 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.5089208790678184, 'y_m': -0.36086918640186316, 'heading_rad': -0.2764601535105191}
+[map] navigate label=patrol_4 distance_m=1.018 heading_error_rad=0.139
+[base] dry_run=True
+[base] map_turn_patrol_4 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.5089208790678184, 'y_m': -0.36086918640186316, 'heading_rad': -0.21991148574589925}
+[map] navigate label=patrol_4 distance_m=1.018 heading_error_rad=0.083
+[base] dry_run=True
+[base] map_forward_patrol_4 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.46988420859022145, 'y_m': -0.3695949160575146, 'heading_rad': -0.21991148574589925}
+[map] navigate label=patrol_4 distance_m=0.979 heading_error_rad=0.086
+[base] dry_run=True
+[base] map_forward_patrol_4 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.43084753811262455, 'y_m': -0.37832064571316604, 'heading_rad': -0.21991148574589925}
+[map] navigate label=patrol_4 distance_m=0.939 heading_error_rad=0.090
+[base] dry_run=True
+[base] map_forward_patrol_4 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.39181086763502765, 'y_m': -0.3870463753688175, 'heading_rad': -0.21991148574589925}
+[map] navigate label=patrol_4 distance_m=0.899 heading_error_rad=0.094
+[base] dry_run=True
+[base] map_forward_patrol_4 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.35277419715743075, 'y_m': -0.3957721050244689, 'heading_rad': -0.21991148574589925}
+[map] navigate label=patrol_4 distance_m=0.859 heading_error_rad=0.098
+[base] dry_run=True
+[base] map_forward_patrol_4 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.31373752667983384, 'y_m': -0.40449783468012035, 'heading_rad': -0.21991148574589925}
+[map] navigate label=patrol_4 distance_m=0.819 heading_error_rad=0.103
+[base] dry_run=True
+[base] map_forward_patrol_4 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.27470085620223694, 'y_m': -0.4132235643357718, 'heading_rad': -0.21991148574589925}
+[map] navigate label=patrol_4 distance_m=0.780 heading_error_rad=0.108
+[base] dry_run=True
+[base] map_forward_patrol_4 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.23566418572464004, 'y_m': -0.4219492939914232, 'heading_rad': -0.21991148574589925}
+[map] navigate label=patrol_4 distance_m=0.740 heading_error_rad=0.114
+[base] dry_run=True
+[base] map_forward_patrol_4 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.19662751524704314, 'y_m': -0.43067502364707466, 'heading_rad': -0.21991148574589925}
+[map] navigate label=patrol_4 distance_m=0.700 heading_error_rad=0.121
+[base] dry_run=True
+[base] map_turn_patrol_4 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': -0.19662751524704314, 'y_m': -0.43067502364707466, 'heading_rad': -0.16336281798127938}
+[map] navigate label=patrol_4 distance_m=0.700 heading_error_rad=0.064
+[base] dry_run=True
+[base] map_forward_patrol_4 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.15716007747869334, 'y_m': -0.43718051025465726, 'heading_rad': -0.16336281798127938}
+[map] navigate label=patrol_4 distance_m=0.660 heading_error_rad=0.068
+[base] dry_run=True
+[base] map_forward_patrol_4 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.11769263971034355, 'y_m': -0.44368599686223986, 'heading_rad': -0.16336281798127938}
+[map] navigate label=patrol_4 distance_m=0.620 heading_error_rad=0.072
+[base] dry_run=True
+[base] map_forward_patrol_4 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.07822520194199375, 'y_m': -0.45019148346982246, 'heading_rad': -0.16336281798127938}
+[map] navigate label=patrol_4 distance_m=0.580 heading_error_rad=0.077
+[base] dry_run=True
+[base] map_forward_patrol_4 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': -0.03875776417364396, 'y_m': -0.45669697007740506, 'heading_rad': -0.16336281798127938}
+[map] navigate label=patrol_4 distance_m=0.540 heading_error_rad=0.083
+[base] dry_run=True
+[base] map_forward_patrol_4 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.0007096735947058341, 'y_m': -0.46320245668498766, 'heading_rad': -0.16336281798127938}
+[map] navigate label=patrol_4 distance_m=0.501 heading_error_rad=0.090
+[base] dry_run=True
+[base] map_forward_patrol_4 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.04017711136305563, 'y_m': -0.46970794329257026, 'heading_rad': -0.16336281798127938}
+[map] navigate label=patrol_4 distance_m=0.461 heading_error_rad=0.098
+[base] dry_run=True
+[base] map_forward_patrol_4 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.07964454913140542, 'y_m': -0.47621342990015286, 'heading_rad': -0.16336281798127938}
+[map] navigate label=patrol_4 distance_m=0.421 heading_error_rad=0.107
+[base] dry_run=True
+[base] map_forward_patrol_4 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.11911198689975522, 'y_m': -0.48271891650773546, 'heading_rad': -0.16336281798127938}
+[map] navigate label=patrol_4 distance_m=0.381 heading_error_rad=0.118
+[base] dry_run=True
+[base] map_forward_patrol_4 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.158579424668105, 'y_m': -0.48922440311531806, 'heading_rad': -0.16336281798127938}
+[map] navigate label=patrol_4 distance_m=0.342 heading_error_rad=0.132
+[base] dry_run=True
+[base] map_turn_patrol_4 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.158579424668105, 'y_m': -0.48922440311531806, 'heading_rad': -0.10681415021665952}
+[map] navigate label=patrol_4 distance_m=0.342 heading_error_rad=0.075
+[base] dry_run=True
+[base] map_forward_patrol_4 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.19835145628400797, 'y_m': -0.493488849286114, 'heading_rad': -0.10681415021665952}
+[map] navigate label=patrol_4 distance_m=0.302 heading_error_rad=0.085
+[base] dry_run=True
+[base] map_forward_patrol_4 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.23812348789991095, 'y_m': -0.4977532954569099, 'heading_rad': -0.10681415021665952}
+[map] navigate label=patrol_4 distance_m=0.262 heading_error_rad=0.098
+[base] dry_run=True
+[base] map_forward_patrol_4 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.2778955195158139, 'y_m': -0.5020177416277057, 'heading_rad': -0.10681415021665952}
+[map] navigate label=patrol_4 distance_m=0.222 heading_error_rad=0.116
+[base] dry_run=True
+[base] map_forward_patrol_4 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.3176675511317169, 'y_m': -0.5062821877985016, 'heading_rad': -0.10681415021665952}
+[map] navigate label=patrol_4 distance_m=0.182 heading_error_rad=0.141
+[base] dry_run=True
+[base] map_turn_patrol_4 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.3176675511317169, 'y_m': -0.5062821877985016, 'heading_rad': -0.050265482452039656}
+[map] navigate label=patrol_4 distance_m=0.182 heading_error_rad=0.085
+[base] dry_run=True
+[base] map_forward_patrol_4 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.35761702939596846, 'y_m': -0.5082919605254769, 'heading_rad': -0.050265482452039656}
+[base] stop
+[map] destination reached label=patrol_4 distance_m=0.143
+[map] patrol index=5 complete=False
+[map] navigate label=patrol_5 distance_m=0.528 heading_error_rad=1.348
+[base] dry_run=True
+[base] map_turn_patrol_5 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.35761702939596846, 'y_m': -0.5082919605254769, 'heading_rad': 0.006283185312580208}
+[map] navigate label=patrol_5 distance_m=0.528 heading_error_rad=1.291
+[base] dry_run=True
+[base] map_turn_patrol_5 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.35761702939596846, 'y_m': -0.5082919605254769, 'heading_rad': 0.06283185307720007}
+[map] navigate label=patrol_5 distance_m=0.528 heading_error_rad=1.235
+[base] dry_run=True
+[base] map_turn_patrol_5 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.35761702939596846, 'y_m': -0.5082919605254769, 'heading_rad': 0.11938052084181994}
+[map] navigate label=patrol_5 distance_m=0.528 heading_error_rad=1.178
+[base] dry_run=True
+[base] map_turn_patrol_5 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.35761702939596846, 'y_m': -0.5082919605254769, 'heading_rad': 0.1759291886064398}
+[map] navigate label=patrol_5 distance_m=0.528 heading_error_rad=1.122
+[base] dry_run=True
+[base] map_turn_patrol_5 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.35761702939596846, 'y_m': -0.5082919605254769, 'heading_rad': 0.23247785637105967}
+[map] navigate label=patrol_5 distance_m=0.528 heading_error_rad=1.065
+[base] dry_run=True
+[base] map_turn_patrol_5 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.35761702939596846, 'y_m': -0.5082919605254769, 'heading_rad': 0.28902652413567953}
+[map] navigate label=patrol_5 distance_m=0.528 heading_error_rad=1.009
+[base] dry_run=True
+[base] map_turn_patrol_5 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.35761702939596846, 'y_m': -0.5082919605254769, 'heading_rad': 0.3455751919002994}
+[map] navigate label=patrol_5 distance_m=0.528 heading_error_rad=0.952
+[base] dry_run=True
+[base] map_turn_patrol_5 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.35761702939596846, 'y_m': -0.5082919605254769, 'heading_rad': 0.40212385966491926}
+[map] navigate label=patrol_5 distance_m=0.528 heading_error_rad=0.896
+[base] dry_run=True
+[base] map_turn_patrol_5 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.35761702939596846, 'y_m': -0.5082919605254769, 'heading_rad': 0.4586725274295391}
+[map] navigate label=patrol_5 distance_m=0.528 heading_error_rad=0.839
+[base] dry_run=True
+[base] map_turn_patrol_5 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.35761702939596846, 'y_m': -0.5082919605254769, 'heading_rad': 0.515221195194159}
+[map] navigate label=patrol_5 distance_m=0.528 heading_error_rad=0.782
+[base] dry_run=True
+[base] map_turn_patrol_5 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.35761702939596846, 'y_m': -0.5082919605254769, 'heading_rad': 0.5717698629587789}
+[map] navigate label=patrol_5 distance_m=0.528 heading_error_rad=0.726
+[base] dry_run=True
+[base] map_turn_patrol_5 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.35761702939596846, 'y_m': -0.5082919605254769, 'heading_rad': 0.6283185307233987}
+[map] navigate label=patrol_5 distance_m=0.528 heading_error_rad=0.669
+[base] dry_run=True
+[base] map_turn_patrol_5 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.35761702939596846, 'y_m': -0.5082919605254769, 'heading_rad': 0.6848671984880186}
+[map] navigate label=patrol_5 distance_m=0.528 heading_error_rad=0.613
+[base] dry_run=True
+[base] map_turn_patrol_5 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.35761702939596846, 'y_m': -0.5082919605254769, 'heading_rad': 0.7414158662526384}
+[map] navigate label=patrol_5 distance_m=0.528 heading_error_rad=0.556
+[base] dry_run=True
+[base] map_turn_patrol_5 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.35761702939596846, 'y_m': -0.5082919605254769, 'heading_rad': 0.7979645340172583}
+[map] navigate label=patrol_5 distance_m=0.528 heading_error_rad=0.500
+[base] dry_run=True
+[base] map_turn_patrol_5 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.35761702939596846, 'y_m': -0.5082919605254769, 'heading_rad': 0.8545132017818782}
+[map] navigate label=patrol_5 distance_m=0.528 heading_error_rad=0.443
+[base] dry_run=True
+[base] map_turn_patrol_5 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.35761702939596846, 'y_m': -0.5082919605254769, 'heading_rad': 0.911061869546498}
+[map] navigate label=patrol_5 distance_m=0.528 heading_error_rad=0.387
+[base] dry_run=True
+[base] map_turn_patrol_5 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.35761702939596846, 'y_m': -0.5082919605254769, 'heading_rad': 0.9676105373111179}
+[map] navigate label=patrol_5 distance_m=0.528 heading_error_rad=0.330
+[base] dry_run=True
+[base] map_turn_patrol_5 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.35761702939596846, 'y_m': -0.5082919605254769, 'heading_rad': 1.0241592050757378}
+[map] navigate label=patrol_5 distance_m=0.528 heading_error_rad=0.274
+[base] dry_run=True
+[base] map_turn_patrol_5 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.35761702939596846, 'y_m': -0.5082919605254769, 'heading_rad': 1.0807078728403576}
+[map] navigate label=patrol_5 distance_m=0.528 heading_error_rad=0.217
+[base] dry_run=True
+[base] map_turn_patrol_5 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.35761702939596846, 'y_m': -0.5082919605254769, 'heading_rad': 1.1372565406049775}
+[map] navigate label=patrol_5 distance_m=0.528 heading_error_rad=0.160
+[base] dry_run=True
+[base] map_turn_patrol_5 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.35761702939596846, 'y_m': -0.5082919605254769, 'heading_rad': 1.1938052083695974}
+[map] navigate label=patrol_5 distance_m=0.528 heading_error_rad=0.104
+[base] dry_run=True
+[base] map_forward_patrol_5 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.37234201150315194, 'y_m': -0.4711009010898662, 'heading_rad': 1.1938052083695974}
+[map] navigate label=patrol_5 distance_m=0.488 heading_error_rad=0.112
+[base] dry_run=True
+[base] map_forward_patrol_5 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.3870669936103354, 'y_m': -0.4339098416542555, 'heading_rad': 1.1938052083695974}
+[map] navigate label=patrol_5 distance_m=0.448 heading_error_rad=0.122
+[base] dry_run=True
+[base] map_turn_patrol_5 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.3870669936103354, 'y_m': -0.4339098416542555, 'heading_rad': 1.2503538761342172}
+[map] navigate label=patrol_5 distance_m=0.448 heading_error_rad=0.066
+[base] dry_run=True
+[base] map_forward_patrol_5 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.3996664543963396, 'y_m': -0.3959459958545747, 'heading_rad': 1.2503538761342172}
+[map] navigate label=patrol_5 distance_m=0.408 heading_error_rad=0.072
+[base] dry_run=True
+[base] map_forward_patrol_5 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.41226591518234373, 'y_m': -0.35798215005489387, 'heading_rad': 1.2503538761342172}
+[map] navigate label=patrol_5 distance_m=0.369 heading_error_rad=0.080
+[base] dry_run=True
+[base] map_forward_patrol_5 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.4248653759683479, 'y_m': -0.32001830425521305, 'heading_rad': 1.2503538761342172}
+[map] navigate label=patrol_5 distance_m=0.329 heading_error_rad=0.090
+[base] dry_run=True
+[base] map_forward_patrol_5 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.43746483675435205, 'y_m': -0.28205445845553223, 'heading_rad': 1.2503538761342172}
+[map] navigate label=patrol_5 distance_m=0.289 heading_error_rad=0.102
+[base] dry_run=True
+[base] map_forward_patrol_5 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.4500642975403562, 'y_m': -0.2440906126558514, 'heading_rad': 1.2503538761342172}
+[map] navigate label=patrol_5 distance_m=0.249 heading_error_rad=0.119
+[base] dry_run=True
+[base] map_forward_patrol_5 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.46266375832636036, 'y_m': -0.2061267668561706, 'heading_rad': 1.2503538761342172}
+[map] navigate label=patrol_5 distance_m=0.209 heading_error_rad=0.141
+[base] dry_run=True
+[base] map_turn_patrol_5 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.46266375832636036, 'y_m': -0.2061267668561706, 'heading_rad': 1.306902543898837}
+[map] navigate label=patrol_5 distance_m=0.209 heading_error_rad=0.085
+[base] dry_run=True
+[base] map_forward_patrol_5 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.4730974185777445, 'y_m': -0.16751150130278242, 'heading_rad': 1.306902543898837}
+[map] navigate label=patrol_5 distance_m=0.170 heading_error_rad=0.105
+[base] dry_run=True
+[base] map_forward_patrol_5 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.48353107882912866, 'y_m': -0.12889623574939424, 'heading_rad': 1.306902543898837}
+[base] stop
+[map] destination reached label=patrol_5 distance_m=0.130
+[map] patrol index=6 complete=False
+[map] navigate label=patrol_6 distance_m=0.500 heading_error_rad=1.574
+[base] dry_run=True
+[base] map_turn_patrol_6 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.48353107882912866, 'y_m': -0.12889623574939424, 'heading_rad': 1.363451211663457}
+[map] navigate label=patrol_6 distance_m=0.500 heading_error_rad=1.518
+[base] dry_run=True
+[base] map_turn_patrol_6 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.48353107882912866, 'y_m': -0.12889623574939424, 'heading_rad': 1.4199998794280768}
+[map] navigate label=patrol_6 distance_m=0.500 heading_error_rad=1.461
+[base] dry_run=True
+[base] map_turn_patrol_6 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.48353107882912866, 'y_m': -0.12889623574939424, 'heading_rad': 1.4765485471926967}
+[map] navigate label=patrol_6 distance_m=0.500 heading_error_rad=1.405
+[base] dry_run=True
+[base] map_turn_patrol_6 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.48353107882912866, 'y_m': -0.12889623574939424, 'heading_rad': 1.5330972149573165}
+[map] navigate label=patrol_6 distance_m=0.500 heading_error_rad=1.348
+[base] dry_run=True
+[base] map_turn_patrol_6 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.48353107882912866, 'y_m': -0.12889623574939424, 'heading_rad': 1.5896458827219364}
+[map] navigate label=patrol_6 distance_m=0.500 heading_error_rad=1.291
+[base] dry_run=True
+[base] map_turn_patrol_6 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.48353107882912866, 'y_m': -0.12889623574939424, 'heading_rad': 1.6461945504865563}
+[map] navigate label=patrol_6 distance_m=0.500 heading_error_rad=1.235
+[base] dry_run=True
+[base] map_turn_patrol_6 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.48353107882912866, 'y_m': -0.12889623574939424, 'heading_rad': 1.7027432182511761}
+[map] navigate label=patrol_6 distance_m=0.500 heading_error_rad=1.178
+[base] dry_run=True
+[base] map_turn_patrol_6 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.48353107882912866, 'y_m': -0.12889623574939424, 'heading_rad': 1.759291886015796}
+[map] navigate label=patrol_6 distance_m=0.500 heading_error_rad=1.122
+[base] dry_run=True
+[base] map_turn_patrol_6 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.48353107882912866, 'y_m': -0.12889623574939424, 'heading_rad': 1.8158405537804159}
+[map] navigate label=patrol_6 distance_m=0.500 heading_error_rad=1.065
+[base] dry_run=True
+[base] map_turn_patrol_6 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.48353107882912866, 'y_m': -0.12889623574939424, 'heading_rad': 1.8723892215450357}
+[map] navigate label=patrol_6 distance_m=0.500 heading_error_rad=1.009
+[base] dry_run=True
+[base] map_turn_patrol_6 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.48353107882912866, 'y_m': -0.12889623574939424, 'heading_rad': 1.9289378893096556}
+[map] navigate label=patrol_6 distance_m=0.500 heading_error_rad=0.952
+[base] dry_run=True
+[base] map_turn_patrol_6 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.48353107882912866, 'y_m': -0.12889623574939424, 'heading_rad': 1.9854865570742755}
+[map] navigate label=patrol_6 distance_m=0.500 heading_error_rad=0.896
+[base] dry_run=True
+[base] map_turn_patrol_6 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.48353107882912866, 'y_m': -0.12889623574939424, 'heading_rad': 2.0420352248388953}
+[map] navigate label=patrol_6 distance_m=0.500 heading_error_rad=0.839
+[base] dry_run=True
+[base] map_turn_patrol_6 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.48353107882912866, 'y_m': -0.12889623574939424, 'heading_rad': 2.098583892603515}
+[map] navigate label=patrol_6 distance_m=0.500 heading_error_rad=0.782
+[base] dry_run=True
+[base] map_turn_patrol_6 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.48353107882912866, 'y_m': -0.12889623574939424, 'heading_rad': 2.155132560368135}
+[map] navigate label=patrol_6 distance_m=0.500 heading_error_rad=0.726
+[base] dry_run=True
+[base] map_turn_patrol_6 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.48353107882912866, 'y_m': -0.12889623574939424, 'heading_rad': 2.211681228132755}
+[map] navigate label=patrol_6 distance_m=0.500 heading_error_rad=0.669
+[base] dry_run=True
+[base] map_turn_patrol_6 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.48353107882912866, 'y_m': -0.12889623574939424, 'heading_rad': 2.268229895897375}
+[map] navigate label=patrol_6 distance_m=0.500 heading_error_rad=0.613
+[base] dry_run=True
+[base] map_turn_patrol_6 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.48353107882912866, 'y_m': -0.12889623574939424, 'heading_rad': 2.3247785636619946}
+[map] navigate label=patrol_6 distance_m=0.500 heading_error_rad=0.556
+[base] dry_run=True
+[base] map_turn_patrol_6 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.48353107882912866, 'y_m': -0.12889623574939424, 'heading_rad': 2.3813272314266145}
+[map] navigate label=patrol_6 distance_m=0.500 heading_error_rad=0.500
+[base] dry_run=True
+[base] map_turn_patrol_6 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.48353107882912866, 'y_m': -0.12889623574939424, 'heading_rad': 2.4378758991912344}
+[map] navigate label=patrol_6 distance_m=0.500 heading_error_rad=0.443
+[base] dry_run=True
+[base] map_turn_patrol_6 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.48353107882912866, 'y_m': -0.12889623574939424, 'heading_rad': 2.4944245669558542}
+[map] navigate label=patrol_6 distance_m=0.500 heading_error_rad=0.387
+[base] dry_run=True
+[base] map_turn_patrol_6 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.48353107882912866, 'y_m': -0.12889623574939424, 'heading_rad': 2.550973234720474}
+[map] navigate label=patrol_6 distance_m=0.500 heading_error_rad=0.330
+[base] dry_run=True
+[base] map_turn_patrol_6 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.48353107882912866, 'y_m': -0.12889623574939424, 'heading_rad': 2.607521902485094}
+[map] navigate label=patrol_6 distance_m=0.500 heading_error_rad=0.274
+[base] dry_run=True
+[base] map_turn_patrol_6 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.48353107882912866, 'y_m': -0.12889623574939424, 'heading_rad': 2.664070570249714}
+[map] navigate label=patrol_6 distance_m=0.500 heading_error_rad=0.217
+[base] dry_run=True
+[base] map_turn_patrol_6 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.48353107882912866, 'y_m': -0.12889623574939424, 'heading_rad': 2.7206192380143337}
+[map] navigate label=patrol_6 distance_m=0.500 heading_error_rad=0.160
+[base] dry_run=True
+[base] map_turn_patrol_6 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.48353107882912866, 'y_m': -0.12889623574939424, 'heading_rad': 2.7771679057789536}
+[map] navigate label=patrol_6 distance_m=0.500 heading_error_rad=0.104
+[base] dry_run=True
+[base] map_forward_patrol_6 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.4461579211307847, 'y_m': -0.11463976060107262, 'heading_rad': 2.7771679057789536}
+[map] navigate label=patrol_6 distance_m=0.461 heading_error_rad=0.113
+[base] dry_run=True
+[base] map_forward_patrol_6 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.4087847634324407, 'y_m': -0.10038328545275099, 'heading_rad': 2.7771679057789536}
+[map] navigate label=patrol_6 distance_m=0.421 heading_error_rad=0.124
+[base] dry_run=True
+[base] map_turn_patrol_6 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.4087847634324407, 'y_m': -0.10038328545275099, 'heading_rad': 2.8337165735435734}
+[map] navigate label=patrol_6 distance_m=0.421 heading_error_rad=0.067
+[base] dry_run=True
+[base] map_forward_patrol_6 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.3706655897716843, 'y_m': -0.08826187466765273, 'heading_rad': 2.8337165735435734}
+[map] navigate label=patrol_6 distance_m=0.381 heading_error_rad=0.074
+[base] dry_run=True
+[base] map_forward_patrol_6 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.3325464161109279, 'y_m': -0.07614046388255447, 'heading_rad': 2.8337165735435734}
+[map] navigate label=patrol_6 distance_m=0.341 heading_error_rad=0.083
+[base] dry_run=True
+[base] map_forward_patrol_6 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.2944272424501715, 'y_m': -0.0640190530974562, 'heading_rad': 2.8337165735435734}
+[map] navigate label=patrol_6 distance_m=0.301 heading_error_rad=0.094
+[base] dry_run=True
+[base] map_forward_patrol_6 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.2563080687894151, 'y_m': -0.05189764231235794, 'heading_rad': 2.8337165735435734}
+[map] navigate label=patrol_6 distance_m=0.262 heading_error_rad=0.108
+[base] dry_run=True
+[base] map_forward_patrol_6 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.2181888951286587, 'y_m': -0.039776231527259676, 'heading_rad': 2.8337165735435734}
+[map] navigate label=patrol_6 distance_m=0.222 heading_error_rad=0.128
+[base] dry_run=True
+[base] map_turn_patrol_6 direction=left speed=0.15 seconds=0.12
+[map] motion direction=left speed=0.15 effective_seconds=0.12 pose={'x_m': 0.2181888951286587, 'y_m': -0.039776231527259676, 'heading_rad': 2.8902652413081933}
+[map] navigate label=patrol_6 distance_m=0.222 heading_error_rad=0.071
+[base] dry_run=True
+[base] map_forward_patrol_6 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.1794455686834579, 'y_m': -0.029828636040881804, 'heading_rad': 2.8902652413081933}
+[map] navigate label=patrol_6 distance_m=0.182 heading_error_rad=0.087
+[base] dry_run=True
+[base] map_forward_patrol_6 direction=forward speed=0.2 seconds=0.2
+[map] motion direction=forward speed=0.2 effective_seconds=0.2 pose={'x_m': 0.1407022422382571, 'y_m': -0.01988104055450393, 'heading_rad': 2.8902652413081933}
+[base] stop
+[map] destination reached label=patrol_6 distance_m=0.142
+[map] patrol index=7 complete=True
+[fsm] PATROLLING --PATROL_COMPLETE--> PLANNING
+[fsm] PLANNING --MISSION_COMPLETE--> DONE
+[fsm] terminal=DONE context={'vague_map': {'robot_pose': {'x_m': 0.1407022422382571, 'y_m': -0.01988104055450393, 'heading_rad': 2.8902652413081933}, 'bin_marker_position': {'x_m': 0.0, 'y_m': -0.75}, 'bin_docking_pose': {'x_m': 0.0, 'y_m': -0.5, 'heading_rad': -1.57079632679}, 'patrol_index': 7, 'patrol_complete': True, 'initial_scan_complete': True, 'selected_can_id': None, 'known_cans': []}, 'distance_to_target': None, 'grabbed': False, 'completed_pickups': 1, 'target_found': False, 'obstacle_found': False, 'target_type': 'can', 'last_error': None, 'retry_counts': {}, 'metrics': {'state_seconds': {'IDLE': 3.415544033050537, 'INITIALIZING': 0.07011842727661133, 'PLANNING': 0.08086442947387695, 'SEARCHING': 0.02739858627319336, 'ALIGNING': 0.05172848701477051, 'APPROACHING': 0.05973029136657715, 'FINAL_VERIFY': 0.11071324348449707, 'FINALIZING': 0.2661740779876709, 'MAP_NAVIGATING': 0.024050235748291016, 'PATROLLING': 10.869041919708252}, 'detector_calls': {'can': 5, 'bin': 5}, 'detector_seconds': {'can': 0.022953271865844727, 'bin': 0.00028777122497558594}}}
+[fsm] stop_all
+[base] stop
+[arm] pose safe_home
+[arm] dry_run=True
+[arm] safe_home servo=5 angle=0 speed=85
+[arm] dry_run=True
+[arm] safe_home servo=4 angle=0 speed=85
+[arm] dry_run=True
+[arm] safe_home servo=3 angle=0 speed=85
+[arm] dry_run=True
+[arm] safe_home servo=2 angle=0 speed=85
+[arm] dry_run=True
+[arm] safe_home servo=1 angle=-16 speed=85
+[depth] stop
+[result] True
+[integration] SUCCESS elapsed=11.7s

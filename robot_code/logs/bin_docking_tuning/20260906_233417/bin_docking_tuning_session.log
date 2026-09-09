@@ -1,0 +1,721 @@
+[bin-tune] session=20260906_233417 project=/workspace/robot_code/temp_car
+
+>>> start_live
+[base] stop
+[depth] stop
+[camera] starting camera-only mode 320x240 (DepthNet disabled)
+[warmup] camera-only frame 1/2 ready
+[warmup] camera-only frame 2/2 ready
+[depth] started enabled=False
+[tag] cv2=4.1.1
+[tag] has pupil_apriltags=True
+[tag] has aruco=False
+[tag] has ArucoDetector=False
+[tag] has DICT_APRILTAG_36h11=False
+[tag] calibration loaded /workspace/robot_code/temp_car/calibration_320.yaml
+[tag] detector loaded backend=pupil_apriltags family=tag36h11 dictionary=DICT_APRILTAG_36h11
+[tag] no detections
+[result] {'started': True, 'live': True, 'recording': False, 'frame_bytes': 29026, 'dry_run': {'camera': False, 'base': False, 'arm': True}}
+
+>>> run_full_pipeline
+[base] stop
+[camera] camera-only stopped
+[depth] stop
+[bin-tune] incidental can mapping disabled for bin-only stages
+[camera] starting camera-only mode 320x240 (DepthNet disabled)
+[warmup] camera-only frame 1/2 ready
+[warmup] camera-only frame 2/2 ready
+[depth] started enabled=False
+[tag] cv2=4.1.1
+[tag] has pupil_apriltags=True
+[tag] has aruco=False
+[tag] has ArucoDetector=False
+[tag] has DICT_APRILTAG_36h11=False
+[tag] calibration loaded /workspace/robot_code/temp_car/calibration_320.yaml
+[tag] detector loaded backend=pupil_apriltags family=tag36h11 dictionary=DICT_APRILTAG_36h11
+[base] stop
+[bin-tune] prepared full bin pipeline state=SEARCHING grabbed=True
+
+>>> one-click bin pipeline log=/workspace/robot_code/temp_car/logs/bin_docking_tuning/20260906_233417/one_click_full_233611.log
+[result] {'started': True, 'from': 'SEARCHING', 'through': 'FINALIZING', 'live': True, 'recording': False, 'log': '/workspace/robot_code/temp_car/logs/bin_docking_tuning/20260906_233417/one_click_full_233611.log'}
+[tag] backend=pupil_apriltags id=0 center=(252.9,152.8) error_x=0.290 yaw_deg=-11.59 height=30.5px height_norm=0.127 margin=29.23 distance=0.8821019614189965
+[base] stop
+[fsm] SEARCHING --TARGET_FOUND--> ALIGNING
+[tag] backend=pupil_apriltags id=0 center=(252.9,152.8) error_x=0.290 yaw_deg=-11.62 height=30.5px height_norm=0.127 margin=28.87 distance=0.881625794642134
+[base] Robot connected
+[base] continuous start label=align_bin direction=right requested_speed=0.15 effective_speed=0.15
+[visual-turn] label=align_bin direction=right speed=0.15
+[tag] backend=pupil_apriltags id=0 center=(252.9,152.8) error_x=0.290 yaw_deg=-11.58 height=30.6px height_norm=0.127 margin=28.61 distance=0.8822925278447364
+[tag] backend=pupil_apriltags id=0 center=(252.9,152.8) error_x=0.290 yaw_deg=-11.58 height=30.5px height_norm=0.127 margin=28.82 distance=0.8811494225436305
+[tag] backend=pupil_apriltags id=0 center=(252.8,152.6) error_x=0.290 yaw_deg=-11.76 height=30.4px height_norm=0.127 margin=29.07 distance=0.8807879209197617
+[tag] backend=pupil_apriltags id=0 center=(252.6,152.6) error_x=0.289 yaw_deg=-11.45 height=30.4px height_norm=0.127 margin=29.00 distance=0.8835225775458213
+[tag] backend=pupil_apriltags id=0 center=(251.9,152.4) error_x=0.287 yaw_deg=-11.61 height=29.9px height_norm=0.125 margin=29.45 distance=0.8819267577008375
+[tag] backend=pupil_apriltags id=0 center=(251.5,152.2) error_x=0.286 yaw_deg=-11.7 height=29.9px height_norm=0.125 margin=29.23 distance=0.8822067343488808
+[tag] backend=pupil_apriltags id=0 center=(250.7,152.1) error_x=0.283 yaw_deg=-12.03 height=29.9px height_norm=0.125 margin=29.82 distance=0.8798374087104213
+[tag] backend=pupil_apriltags id=0 center=(250.0,151.9) error_x=0.281 yaw_deg=-11.6 height=30.0px height_norm=0.125 margin=29.11 distance=0.8811330023925814
+[tag] backend=pupil_apriltags id=0 center=(249.0,151.9) error_x=0.278 yaw_deg=-11.43 height=30.0px height_norm=0.125 margin=29.08 distance=0.8814649387347592
+[tag] backend=pupil_apriltags id=0 center=(248.0,151.8) error_x=0.275 yaw_deg=-11.37 height=30.0px height_norm=0.125 margin=29.58 distance=0.8813166672815151
+[tag] backend=pupil_apriltags id=0 center=(247.1,151.7) error_x=0.272 yaw_deg=-11.87 height=29.8px height_norm=0.124 margin=29.22 distance=0.8773495117881371
+[tag] backend=pupil_apriltags id=0 center=(246.2,151.7) error_x=0.269 yaw_deg=-11.42 height=29.9px height_norm=0.124 margin=29.47 distance=0.8771222619460135
+[tag] backend=pupil_apriltags id=0 center=(244.3,151.6) error_x=0.263 yaw_deg=-11.39 height=29.7px height_norm=0.124 margin=29.17 distance=0.8732512777245722
+[tag] backend=pupil_apriltags id=0 center=(243.5,151.7) error_x=0.261 yaw_deg=-10.56 height=29.8px height_norm=0.124 margin=29.92 distance=0.8784484062947858
+[tag] backend=pupil_apriltags id=0 center=(242.5,151.6) error_x=0.258 yaw_deg=-10.8 height=29.7px height_norm=0.124 margin=29.87 distance=0.8736473686640218
+[tag] backend=pupil_apriltags id=0 center=(241.4,151.7) error_x=0.255 yaw_deg=-10.11 height=29.6px height_norm=0.123 margin=30.15 distance=0.8736270225343115
+[tag] backend=pupil_apriltags id=0 center=(240.6,151.5) error_x=0.252 yaw_deg=-10.23 height=29.7px height_norm=0.124 margin=29.64 distance=0.87057718778969
+[tag] backend=pupil_apriltags id=0 center=(238.8,151.4) error_x=0.246 yaw_deg=-9.81 height=29.9px height_norm=0.124 margin=29.50 distance=0.8712893362880696
+[tag] backend=pupil_apriltags id=0 center=(237.8,151.5) error_x=0.243 yaw_deg=-9.96 height=29.9px height_norm=0.125 margin=29.97 distance=0.8693272953663056
+[tag] backend=pupil_apriltags id=0 center=(236.9,151.4) error_x=0.240 yaw_deg=-10.47 height=29.9px height_norm=0.125 margin=29.49 distance=0.8685105465613715
+[tag] backend=pupil_apriltags id=0 center=(235.9,151.4) error_x=0.237 yaw_deg=-10.6 height=30.0px height_norm=0.125 margin=29.41 distance=0.8643142224954475
+[tag] backend=pupil_apriltags id=0 center=(235.0,151.3) error_x=0.234 yaw_deg=-10.49 height=30.1px height_norm=0.125 margin=30.55 distance=0.8628735140199736
+[tag] backend=pupil_apriltags id=0 center=(233.0,151.2) error_x=0.228 yaw_deg=-9.89 height=30.3px height_norm=0.126 margin=30.28 distance=0.8651916551083412
+[tag] backend=pupil_apriltags id=0 center=(231.8,151.2) error_x=0.224 yaw_deg=-9.54 height=30.4px height_norm=0.126 margin=30.15 distance=0.8624453663593125
+[tag] backend=pupil_apriltags id=0 center=(230.9,151.2) error_x=0.222 yaw_deg=-9.4 height=30.3px height_norm=0.126 margin=30.22 distance=0.8614679064457398
+[tag] backend=pupil_apriltags id=0 center=(230.0,151.2) error_x=0.219 yaw_deg=-9.07 height=30.4px height_norm=0.126 margin=30.65 distance=0.8628987569345627
+[tag] backend=pupil_apriltags id=0 center=(229.1,151.2) error_x=0.216 yaw_deg=-9.01 height=30.3px height_norm=0.126 margin=30.62 distance=0.8604043023180687
+[tag] backend=pupil_apriltags id=0 center=(227.1,151.3) error_x=0.210 yaw_deg=-9.53 height=30.2px height_norm=0.126 margin=30.32 distance=0.8557483097754738
+[tag] backend=pupil_apriltags id=0 center=(226.2,151.3) error_x=0.207 yaw_deg=-9.35 height=30.2px height_norm=0.126 margin=30.36 distance=0.854708286995022
+[tag] backend=pupil_apriltags id=0 center=(225.3,151.4) error_x=0.204 yaw_deg=-9.1 height=30.0px height_norm=0.125 margin=30.10 distance=0.8546288243037833
+[tag] backend=pupil_apriltags id=0 center=(224.5,151.2) error_x=0.202 yaw_deg=-8.28 height=30.2px height_norm=0.126 margin=30.34 distance=0.8557622146428885
+[tag] backend=pupil_apriltags id=0 center=(223.6,151.1) error_x=0.199 yaw_deg=-8.7 height=30.3px height_norm=0.126 margin=30.45 distance=0.8555010033110709
+[tag] backend=pupil_apriltags id=0 center=(222.0,151.1) error_x=0.194 yaw_deg=-7.63 height=30.3px height_norm=0.126 margin=30.41 distance=0.8569926700732385
+[tag] backend=pupil_apriltags id=0 center=(221.1,151.0) error_x=0.191 yaw_deg=-7.09 height=30.3px height_norm=0.126 margin=30.54 distance=0.8562751522653932
+[tag] backend=pupil_apriltags id=0 center=(220.5,150.9) error_x=0.189 yaw_deg=-7.2 height=30.4px height_norm=0.127 margin=30.31 distance=0.8516188799263616
+[tag] backend=pupil_apriltags id=0 center=(219.7,150.9) error_x=0.187 yaw_deg=-7.81 height=30.4px height_norm=0.127 margin=30.14 distance=0.8497423283991833
+[tag] backend=pupil_apriltags id=0 center=(218.9,150.9) error_x=0.184 yaw_deg=-7.06 height=30.3px height_norm=0.126 margin=30.57 distance=0.8509345065796445
+[tag] backend=pupil_apriltags id=0 center=(217.9,150.8) error_x=0.181 yaw_deg=-7.88 height=30.3px height_norm=0.126 margin=30.95 distance=0.848176957451934
+[tag] backend=pupil_apriltags id=0 center=(215.9,150.8) error_x=0.175 yaw_deg=-8.04 height=30.2px height_norm=0.126 margin=31.03 distance=0.8460162653359007
+[tag] backend=pupil_apriltags id=0 center=(215.0,150.7) error_x=0.172 yaw_deg=-8.1 height=30.1px height_norm=0.126 margin=31.24 distance=0.8433417580695709
+[tag] backend=pupil_apriltags id=0 center=(214.0,150.6) error_x=0.169 yaw_deg=-7.85 height=30.0px height_norm=0.125 margin=31.13 distance=0.8435029723192148
+[tag] backend=pupil_apriltags id=0 center=(213.2,150.5) error_x=0.166 yaw_deg=-9.35 height=29.8px height_norm=0.124 margin=30.97 distance=0.8349057692174106
+[tag] backend=pupil_apriltags id=0 center=(212.3,150.5) error_x=0.163 yaw_deg=-8.41 height=29.7px height_norm=0.124 margin=31.01 distance=0.8342555258427556
+[tag] backend=pupil_apriltags id=0 center=(210.6,150.6) error_x=0.158 yaw_deg=-6.16 height=29.8px height_norm=0.124 margin=30.88 distance=0.8422901825889807
+[tag] backend=pupil_apriltags id=0 center=(209.7,150.5) error_x=0.155 yaw_deg=-7.87 height=29.7px height_norm=0.124 margin=30.79 distance=0.8374948292557681
+[tag] backend=pupil_apriltags id=0 center=(208.8,150.5) error_x=0.152 yaw_deg=-8.56 height=29.6px height_norm=0.123 margin=31.05 distance=0.8317340321924668
+[tag] backend=pupil_apriltags id=0 center=(207.9,150.5) error_x=0.150 yaw_deg=-8.61 height=29.6px height_norm=0.123 margin=31.45 distance=0.830111526231516
+[tag] backend=pupil_apriltags id=0 center=(206.9,150.5) error_x=0.147 yaw_deg=-7.77 height=29.5px height_norm=0.123 margin=31.50 distance=0.8302729394162932
+[tag] backend=pupil_apriltags id=0 center=(205.4,150.4) error_x=0.142 yaw_deg=-8.86 height=29.4px height_norm=0.123 margin=31.45 distance=0.8246577032517868
+[tag] backend=pupil_apriltags id=0 center=(204.4,150.5) error_x=0.139 yaw_deg=-8.7 height=29.5px height_norm=0.123 margin=31.89 distance=0.8245796891624291
+[tag] backend=pupil_apriltags id=0 center=(203.5,150.5) error_x=0.136 yaw_deg=-8.88 height=29.5px height_norm=0.123 margin=31.45 distance=0.8217667627912981
+[tag] backend=pupil_apriltags id=0 center=(202.5,150.5) error_x=0.133 yaw_deg=-7.79 height=29.6px height_norm=0.124 margin=31.29 distance=0.827744769481498
+[tag] backend=pupil_apriltags id=0 center=(201.6,150.5) error_x=0.130 yaw_deg=-7.27 height=29.5px height_norm=0.123 margin=31.31 distance=0.8247248495407684
+[tag] backend=pupil_apriltags id=0 center=(200.6,150.6) error_x=0.127 yaw_deg=-6.81 height=29.8px height_norm=0.124 margin=31.14 distance=0.8253031684326069
+[tag] backend=pupil_apriltags id=0 center=(198.7,150.7) error_x=0.121 yaw_deg=-7.24 height=29.8px height_norm=0.124 margin=31.12 distance=0.8236593084095339
+[tag] backend=pupil_apriltags id=0 center=(197.6,150.6) error_x=0.117 yaw_deg=-6.8 height=29.8px height_norm=0.124 margin=31.31 distance=0.8245705103798125
+[tag] backend=pupil_apriltags id=0 center=(196.6,150.5) error_x=0.114 yaw_deg=-7.46 height=29.6px height_norm=0.123 margin=31.40 distance=0.8205556443758221
+[tag] backend=pupil_apriltags id=0 center=(195.5,150.5) error_x=0.111 yaw_deg=-6.63 height=29.7px height_norm=0.124 margin=31.30 distance=0.822948446614398
+[tag] backend=pupil_apriltags id=0 center=(194.4,150.5) error_x=0.108 yaw_deg=-7.63 height=29.6px height_norm=0.123 margin=31.74 distance=0.8186619859149129
+[tag] backend=pupil_apriltags id=0 center=(193.4,150.5) error_x=0.104 yaw_deg=-6.95 height=29.6px height_norm=0.123 margin=31.49 distance=0.8196982822268638
+[tag] backend=pupil_apriltags id=0 center=(191.5,150.5) error_x=0.098 yaw_deg=-6.53 height=29.6px height_norm=0.123 margin=31.57 distance=0.8165420239014012
+[tag] backend=pupil_apriltags id=0 center=(190.6,150.4) error_x=0.096 yaw_deg=-5.38 height=29.3px height_norm=0.122 margin=31.42 distance=0.8217318918432028
+[tag] backend=pupil_apriltags id=0 center=(189.7,150.5) error_x=0.093 yaw_deg=-5.33 height=29.7px height_norm=0.124 margin=31.27 distance=0.8240380436903232
+[tag] backend=pupil_apriltags id=0 center=(188.8,150.5) error_x=0.090 yaw_deg=-7.47 height=29.4px height_norm=0.123 margin=32.03 distance=0.8125353505931994
+[tag] backend=pupil_apriltags id=0 center=(188.0,150.7) error_x=0.088 yaw_deg=-7.27 height=29.6px height_norm=0.124 margin=31.38 distance=0.8133812638825743
+[tag] backend=pupil_apriltags id=0 center=(186.0,150.8) error_x=0.081 yaw_deg=-8.1 height=30.0px height_norm=0.125 margin=31.57 distance=0.8096988689388076
+[tag] backend=pupil_apriltags id=0 center=(184.7,150.9) error_x=0.077 yaw_deg=-8.74 height=30.0px height_norm=0.125 margin=31.48 distance=0.8049528879135722
+[map] motion direction=right speed=0.15 effective_seconds=2.651559829711914 pose={'x_m': 0.0, 'y_m': 0.0, 'heading_rad': 0.46278449342096106}
+[base] continuous stop label=align_bin elapsed=2.652s
+[base] stop
+[fsm] ALIGNING --TARGET_ALIGNED--> APPROACHING
+[tag] backend=pupil_apriltags id=0 center=(182.6,151.1) error_x=0.070 yaw_deg=-8.15 height=29.9px height_norm=0.125 margin=31.49 distance=0.8051354216926744
+[approach] target=bin mode=bbox_height bbox=0.125/0.17 bbox_ok=False depth_raw=n/a/0.17 depth_ok=False error_x=0.070
+[base] continuous start label=approach_bin_forward direction=forward requested_speed=0.6 effective_speed=0.6
+[tag] backend=pupil_apriltags id=0 center=(181.8,151.1) error_x=0.068 yaw_deg=-9.33 height=30.1px height_norm=0.126 margin=30.89 distance=0.8000490370758996
+[approach] target=bin mode=bbox_height bbox=0.126/0.17 bbox_ok=False depth_raw=n/a/0.17 depth_ok=False error_x=0.068
+[tag] backend=pupil_apriltags id=0 center=(181.7,151.1) error_x=0.068 yaw_deg=-8.92 height=30.0px height_norm=0.125 margin=31.24 distance=0.8013534308892507
+[approach] target=bin mode=bbox_height bbox=0.125/0.17 bbox_ok=False depth_raw=n/a/0.17 depth_ok=False error_x=0.068
+[tag] backend=pupil_apriltags id=0 center=(181.0,151.4) error_x=0.066 yaw_deg=-6.08 height=29.4px height_norm=0.122 margin=31.31 distance=0.7967486624123272
+[approach] target=bin mode=bbox_height bbox=0.122/0.17 bbox_ok=False depth_raw=n/a/0.17 depth_ok=False error_x=0.066
+[tag] backend=pupil_apriltags id=0 center=(181.1,152.5) error_x=0.066 yaw_deg=-7.15 height=29.2px height_norm=0.122 margin=31.37 distance=0.7862821880276496
+[approach] target=bin mode=bbox_height bbox=0.122/0.17 bbox_ok=False depth_raw=n/a/0.17 depth_ok=False error_x=0.066
+[tag] backend=pupil_apriltags id=0 center=(181.5,152.9) error_x=0.067 yaw_deg=-8.39 height=30.4px height_norm=0.126 margin=31.04 distance=0.7691851353859033
+[approach] target=bin mode=bbox_height bbox=0.126/0.17 bbox_ok=False depth_raw=n/a/0.17 depth_ok=False error_x=0.067
+[tag] backend=pupil_apriltags id=0 center=(181.8,153.0) error_x=0.068 yaw_deg=-7.62 height=30.3px height_norm=0.126 margin=31.16 distance=0.764999467825151
+[approach] target=bin mode=bbox_height bbox=0.126/0.17 bbox_ok=False depth_raw=n/a/0.17 depth_ok=False error_x=0.068
+[tag] backend=pupil_apriltags id=0 center=(182.3,154.2) error_x=0.070 yaw_deg=-8.54 height=30.7px height_norm=0.128 margin=30.64 distance=0.7506433586178479
+[approach] target=bin mode=bbox_height bbox=0.128/0.17 bbox_ok=False depth_raw=n/a/0.17 depth_ok=False error_x=0.070
+[tag] backend=pupil_apriltags id=0 center=(183.3,155.1) error_x=0.073 yaw_deg=-9.74 height=32.2px height_norm=0.134 margin=31.55 distance=0.7281680379698734
+[approach] target=bin mode=bbox_height bbox=0.134/0.17 bbox_ok=False depth_raw=n/a/0.17 depth_ok=False error_x=0.073
+[tag] backend=pupil_apriltags id=0 center=(183.8,156.0) error_x=0.074 yaw_deg=-7.12 height=32.6px height_norm=0.136 margin=31.31 distance=0.7248019800350459
+[approach] target=bin mode=bbox_height bbox=0.136/0.17 bbox_ok=False depth_raw=n/a/0.17 depth_ok=False error_x=0.074
+[tag] backend=pupil_apriltags id=0 center=(184.0,156.4) error_x=0.075 yaw_deg=-7.21 height=33.6px height_norm=0.140 margin=31.44 distance=0.71213472919164
+[approach] target=bin mode=bbox_height bbox=0.140/0.17 bbox_ok=False depth_raw=n/a/0.17 depth_ok=False error_x=0.075
+[tag] backend=pupil_apriltags id=0 center=(184.8,157.2) error_x=0.077 yaw_deg=-6.56 height=33.1px height_norm=0.138 margin=31.46 distance=0.7024321588099879
+[approach] target=bin mode=bbox_height bbox=0.138/0.17 bbox_ok=False depth_raw=n/a/0.17 depth_ok=False error_x=0.077
+[tag] backend=pupil_apriltags id=0 center=(185.4,158.1) error_x=0.079 yaw_deg=-6.67 height=34.2px height_norm=0.143 margin=31.66 distance=0.6914692080983925
+[approach] target=bin mode=bbox_height bbox=0.143/0.17 bbox_ok=False depth_raw=n/a/0.17 depth_ok=False error_x=0.079
+[tag] backend=pupil_apriltags id=0 center=(185.5,158.7) error_x=0.080 yaw_deg=-7.64 height=34.5px height_norm=0.144 margin=31.96 distance=0.6777411509563712
+[approach] target=bin mode=bbox_height bbox=0.144/0.17 bbox_ok=False depth_raw=n/a/0.17 depth_ok=False error_x=0.080
+[tag] backend=pupil_apriltags id=0 center=(186.4,160.5) error_x=0.083 yaw_deg=-8.41 height=35.3px height_norm=0.147 margin=32.95 distance=0.6537170140244766
+[approach] target=bin mode=bbox_height bbox=0.147/0.17 bbox_ok=False depth_raw=n/a/0.17 depth_ok=False error_x=0.083
+[tag] backend=pupil_apriltags id=0 center=(186.7,161.0) error_x=0.083 yaw_deg=-7.29 height=36.1px height_norm=0.150 margin=32.86 distance=0.6456076462034779
+[approach] target=bin mode=bbox_height bbox=0.150/0.17 bbox_ok=False depth_raw=n/a/0.17 depth_ok=False error_x=0.083
+[tag] backend=pupil_apriltags id=0 center=(187.0,162.5) error_x=0.084 yaw_deg=-7.57 height=36.1px height_norm=0.150 margin=33.37 distance=0.6371137343346622
+[approach] target=bin mode=bbox_height bbox=0.150/0.17 bbox_ok=False depth_raw=n/a/0.17 depth_ok=False error_x=0.084
+[tag] backend=pupil_apriltags id=0 center=(187.5,163.5) error_x=0.086 yaw_deg=-9.95 height=37.4px height_norm=0.156 margin=33.23 distance=0.6201346808032937
+[approach] target=bin mode=bbox_height bbox=0.156/0.17 bbox_ok=False depth_raw=n/a/0.17 depth_ok=False error_x=0.086
+[tag] backend=pupil_apriltags id=0 center=(188.5,163.8) error_x=0.089 yaw_deg=-9.19 height=37.6px height_norm=0.157 margin=33.06 distance=0.6160726428413175
+[approach] target=bin mode=bbox_height bbox=0.157/0.17 bbox_ok=False depth_raw=n/a/0.17 depth_ok=False error_x=0.089
+[tag] backend=pupil_apriltags id=0 center=(189.5,165.6) error_x=0.092 yaw_deg=-9.0 height=39.3px height_norm=0.164 margin=33.65 distance=0.5932307938695697
+[approach] target=bin mode=bbox_height bbox=0.164/0.17 bbox_ok=False depth_raw=n/a/0.17 depth_ok=False error_x=0.092
+[tag] backend=pupil_apriltags id=0 center=(190.3,167.0) error_x=0.095 yaw_deg=-9.24 height=39.5px height_norm=0.164 margin=33.61 distance=0.583282120174385
+[approach] target=bin mode=bbox_height bbox=0.164/0.17 bbox_ok=False depth_raw=n/a/0.17 depth_ok=False error_x=0.095
+[tag] backend=pupil_apriltags id=0 center=(191.0,168.3) error_x=0.097 yaw_deg=-9.26 height=40.2px height_norm=0.167 margin=33.60 distance=0.5717300575034053
+[approach] target=bin mode=bbox_height bbox=0.167/0.17 bbox_ok=False depth_raw=n/a/0.17 depth_ok=False error_x=0.097
+[tag] backend=pupil_apriltags id=0 center=(191.9,169.5) error_x=0.100 yaw_deg=-9.04 height=40.4px height_norm=0.169 margin=33.48 distance=0.5629398505203792
+[approach] target=bin mode=bbox_height bbox=0.169/0.17 bbox_ok=False depth_raw=n/a/0.17 depth_ok=False error_x=0.100
+[tag] backend=pupil_apriltags id=0 center=(192.7,171.2) error_x=0.102 yaw_deg=-10.05 height=41.3px height_norm=0.172 margin=33.68 distance=0.5527856494011294
+[approach] target=bin mode=bbox_height bbox=0.172/0.17 bbox_ok=True depth_raw=n/a/0.17 depth_ok=False error_x=0.102
+[map] motion direction=forward speed=0.6 effective_seconds=0.9196906089782715 pose={'x_m': 0.04259850450228268, 'y_m': 0.08538116410914512, 'heading_rad': 0.46278449342096106}
+[base] continuous stop label=approach_bin_forward elapsed=0.920s
+[base] stop
+[fsm] APPROACHING --TARGET_REACHED--> FINAL_VERIFY
+[tag] backend=pupil_apriltags id=0 center=(194.2,173.2) error_x=0.107 yaw_deg=-10.32 height=42.8px height_norm=0.178 margin=33.30 distance=0.5315266162924372
+[base] continuous start label=align_bin direction=right requested_speed=0.15 effective_speed=0.15
+[visual-turn] label=align_bin direction=right speed=0.15
+[tag] backend=pupil_apriltags id=0 center=(195.6,176.3) error_x=0.111 yaw_deg=-10.97 height=44.3px height_norm=0.185 margin=33.30 distance=0.5110875332929409
+[tag] backend=pupil_apriltags id=0 center=(195.9,176.5) error_x=0.112 yaw_deg=-10.83 height=44.6px height_norm=0.186 margin=33.12 distance=0.5054838641423863
+[tag] backend=pupil_apriltags id=0 center=(196.1,177.2) error_x=0.113 yaw_deg=-10.78 height=44.7px height_norm=0.186 margin=33.18 distance=0.5028273215891594
+[tag] backend=pupil_apriltags id=0 center=(195.7,176.9) error_x=0.112 yaw_deg=-10.94 height=44.5px height_norm=0.185 margin=33.74 distance=0.5056531854960795
+[tag] backend=pupil_apriltags id=0 center=(195.4,176.7) error_x=0.111 yaw_deg=-10.76 height=44.2px height_norm=0.184 margin=32.89 distance=0.5080085832024889
+[tag] backend=pupil_apriltags id=0 center=(194.7,176.7) error_x=0.108 yaw_deg=-10.48 height=44.1px height_norm=0.184 margin=33.51 distance=0.508802265525137
+[tag] backend=pupil_apriltags id=0 center=(194.2,176.7) error_x=0.107 yaw_deg=-10.62 height=44.2px height_norm=0.184 margin=33.11 distance=0.5071998730728541
+[tag] backend=pupil_apriltags id=0 center=(193.5,176.8) error_x=0.105 yaw_deg=-10.63 height=44.4px height_norm=0.185 margin=33.32 distance=0.5059137202662011
+[tag] backend=pupil_apriltags id=0 center=(192.6,177.1) error_x=0.102 yaw_deg=-10.99 height=44.5px height_norm=0.186 margin=33.14 distance=0.5052704358994814
+[tag] backend=pupil_apriltags id=0 center=(190.4,177.0) error_x=0.095 yaw_deg=-10.57 height=44.5px height_norm=0.186 margin=33.30 distance=0.5042398721196694
+[tag] backend=pupil_apriltags id=0 center=(189.2,177.1) error_x=0.091 yaw_deg=-10.84 height=44.7px height_norm=0.186 margin=33.51 distance=0.5039992794328663
+[tag] backend=pupil_apriltags id=0 center=(187.8,177.1) error_x=0.087 yaw_deg=-10.99 height=44.7px height_norm=0.186 margin=33.19 distance=0.5038450172101115
+[tag] backend=pupil_apriltags id=0 center=(186.4,177.0) error_x=0.082 yaw_deg=-10.99 height=44.7px height_norm=0.186 margin=33.09 distance=0.5038143040072092
+[tag] backend=pupil_apriltags id=0 center=(185.1,176.9) error_x=0.078 yaw_deg=-11.06 height=45.1px height_norm=0.188 margin=32.83 distance=0.5025243901215578
+[map] motion direction=right speed=0.15 effective_seconds=0.5731449127197266 pose={'x_m': 0.04259850450228268, 'y_m': 0.08538116410914512, 'heading_rad': 0.5628171516011151}
+[base] continuous stop label=align_bin elapsed=0.573s
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(182.0,176.8) error_x=0.069 yaw_deg=-10.88 height=45.2px height_norm=0.188 margin=33.22 distance=0.5010238798146632
+[base] stop
+[fsm] FINAL_VERIFY --SIDE_DOCK_REQUIRED--> BIN_SIDE_DOCKING
+[base] stop
+[exp2] phase=side_view_pose base_direction=left reference_base_angle_deg=90.00 servo1_fixed=70
+[arm] pose side_view_grabbing
+[arm] dry_run=True
+[arm] side_view_grabbing servo=5 angle=0 speed=85
+[arm] dry_run=True
+[arm] side_view_grabbing servo=4 angle=-55 speed=85
+[arm] dry_run=True
+[arm] side_view_grabbing servo=3 angle=45 speed=85
+[arm] dry_run=True
+[arm] side_view_grabbing servo=2 angle=60 speed=85
+[arm] dry_run=True
+[arm] side_view_grabbing servo=1 angle=70 speed=85
+[arm-position] side_view_grabbing dry_run=True; position wait skipped
+[base] exp2_side_entry_turn direction=left requested_speed=0.15 effective_speed=0.15 seconds=9.4
+[map] motion direction=left speed=0.15 effective_seconds=9.4 pose={'x_m': 0.04259850450228268, 'y_m': 0.08538116410914512, 'heading_rad': -1.007979175193885}
+[exp2] side entry direction=left angle_deg=90.00 speed=0.15 seconds=9.400
+[exp2] phase=camera_settle seconds=0.40 discard_frames=3
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[exp2] phase=geometry_alignment_ready
+[tag] backend=pupil_apriltags id=0 center=(184.6,164.0) error_x=0.077 yaw_deg=-8.33 height=38.6px height_norm=0.161 margin=32.95 distance=0.6055375751379026
+[exp2] phase=pulse_coarse_yaw center_error=0.077 raw_yaw_deg=-8.33 calibrated_yaw_deg=-2.33 target_yaw_deg=-6.00 yaw_source=calibrated_pnp corner_error_deg=9.56 height_norm=0.161
+[exp2] pulse stage coarse_yaw->center
+[base] stop
+[base] exp2_center_align direction=backward requested_speed=0.2 effective_speed=0.2 seconds=0.3
+[map] motion direction=backward speed=0.2 effective_seconds=0.3 pose={'x_m': 0.050844618861493836, 'y_m': 0.08017884751220375, 'heading_rad': -1.007979175193885}
+[exp2] pulse center correction direction=backward seconds=0.300; stage=center
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(180.7,161.6) error_x=0.065 yaw_deg=-5.14 height=37.5px height_norm=0.156 margin=33.25 distance=0.61857987632157
+[exp2] phase=pulse_center center_error=0.065 raw_yaw_deg=-5.14 calibrated_yaw_deg=0.86 target_yaw_deg=-6.00 yaw_source=calibrated_pnp corner_error_deg=7.78 height_norm=0.156
+[base] stop
+[base] exp2_center_align direction=backward requested_speed=0.2 effective_speed=0.2 seconds=0.3
+[map] motion direction=backward speed=0.2 effective_seconds=0.3 pose={'x_m': 0.05909073322070499, 'y_m': 0.07497653091526238, 'heading_rad': -1.007979175193885}
+[exp2] pulse center correction direction=backward seconds=0.300; stage=center
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(172.7,161.2) error_x=0.040 yaw_deg=-9.62 height=36.8px height_norm=0.153 margin=33.17 distance=0.6343986138786073
+[exp2] phase=pulse_center center_error=0.040 raw_yaw_deg=-9.62 calibrated_yaw_deg=-3.62 target_yaw_deg=-6.00 yaw_source=calibrated_pnp corner_error_deg=8.85 height_norm=0.153
+[base] stop
+[base] stop
+[exp2] stable frame 1/5
+[tag] backend=pupil_apriltags id=0 center=(172.6,161.5) error_x=0.039 yaw_deg=-10.38 height=37.0px height_norm=0.154 margin=33.28 distance=0.6335721255207213
+[exp2] phase=pulse_center center_error=0.039 raw_yaw_deg=-10.38 calibrated_yaw_deg=-4.38 target_yaw_deg=-6.00 yaw_source=calibrated_pnp corner_error_deg=9.24 height_norm=0.154
+[exp2] pulse stage center->final_yaw
+[base] stop
+[base] exp2_yaw_align direction=left requested_speed=0.15 effective_speed=0.15 seconds=0.4
+[map] motion direction=left speed=0.15 effective_seconds=0.4 pose={'x_m': 0.05909073322070499, 'y_m': 0.07497653091526238, 'heading_rad': -1.0748215720787786}
+[exp2] pulse yaw correction direction=left seconds=0.400
+[exp2] pulse stage=final_yaw axis=yaw
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(183.4,160.8) error_x=0.073 yaw_deg=-8.48 height=36.0px height_norm=0.150 margin=33.62 distance=0.6427603281925642
+[exp2] phase=pulse_final_yaw center_error=0.073 raw_yaw_deg=-8.48 calibrated_yaw_deg=-2.48 target_yaw_deg=-6.00 yaw_source=calibrated_pnp corner_error_deg=8.89 height_norm=0.150
+[exp2] pulse stage final_yaw->center
+[base] stop
+[base] exp2_center_align direction=backward requested_speed=0.2 effective_speed=0.2 seconds=0.3
+[map] motion direction=backward speed=0.2 effective_seconds=0.3 pose={'x_m': 0.06766590943275036, 'y_m': 0.07033661141893799, 'heading_rad': -1.0748215720787786}
+[exp2] pulse center correction direction=backward seconds=0.300; stage=center
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(182.3,158.5) error_x=0.070 yaw_deg=-8.9 height=35.6px height_norm=0.148 margin=33.43 distance=0.6710774521467401
+[exp2] phase=pulse_center center_error=0.070 raw_yaw_deg=-8.9 calibrated_yaw_deg=-2.9 target_yaw_deg=-6.00 yaw_source=calibrated_pnp corner_error_deg=9.48 height_norm=0.148
+[base] stop
+[base] exp2_center_align direction=backward requested_speed=0.2 effective_speed=0.2 seconds=0.3
+[map] motion direction=backward speed=0.2 effective_seconds=0.3 pose={'x_m': 0.07624108564479573, 'y_m': 0.0656966919226136, 'heading_rad': -1.0748215720787786}
+[exp2] pulse center correction direction=backward seconds=0.300; stage=center
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(181.8,156.4) error_x=0.068 yaw_deg=-4.91 height=33.5px height_norm=0.139 margin=33.32 distance=0.7051678558686468
+[exp2] phase=pulse_center center_error=0.068 raw_yaw_deg=-4.91 calibrated_yaw_deg=1.09 target_yaw_deg=-6.00 yaw_source=calibrated_pnp corner_error_deg=7.16 height_norm=0.139
+[base] stop
+[base] exp2_center_align direction=backward requested_speed=0.2 effective_speed=0.2 seconds=0.3
+[map] motion direction=backward speed=0.2 effective_seconds=0.3 pose={'x_m': 0.0848162618568411, 'y_m': 0.0610567724262892, 'heading_rad': -1.0748215720787786}
+[exp2] pulse center correction direction=backward seconds=0.300; stage=center
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(181.4,155.0) error_x=0.067 yaw_deg=-7.23 height=32.2px height_norm=0.134 margin=33.82 distance=0.724700597249652
+[exp2] phase=pulse_center center_error=0.067 raw_yaw_deg=-7.23 calibrated_yaw_deg=-1.23 target_yaw_deg=-6.00 yaw_source=calibrated_pnp corner_error_deg=6.59 height_norm=0.134
+[base] stop
+[base] exp2_center_align direction=backward requested_speed=0.2 effective_speed=0.2 seconds=0.3
+[map] motion direction=backward speed=0.2 effective_seconds=0.3 pose={'x_m': 0.09339143806888647, 'y_m': 0.0564168529299648, 'heading_rad': -1.0748215720787786}
+[exp2] pulse center correction direction=backward seconds=0.300; stage=center
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(180.5,153.4) error_x=0.064 yaw_deg=-3.36 height=31.5px height_norm=0.131 margin=33.60 distance=0.7621441560369451
+[exp2] phase=pulse_center center_error=0.064 raw_yaw_deg=-3.36 calibrated_yaw_deg=2.64 target_yaw_deg=-6.00 yaw_source=calibrated_pnp corner_error_deg=5.20 height_norm=0.131
+[base] stop
+[base] exp2_center_align direction=backward requested_speed=0.2 effective_speed=0.2 seconds=0.3
+[map] motion direction=backward speed=0.2 effective_seconds=0.3 pose={'x_m': 0.10196661428093184, 'y_m': 0.051776933433640406, 'heading_rad': -1.0748215720787786}
+[exp2] pulse center correction direction=backward seconds=0.300; stage=center
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(179.3,151.9) error_x=0.060 yaw_deg=-8.31 height=30.5px height_norm=0.127 margin=33.72 distance=0.7820747760486778
+[exp2] phase=pulse_center center_error=0.060 raw_yaw_deg=-8.31 calibrated_yaw_deg=-2.31 target_yaw_deg=-6.00 yaw_source=calibrated_pnp corner_error_deg=6.59 height_norm=0.127
+[base] stop
+[base] exp2_center_align direction=backward requested_speed=0.2 effective_speed=0.2 seconds=0.3
+[map] motion direction=backward speed=0.2 effective_seconds=0.3 pose={'x_m': 0.11054179049297722, 'y_m': 0.04713701393731601, 'heading_rad': -1.0748215720787786}
+[exp2] pulse center correction direction=backward seconds=0.300; stage=center
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(178.5,150.0) error_x=0.058 yaw_deg=-9.01 height=28.5px height_norm=0.119 margin=33.90 distance=0.8102544720557336
+[exp2] phase=pulse_center center_error=0.058 raw_yaw_deg=-9.01 calibrated_yaw_deg=-3.01 target_yaw_deg=-6.00 yaw_source=calibrated_pnp corner_error_deg=6.08 height_norm=0.119
+[base] stop
+[base] exp2_center_align direction=backward requested_speed=0.2 effective_speed=0.2 seconds=0.3
+[map] motion direction=backward speed=0.2 effective_seconds=0.3 pose={'x_m': 0.11911696670502259, 'y_m': 0.04249709444099161, 'heading_rad': -1.0748215720787786}
+[exp2] pulse center correction direction=backward seconds=0.300; stage=center
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(177.8,148.3) error_x=0.056 yaw_deg=-7.11 height=27.2px height_norm=0.113 margin=33.52 distance=0.8467382065240409
+[exp2] phase=pulse_center center_error=0.056 raw_yaw_deg=-7.11 calibrated_yaw_deg=-1.11 target_yaw_deg=-6.00 yaw_source=calibrated_pnp corner_error_deg=5.69 height_norm=0.113
+[base] stop
+[base] exp2_center_align direction=backward requested_speed=0.2 effective_speed=0.2 seconds=0.3
+[map] motion direction=backward speed=0.2 effective_seconds=0.3 pose={'x_m': 0.12769214291706796, 'y_m': 0.03785717494466721, 'heading_rad': -1.0748215720787786}
+[exp2] pulse center correction direction=backward seconds=0.300; stage=center
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(176.9,147.5) error_x=0.053 yaw_deg=-9.69 height=27.3px height_norm=0.114 margin=33.11 distance=0.868140492482384
+[exp2] phase=pulse_center center_error=0.053 raw_yaw_deg=-9.69 calibrated_yaw_deg=-3.69 target_yaw_deg=-6.00 yaw_source=calibrated_pnp corner_error_deg=5.57 height_norm=0.114
+[base] stop
+[base] exp2_center_align direction=backward requested_speed=0.2 effective_speed=0.2 seconds=0.3
+[map] motion direction=backward speed=0.2 effective_seconds=0.3 pose={'x_m': 0.13626731912911333, 'y_m': 0.033217255448342815, 'heading_rad': -1.0748215720787786}
+[exp2] pulse center correction direction=backward seconds=0.300; stage=center
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(174.8,145.9) error_x=0.046 yaw_deg=-6.24 height=26.1px height_norm=0.109 margin=33.57 distance=0.906413087499927
+[exp2] phase=pulse_center center_error=0.046 raw_yaw_deg=-6.24 calibrated_yaw_deg=-0.24 target_yaw_deg=-6.00 yaw_source=calibrated_pnp corner_error_deg=5.15 height_norm=0.109
+[base] stop
+[base] exp2_center_align direction=backward requested_speed=0.2 effective_speed=0.2 seconds=0.3
+[map] motion direction=backward speed=0.2 effective_seconds=0.3 pose={'x_m': 0.1448424953411587, 'y_m': 0.028577335952018418, 'heading_rad': -1.0748215720787786}
+[exp2] pulse center correction direction=backward seconds=0.300; stage=center
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(174.7,143.6) error_x=0.046 yaw_deg=-4.48 height=25.8px height_norm=0.107 margin=33.70 distance=0.9563649726583648
+[exp2] phase=pulse_center center_error=0.046 raw_yaw_deg=-4.48 calibrated_yaw_deg=1.52 target_yaw_deg=-6.00 yaw_source=calibrated_pnp corner_error_deg=3.77 height_norm=0.107
+[base] stop
+[base] exp2_center_align direction=backward requested_speed=0.2 effective_speed=0.2 seconds=0.3
+[map] motion direction=backward speed=0.2 effective_seconds=0.3 pose={'x_m': 0.15341767155320407, 'y_m': 0.02393741645569402, 'heading_rad': -1.0748215720787786}
+[exp2] pulse center correction direction=backward seconds=0.300; stage=center
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(174.1,142.9) error_x=0.044 yaw_deg=-9.85 height=24.5px height_norm=0.102 margin=33.66 distance=0.9631064934000805
+[exp2] phase=pulse_center center_error=0.044 raw_yaw_deg=-9.85 calibrated_yaw_deg=-3.85 target_yaw_deg=-6.00 yaw_source=calibrated_pnp corner_error_deg=4.99 height_norm=0.102
+[base] stop
+[base] exp2_center_align direction=backward requested_speed=0.2 effective_speed=0.2 seconds=0.3
+[map] motion direction=backward speed=0.2 effective_seconds=0.3 pose={'x_m': 0.16199284776524944, 'y_m': 0.019297496959369623, 'heading_rad': -1.0748215720787786}
+[exp2] pulse center correction direction=backward seconds=0.300; stage=center
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(162.5,141.4) error_x=0.008 yaw_deg=-2.63 height=25.9px height_norm=0.108 margin=31.87 distance=0.9225980658809585
+[exp2] phase=pulse_center center_error=0.008 raw_yaw_deg=-2.63 calibrated_yaw_deg=3.37 target_yaw_deg=-6.00 yaw_source=calibrated_pnp corner_error_deg=2.96 height_norm=0.108
+[base] stop
+[base] stop
+[exp2] stable frame 1/5
+[tag] backend=pupil_apriltags id=0 center=(160.4,146.7) error_x=0.001 yaw_deg=-5.61 height=27.8px height_norm=0.116 margin=27.53 distance=0.8776131854622543
+[exp2] phase=pulse_center center_error=0.001 raw_yaw_deg=-5.61 calibrated_yaw_deg=0.39 target_yaw_deg=-6.00 yaw_source=calibrated_pnp corner_error_deg=4.60 height_norm=0.116
+[base] stop
+[base] stop
+[exp2] stable frame 2/5
+[tag] no detections
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(150.9,178.7) error_x=-0.029 yaw_deg=-4.47 height=31.3px height_norm=0.131 margin=24.34 distance=0.7086975733344105
+[exp2] phase=pulse_center center_error=-0.029 raw_yaw_deg=-4.47 calibrated_yaw_deg=1.53 target_yaw_deg=-6.00 yaw_source=calibrated_pnp corner_error_deg=6.46 height_norm=0.131
+[base] stop
+[base] stop
+[exp2] stable frame 1/5
+[tag] backend=pupil_apriltags id=0 center=(146.6,183.3) error_x=-0.042 yaw_deg=-5.65 height=31.8px height_norm=0.132 margin=19.76 distance=0.6993156246348271
+[exp2] phase=pulse_center center_error=-0.042 raw_yaw_deg=-5.65 calibrated_yaw_deg=0.35 target_yaw_deg=-6.00 yaw_source=calibrated_pnp corner_error_deg=5.31 height_norm=0.132
+[base] stop
+[base] exp2_center_align direction=forward requested_speed=0.2 effective_speed=0.2 seconds=0.3
+[map] motion direction=forward speed=0.2 effective_seconds=0.3 pose={'x_m': 0.15341767155320407, 'y_m': 0.02393741645569402, 'heading_rad': -1.0748215720787786}
+[exp2] pulse center correction direction=forward seconds=0.300; stage=center
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(113.4,185.9) error_x=-0.146 yaw_deg=7.12 height=47.2px height_norm=0.197 margin=30.43 distance=0.4604922653141511
+[exp2] phase=pulse_center center_error=-0.146 raw_yaw_deg=7.12 calibrated_yaw_deg=13.12 target_yaw_deg=-6.00 yaw_source=calibrated_pnp corner_error_deg=13.51 height_norm=0.197
+[base] stop
+[base] exp2_center_align direction=forward requested_speed=0.2 effective_speed=0.2 seconds=0.3
+[map] motion direction=forward speed=0.2 effective_seconds=0.3 pose={'x_m': 0.1448424953411587, 'y_m': 0.028577335952018418, 'heading_rad': -1.0748215720787786}
+[exp2] pulse center correction direction=forward seconds=0.300; stage=center
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(120.0,192.3) error_x=-0.125 yaw_deg=7.39 height=50.1px height_norm=0.209 margin=29.36 distance=0.42730073019135284
+[exp2] phase=pulse_center center_error=-0.125 raw_yaw_deg=7.39 calibrated_yaw_deg=13.39 target_yaw_deg=-6.00 yaw_source=calibrated_pnp corner_error_deg=14.43 height_norm=0.209
+[base] stop
+[base] exp2_center_align direction=forward requested_speed=0.2 effective_speed=0.2 seconds=0.3
+[map] motion direction=forward speed=0.2 effective_seconds=0.3 pose={'x_m': 0.13626731912911333, 'y_m': 0.033217255448342815, 'heading_rad': -1.0748215720787786}
+[exp2] pulse center correction direction=forward seconds=0.300; stage=center
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(117.4,197.8) error_x=-0.133 yaw_deg=7.65 height=51.6px height_norm=0.215 margin=29.09 distance=0.4043669273469363
+[exp2] phase=pulse_center center_error=-0.133 raw_yaw_deg=7.65 calibrated_yaw_deg=13.65 target_yaw_deg=-6.00 yaw_source=calibrated_pnp corner_error_deg=16.40 height_norm=0.215
+[base] stop
+[base] exp2_center_align direction=forward requested_speed=0.2 effective_speed=0.2 seconds=0.3
+[map] motion direction=forward speed=0.2 effective_seconds=0.3 pose={'x_m': 0.12769214291706796, 'y_m': 0.03785717494466721, 'heading_rad': -1.0748215720787786}
+[exp2] pulse center correction direction=forward seconds=0.300; stage=center
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(113.7,205.3) error_x=-0.145 yaw_deg=8.63 height=54.4px height_norm=0.227 margin=27.76 distance=0.3753929374996246
+[exp2] phase=pulse_center center_error=-0.145 raw_yaw_deg=8.63 calibrated_yaw_deg=14.63 target_yaw_deg=-6.00 yaw_source=calibrated_pnp corner_error_deg=19.68 height_norm=0.227
+[base] stop
+[base] exp2_center_align direction=forward requested_speed=0.2 effective_speed=0.2 seconds=0.3
+[map] motion direction=forward speed=0.2 effective_seconds=0.3 pose={'x_m': 0.11911696670502259, 'y_m': 0.04249709444099161, 'heading_rad': -1.0748215720787786}
+[exp2] pulse center correction direction=forward seconds=0.300; stage=center
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[tag] no detections
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(112.9,211.8) error_x=-0.147 yaw_deg=9.04 height=55.7px height_norm=0.232 margin=26.65 distance=0.35461535769316244
+[exp2] phase=pulse_center center_error=-0.147 raw_yaw_deg=9.04 calibrated_yaw_deg=15.04 target_yaw_deg=-6.00 yaw_source=calibrated_pnp corner_error_deg=21.75 height_norm=0.232
+[base] stop
+[base] exp2_center_align direction=forward requested_speed=0.2 effective_speed=0.2 seconds=0.3
+[map] motion direction=forward speed=0.2 effective_seconds=0.3 pose={'x_m': 0.11054179049297722, 'y_m': 0.04713701393731601, 'heading_rad': -1.0748215720787786}
+[exp2] pulse center correction direction=forward seconds=0.300; stage=center
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(168.1,211.5) error_x=0.025 yaw_deg=4.05 height=55.6px height_norm=0.231 margin=27.11 distance=0.33639962961222114
+[exp2] phase=pulse_center center_error=0.025 raw_yaw_deg=4.05 calibrated_yaw_deg=10.05 target_yaw_deg=-6.00 yaw_source=calibrated_pnp corner_error_deg=11.49 height_norm=0.231
+[exp2] pulse stage center->final_yaw
+[base] stop
+[base] exp2_yaw_align direction=right requested_speed=0.15 effective_speed=0.15 seconds=0.4
+[map] motion direction=right speed=0.15 effective_seconds=0.4 pose={'x_m': 0.11054179049297722, 'y_m': 0.04713701393731601, 'heading_rad': -1.0050084019990009}
+[exp2] pulse yaw correction direction=right seconds=0.400
+[exp2] pulse stage=final_yaw axis=yaw
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(153.3,211.7) error_x=-0.021 yaw_deg=4.68 height=55.2px height_norm=0.230 margin=27.80 distance=0.33873904466466453
+[exp2] phase=pulse_final_yaw center_error=-0.021 raw_yaw_deg=4.68 calibrated_yaw_deg=10.68 target_yaw_deg=-6.00 yaw_source=calibrated_pnp corner_error_deg=13.95 height_norm=0.230
+[base] stop
+[base] exp2_yaw_align direction=right requested_speed=0.15 effective_speed=0.15 seconds=0.4
+[map] motion direction=right speed=0.15 effective_seconds=0.4 pose={'x_m': 0.11054179049297722, 'y_m': 0.04713701393731601, 'heading_rad': -0.9351952319192232}
+[exp2] pulse yaw correction direction=right seconds=0.400
+[exp2] pulse stage=final_yaw axis=yaw
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(134.0,211.5) error_x=-0.081 yaw_deg=6.34 height=55.3px height_norm=0.231 margin=27.92 distance=0.3430843408513729
+[exp2] phase=pulse_final_yaw center_error=-0.081 raw_yaw_deg=6.34 calibrated_yaw_deg=12.34 target_yaw_deg=-6.00 yaw_source=calibrated_pnp corner_error_deg=18.05 height_norm=0.231
+[base] stop
+[base] exp2_yaw_align direction=right requested_speed=0.15 effective_speed=0.15 seconds=0.4
+[map] motion direction=right speed=0.15 effective_seconds=0.4 pose={'x_m': 0.11054179049297722, 'y_m': 0.04713701393731601, 'heading_rad': -0.8653820618394454}
+[exp2] pulse yaw correction direction=right seconds=0.400
+[exp2] pulse stage=final_yaw axis=yaw
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(113.7,212.1) error_x=-0.145 yaw_deg=8.98 height=56.2px height_norm=0.234 margin=27.77 distance=0.35228111108501975
+[exp2] phase=pulse_final_yaw center_error=-0.145 raw_yaw_deg=8.98 calibrated_yaw_deg=14.98 target_yaw_deg=-6.00 yaw_source=calibrated_pnp corner_error_deg=21.64 height_norm=0.234
+[base] stop
+[base] exp2_yaw_align direction=right requested_speed=0.15 effective_speed=0.15 seconds=0.4
+[map] motion direction=right speed=0.15 effective_seconds=0.4 pose={'x_m': 0.11054179049297722, 'y_m': 0.04713701393731601, 'heading_rad': -0.7955688917596677}
+[exp2] pulse yaw correction direction=right seconds=0.400
+[exp2] pulse stage=final_yaw axis=yaw
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(97.0,212.0) error_x=-0.197 yaw_deg=10.48 height=55.2px height_norm=0.230 margin=26.58 distance=0.3654640733188975
+[exp2] phase=pulse_final_yaw center_error=-0.197 raw_yaw_deg=10.48 calibrated_yaw_deg=16.48 target_yaw_deg=-6.00 yaw_source=calibrated_pnp corner_error_deg=24.01 height_norm=0.230
+[base] stop
+[base] exp2_yaw_align direction=right requested_speed=0.15 effective_speed=0.15 seconds=0.4
+[map] motion direction=right speed=0.15 effective_seconds=0.4 pose={'x_m': 0.11054179049297722, 'y_m': 0.04713701393731601, 'heading_rad': -0.72575572167989}
+[exp2] pulse yaw correction direction=right seconds=0.400
+[exp2] pulse stage=final_yaw axis=yaw
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(80.9,212.3) error_x=-0.247 yaw_deg=12.35 height=54.3px height_norm=0.226 margin=24.39 distance=0.3807508158634011
+[exp2] phase=pulse_final_yaw center_error=-0.247 raw_yaw_deg=12.35 calibrated_yaw_deg=18.35 target_yaw_deg=-6.00 yaw_source=calibrated_pnp corner_error_deg=26.06 height_norm=0.226
+[base] stop
+[base] exp2_yaw_align direction=right requested_speed=0.15 effective_speed=0.15 seconds=0.4
+[map] motion direction=right speed=0.15 effective_seconds=0.4 pose={'x_m': 0.11054179049297722, 'y_m': 0.04713701393731601, 'heading_rad': -0.6559425516001123}
+[exp2] pulse yaw correction direction=right seconds=0.400
+[exp2] pulse stage=final_yaw axis=yaw
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[tag] no detections
+[base] stop
+[tag] no detections
+[base] stop
+[tag] no detections
+[base] stop
+[tag] no detections
+[base] stop
+[tag] no detections
+[base] stop
+[tag] no detections
+[base] stop
+[tag] no detections
+[base] stop
+[tag] no detections
+[base] stop
+[tag] no detections
+[base] stop
+[tag] no detections
+[base] stop
+[base] stop
+[arm] pose carry
+[arm] dry_run=True
+[arm] carry servo=5 angle=0 speed=85
+[arm] dry_run=True
+[arm] carry servo=4 angle=-55 speed=85
+[arm] dry_run=True
+[arm] carry servo=3 angle=45 speed=85
+[arm] dry_run=True
+[arm] carry servo=2 angle=60 speed=85
+[arm] dry_run=True
+[arm] carry servo=1 angle=-16 speed=85
+[exp2] side docking aborted; forward camera pose restored
+[fsm] BIN_SIDE_DOCKING --TARGET_MISSING--> INTERMEDIATE reason=exp2 side tag lost
+[bin-tune] full pipeline stopped state=INTERMEDIATE reason=exp2 side tag lost
+[bin-tune] full pipeline FAILED state=INTERMEDIATE elapsed=32.98s
+[bin-tune] FULL PIPELINE FINISHED status=FAILED log=/workspace/robot_code/temp_car/logs/bin_docking_tuning/20260906_233417/one_click_full_233611.log
+
+>>> stop_all
+[base] stop
+[arm] cancellation requested
+[base] stop
+[arm] dry_run=True
+[arm] stop_and_hold dry_run=True
+[camera] camera-only stopped
+[depth] stop
+[result] {'stop_requested': True, 'arm_positions': {}, 'camera_released': True}
+
+>>> clear_log
+[result] True

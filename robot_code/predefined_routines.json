@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "dry_run_step_seconds": 0.2,
+  "routines": [
+    {
+      "id": 0,
+      "name": "rotate_in_place",
+      "description": "Current simple search: keep rotating left until vision finds the target or the large timeout expires.",
+      "repeat": false,
+      "timeout_seconds": 3600.0,
+      "steps": [
+        {
+          "motion": "turn",
+          "direction": "left",
+          "speed": "turn.fast"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "square_ccw_from_left_midpoint",
+      "description": "Start at the left-edge midpoint facing down, then trace a 0.3 m counter-clockwise square at linear.fast speed.",
+      "start_assumption": {"position": "left_edge_midpoint", "heading": "down"},
+      "obstacle_aware": true,
+      "return_to_origin_after_avoidance": true,
+      "repeat": true,
+      "timeout_seconds": 300.0,
+      "steps": [
+        {"motion": "drive", "direction": "forward", "speed": "linear.fast", "distance_m": 0.3},
+        {"motion": "turn", "direction": "left", "speed": "turn.slow", "angle_rad": 1.570796326795},
+        {"motion": "drive", "direction": "forward", "speed": "linear.fast", "distance_m": 0.3},
+        {"motion": "turn", "direction": "left", "speed": "turn.slow", "angle_rad": 1.570796326795},
+        {"motion": "drive", "direction": "forward", "speed": "linear.fast", "distance_m": 0.3},
+        {"motion": "turn", "direction": "left", "speed": "turn.slow", "angle_rad": 1.570796326795},
+        {"motion": "drive", "direction": "forward", "speed": "linear.fast", "distance_m": 0.3},
+        {"motion": "turn", "direction": "left", "speed": "turn.slow", "angle_rad": 1.570796326795},
+        {"motion": "drive", "direction": "forward", "speed": "linear.fast", "distance_m": 0.3}
+      ]
+    },
+    {
+      "id": 3,
+      "name": "square_ccw_with_midpoint_spins",
+      "description": "Square routine 2 with open-loop 360-degree turns at the bottom and top edge midpoints.",
+      "start_assumption": {"position": "left_edge_midpoint", "heading": "down"},
+      "obstacle_aware": true,
+      "return_to_origin_after_avoidance": true,
+      "repeat": true,
+      "timeout_seconds": 300.0,
+      "steps": [
+        {"motion": "drive", "direction": "forward", "speed": "linear.slow", "distance_m": 0.15},
+        {"motion": "turn", "direction": "left", "speed": "turn.slow", "angle_rad": 1.570796326795},
+        {"motion": "drive", "direction": "forward", "speed": "linear.slow", "distance_m": 0.15},
+        {"motion": "turn", "direction": "left", "speed": "turn.slow", "angle_rad": 6.28318530718},
+        {"motion": "drive", "direction": "forward", "speed": "linear.slow", "distance_m": 0.15},
+        {"motion": "turn", "direction": "left", "speed": "turn.slow", "angle_rad": 1.570796326795},
+        {"motion": "drive", "direction": "forward", "speed": "linear.slow", "distance_m": 0.3},
+        {"motion": "turn", "direction": "left", "speed": "turn.slow", "angle_rad": 1.570796326795},
+        {"motion": "drive", "direction": "forward", "speed": "linear.slow", "distance_m": 0.15},
+        {"motion": "turn", "direction": "left", "speed": "turn.slow", "angle_rad": 6.28318530718},
+        {"motion": "drive", "direction": "forward", "speed": "linear.slow", "distance_m": 0.15},
+        {"motion": "turn", "direction": "left", "speed": "turn.slow", "angle_rad": 1.570796326795},
+        {"motion": "drive", "direction": "forward", "speed": "linear.slow", "distance_m": 0.15}
+      ]
+    },
+    {
+      "id": 4,
+      "name": "map_bin_arrival_scan",
+      "description": "After vague-map arrival without a visible bin Tag, scan one full turn plus 40 degrees while vision remains active.",
+      "repeat": false,
+      "timeout_seconds": 30.0,
+      "steps": [
+        {"motion": "turn", "direction": "left", "speed": "turn.fast", "angle_rad": 6.981317007977}
+      ]
+    }
+  ]
+}

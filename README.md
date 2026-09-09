@@ -1,23 +1,27 @@
-# Self-Propelled Arm System  
+# Self-Propelled Arm System
 
-### A Jetson Nano-based autonomous can pickup robot system
----
+### Group 22 Project:  
 
-## Robot Code
+An autonomous robot designed to collect drinks cans combines on-board computer vision, visual navigation and a servo-controlled arm to pick up a can and dispose of it in a designated container.
 
-- All the codes used can be found in the [`robot_code`](./robot_code/) directory.
 
 ## Technical Report
 
-- [Final Report (missing) ](FINAL_REPORT.pdf)
+- [Technical Report (PDF)](./submission/FINAL_REPORT.pdf)
 
 ## Presentation Slides
-- [Presentation slides in PDF format: (missing)]
+
+- [Presentation Slides (PDF)](./submission/SPAS_presentation.pdf)
 
 ## Video Submission
 
-- [Demonstration Video](demo%20video_.mp4)
+- [Demonstration Video](./submission./SPAS_video.mp4)
 
-## Integration Demo Code
 
-- [Demo Updated](https://github.com/kamkanev/Self-Propelled-Arm-System/blob/6afc67ae811cf1699f24ac46ae672f4a9c25f5da/robot_code/demo/depthnet_servo_decision_demo.ipynb)
+## Code Submission
+
+- The robot runtime and execution instructions can be found in the [`robot_code`](./robot_code/) directory.
+
+
+## Verification
+Some limited automated verification are conducted with [nuXmv 2.1.0](https://nusmv.fbk.eu/articles/210/) under [verification directory](./system_verification).

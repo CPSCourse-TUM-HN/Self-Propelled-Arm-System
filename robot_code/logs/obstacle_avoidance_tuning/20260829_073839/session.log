@@ -1,0 +1,74 @@
+07:38:39 [job] start full_bypass
+07:38:41 [camera] DepthNet camera started frame=320x240 obstacle_roi_ignore=(top=0.300, bottom=0.150)
+07:38:41 [phase] CRUISING
+07:38:41 [media] recording started /workspace/robot_code/temp_car/logs/obstacle_avoidance_tuning/20260829_073839/obstacle_avoidance_1787989121408.avi
+07:38:44 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+07:38:44 [candidate] avoidance_cruise left center corridor after 2 frames
+07:38:45 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+07:38:45 [candidate] avoidance_cruise confirmation 2/15
+07:38:45 [candidate] avoidance_cruise confirmation 3/15
+07:38:45 [candidate] avoidance_cruise confirmation 4/15
+07:38:46 [candidate] avoidance_cruise confirmation 5/15
+07:38:46 [candidate] avoidance_cruise confirmation 6/15
+07:38:46 [candidate] avoidance_cruise confirmation 7/15
+07:38:46 [candidate] avoidance_cruise confirmation 8/15
+07:38:47 [candidate] avoidance_cruise confirmation 9/15
+07:38:47 [candidate] avoidance_cruise confirmation 10/15
+07:38:47 [candidate] avoidance_cruise confirmation 11/15
+07:38:47 [candidate] avoidance_cruise confirmation 12/15
+07:38:48 [candidate] avoidance_cruise left center corridor after 13 frames
+07:38:48 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+07:38:48 [candidate] avoidance_cruise confirmation 2/15
+07:38:48 [candidate] avoidance_cruise confirmation 3/15
+07:38:49 [candidate] avoidance_cruise confirmation 4/15
+07:38:49 [candidate] avoidance_cruise confirmation 5/15
+07:38:49 [candidate] avoidance_cruise confirmation 6/15
+07:38:49 [candidate] avoidance_cruise confirmation 7/15
+07:38:50 [candidate] avoidance_cruise confirmation 8/15
+07:38:50 [candidate] avoidance_cruise confirmation 9/15
+07:38:50 [candidate] avoidance_cruise confirmation 10/15
+07:38:50 [candidate] avoidance_cruise confirmation 11/15
+07:38:50 [candidate] avoidance_cruise confirmation 12/15
+07:38:51 [candidate] avoidance_cruise confirmation 13/15
+07:38:51 [candidate] avoidance_cruise confirmation 14/15
+07:38:51 [candidate] avoidance_cruise confirmation 15/15
+07:38:51 [candidate] avoidance_cruise confirmed frames=15
+07:38:51 [phase] DETECTED selected_side=left locked_obstacle_depth=2.055124521255493 depth_time_factor=1.500 segment_base_seconds=3.083 geometry={'detected': True, 'path_blocked': True, 'unsafe': False, 'bbox': [124, 92, 14, 34], 'center': [131, 109], 'width_norm': 0.0625, 'height_norm': 0.15178571428571427, 'center_x_norm': 0.5848214285714286, 'bbox_left_norm': 0.5535714285714286, 'bbox_right_norm': 0.6160714285714286, 'background_depth': 3.4701993465423584, 'obstacle_depth': 2.055124521255493, 'left_clearance_norm': 0.5535714285714286, 'right_clearance_norm': 0.38392857142857145, 'selected_side': 'left', 'reason': 'center bbox confirmed for 15 frames', 'status': 'OBSTACLE', 'center_depth': 2.5976905822753906}
+07:38:51 [phase] TURN_TO_TANGENT direction=left
+07:38:53 [phase] tangent reached seconds=1.728
+07:38:53 [phase] OFFSET_OUT
+07:38:53 [phase] OFFSET_OUT minimum_seconds=3.083 timeout_seconds=30.000
+07:38:57 [phase] offset clear seconds=4.124 stable_frames=5 estimated_lateral_m=0.900
+07:38:57 [phase] TURN_PARALLEL
+07:38:57 [motion] turn_parallel target_seconds=1.728 timeout_seconds=2.728
+07:39:00 [check] turn_parallel center path clear frames=5
+07:39:00 [phase] PASSING
+07:39:00 [phase] PASSING minimum_seconds=3.083 timeout_seconds=25.000
+07:39:07 [phase] TURN_TO_LINE
+07:39:07 [motion] turn_to_line target_seconds=1.728 timeout_seconds=2.728
+07:39:09 [phase] OFFSET_RETURN
+07:39:09 [phase] OFFSET_RETURN seconds=4.124 segment_base_seconds=3.083
+07:39:09 [motion] offset_return target_seconds=4.124 timeout_seconds=5.124
+07:39:13 [phase] RESTORE_HEADING
+07:39:13 [motion] restore_heading target_seconds=1.728 timeout_seconds=2.728
+07:39:15 [phase] VERIFY_CLEAR
+07:39:15 [motion] verify_clear target_seconds=0.350 timeout_seconds=2.183
+07:39:18 [error] full_bypass: verify_clear timeout
+07:39:18 Traceback (most recent call last):
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 696, in target
+    result = operation()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 673, in run_full
+    self.run_next_phase()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 664, in run_next_phase
+    phases[self.state]()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 644, in _phase_verify
+    require_clear=True,
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 398, in _run_timed_motion
+    return self._run_visual_motion(direction, speed, timeout, label, stop_condition, minimum_seconds=seconds)
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 349, in _run_visual_motion
+    raise RuntimeError("{} timeout".format(label))
+RuntimeError: verify_clear timeout
+
+07:39:18 [media] recording finalized /workspace/robot_code/temp_car/logs/obstacle_avoidance_tuning/20260829_073839/obstacle_avoidance_1787989121408.avi
+07:39:49 [parameters] reloaded /workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_parameters.json
+07:39:51 [camera] stopped and released

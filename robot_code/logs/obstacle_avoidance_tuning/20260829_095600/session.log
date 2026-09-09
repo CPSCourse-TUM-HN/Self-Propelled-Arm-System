@@ -1,0 +1,34 @@
+09:56:00 [job] start full_bypass
+09:56:03 [camera] DepthNet camera started frame=320x240 obstacle_roi_ignore=(top=0.300, bottom=0.150)
+09:56:03 [phase] CRUISING
+09:56:03 [media] recording started /workspace/robot_code/temp_car/logs/obstacle_avoidance_tuning/20260829_095600/obstacle_avoidance_1787997363238.avi
+09:56:05 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+09:56:05 [candidate] avoidance_cruise confirmation 2/15
+09:56:06 [candidate] avoidance_cruise left center corridor after 3 frames
+09:56:06 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+09:56:06 [candidate] avoidance_cruise left center corridor after 2 frames
+09:56:06 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+09:56:07 [candidate] avoidance_cruise bbox identity changed after 2 frames
+09:56:07 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+09:56:07 [candidate] avoidance_cruise confirmation 2/15
+09:56:08 [candidate] avoidance_cruise confirmation 3/15
+09:56:08 [stop] base stop requested
+09:56:08 [candidate] avoidance_cruise confirmation 4/15
+09:56:08 [error] full_bypass: stop requested
+09:56:08 Traceback (most recent call last):
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 997, in target
+    result = operation()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 974, in run_full
+    self.run_next_phase()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 965, in run_next_phase
+    phases[self.state]()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 650, in _phase_cruise
+    found,
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 382, in _run_visual_motion
+    analysis = self._confirm_candidate_while_stopped(analysis, direction, speed, label)
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 502, in _confirm_candidate_while_stopped
+    raise RuntimeError("stop requested")
+RuntimeError: stop requested
+
+09:56:08 [media] recording finalized /workspace/robot_code/temp_car/logs/obstacle_avoidance_tuning/20260829_095600/obstacle_avoidance_1787997363238.avi
+09:56:10 [camera] stopped and released
