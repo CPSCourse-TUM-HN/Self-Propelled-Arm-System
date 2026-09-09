@@ -1,0 +1,690 @@
+%% =====================================================================
+%% Self-Propelled Arm System (S.P.A.S.) - SHORT REPORT, VERSION 2
+%% Project report - Embedded Systems, Cyber-Physical Systems and Robotics
+%% Technical University of Munich, Campus Heilbronn
+%%
+%% Scope: the live production runtime only. The monocular depth network
+%% and everything built on it (depth stop criteria, depth obstacle
+%% avoidance, depth grasp verification, the MiDaS development scripts and
+%% the ArUco triangulation study) are deliberately out of scope, because
+%% none of them is on the control path in the delivered configuration and
+%% the demonstrated end-to-end mission ran with DepthNet disabled.
+%%
+%% Compile with:  pdflatex SPAS_technical_report_short_version2.tex (twice)
+%%
+%% Figures use \projectfig{path}{width}{height}{text}: the real file if it
+%% exists, otherwise a labelled placeholder box, so this always compiles.
+%% All figures in this version resolve to real files: the platform,
+%% target, detection, grasp and release photographs were captured from
+%% the recorded hardware demonstration, the state graph and the training
+%% curves are project assets.
+%% =====================================================================
+
+\documentclass[conference,a4paper,10pt]{IEEEtran}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{tabularx}
+\usepackage[strings]{underscore}
+
+\renewcommand{\arraystretch}{1.1}
+
+\newcommand{\phbox}[4]{%
+  \setlength{\fboxrule}{0.9pt}%
+  \fcolorbox{black!45}{black!6}{%
+    \begin{minipage}[c][#2][c]{\dimexpr#1-2\fboxsep-2\fboxrule\relax}
+      \centering\scriptsize
+      \textbf{[\,PLACEHOLDER IMAGE\,]}\\[3pt]
+      \itshape #3\\[4pt]
+      \upshape\tiny\ttfamily #4
+    \end{minipage}}%
+}
+
+\newcommand{\projectfig}[4]{%
+  \IfFileExists{#1}{\includegraphics[width=#2]{#1}}{\phbox{#2}{#3}{#4}{#1}}%
+}
+
+\begin{document}
+
+\title{Self-Propelled Arm System (S.P.A.S.):\\
+An Autonomous Can-Collecting Robot\\
+on a Monocular Tracked Platform}
+
+\author{%
+  \IEEEauthorblockN{Filip Chekalkin \quad Huaijing Hou \quad Spaska Janeva \quad Kamen Kanev\\
+                    Giorgi Khundadze \quad Xiaosheng Tan \quad Stoyan Vlaev \quad Weiye Yuan}
+  \IEEEauthorblockA{Embedded Systems, Cyber-Physical Systems and Robotics\\
+                    Technical University of Munich, Campus Heilbronn, Germany}
+}
+
+\maketitle
+
+%% The abstract was removed by request. It is kept here, commented out, in
+%% case it is ever wanted back: uncomment the block below.
+%
+% \begin{abstract}
+% This report describes the Self-Propelled Arm System (S.P.A.S.), an
+% autonomous robot that searches an indoor area for aluminium drink cans,
+% drives to them, grasps them with a four-degree-of-freedom arm, and
+% deposits them into a marked bin. The platform is a tracked Hiwonder
+% JetTank with an NVIDIA Jetson Nano and a single $320\times240$ RGB
+% camera. It has no depth sensor, no range finder and no wheel encoders, so
+% the base is a pure actuator and every control decision is closed on image
+% appearance. The report is scoped to the production runtime: the deployed
+% single-stage can detector, the AprilTag bin detector, the mission state
+% machine, the visual servoing stages and the grasp sequence. The deployed
+% detector reaches an $F_1$ score of $0.924$ on robot video, and a complete
+% search-grasp-transport-release mission was executed on hardware in
+% $73.8$~s with the depth network switched off. We report the measured
+% platform constraints that bound the design and one silent failure mode
+% found by inspecting the code rather than by testing.
+% \end{abstract}
+
+%% ---------------------------------------------------------------------
+\section{Problem Statement}
+%% ---------------------------------------------------------------------
+
+Indoor spaces accumulate small litter, and drink cans are among the most
+common items. Collecting them is repetitive, low-risk work and therefore
+a reasonable target for a small mobile manipulator. It is also a useful
+teaching problem because the robot must solve perception, navigation,
+decision-making, and manipulation simultaneously, and any failure in one
+is immediately visible.
+
+The mission is: search for a can, drive to it while keeping it in view,
+stop within reach, grasp and lift it, find a bin carrying a fiducial
+marker, drive to the bin, release the can, and either resume searching or
+report completion.
+
+What makes the problem interesting is the hardware budget. The platform
+carries one low-resolution RGB camera and nothing else: no stereo pair,
+no depth camera, no range finder, no inertial unit the software reads,
+and no wheel encoders. The tracked base accepts a direction and a
+normalised speed and returns no measurement at all. The on-board computer
+is a Jetson Nano with 4~GB of memory shared between processor and
+graphics unit.
+
+\textbf{Scope of this report.} The project also built a monocular depth
+capability and several exploratory tools around it. None of that is on
+the control path of the delivered system. In the shipped configuration
+both approach stop criteria are appearance-based, obstacle avoidance is
+disabled, and grasp verification is disabled, so nothing decisive
+consults depth; the depth network's only remaining consumer is coarse map
+bookkeeping that by construction cannot trigger an action. The archived
+end-to-end mission analysed in Section~\ref{sec:results} in fact ran with
+the depth network disabled outright. This report therefore describes only
+the live runtime, and every claim below concerns a purely
+appearance-based control loop. The complete implementation is available
+in the project repository~\cite{spas_repo}.
+
+%% ---------------------------------------------------------------------
+\section{System Overview}
+%% ---------------------------------------------------------------------
+
+The robot is built on a Hiwonder JetTank~\cite{hiwonder}, a tracked
+chassis carrying a Jetson Nano, a serial-bus servo arm and a
+forward-facing camera. Table~\ref{tab:hardware} lists the components, and
+Fig.~\ref{fig:hw} shows the platform and the two objects it has to
+recognise.
+
+\begin{table}[t]
+\caption{Hardware components}
+\label{tab:hardware}
+\centering
+\footnotesize
+\begin{tabularx}{\columnwidth}{@{}lX@{}}
+\toprule
+\textbf{Component} & \textbf{Function} \\
+\midrule
+JetTank chassis & Tracked base. Accepts normalised speed commands only;
+returns no measurement. \\
+Jetson Nano (4~GB) & Runs all perception, planning and control. \\
+RGB camera & The only exteroceptive sensor, $320\times240$ pixels,
+horizontal field of view $\approx 60^{\circ}$. \\
+Arm and gripper & Five serial-bus servos over a TTL chain. Position is
+readable; grip force is not. \\
+AprilTag & 80\,mm \texttt{tag36h11}, identifier 0, mounted on the bin. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The most useful way to characterise this hardware is by what it reports
+back, because that asymmetry determines the software design.
+
+\textbf{The base is a pure actuator.} No encoders, no current sensing, no
+inertial measurement. Every base parameter is an empirical constant
+obtained by driving the robot and recording the results, and nothing in
+the running system can verify those constants.
+
+\textbf{The camera is the only sensor.} Every observation about the
+outside world passes through one device. If it is saturated, blurred or
+pointed the wrong way, the robot is blind, and the design must survive
+that rather than prevent it.
+
+\textbf{The gripper is force-blind.} The servos accept an angle and a
+speed and can report position, which is the one place the system has
+genuine proprioception. They do not expose grip force or motor current,
+so the gripper closes to a commanded angle without knowing whether
+anything is inside it.
+
+The software exploits the one asymmetry available: arm motions are
+verified by polling servo positions until they stop changing, whereas
+base motions can only be verified by looking at the camera again.
+
+\begin{figure}[t]
+\centering
+\begin{minipage}[b]{0.485\columnwidth}
+\centering
+\projectfig{figures/robot_platform.jpg}{\linewidth}{3.1cm}%
+  {Photograph of the assembled robot: tracked base, arm with gripper,
+   forward-facing camera.}
+\end{minipage}\hfill
+\begin{minipage}[b]{0.485\columnwidth}
+\centering
+\projectfig{figures/targets_and_bin.jpg}{\linewidth}{3.1cm}%
+  {Photograph of the 250\,ml can and the bin carrying the printed
+   AprilTag.}
+\end{minipage}
+\caption{The platform carrying a grasped can (left) and the two target
+objects in the arena (right). The can is a 250\,ml slim aluminium can,
+53\,mm in diameter and 133\,mm tall, weighing about 11\,g empty. The bin
+is a cardboard box roughly 5\,cm tall with the printed
+\texttt{tag36h11} marker on its side. Both photographs are frames from
+the recorded hardware demonstration.}
+\label{fig:hw}
+\end{figure}
+
+%% ---------------------------------------------------------------------
+\section{Perception on the Control Path}
+%% ---------------------------------------------------------------------
+
+Two detectors run on the robot, and between them they supply every
+measurement the controller uses.
+
+\textbf{Can detection} uses an SSD-MobileNet-V1 model~\cite{ssd,
+mobilenet} at $300\times300$ input resolution with a single foreground
+class, exported to ONNX and executed through the
+\texttt{jetson-inference} \texttt{detectNet} interface~\cite{jetsoninference}
+at a confidence threshold of $0.20$ and a clustering overlap of $0.30$.
+This architecture was chosen over the YOLO model~\cite{yolo,ultralytics}
+used for offline dataset work because it is the path NVIDIA supports
+natively on the Nano; the trade is quantified in
+Section~\ref{sec:results}. The detector returns a bounding box, from
+which the controller derives two scalars: the normalised horizontal error
+and the normalised box height. Fig.~\ref{fig:canpredict} shows both the
+raw detector output and the same two scalars as they appear in the
+on-board telemetry overlay during an approach.
+
+\textbf{Bin detection} locates an 80~mm \texttt{tag36h11}
+AprilTag~\cite{apriltag} with identifier 0 using the
+\texttt{pupil\_apriltags} library, with OpenCV's ArUco module as a
+fallback backend. Beyond the identifier, the detector computes three
+descriptors from the four corners, and these are what the docking
+controller consumes:
+
+\begin{itemize}\itemsep2pt
+  \item the \emph{normalised tag height}, which grows as the robot
+        approaches and serves as the distance proxy;
+  \item the \emph{vertical edge error}, the relative difference between
+        the projected lengths of the left and right edges,
+        $e_{\mathrm{v}} = (\ell_{r} - \ell_{l}) /
+        \tfrac{1}{2}(\ell_{r} + \ell_{l})$, which is zero when the camera
+        faces the tag squarely and changes sign with the viewing angle;
+  \item the \emph{maximum corner angle error}, the largest deviation of
+        an interior corner from $90^{\circ}$, which gates how much the
+        other two should be trusted.
+\end{itemize}
+
+A metric pose is available by solving the perspective-n-point problem if
+a calibration file is supplied, but the delivered controller does not use
+it. The three descriptors above need no calibration, because the focal
+length cancels in the ratio, and calibration is one more artefact that
+can go stale. Fig.~\ref{fig:tag} shows the tag detection at close range,
+where the docking controller reads a tag height of $0.186$ and a
+horizontal error of $-0.055$ from the same four corners.
+
+\begin{figure}[t]
+\centering
+\begin{minipage}[b]{0.36\columnwidth}
+\centering
+\projectfig{../can_predict.png}{\linewidth}{2.6cm}%
+  {A camera frame with the detected can and its confidence score.}
+\end{minipage}\hfill
+\begin{minipage}[b]{0.60\columnwidth}
+\centering
+\projectfig{figures/onboard_can_detection.jpg}{\linewidth}{2.6cm}%
+  {On-board frame during the approach stage with the telemetry overlay.}
+\end{minipage}
+\caption{Can detection. Left: the detector's own output on a
+$300\times300$ frame, with the confidence score. Right: the same
+detection inside the running mission, with the telemetry overlay
+reporting the state (\texttt{APPROACHING}), the commanded base motion,
+and the two scalars the controller actually uses,
+$e_x = -0.119$ and a normalised box height of $0.255$. The entire
+perception stack operates at $320\times240$.}
+\label{fig:canpredict}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\projectfig{figures/onboard_tag_detection.jpg}{0.86\columnwidth}{4.4cm}%
+  {On-board frame during bin docking with the AprilTag detected on the
+   side of the bin.}
+\caption{AprilTag detection during bin docking. The green box marks the
+detected \texttt{tag36h11} marker; the overlay reports a tag height of
+$0.186$ against the $0.15$ stop threshold and a horizontal error of
+$-0.055$. Note also \texttt{grabbed=True} and \texttt{DEPTH=NO}: the run
+carried a can and used no depth information.}
+\label{fig:tag}
+\end{figure}
+
+%% ---------------------------------------------------------------------
+\section{Mission Control}
+%% ---------------------------------------------------------------------
+
+The mission is executed by an explicit event-driven finite state machine
+with fifteen states, shown in Fig.~\ref{fig:fsm}. Initialisation starts
+the camera and parks the arm. Planning selects the next target: a
+remembered can, a fresh search, a patrol leg, the bin, or completion.
+Searching, aligning, approaching and final verification are the four
+visual stages described in Section~\ref{sec:nav}. Finalising runs either
+the grasp sequence or the release sequence. An intermediate state absorbs
+timeouts, and two terminal states end the run.
+
+Transitions are declared as an explicit table of (state, event) pairs,
+and any pair not in the table raises an error rather than silently doing
+nothing. This is deliberate: an undeclared transition is a specification
+bug, and it is far easier to find when the program stops than when the
+robot quietly continues in an unexpected state. It also makes the
+transition relation a small finite object that can be reasoned about
+directly. Two useful properties follow from reading it. The finalising
+state has exactly two incoming edges, both requiring the target-stable
+event, so a grasp can only follow several consecutive well-aligned
+frames. The map-navigation state has four outgoing edges, and none of
+them reaches finalising, so the dead-reckoned position can never, by
+itself, trigger a physical action.
+
+Failure handling is uniform. Any state that exceeds its time or step
+budget emits a timeout, which is routed to the intermediate state; that
+state increments a retry count and either replans or, once the limit is
+exhausted, fails. If something goes wrong unexpectedly, the system
+switches to a failure state. No matter what happens, the run function
+always handles cleanup in a \texttt{finally} block: the base is stopped,
+the arm moves back to its safe position, and the camera is released.
+Cleanup can safely run more than once, thanks to a lock that prevents any
+issues if it gets called repeatedly during an interrupted mission.
+
+All tunable values are stored in two JSON files, organised by decision
+type instead of by module. One file covers topics such as which paths to
+take, simulation flags for the hardware, and how many times the system
+should retry if something fails. The other file is where all the values
+discovered from trial and error go---speeds, timeouts, tolerances,
+thresholds, and the different arm positions. When it is time to use these
+settings, both files are combined in a set order, and any command-line
+changes take priority at the end. Speeds are referenced symbolically, for
+example, \texttt{turn.slow}, and resolved against a small profile table,
+so re-tuning the platform does not mean editing dozens of call sites.
+
+Each hardware device has an independent simulation flag, and all three
+default to simulated, so the complete state machine can be exercised on
+a laptop without a robot attached. On the robot, devices are enabled one
+at a time, with the arm last. This is the single most effective safety
+measure in the project because the arm is the component most likely to
+damage itself.
+
+\begin{figure*}[t]
+\centering
+\projectfig{../writing_assets/visualization/abstract_v1.png}{0.78\textwidth}{7.5cm}%
+  {Design-level mission state graph with guard conditions on the
+   transitions and the shared mission variables listed in the top-left
+   box.}
+\caption{The mission state machine. Guards such as \texttt{target\_found}
+and \texttt{grabbed} are fields of a shared mission context. The
+implementation refines this graph, notably by splitting approach into a
+coarse stage and a final verification stage, but preserves its
+structure.}
+\label{fig:fsm}
+\end{figure*}
+
+%% ---------------------------------------------------------------------
+\section{Navigation and Manipulation}
+\label{sec:nav}
+%% ---------------------------------------------------------------------
+
+\subsection{The Four Visual Stages}
+
+Can navigation and bin navigation share four stages with different
+parameters and detectors. For a detection with centre $x_c$ in an image
+of width $W$, the normalised horizontal error is
+
+\begin{equation}
+  e_x = \frac{x_c - W/2}{W} \in [-0.5,\ 0.5],
+  \label{eq:errorx}
+\end{equation}
+
+negative when the target lies left of centre. This single scalar drives
+every steering decision in the system.
+
+During the \textbf{searching} phase, the system rotates in a designated
+direction until either the detector identifies a target or the state
+times out. In the \textbf{aligning} phase, the base turns toward the
+target until the absolute horizontal error ($|e_x|$) is within a
+specified tolerance. If the target is lost during this process, the base
+halts immediately, and the lost-frame counter is incremented. When this
+counter reaches a predefined threshold, the stage concludes by reporting
+the target as missing, preventing unnecessary rotation without a target.
+
+Stopping immediately on loss matters, because a rotating robot that has
+lost its target will quickly turn past it. \textbf{Approaching}
+re-detects every frame, steers when $|e_x|$ exceeds a tolerance and
+otherwise drives forward, stopping when the target's normalised
+bounding-box height exceeds a threshold: $0.36$ for the can and $0.15$
+for the bin. Apparent size is used as the distance proxy because it
+depends only on the detector. \textbf{Final verification} repeats
+alignment with a tighter tolerance and requires several consecutive
+frames to pass before the mission commits.
+
+Because the base returns nothing, the system also keeps a deliberately
+approximate spatial memory, integrating the commands it issued to
+estimate its own pose and to remember roughly where cans were seen. Its
+purpose is attention, not localisation: a visible target always overrides
+it, and arriving at a remembered coordinate only triggers a visual search
+there. Section~\ref{sec:results} explains why nothing stronger would be
+defensible.
+
+\subsection{Grasping}
+
+The arm follows a sequence of predefined positions, in place of real-time
+inverse kinematics computation. Since the task parameters remain
+consistent---the same object, a flat surface, and a fixed approach
+distance---a general kinematic solution would increase complexity without
+offering substantial advantages for this specific scenario. The sequence
+is: pause for the base to settle; move to \texttt{arm\_down} and wait for
+the servos to actually arrive; drive the base slowly forward for a fixed
+time, pushing the can into the open gripper; hold still; close to
+\texttt{grab}; lift to \texttt{carry}. Fig.~\ref{fig:grasp} shows the
+four decisive moments of that sequence as the robot saw them.
+
+Two steps deserve comment. The settle wait is the one place with real
+feedback: rather than sleeping for a fixed duration, the controller polls
+each servo's reported position until consecutive readings differ by less
+than a small threshold for several samples, with a hard timeout. If the
+arm has not settled, the base push is blocked outright.
+
+If the robot moves forward before the gripper has finished lowering, it
+risks pushing the can away instead of picking it up. This technique,
+pushing the can into the gripper rather than closing the gripper around a
+stationary can, is somewhat unconventional, but it suits the hardware's
+constraints. The arm's reach is short, and the gripper's closure is
+somewhat imprecise, so the robot first lowers the open gripper and then
+moves forward to let the can slide inside. This approach avoids the need
+for fine manipulation and instead makes use of the base's more reliable
+movement.
+
+The cost is that it works only for a light object on a low-friction
+floor.
+
+\begin{figure}[t]
+\centering
+\projectfig{figures/grasp_sequence.jpg}{\columnwidth}{6.0cm}%
+  {Four on-board frames covering final verification, the base push, the
+   gripper closing and the lift.}
+\caption{The grasp sequence seen from the robot's own camera, reading
+left to right and top to bottom. Top left: final verification, with the
+can aligned to $e_x = -0.063$ and a box height of $0.407$ past the
+$0.36$ threshold. Top right: the base pushing forward at speed $0.20$
+with the gripper already lowered. Bottom left: the gripper closing on the
+can. Bottom right: the can lifted to the carry pose. The overlay's
+\texttt{DEPTH=NO} field confirms no depth information was used.}
+\label{fig:grasp}
+\end{figure}
+
+%% ---------------------------------------------------------------------
+\section{Results}
+\label{sec:results}
+%% ---------------------------------------------------------------------
+
+\subsection{Detector Accuracy}
+
+The deployed SSD-MobileNet-V1 model was evaluated against the custom
+model it replaced, on frozen photo and video sets captured by the robot.
+It reaches $F_1 = 0.839$ on photographs and $0.924$ on video at its
+$0.20$ operating threshold, against $0.899$ and $0.945$ for the previous
+model at its own $0.50$ threshold. The deployed model is therefore
+measurably weaker, by about six points on photographs and two on video,
+and was still chosen because it removes a custom post-processing layer
+and a custom inference backend from the robot in favour of the
+vendor-supported path. On a fixed deadline, a slightly less accurate
+detector that is reliable to build and deploy is worth more than a better
+one that is fragile. The ONNX export was verified numerically: outputs
+differed from the original network by at most $4.4\times10^{-7}$, so the
+gap is a property of the architecture, not the conversion.
+
+For reference, the offline YOLO11n model used for dataset iteration
+achieved a mean average precision of $0.995$ at an
+intersection-over-union threshold of $0.5$ on its validation split, with
+the training behaviour shown in Fig.~\ref{fig:training}. That figure
+should be read sceptically: the dataset is small, single-class and
+drawn from one room, so it describes how easy this detection problem is
+in this arena rather than how good the detector is.
+
+\begin{figure}[t]
+\centering
+\projectfig{figures/training_curves.pdf}{\columnwidth}{4.2cm}%
+  {Training and validation loss curves and validation mAP for the
+   offline YOLO11n model.}
+\caption{Offline YOLO11n training used for dataset iteration only; this
+model does not run on the robot. Validation mAP@0.5 saturates near
+$0.995$ within about twenty epochs, which reflects the narrowness of the
+single-room, single-class dataset more than the difficulty of the
+detection problem in general.}
+\label{fig:training}
+\end{figure}
+
+\subsection{End-to-End Mission}
+
+Table~\ref{tab:trace} reconstructs an archived successful mission
+executed on hardware, taken from its log. The run used only the camera,
+with the depth network disabled. Fig.~\ref{fig:release} shows the final
+moment of such a run on the physical platform.
+
+\begin{table}[t]
+\caption{Reconstruction of a complete successful mission}
+\label{tab:trace}
+\centering
+\footnotesize
+\begin{tabularx}{\columnwidth}{@{}lX@{}}
+\toprule
+\textbf{Phase} & \textbf{Observed behaviour} \\
+\midrule
+Search can   & Accepted on the first evaluated frame at confidence
+$0.586$, $e_x = -0.388$. \\
+Align can    & 72 corrective turn steps to bring $|e_x|$ inside the
+$0.15$ tolerance. \\
+Approach can & 10 forward pulses; box height grew $0.176 \to 0.509$
+against a $0.400$ stop threshold. \\
+Near align   & 15 further steps at the tighter tolerance. \\
+Grasp        & Arm settled in $4.94$\,s; $7.0$\,s push at speed $0.1$;
+$5.0$\,s settle; grip and lift. \\
+Bin phases   & Tag acquired, 9 alignment steps, 35 forward pulses to a
+tag height of $0.590$. \\
+Release      & Gripper opened, arm returned to its safe pose. \\
+\midrule
+\textbf{Total} & \textbf{73.8\,s, mission reported successful} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\projectfig{figures/bin_release.jpg}{\columnwidth}{4.4cm}%
+  {Photograph of the robot holding the grasped can over the bin
+   immediately before release.}
+\caption{The end of a complete mission on hardware: the robot has docked
+against the bin and holds the grasped can over it, immediately before the
+gripper opens and the arm returns to its safe pose.}
+\label{fig:release}
+\end{figure}
+
+Across the run, the can detector was invoked 98 times and the tag
+detector 41 times, with confidence scores from $0.558$ to $0.942$. Three
+observations follow. Alignment dominates the time budget: 72 steps were
+needed to remove an initial error of $-0.388$, because each corrective
+pulse is deliberately small. The visual stop criterion behaved as
+designed, with box height growing almost monotonically and the stage
+halting on the first frame past threshold; the one non-monotonic step, a
+dip from $0.204$ to $0.196$, is the detector jitter such a threshold must
+tolerate. Roughly twelve seconds of the run are spent deliberately not
+moving, in the settle wait, the slow push and the post-push lock, which
+is the price of grasping reliably with imprecise hardware.
+
+An archived failed run is equally instructive: it terminated after
+$19.6$\,s when the can was lost for more consecutive frames than the
+limit allows. The robot stopped cleanly rather than driving blindly, as
+the design intends.
+
+\subsection{Measured Constraints}
+
+Table~\ref{tab:constraints} lists the platform limits measured during
+development. These were the binding constraints on the design.
+
+\begin{table}[t]
+\caption{Measured platform constraints}
+\label{tab:constraints}
+\centering
+\footnotesize
+\begin{tabularx}{\columnwidth}{@{}Xl@{}}
+\toprule
+\textbf{Constraint} & \textbf{Value} \\
+\midrule
+Turn rate asymmetry, left versus right, at identical commands
+& 1--3\,rad/s \\
+Usable range of the on-board can detector & $\approx 3$\,m \\
+Reliable AprilTag localisation range & $\approx 1$\,m \\
+Sustained processing rate & 10--15\,frames/s \\
+Maximum gripper reach height & $\approx 20$\,cm \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The turn asymmetry is the most damaging entry, and its magnitude is worth
+spelling out. The dead-reckoning model uses a single constant of $\pi$
+radians per speed-second, so the configured turn profiles predict
+$0.471$~rad/s slow and $0.942$~rad/s fast. A direction-dependent
+discrepancy of $1$ to $3$~rad/s is therefore between $1.1$ and $6.4$
+times the modelled rate itself. This is stronger than saying the constant
+needs calibrating: a single scalar cannot describe a platform whose
+behaviour differs between two directions by more than the modelled
+magnitude, so the model has the wrong form. Nothing that depends on
+integrated heading can be trusted, which is precisely why every decisive
+loop in the system is closed on image appearance and why the spatial
+memory is never allowed to trigger an action.
+
+\subsection{A Silent Failure Mode}
+
+Reading the code against the mission's intent surfaced one defect that
+testing had not. The grasp verification step is guarded by a
+configuration flag that is set to false in the shipped configuration,
+so the pickup is recorded unconditionally. If the push fails to capture
+the can, the mission context still asserts that an object is held, the
+robot drives to the bin, performs the release over it, and reports
+success with an empty gripper. Nothing downstream can detect this,
+because no later state re-examines the gripper.
+
+This is the only one of the system's failure modes that is silent. Target
+loss, state timeouts, a stalled arm, a stale map entry and an
+unavailable camera frame all produce an explicit failure or a recovery.
+A system that fails loudly in five ways and silently in one should spend
+its next increment of effort on the silent one. The property is restored
+by enabling the flag; the deeper fix is gripper force or current sensing,
+which this hardware does not expose.
+
+%% ---------------------------------------------------------------------
+\section{Limitations and Conclusion}
+%% ---------------------------------------------------------------------
+
+The system does what it set out to do, but the honest description is
+narrow. The pose estimate integrates commanded motion without correction,
+so its error is unbounded and its model is invalid given the measurement
+above. The detector was trained and validated on data from a single room
+with a single object type, so its metrics do not generalise. The
+push-based grasp depends on floor friction that was never measured, and
+by the finding above, the system does not notice when that assumption
+fails. At 10--15 frames per second, the visual control loop is slow
+relative to the base, which is why motion is pulsed, and speeds are low.
+
+Taking these limitations into account, the core design choice can be
+understood as a practical one. Since each decisive loop relies on image
+measurements rather than estimated geometry, most errors tend to degrade
+performance gradually rather than directly lead to failure. For example,
+if the map drifts, the robot needs to search a bit more; if a turn is
+asymmetric, it just requires some extra correction steps. With the single
+exception of the empty-gripper case, the system is slow and fussy but
+rarely confidently wrong, and on hardware with no proprioception, that
+is the property worth engineering for.
+
+The contributions are the integration and the choices it forced. An
+explicit state machine with a declared transition table and uniform
+timeout handling made a fifteen-state mission debuggable and made two
+useful safety properties readable straight off the table.
+Appearance-based visual servoing allowed the system to tolerate a base
+with no odometry and a turn model that does not hold. The system uses an
+intentionally approximate spatial memory, allowing the robot to keep
+track of can locations without assuming it knows its precise position.
+With a push-based grasp, a challenging precision task is replaced with a
+simpler one that suits the hardware's capabilities.
+
+The next steps for improvement are relatively inexpensive. For example,
+enabling grasp verification can address the silent failure mode at the
+cost of just one additional observation per pickup. Calibrating separate
+left- and right-turn constants, which the configuration already supports
+and currently leaves at unity, would address the largest single source of
+motion error. Adding one inexpensive forward-facing distance sensor would
+give the system its first true metric measurement, and gripper force
+sensing would be the proper fix for the failure mode above.
+
+%% ---------------------------------------------------------------------
+\begin{thebibliography}{9}
+\footnotesize
+
+\bibitem{spas_repo}
+K.~Kanev \emph{et al.}, ``Self-Propelled Arm System (S.P.A.S.),'' project
+repository, 2026. [Online]. Available:
+\url{https://github.com/kamkanev/Self-Propelled-Arm-System}
+
+\bibitem{yolo}
+J.~Redmon, S.~Divvala, R.~Girshick, and A.~Farhadi, ``You Only Look Once:
+Unified, Real-Time Object Detection,'' in \emph{Proc. CVPR}, 2016,
+pp.~779--788.
+
+\bibitem{ultralytics}
+G.~Jocher, A.~Chaurasia, and J.~Qiu, ``Ultralytics YOLO,'' 2024.
+
+\bibitem{ssd}
+W.~Liu \emph{et al.}, ``SSD: Single Shot MultiBox Detector,'' in
+\emph{Proc. ECCV}, 2016, pp.~21--37.
+
+\bibitem{mobilenet}
+A.~G.~Howard \emph{et al.}, ``MobileNets: Efficient Convolutional Neural
+Networks for Mobile Vision Applications,'' arXiv:1704.04861, 2017.
+
+\bibitem{apriltag}
+E.~Olson, ``AprilTag: A Robust and Flexible Visual Fiducial System,'' in
+\emph{Proc. ICRA}, 2011, pp.~3400--3407.
+
+\bibitem{jetsoninference}
+D.~Franklin, ``jetson-inference: Deploying Deep Learning with NVIDIA
+TensorRT,'' NVIDIA, 2024.
+
+\bibitem{hiwonder}
+Hiwonder, ``JetTank ROS Robot Tank with Jetson Nano,'' product
+documentation, 2024.
+
+\end{thebibliography}
+
+\end{document}

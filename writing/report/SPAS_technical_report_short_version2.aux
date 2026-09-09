@@ -1,0 +1,56 @@
+\relax 
+\catcode 95\active
+\citation{spas_repo}
+\citation{hiwonder}
+\citation{ssd}
+\citation{mobilenet}
+\citation{jetsoninference}
+\citation{yolo}
+\citation{ultralytics}
+\@writefile{toc}{\contentsline {section}{\numberline {I}Problem Statement}{1}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {II}System Overview}{1}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Hardware components}}{1}{}\protected@file@percent }
+\newlabel{tab:hardware}{{I}{1}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {III}Perception on the Control Path}{1}{}\protected@file@percent }
+\citation{apriltag}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The platform carrying a grasped can (left) and the two target objects in the arena (right). The can is a 250\,ml slim aluminium can, 53\,mm in diameter and 133\,mm tall, weighing about 11\,g empty. The bin is a cardboard box roughly 5\,cm tall with the printed \texttt  {tag36h11} marker on its side. Both photographs are frames from the recorded hardware demonstration.}}{2}{}\protected@file@percent }
+\newlabel{fig:hw}{{1}{2}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Mission Control}{2}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Can detection. Left: the detector's own output on a $300\times 300$ frame, with the confidence score. Right: the same detection inside the running mission, with the telemetry overlay reporting the state (\texttt  {APPROACHING}), the commanded base motion, and the two scalars the controller actually uses, $e_x = -0.119$ and a normalised box height of $0.255$. The entire perception stack operates at $320\times 240$.}}{2}{}\protected@file@percent }
+\newlabel{fig:canpredict}{{2}{2}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces AprilTag detection during bin docking. The green box marks the detected \texttt  {tag36h11} marker; the overlay reports a tag height of $0.186$ against the $0.15$ stop threshold and a horizontal error of $-0.055$. Note also \texttt  {grabbed=True} and \texttt  {DEPTH=NO}: the run carried a can and used no depth information.}}{2}{}\protected@file@percent }
+\newlabel{fig:tag}{{3}{2}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Navigation and Manipulation}{3}{}\protected@file@percent }
+\newlabel{sec:nav}{{V}{3}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}The Four Visual Stages}{3}{}\protected@file@percent }
+\newlabel{eq:errorx}{{1}{3}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-B}}Grasping}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Results}{3}{}\protected@file@percent }
+\newlabel{sec:results}{{VI}{3}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-A}}Detector Accuracy}{3}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces The mission state machine. Guards such as \texttt  {target\_found} and \texttt  {grabbed} are fields of a shared mission context. The implementation refines this graph, notably by splitting approach into a coarse stage and a final verification stage, but preserves its structure.}}{4}{}\protected@file@percent }
+\newlabel{fig:fsm}{{4}{4}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-B}}End-to-End Mission}{4}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Reconstruction of a complete successful mission}}{4}{}\protected@file@percent }
+\newlabel{tab:trace}{{II}{4}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces The grasp sequence seen from the robot's own camera, reading left to right and top to bottom. Top left: final verification, with the can aligned to $e_x = -0.063$ and a box height of $0.407$ past the $0.36$ threshold. Top right: the base pushing forward at speed $0.20$ with the gripper already lowered. Bottom left: the gripper closing on the can. Bottom right: the can lifted to the carry pose. The overlay's \texttt  {DEPTH=NO} field confirms no depth information was used.}}{5}{}\protected@file@percent }
+\newlabel{fig:grasp}{{5}{5}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Offline YOLO11n training used for dataset iteration only; this model does not run on the robot. Validation mAP@0.5 saturates near $0.995$ within about twenty epochs, which reflects the narrowness of the single-room, single-class dataset more than the difficulty of the detection problem in general.}}{5}{}\protected@file@percent }
+\newlabel{fig:training}{{6}{5}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-C}}Measured Constraints}{5}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces The end of a complete mission on hardware: the robot has docked against the bin and holds the grasped can over it, immediately before the gripper opens and the arm returns to its safe pose.}}{5}{}\protected@file@percent }
+\newlabel{fig:release}{{7}{5}{}{}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Measured platform constraints}}{5}{}\protected@file@percent }
+\newlabel{tab:constraints}{{III}{5}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-D}}A Silent Failure Mode}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Limitations and Conclusion}{5}{}\protected@file@percent }
+\bibcite{spas_repo}{1}
+\bibcite{yolo}{2}
+\bibcite{ultralytics}{3}
+\bibcite{ssd}{4}
+\bibcite{mobilenet}{5}
+\bibcite{apriltag}{6}
+\bibcite{jetsoninference}{7}
+\bibcite{hiwonder}{8}
+\@writefile{toc}{\contentsline {section}{References}{6}{}\protected@file@percent }
+\gdef \@abspage@last{6}
