@@ -9,15 +9,15 @@ An autonomous robot designed to collect drinks cans combines on-board computer v
 
 ## Technical Report
 
-- [Technical Report (PDF)](./SPAS_technical_report.pdf)
+- [Technical Report (PDF)](./submission/FINAL_REPORT.pdf)
 
 ## Presentation Slides
 
-- [Presentation Slides (PDF)](./SPAS_presentation.pdf)
+- [Presentation Slides (PDF)](./submission./SPAS_presentation.pdf)
 
 ## Video Submission
 
-- [Demonstration Video](./SPAS_video.mp4)
+- [Demonstration Video](./submission./SPAS_video.mp4)
 
 
 ## Robot Code
