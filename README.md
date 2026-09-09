@@ -1,21 +1,21 @@
 # Self-Propelled Arm System
 
-### Group 22 Project:  
+### Group 22 Project:
 
 An autonomous robot designed to collect drinks cans combines on-board computer vision, visual navigation and a servo-controlled arm to pick up a can and dispose of it in a designated container.
 
 
 ## Technical Report
 
-- [Technical Report (PDF)](./submission/FINAL_REPORT.pdf)
+- [Technical Report (PDF)](https://github.com/kamkanev/Self-Propelled-Arm-System/blob/main/SPAS_technical_report_N.pdf)
 
 ## Presentation Slides
 
-- [Presentation Slides (PDF)](./submission/SPAS_presentation.pdf)
+- [Presentation Slides (PDF)](https://github.com/kamkanev/Self-Propelled-Arm-System/blob/main/SPAS_presentation.pdf)
 
 ## Video Submission
 
-- [Demonstration Video](./submission/SPAS_video.mp4)
+- [Demonstration Video](https://github.com/kamkanev/Self-Propelled-Arm-System/blob/main/SPAS_video_N.mp4)
 
 
 ## Code Submission
@@ -24,4 +24,5 @@ An autonomous robot designed to collect drinks cans combines on-board computer v
 
 
 ## Verification
+
 Some limited automated verification are conducted with [nuXmv 2.1.0](https://nusmv.fbk.eu/articles/210/) under [verification directory](./system_verification).
