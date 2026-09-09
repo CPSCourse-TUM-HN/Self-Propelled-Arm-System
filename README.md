@@ -24,4 +24,4 @@ An autonomous robot designed to collect drinks cans combines on-board computer v
 
 
 ## Verification
-Some limited automated verification are conducted with nuXmv 2.1.0 under [verification directory](./system_verification).
+Some limited automated verification are conducted with [nuXmv 2.1.0](https://nusmv.fbk.eu/articles/210/) under [verification directory](./system_verification).
