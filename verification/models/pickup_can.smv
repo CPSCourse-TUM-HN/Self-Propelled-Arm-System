@@ -1,0 +1,117 @@
+-- Conditional proof of the fixed can-pickup sequence used by _run_pickup_sequence.
+
+MODULE main
+IVAR
+  actuator_result : {WAIT, SETTLED, FAILED_RESULT};
+VAR
+  level : {P0_SEQUENCE_ONLY, P1_CAN_POSE, P2_PICKUP_GEOMETRY, P3_COMPLETE_CONTRACT};
+  state : {
+    CAN_VISUALLY_STABLE, ARM_DOWN, FIXED_PUSH, CLOSE_GRIPPER,
+    CARRY_POSE, PICKUP_COMPLETE, FAILED
+  };
+  wait_count : 0..1;
+  arm_down_done : boolean;
+  push_done : boolean;
+  gripper_closed : boolean;
+  can_in_capture_region : boolean;
+  can_physically_held : boolean;
+  software_pickup_marked : boolean;
+
+DEFINE
+  A_can_pose := level in {P1_CAN_POSE, P2_PICKUP_GEOMETRY, P3_COMPLETE_CONTRACT};
+  A_arm_geometry := level in {P2_PICKUP_GEOMETRY, P3_COMPLETE_CONTRACT};
+  A_push := level in {P2_PICKUP_GEOMETRY, P3_COMPLETE_CONTRACT};
+  A_grip := level = P3_COMPLETE_CONTRACT;
+  A_actuator := level = P3_COMPLETE_CONTRACT;
+  terminal := state in {PICKUP_COMPLETE, FAILED};
+  pose_settled := actuator_result = SETTLED | (A_actuator & wait_count = 1);
+  pose_failed := actuator_result = FAILED_RESULT & !A_actuator;
+
+ASSIGN
+  init(level) := {P0_SEQUENCE_ONLY, P1_CAN_POSE, P2_PICKUP_GEOMETRY, P3_COMPLETE_CONTRACT};
+  next(level) := level;
+  init(state) := CAN_VISUALLY_STABLE;
+  init(wait_count) := 0;
+  init(arm_down_done) := FALSE;
+  init(push_done) := FALSE;
+  init(gripper_closed) := FALSE;
+  init(can_in_capture_region) := FALSE;
+  init(can_physically_held) := FALSE;
+  init(software_pickup_marked) := FALSE;
+
+  next(state) := case
+    state = CAN_VISUALLY_STABLE : ARM_DOWN;
+    state = ARM_DOWN & pose_failed : FAILED;
+    state = ARM_DOWN & pose_settled : FIXED_PUSH;
+    state = FIXED_PUSH : CLOSE_GRIPPER;
+    state = CLOSE_GRIPPER & pose_failed : FAILED;
+    state = CLOSE_GRIPPER & pose_settled : CARRY_POSE;
+    state = CARRY_POSE & pose_failed : FAILED;
+    state = CARRY_POSE & pose_settled : PICKUP_COMPLETE;
+    TRUE : state;
+  esac;
+
+  next(wait_count) := case
+    terminal : wait_count;
+    state in {CAN_VISUALLY_STABLE, FIXED_PUSH} : 0;
+    pose_settled | pose_failed : 0;
+    wait_count < 1 : wait_count + 1;
+    TRUE : wait_count;
+  esac;
+
+  next(arm_down_done) := case
+    state = ARM_DOWN & pose_settled : TRUE;
+    TRUE : arm_down_done;
+  esac;
+
+  next(push_done) := case
+    state = FIXED_PUSH : TRUE;
+    TRUE : push_done;
+  esac;
+
+  next(gripper_closed) := case
+    state = CLOSE_GRIPPER & pose_settled : TRUE;
+    TRUE : gripper_closed;
+  esac;
+
+  next(can_in_capture_region) := case
+    state = FIXED_PUSH & A_can_pose & A_arm_geometry & A_push : TRUE;
+    state = FIXED_PUSH & !(A_can_pose & A_arm_geometry & A_push) : {FALSE, TRUE};
+    TRUE : can_in_capture_region;
+  esac;
+
+  next(can_physically_held) := case
+    state = CLOSE_GRIPPER & pose_settled & can_in_capture_region & A_grip : TRUE;
+    state = CLOSE_GRIPPER & pose_settled & (!can_in_capture_region | !A_grip) : {FALSE, TRUE};
+    state = CARRY_POSE & can_physically_held & A_grip : TRUE;
+    state = CARRY_POSE & !A_grip : {FALSE, can_physically_held};
+    TRUE : can_physically_held;
+  esac;
+
+  next(software_pickup_marked) := case
+    state = CARRY_POSE & pose_settled : TRUE;
+    TRUE : software_pickup_marked;
+  esac;
+
+-- Ordering properties follow from the production command sequence.
+INVARSPEC NAME push_requires_arm_down := state = FIXED_PUSH -> arm_down_done;
+INVARSPEC NAME close_requires_push := state = CLOSE_GRIPPER -> push_done;
+INVARSPEC NAME carry_requires_closed_gripper := state = CARRY_POSE -> gripper_closed;
+INVARSPEC NAME software_mark_only_at_completion :=
+  software_pickup_marked -> state = PICKUP_COMPLETE;
+CTLSPEC NAME pickup_complete_absorbing :=
+  AG (state = PICKUP_COMPLETE -> AX state = PICKUP_COMPLETE);
+
+-- mark_pickup is a software fact and is not physical evidence by itself.
+LTLSPEC NAME EXPECTED_FALSE_software_pickup_implies_physical_hold :=
+  G (software_pickup_marked -> can_physically_held);
+LTLSPEC NAME EXPECTED_FALSE_geometry_without_grip_retention_is_sufficient :=
+  (level = P2_PICKUP_GEOMETRY) ->
+    G (state = PICKUP_COMPLETE -> can_physically_held);
+
+-- Under the complete parameter, geometry, grip, and actuator contract, pickup succeeds.
+LTLSPEC NAME complete_contract_reaches_stable_pickup :=
+  (level = P3_COMPLETE_CONTRACT) ->
+    F (state = PICKUP_COMPLETE & software_pickup_marked & can_physically_held);
+INVARSPEC NAME complete_contract_pickup_is_physical :=
+  (level = P3_COMPLETE_CONTRACT & state = PICKUP_COMPLETE) -> can_physically_held;
