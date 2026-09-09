@@ -7,11 +7,11 @@ An autonomous robot designed to collect drinks cans combines on-board computer v
 
 ## Technical Report
 
-- [Technical Report (PDF)](https://github.com/kamkanev/Self-Propelled-Arm-System/blob/main/SPAS_technical_report_.pdf)
+- [Technical Report (PDF)](https://github.com/kamkanev/Self-Propelled-Arm-System/blob/main/SPAS_technical_report.pdf)
 
 ## Presentation Slides
 
-- [Presentation Slides (PDF)](https://github.com/kamkanev/Self-Propelled-Arm-System/blob/main/SPAS_presentation.pdf)
+- [Presentation Slides (PDF)](https://github.com/kamkanev/Self-Propelled-Arm-System/blob/main/SPAS_slides.pdf)
 
 ## Video Submission
 
