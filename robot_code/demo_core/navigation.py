@@ -158,6 +158,7 @@ class TargetNavigator(object):
             return StepOutcome(MissionEvent.TIMEOUT, reason="alignment max steps")
         observation = self.detect(target_type)
         if not self._accepted(target_type, observation, tracking=True):
+            self.base.stop()
             lost = int(self.context.state_data.get("lost_frames", 0)) + 1
             self.context.state_data["lost_frames"] = lost
             if lost >= int(settings.get("lost_frame_limit", 5)):

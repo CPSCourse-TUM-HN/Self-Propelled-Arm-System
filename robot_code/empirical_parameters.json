@@ -142,6 +142,33 @@
           "max_steps": 2000,
           "timeout_seconds": 9999.0
         }
+      },
+      "side_docking": {
+        "experimental": {
+          "enabled": true,
+          "supportive_turn_direction": "left",
+          "supportive_turn_speed": "turn.slow",
+          "supportive_turn_seconds": 0.75,
+          "center_tolerance_norm": 0.04,
+          "center_positive_drive_direction": "backward",
+          "drive_speed": "linear.slow",
+          "perspective_tolerance": 0.08,
+          "perspective_positive_turn_direction": "left",
+          "corner_angle_tolerance_deg": 8.0,
+          "turn_speed": "turn.slow",
+          "target_height_norm": 0.15,
+          "height_tolerance_norm": 0.02,
+          "standoff_correction_enabled": false,
+          "standoff_toward_turn_direction": "right",
+          "standoff_turn_speed": "turn.slow",
+          "standoff_turn_seconds": 0.35,
+          "standoff_drive_speed": "linear.slow",
+          "standoff_drive_seconds": 0.12,
+          "stable_frames": 5,
+          "lost_frame_limit": 10,
+          "max_steps": 300,
+          "timeout_seconds": 30.0
+        }
       }
     }
   },
@@ -286,6 +313,16 @@
       },
       "side_view_bin_insert": {
         "angles": {"s1": 70, "s2": 80, "s3": 55, "s4": -55, "s5": 0},
+        "order": [5, 4, 3, 2, 1],
+        "pause_seconds": 0.6
+      },
+      "side_view_grabbing": {
+        "angles": {"s1": 70, "s2": 60, "s3": 45, "s4": -40, "s5": 0},
+        "order": [5, 4, 3, 2, 1],
+        "pause_seconds": 0.6
+      },
+      "side_view_release_low": {
+        "angles": {"s1": 70, "s2": 90, "s3": 40, "s4": 0, "s5": 0},
         "order": [5, 4, 3, 2, 1],
         "pause_seconds": 0.6
       }

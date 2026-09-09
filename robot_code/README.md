@@ -24,7 +24,7 @@ is `camera.depth_rectification_enabled`; Can DetectNet has an independent
 `detectors.can.rectification_enabled` switch that defaults off. AprilTag remains on the
 raw frame because calibrated PnP already consumes the distortion coefficients.
 
-The merge order is:
+Configuration is merged in this order:
 
 ```text
 empirical_parameters.json -> config.json -> command-line overrides
@@ -138,9 +138,9 @@ python3 scripts/validate_can_detectnet_image.py assets/samples/can1.jpg \
   --output diagnostic_outputs/detectnet_native_can.jpg
 ```
 
-There is no runtime backend switch or custom TFOD/PyCUDA post-processing path in this branch. Can parameters are stored directly under `detectors.can`.
+Can detection uses the jetson-inference `detectNet` API with the bundled ONNX model and labels under `assets/models/detectnet_native_can/`. Bin detection uses `pupil_apriltags` with the `tag36h11` family and the configured tag ID.
 
-AprilTag detection uses `pupil_apriltags` with `tag36h11`; it does not require a learned model. The printable tag is `assets/bin_apriltag_36h11_id_0.png`.
+`avoidance.strategy` supports `disabled`, `scripted`, and `tangentbug_depth`. The depth planner extracts obstacle contours, filters floor and wide-wall geometry, selects a visible tangent side, and emits incremental motion decisions. It is a local reactive planner, not metric localization or a complete global TangentBug implementation.
 
 `tuning_tools/bin_docking_tuning.ipynb` provides a live Tag/state overlay, optional MJPG recording of that
 overlay, individual docking-stage controls, and a one-click bin-only pipeline from search through release/reset.
