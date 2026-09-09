@@ -18,7 +18,7 @@ An autonomous robot designed to collect drinks cans combines on-board computer v
 - [Demonstration Video](./submission./SPAS_video.mp4)
 
 
-## Robot Code
+## Code Submission
 
 - The robot runtime and execution instructions can be found in the [`robot_code`](./robot_code/) directory.
 
