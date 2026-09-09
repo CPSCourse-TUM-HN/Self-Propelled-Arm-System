@@ -1,0 +1,149 @@
+
+>>> run_full_background log=/workspace/robot_code/can_video_demo_draft/logs/integration_run_full_20260828_044706.log
+[fsm] IDLE --START--> INITIALIZING
+[depth] loading network fcn-mobilenet
+[camera] starting JetBot Camera 320x240
+[warmup] frame 1/2 processed
+[warmup] frame 2/2 processed
+[depth] started enabled=True
+[arm] pose safe_home
+[arm] dry_run=True
+[arm] safe_home servo=5 angle=0 speed=85
+[arm] dry_run=True
+[arm] safe_home servo=4 angle=0 speed=85
+[arm] dry_run=True
+[arm] safe_home servo=3 angle=0 speed=85
+[arm] dry_run=True
+[arm] safe_home servo=2 angle=0 speed=85
+[arm] dry_run=True
+[arm] safe_home servo=1 angle=-16 speed=85
+[base] stop
+[fsm] INITIALIZING --INITIALIZED--> PLANNING
+[fsm] PLANNING --TARGET_REQUIRED--> SEARCHING
+[can] loading native detectNet model=/workspace/robot_code/can_video_demo_draft/assets/models/detectnet_native_can/can_ssd_mobilenet_v1.onnx
+[can] native detectNet loaded threshold=0.200 clustering=0.300
+[can] backend=detectnet_native no detections
+[base] Robot connected
+[base] search_can direction=left speed=0.4 seconds=0.25
+[map] motion direction=left speed=0.4 effective_seconds=0.25 pose={'x_m': 0.0, 'y_m': 0.0, 'heading_rad': 0.3141592653590002}
+[can] backend=detectnet_native no detections
+[base] search_can direction=left speed=0.4 seconds=0.25
+[map] motion direction=left speed=0.4 effective_seconds=0.25 pose={'x_m': 0.0, 'y_m': 0.0, 'heading_rad': 0.6283185307180004}
+[can] backend=detectnet_native no detections
+[base] search_can direction=left speed=0.4 seconds=0.25
+[map] motion direction=left speed=0.4 effective_seconds=0.25 pose={'x_m': 0.0, 'y_m': 0.0, 'heading_rad': 0.9424777960770001}
+[can] backend=detectnet_native no detections
+[base] search_can direction=left speed=0.4 seconds=0.25
+[map] motion direction=left speed=0.4 effective_seconds=0.25 pose={'x_m': 0.0, 'y_m': 0.0, 'heading_rad': 1.2566370614359998}
+[can] backend=detectnet_native no detections
+[base] search_can direction=left speed=0.4 seconds=0.25
+[map] motion direction=left speed=0.4 effective_seconds=0.25 pose={'x_m': 0.0, 'y_m': 0.0, 'heading_rad': 1.5707963267949996}
+[can] backend=detectnet_native detections=1 best_confidence=0.442
+[can] backend=detectnet_native confidence=0.442 class_id=1 center=(109.7,142.6) error_x=-0.157 bbox=[92.228759765625, 103.87617492675781, 127.17849731445312, 181.3069305419922]
+[base] stop
+[fsm] SEARCHING --TARGET_FOUND--> ALIGNING
+[can] backend=detectnet_native detections=1 best_confidence=0.476
+[can] backend=detectnet_native confidence=0.476 class_id=1 center=(113.7,139.0) error_x=-0.145 bbox=[95.6297607421875, 97.99402618408203, 131.8367462158203, 179.97824096679688]
+[base] stop
+[fsm] ALIGNING --TARGET_ALIGNED--> APPROACHING
+
+>>> stop_base
+[base] stop
+[base] stop[base] stop
+
+[result] {'paused': True, 'state': 'APPROACHING'}
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+
+>>> resume
+[result] {'state': 'APPROACHING', 'context': {'vague_map': {'robot_pose': {'x_m': 0.0, 'y_m': 0.0, 'heading_rad': 1.5707963267949996}, 'bin_marker_position': {'x_m': 0.0, 'y_m': -0.75}, 'bin_docking_pose': {'x_m': 0.0, 'y_m': -0.5, 'heading_rad': -1.57079632679}, 'patrol_index': 0, 'patrol_complete': False, 'initial_scan_complete': True, 'selected_can_id': None, 'known_cans': []}, 'distance_to_target': None, 'grabbed': False, 'completed_pickups': 0, 'target_found': True, 'obstacle_found': False, 'target_type': 'can', 'last_error': None, 'retry_counts': {}, 'metrics': {'state_seconds': {'IDLE': 4.7882349491119385, 'INITIALIZING': 2.6229629516601562, 'PLANNING': 0.020280838012695312, 'SEARCHING': 4.425351858139038, 'ALIGNING': 0.0615694522857666}, 'detector_calls': {'can': 7}, 'detector_seconds': {'can': 2.8490757942199707}}}}
+[can] backend=detectnet_native detections=1 best_confidence=0.291
+[can] backend=detectnet_native confidence=0.291 class_id=1 center=(113.5,137.2) error_x=-0.145 bbox=[95.98136901855469, 100.07755279541016, 131.10903930664062, 174.3682861328125]
+[approach] target=can mode=bbox_height value=0.310 threshold=0.36 error_x=-0.145
+[base] approach_can_steer direction=left speed=0.12 seconds=0.06
+[map] motion direction=left speed=0.12 effective_seconds=0.06 pose={'x_m': 0.0, 'y_m': 0.0, 'heading_rad': 1.5934157939008475}
+[can] backend=detectnet_native no detections
+[base] stop
+[can] backend=detectnet_native detections=1 best_confidence=0.253
+[can] backend=detectnet_native confidence=0.253 class_id=1 center=(113.4,137.4) error_x=-0.146 bbox=[94.55974578857422, 98.68457794189453, 132.17269897460938, 176.11837768554688]
+[approach] target=can mode=bbox_height value=0.323 threshold=0.36 error_x=-0.146
+[base] approach_can_steer direction=left speed=0.12 seconds=0.06
+[map] motion direction=left speed=0.12 effective_seconds=0.06 pose={'x_m': 0.0, 'y_m': 0.0, 'heading_rad': 1.6160352610066955}
+[can] backend=detectnet_native no detections
+[base] stop
+[can] backend=detectnet_native no detections
+[base] stop
+[can] backend=detectnet_native no detections
+[base] stop
+[can] backend=detectnet_native no detections
+[base] stop
+[fsm] APPROACHING --TARGET_MISSING--> SEARCHING reason=approach target lost
+[can] backend=detectnet_native no detections
+[base] search_can direction=left speed=0.4 seconds=0.25
+[map] motion direction=left speed=0.4 effective_seconds=0.25 pose={'x_m': 0.0, 'y_m': 0.0, 'heading_rad': 1.9301945263656952}
+
+>>> pause
+[base] stop
+[result] {'state': 'SEARCHING', 'context': {'vague_map': {'robot_pose': {'x_m': 0.0, 'y_m': 0.0, 'heading_rad': 1.9301945263656952}, 'bin_marker_position': {'x_m': 0.0, 'y_m': -0.75}, 'bin_docking_pose': {'x_m': 0.0, 'y_m': -0.5, 'heading_rad': -1.57079632679}, 'patrol_index': 0, 'patrol_complete': False, 'initial_scan_complete': True, 'selected_can_id': None, 'known_cans': []}, 'distance_to_target': None, 'grabbed': False, 'completed_pickups': 0, 'target_found': True, 'obstacle_found': False, 'target_type': 'can', 'last_error': 'approach target lost', 'retry_counts': {}, 'metrics': {'state_seconds': {'IDLE': 4.7882349491119385, 'INITIALIZING': 2.6229629516601562, 'PLANNING': 0.020280838012695312, 'SEARCHING': 4.425351858139038, 'ALIGNING': 0.0615694522857666, 'APPROACHING': 2.4060862064361572}, 'detector_calls': {'can': 15}, 'detector_seconds': {'can': 3.2265355587005615}}}}
+[can] backend=detectnet_native detections=1 best_confidence=0.223
+[can] backend=detectnet_native confidence=0.223 class_id=1 center=(146.2,138.6) error_x=-0.043 bbox=[129.84332275390625, 101.69767761230469, 162.57957458496094, 175.50546264648438]
+[base] stop
+[fsm] SEARCHING --TARGET_FOUND--> ALIGNING
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+
+>>> stop_all
+[base] stop
+[fsm] stop_all
+[base] stop
+[arm] pose safe_home
+[arm] dry_run=True
+[arm] safe_home servo=5 angle=0 speed=85
+[arm] dry_run=True
+[arm] safe_home servo=4 angle=0 speed=85
+[arm] dry_run=True
+[arm] safe_home servo=3 angle=0 speed=85
+[arm] dry_run=True
+[arm] safe_home servo=2 angle=0 speed=85
+[arm] dry_run=True
+[arm] safe_home servo=1 angle=-16 speed=85
+[fsm] unhandled error: stop requested
+Traceback (most recent call last):
+  File "/workspace/robot_code/can_video_demo_draft/demo_core/state_machine.py", line 521, in run
+    self.step_once()
+  File "/workspace/robot_code/can_video_demo_draft/demo_core/state_machine.py", line 500, in step_once
+    outcome = self._evaluate_current_state()
+  File "/workspace/robot_code/can_video_demo_draft/demo_core/state_machine.py", line 468, in _evaluate_current_state
+    self.interrupt_point()
+  File "/workspace/robot_code/can_video_demo_draft/demo_core/state_machine.py", line 149, in interrupt_point
+    raise RuntimeError("stop requested")
+RuntimeError: stop requested
+[fsm] stop_all
+[base] stop
+[arm] pose safe_home
+[arm] dry_run=True
+[arm] safe_home servo=5 angle=0 speed=85
+[arm] dry_run=True
+[arm] safe_home servo=4 angle=0 speed=85
+[arm] dry_run=True
+[arm] safe_home servo=3 angle=0 speed=85
+[arm] dry_run=True
+[arm] safe_home servo=2 angle=0 speed=85
+[arm] dry_run=True
+[arm] safe_home servo=1 angle=-16 speed=85
+[camera] stopped[camera] stopped
+
+[depth] stop[depth] stop
+[result] False
+
+[result] {'stop_requested': True, 'state': 'FAILED'}
+[integration] FAILED elapsed=12.9s

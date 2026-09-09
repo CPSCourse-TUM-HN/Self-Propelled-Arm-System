@@ -1,0 +1,47 @@
+09:04:11 [job] start full_bypass
+09:04:14 [camera] DepthNet camera started frame=320x240 obstacle_roi_ignore=(top=0.300, bottom=0.150)
+09:04:14 [phase] CRUISING
+09:04:14 [media] recording started /workspace/robot_code/temp_car/logs/obstacle_avoidance_tuning/20260829_090411/obstacle_avoidance_1787994254201.avi
+09:04:14 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+09:04:15 [candidate] avoidance_cruise confirmation 2/15
+09:04:15 [candidate] avoidance_cruise confirmation 3/15
+09:04:15 [candidate] avoidance_cruise confirmation 4/15
+09:04:15 [candidate] avoidance_cruise confirmation 5/15
+09:04:16 [candidate] avoidance_cruise confirmation 6/15
+09:04:16 [candidate] avoidance_cruise confirmation 7/15
+09:04:16 [candidate] avoidance_cruise confirmation 8/15
+09:04:16 [candidate] avoidance_cruise confirmation 9/15
+09:04:17 [candidate] avoidance_cruise confirmation 10/15
+09:04:17 [candidate] avoidance_cruise confirmation 11/15
+09:04:17 [candidate] avoidance_cruise confirmation 12/15
+09:04:17 [candidate] avoidance_cruise confirmation 13/15
+09:04:18 [candidate] avoidance_cruise confirmation 14/15
+09:04:18 [candidate] avoidance_cruise bbox identity changed after 15 frames
+09:04:18 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+09:04:18 [candidate] avoidance_cruise bbox identity changed after 2 frames
+09:04:19 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+09:04:19 [candidate] avoidance_cruise confirmation 2/15
+09:04:20 [candidate] avoidance_cruise bbox identity changed after 3 frames
+09:04:20 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+09:04:20 [candidate] avoidance_cruise confirmation 2/15
+09:04:20 [candidate] avoidance_cruise bbox identity changed after 3 frames
+09:04:21 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+09:04:21 [stop] base stop requested
+09:04:21 [error] full_bypass: stop requested
+09:04:21 Traceback (most recent call last):
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 901, in target
+    result = operation()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 878, in run_full
+    self.run_next_phase()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 869, in run_next_phase
+    phases[self.state]()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 584, in _phase_cruise
+    found,
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 360, in _run_visual_motion
+    analysis = self._confirm_candidate_while_stopped(analysis, direction, speed, label)
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 480, in _confirm_candidate_while_stopped
+    raise RuntimeError("stop requested")
+RuntimeError: stop requested
+
+09:04:21 [media] recording finalized /workspace/robot_code/temp_car/logs/obstacle_avoidance_tuning/20260829_090411/obstacle_avoidance_1787994254201.avi
+09:04:24 [camera] stopped and released

@@ -1,0 +1,410 @@
+[bin-tune] session=20260903_224430 project=/workspace/robot_code/temp_car
+
+>>> reload_parameters
+[base] stop
+[depth] stop
+[result] {'parameters': '/workspace/robot_code/temp_car/empirical_parameters.json', 'dry_run': {'camera': False, 'base': False, 'arm': False}, 'exp2_forced_in_memory': True, 'disk_write': False}
+
+>>> run_full_pipeline
+[base] stop
+[depth] stop
+[bin-tune] incidental can mapping disabled for bin-only stages
+[camera] starting camera-only mode 320x240 (DepthNet disabled)
+[warmup] camera-only frame 1/2 ready
+[warmup] camera-only frame 2/2 ready
+[depth] started enabled=False
+[tag] cv2=4.1.1
+[tag] has pupil_apriltags=True
+[tag] has aruco=False
+[tag] has ArucoDetector=False
+[tag] has DICT_APRILTAG_36h11=False
+[tag] calibration not loaded; pose distance disabled
+[tag] detector loaded backend=pupil_apriltags family=tag36h11 dictionary=DICT_APRILTAG_36h11
+[base] stop
+[bin-tune] prepared full bin pipeline state=SEARCHING grabbed=True
+
+>>> one-click bin pipeline log=/workspace/robot_code/temp_car/logs/bin_docking_tuning/20260903_224430/one_click_full_224506.log
+[result] {'started': True, 'from': 'SEARCHING', 'through': 'FINALIZING', 'live': True, 'recording': True, 'log': '/workspace/robot_code/temp_car/logs/bin_docking_tuning/20260903_224430/one_click_full_224506.log'}
+[tag] backend=pupil_apriltags id=0 center=(117.2,132.6) error_x=-0.134 yaw_deg=0.14 height=15.4px height_norm=0.064 margin=30.83 distance=None
+[base] stop
+[fsm] SEARCHING --TARGET_FOUND--> ALIGNING
+[tag] backend=pupil_apriltags id=0 center=(117.2,132.5) error_x=-0.134 yaw_deg=-18.64 height=15.5px height_norm=0.064 margin=30.32 distance=None
+[base] Robot connected
+[base] continuous start label=align_bin direction=left requested_speed=0.15 effective_speed=0.15
+[visual-turn] label=align_bin direction=left speed=0.15
+[tag] backend=pupil_apriltags id=0 center=(117.3,132.5) error_x=-0.134 yaw_deg=-1.78 height=15.3px height_norm=0.064 margin=32.91 distance=None
+[tag] backend=pupil_apriltags id=0 center=(117.3,132.6) error_x=-0.133 yaw_deg=-17.12 height=15.6px height_norm=0.065 margin=31.75 distance=None
+[tag] backend=pupil_apriltags id=0 center=(117.3,132.8) error_x=-0.134 yaw_deg=-18.8 height=16.0px height_norm=0.067 margin=29.58 distance=None
+[tag] backend=pupil_apriltags id=0 center=(117.4,132.9) error_x=-0.133 yaw_deg=-22.64 height=16.3px height_norm=0.068 margin=26.80 distance=None
+[tag] backend=pupil_apriltags id=0 center=(118.5,133.0) error_x=-0.130 yaw_deg=-27.82 height=16.7px height_norm=0.070 margin=24.89 distance=None
+[tag] backend=pupil_apriltags id=0 center=(120.2,133.1) error_x=-0.124 yaw_deg=-29.85 height=16.7px height_norm=0.070 margin=28.77 distance=None
+[tag] backend=pupil_apriltags id=0 center=(121.3,132.9) error_x=-0.121 yaw_deg=-23.29 height=16.2px height_norm=0.068 margin=31.57 distance=None
+[tag] backend=pupil_apriltags id=0 center=(122.5,132.5) error_x=-0.117 yaw_deg=-15.33 height=15.4px height_norm=0.064 margin=31.34 distance=None
+[tag] backend=pupil_apriltags id=0 center=(125.5,132.3) error_x=-0.108 yaw_deg=-17.47 height=15.8px height_norm=0.066 margin=32.60 distance=None
+[tag] backend=pupil_apriltags id=0 center=(127.1,132.0) error_x=-0.103 yaw_deg=10.53 height=16.4px height_norm=0.068 margin=29.02 distance=None
+[tag] backend=pupil_apriltags id=0 center=(128.5,131.9) error_x=-0.098 yaw_deg=7.43 height=16.1px height_norm=0.067 margin=29.35 distance=None
+[tag] backend=pupil_apriltags id=0 center=(129.4,131.7) error_x=-0.096 yaw_deg=-22.3 height=15.7px height_norm=0.065 margin=30.44 distance=None
+[tag] backend=pupil_apriltags id=0 center=(130.0,131.7) error_x=-0.094 yaw_deg=-16.4 height=15.7px height_norm=0.065 margin=29.73 distance=None
+[tag] backend=pupil_apriltags id=0 center=(132.5,131.5) error_x=-0.086 yaw_deg=-14.18 height=15.5px height_norm=0.065 margin=32.01 distance=None
+[tag] backend=pupil_apriltags id=0 center=(134.1,131.5) error_x=-0.081 yaw_deg=-14.65 height=15.6px height_norm=0.065 margin=27.47 distance=None
+[tag] backend=pupil_apriltags id=0 center=(135.3,131.6) error_x=-0.077 yaw_deg=0.41 height=15.7px height_norm=0.065 margin=30.54 distance=None
+[map] motion direction=left speed=0.15 effective_seconds=0.6754133701324463 pose={'x_m': 0.0, 'y_m': 0.0, 'heading_rad': -0.11920638661486294}
+[base] continuous stop label=align_bin elapsed=0.675s
+[base] stop
+[fsm] ALIGNING --TARGET_ALIGNED--> APPROACHING
+[tag] backend=pupil_apriltags id=0 center=(138.0,131.5) error_x=-0.069 yaw_deg=7.83 height=15.5px height_norm=0.065 margin=28.96 distance=None
+[approach] target=bin mode=bbox_height value=0.065 threshold=0.16 error_x=-0.069
+[base] continuous start label=approach_bin_forward direction=forward requested_speed=0.6 effective_speed=0.6
+[tag] backend=pupil_apriltags id=0 center=(140.3,131.4) error_x=-0.062 yaw_deg=-9.39 height=15.2px height_norm=0.063 margin=31.44 distance=None
+[approach] target=bin mode=bbox_height value=0.063 threshold=0.16 error_x=-0.062
+[tag] backend=pupil_apriltags id=0 center=(140.5,131.4) error_x=-0.061 yaw_deg=-6.98 height=15.1px height_norm=0.063 margin=30.00 distance=None
+[approach] target=bin mode=bbox_height value=0.063 threshold=0.16 error_x=-0.061
+[tag] backend=pupil_apriltags id=0 center=(141.3,131.6) error_x=-0.058 yaw_deg=-8.48 height=15.4px height_norm=0.064 margin=30.43 distance=None
+[approach] target=bin mode=bbox_height value=0.064 threshold=0.16 error_x=-0.058
+[tag] backend=pupil_apriltags id=0 center=(142.4,132.2) error_x=-0.055 yaw_deg=-18.42 height=15.8px height_norm=0.066 margin=29.33 distance=None
+[approach] target=bin mode=bbox_height value=0.066 threshold=0.16 error_x=-0.055
+[tag] backend=pupil_apriltags id=0 center=(142.1,131.5) error_x=-0.056 yaw_deg=-5.61 height=15.3px height_norm=0.064 margin=31.38 distance=None
+[approach] target=bin mode=bbox_height value=0.064 threshold=0.16 error_x=-0.056
+[tag] backend=pupil_apriltags id=0 center=(142.0,132.2) error_x=-0.056 yaw_deg=-6.3 height=15.6px height_norm=0.065 margin=33.28 distance=None
+[approach] target=bin mode=bbox_height value=0.065 threshold=0.16 error_x=-0.056
+[tag] backend=pupil_apriltags id=0 center=(142.1,132.2) error_x=-0.056 yaw_deg=-5.94 height=15.4px height_norm=0.064 margin=34.37 distance=None
+[approach] target=bin mode=bbox_height value=0.064 threshold=0.16 error_x=-0.056
+[tag] backend=pupil_apriltags id=0 center=(141.9,132.3) error_x=-0.057 yaw_deg=-5.24 height=16.0px height_norm=0.067 margin=33.17 distance=None
+[approach] target=bin mode=bbox_height value=0.067 threshold=0.16 error_x=-0.057
+[tag] backend=pupil_apriltags id=0 center=(141.5,132.5) error_x=-0.058 yaw_deg=-15.14 height=17.3px height_norm=0.072 margin=27.87 distance=None
+[approach] target=bin mode=bbox_height value=0.072 threshold=0.16 error_x=-0.058
+[tag] backend=pupil_apriltags id=0 center=(141.1,132.8) error_x=-0.059 yaw_deg=-11.25 height=16.2px height_norm=0.068 margin=30.96 distance=None
+[approach] target=bin mode=bbox_height value=0.068 threshold=0.16 error_x=-0.059
+[tag] backend=pupil_apriltags id=0 center=(141.5,133.4) error_x=-0.058 yaw_deg=-13.59 height=17.2px height_norm=0.072 margin=30.41 distance=None
+[approach] target=bin mode=bbox_height value=0.072 threshold=0.16 error_x=-0.058
+[tag] backend=pupil_apriltags id=0 center=(141.4,133.3) error_x=-0.058 yaw_deg=2.04 height=17.2px height_norm=0.072 margin=29.20 distance=None
+[approach] target=bin mode=bbox_height value=0.072 threshold=0.16 error_x=-0.058
+[tag] backend=pupil_apriltags id=0 center=(141.6,133.4) error_x=-0.058 yaw_deg=-14.45 height=17.2px height_norm=0.072 margin=33.75 distance=None
+[approach] target=bin mode=bbox_height value=0.072 threshold=0.16 error_x=-0.058
+[tag] backend=pupil_apriltags id=0 center=(141.4,133.4) error_x=-0.058 yaw_deg=-11.15 height=17.2px height_norm=0.072 margin=31.36 distance=None
+[approach] target=bin mode=bbox_height value=0.072 threshold=0.16 error_x=-0.058
+[tag] backend=pupil_apriltags id=0 center=(141.4,134.4) error_x=-0.058 yaw_deg=4.01 height=17.1px height_norm=0.071 margin=33.76 distance=None
+[approach] target=bin mode=bbox_height value=0.071 threshold=0.16 error_x=-0.058
+[tag] backend=pupil_apriltags id=0 center=(140.9,134.4) error_x=-0.060 yaw_deg=-2.4 height=17.2px height_norm=0.072 margin=31.58 distance=None
+[approach] target=bin mode=bbox_height value=0.072 threshold=0.16 error_x=-0.060
+[tag] backend=pupil_apriltags id=0 center=(140.9,135.0) error_x=-0.060 yaw_deg=-11.65 height=18.4px height_norm=0.077 margin=33.63 distance=None
+[approach] target=bin mode=bbox_height value=0.077 threshold=0.16 error_x=-0.060
+[tag] backend=pupil_apriltags id=0 center=(141.8,134.9) error_x=-0.057 yaw_deg=-9.98 height=18.2px height_norm=0.076 margin=30.92 distance=None
+[approach] target=bin mode=bbox_height value=0.076 threshold=0.16 error_x=-0.057
+[tag] backend=pupil_apriltags id=0 center=(141.6,135.5) error_x=-0.058 yaw_deg=-14.85 height=19.3px height_norm=0.081 margin=35.28 distance=None
+[approach] target=bin mode=bbox_height value=0.081 threshold=0.16 error_x=-0.058
+[tag] backend=pupil_apriltags id=0 center=(141.5,135.9) error_x=-0.058 yaw_deg=-8.72 height=18.1px height_norm=0.075 margin=34.25 distance=None
+[approach] target=bin mode=bbox_height value=0.075 threshold=0.16 error_x=-0.058
+[tag] backend=pupil_apriltags id=0 center=(141.4,135.9) error_x=-0.058 yaw_deg=-6.36 height=18.0px height_norm=0.075 margin=33.02 distance=None
+[approach] target=bin mode=bbox_height value=0.075 threshold=0.16 error_x=-0.058
+[tag] backend=pupil_apriltags id=0 center=(141.5,136.4) error_x=-0.058 yaw_deg=-7.09 height=19.2px height_norm=0.080 margin=33.54 distance=None
+[approach] target=bin mode=bbox_height value=0.080 threshold=0.16 error_x=-0.058
+[tag] backend=pupil_apriltags id=0 center=(141.0,136.4) error_x=-0.059 yaw_deg=3.87 height=19.2px height_norm=0.080 margin=34.52 distance=None
+[approach] target=bin mode=bbox_height value=0.080 threshold=0.16 error_x=-0.059
+[tag] backend=pupil_apriltags id=0 center=(141.0,137.4) error_x=-0.059 yaw_deg=2.61 height=19.2px height_norm=0.080 margin=33.10 distance=None
+[approach] target=bin mode=bbox_height value=0.080 threshold=0.16 error_x=-0.059
+[tag] backend=pupil_apriltags id=0 center=(141.5,137.2) error_x=-0.058 yaw_deg=-14.66 height=20.1px height_norm=0.084 margin=33.83 distance=None
+[approach] target=bin mode=bbox_height value=0.084 threshold=0.16 error_x=-0.058
+[tag] backend=pupil_apriltags id=0 center=(142.0,137.8) error_x=-0.056 yaw_deg=-8.53 height=19.7px height_norm=0.082 margin=34.01 distance=None
+[approach] target=bin mode=bbox_height value=0.082 threshold=0.16 error_x=-0.056
+[tag] backend=pupil_apriltags id=0 center=(142.1,138.2) error_x=-0.056 yaw_deg=-4.11 height=19.5px height_norm=0.081 margin=33.89 distance=None
+[approach] target=bin mode=bbox_height value=0.081 threshold=0.16 error_x=-0.056
+[tag] backend=pupil_apriltags id=0 center=(142.8,137.9) error_x=-0.054 yaw_deg=0.71 height=20.0px height_norm=0.083 margin=33.69 distance=None
+[approach] target=bin mode=bbox_height value=0.083 threshold=0.16 error_x=-0.054
+[tag] backend=pupil_apriltags id=0 center=(142.7,139.0) error_x=-0.054 yaw_deg=0.48 height=20.3px height_norm=0.084 margin=34.09 distance=None
+[approach] target=bin mode=bbox_height value=0.084 threshold=0.16 error_x=-0.054
+[tag] backend=pupil_apriltags id=0 center=(143.4,139.4) error_x=-0.052 yaw_deg=-0.58 height=21.1px height_norm=0.088 margin=32.68 distance=None
+[approach] target=bin mode=bbox_height value=0.088 threshold=0.16 error_x=-0.052
+[tag] backend=pupil_apriltags id=0 center=(143.1,139.8) error_x=-0.053 yaw_deg=-5.85 height=20.9px height_norm=0.087 margin=34.25 distance=None
+[approach] target=bin mode=bbox_height value=0.087 threshold=0.16 error_x=-0.053
+[tag] backend=pupil_apriltags id=0 center=(144.0,140.4) error_x=-0.050 yaw_deg=-10.68 height=21.4px height_norm=0.089 margin=34.05 distance=None
+[approach] target=bin mode=bbox_height value=0.089 threshold=0.16 error_x=-0.050
+[tag] backend=pupil_apriltags id=0 center=(143.4,141.0) error_x=-0.052 yaw_deg=-13.66 height=22.5px height_norm=0.094 margin=33.72 distance=None
+[approach] target=bin mode=bbox_height value=0.094 threshold=0.16 error_x=-0.052
+[tag] backend=pupil_apriltags id=0 center=(143.2,140.9) error_x=-0.052 yaw_deg=-4.32 height=22.2px height_norm=0.092 margin=34.12 distance=None
+[approach] target=bin mode=bbox_height value=0.092 threshold=0.16 error_x=-0.052
+[tag] backend=pupil_apriltags id=0 center=(143.3,142.0) error_x=-0.052 yaw_deg=-1.53 height=22.4px height_norm=0.093 margin=33.72 distance=None
+[approach] target=bin mode=bbox_height value=0.093 threshold=0.16 error_x=-0.052
+[tag] backend=pupil_apriltags id=0 center=(143.3,142.4) error_x=-0.052 yaw_deg=-6.77 height=23.0px height_norm=0.096 margin=33.75 distance=None
+[approach] target=bin mode=bbox_height value=0.096 threshold=0.16 error_x=-0.052
+[tag] backend=pupil_apriltags id=0 center=(143.0,142.7) error_x=-0.053 yaw_deg=-4.02 height=22.7px height_norm=0.094 margin=33.25 distance=None
+[approach] target=bin mode=bbox_height value=0.094 threshold=0.16 error_x=-0.053
+[tag] backend=pupil_apriltags id=0 center=(142.9,143.5) error_x=-0.053 yaw_deg=-4.86 height=23.4px height_norm=0.098 margin=33.93 distance=None
+[approach] target=bin mode=bbox_height value=0.098 threshold=0.16 error_x=-0.053
+[tag] backend=pupil_apriltags id=0 center=(142.9,143.5) error_x=-0.053 yaw_deg=-5.08 height=23.5px height_norm=0.098 margin=34.16 distance=None
+[approach] target=bin mode=bbox_height value=0.098 threshold=0.16 error_x=-0.053
+[tag] backend=pupil_apriltags id=0 center=(143.6,144.8) error_x=-0.051 yaw_deg=-9.57 height=24.2px height_norm=0.101 margin=33.63 distance=None
+[approach] target=bin mode=bbox_height value=0.101 threshold=0.16 error_x=-0.051
+[tag] backend=pupil_apriltags id=0 center=(142.8,145.0) error_x=-0.054 yaw_deg=-6.11 height=24.6px height_norm=0.102 margin=33.77 distance=None
+[approach] target=bin mode=bbox_height value=0.102 threshold=0.16 error_x=-0.054
+[tag] backend=pupil_apriltags id=0 center=(143.4,145.8) error_x=-0.052 yaw_deg=-1.01 height=24.6px height_norm=0.103 margin=33.75 distance=None
+[approach] target=bin mode=bbox_height value=0.103 threshold=0.16 error_x=-0.052
+[tag] backend=pupil_apriltags id=0 center=(142.9,146.5) error_x=-0.054 yaw_deg=-0.25 height=25.4px height_norm=0.106 margin=32.83 distance=None
+[approach] target=bin mode=bbox_height value=0.106 threshold=0.16 error_x=-0.054
+[tag] backend=pupil_apriltags id=0 center=(142.9,146.6) error_x=-0.054 yaw_deg=-3.64 height=25.7px height_norm=0.107 margin=32.66 distance=None
+[approach] target=bin mode=bbox_height value=0.107 threshold=0.16 error_x=-0.054
+[tag] backend=pupil_apriltags id=0 center=(142.4,147.9) error_x=-0.055 yaw_deg=-3.24 height=26.2px height_norm=0.109 margin=33.25 distance=None
+[approach] target=bin mode=bbox_height value=0.109 threshold=0.16 error_x=-0.055
+[tag] backend=pupil_apriltags id=0 center=(142.8,148.9) error_x=-0.054 yaw_deg=-7.62 height=26.3px height_norm=0.109 margin=33.43 distance=None
+[approach] target=bin mode=bbox_height value=0.109 threshold=0.16 error_x=-0.054
+[tag] backend=pupil_apriltags id=0 center=(141.9,149.4) error_x=-0.056 yaw_deg=0.11 height=27.4px height_norm=0.114 margin=33.43 distance=None
+[approach] target=bin mode=bbox_height value=0.114 threshold=0.16 error_x=-0.056
+[tag] backend=pupil_apriltags id=0 center=(142.2,150.3) error_x=-0.056 yaw_deg=-5.92 height=27.6px height_norm=0.115 margin=33.89 distance=None
+[approach] target=bin mode=bbox_height value=0.115 threshold=0.16 error_x=-0.056
+[tag] backend=pupil_apriltags id=0 center=(141.5,150.7) error_x=-0.058 yaw_deg=-3.78 height=28.0px height_norm=0.117 margin=34.07 distance=None
+[approach] target=bin mode=bbox_height value=0.117 threshold=0.16 error_x=-0.058
+[tag] backend=pupil_apriltags id=0 center=(141.9,151.0) error_x=-0.057 yaw_deg=-3.37 height=28.3px height_norm=0.118 margin=33.87 distance=None
+[approach] target=bin mode=bbox_height value=0.118 threshold=0.16 error_x=-0.057
+[tag] backend=pupil_apriltags id=0 center=(142.0,152.3) error_x=-0.056 yaw_deg=-3.46 height=28.6px height_norm=0.119 margin=34.06 distance=None
+[approach] target=bin mode=bbox_height value=0.119 threshold=0.16 error_x=-0.056
+[tag] backend=pupil_apriltags id=0 center=(142.6,153.8) error_x=-0.054 yaw_deg=-7.41 height=29.9px height_norm=0.125 margin=34.40 distance=None
+[approach] target=bin mode=bbox_height value=0.125 threshold=0.16 error_x=-0.054
+[tag] backend=pupil_apriltags id=0 center=(141.9,154.2) error_x=-0.057 yaw_deg=-4.5 height=29.8px height_norm=0.124 margin=34.71 distance=None
+[approach] target=bin mode=bbox_height value=0.124 threshold=0.16 error_x=-0.057
+[tag] backend=pupil_apriltags id=0 center=(141.7,155.2) error_x=-0.057 yaw_deg=-0.3 height=30.5px height_norm=0.127 margin=34.89 distance=None
+[approach] target=bin mode=bbox_height value=0.127 threshold=0.16 error_x=-0.057
+[tag] backend=pupil_apriltags id=0 center=(141.3,156.2) error_x=-0.058 yaw_deg=-0.62 height=30.8px height_norm=0.129 margin=34.89 distance=None
+[approach] target=bin mode=bbox_height value=0.129 threshold=0.16 error_x=-0.058
+[tag] backend=pupil_apriltags id=0 center=(141.6,156.7) error_x=-0.057 yaw_deg=-4.48 height=32.0px height_norm=0.133 margin=34.65 distance=None
+[approach] target=bin mode=bbox_height value=0.133 threshold=0.16 error_x=-0.057
+[tag] backend=pupil_apriltags id=0 center=(141.4,158.1) error_x=-0.058 yaw_deg=-3.82 height=31.7px height_norm=0.132 margin=35.06 distance=None
+[approach] target=bin mode=bbox_height value=0.132 threshold=0.16 error_x=-0.058
+[tag] backend=pupil_apriltags id=0 center=(141.1,159.0) error_x=-0.059 yaw_deg=-3.57 height=32.4px height_norm=0.135 margin=34.64 distance=None
+[approach] target=bin mode=bbox_height value=0.135 threshold=0.16 error_x=-0.059
+[tag] backend=pupil_apriltags id=0 center=(141.9,160.5) error_x=-0.056 yaw_deg=-4.83 height=33.4px height_norm=0.139 margin=34.66 distance=None
+[approach] target=bin mode=bbox_height value=0.139 threshold=0.16 error_x=-0.056
+[tag] backend=pupil_apriltags id=0 center=(141.9,161.6) error_x=-0.057 yaw_deg=-2.35 height=33.5px height_norm=0.140 margin=34.94 distance=None
+[approach] target=bin mode=bbox_height value=0.140 threshold=0.16 error_x=-0.057
+[tag] backend=pupil_apriltags id=0 center=(141.8,162.7) error_x=-0.057 yaw_deg=-3.39 height=34.6px height_norm=0.144 margin=34.60 distance=None
+[approach] target=bin mode=bbox_height value=0.144 threshold=0.16 error_x=-0.057
+[tag] backend=pupil_apriltags id=0 center=(141.4,163.5) error_x=-0.058 yaw_deg=-2.54 height=35.4px height_norm=0.147 margin=34.99 distance=None
+[approach] target=bin mode=bbox_height value=0.147 threshold=0.16 error_x=-0.058
+[tag] backend=pupil_apriltags id=0 center=(141.8,164.8) error_x=-0.057 yaw_deg=-1.62 height=35.5px height_norm=0.148 margin=34.57 distance=None
+[approach] target=bin mode=bbox_height value=0.148 threshold=0.16 error_x=-0.057
+[tag] backend=pupil_apriltags id=0 center=(141.9,167.0) error_x=-0.057 yaw_deg=-2.33 height=36.9px height_norm=0.154 margin=34.37 distance=None
+[approach] target=bin mode=bbox_height value=0.154 threshold=0.16 error_x=-0.057
+[tag] backend=pupil_apriltags id=0 center=(141.5,168.6) error_x=-0.058 yaw_deg=-1.59 height=37.5px height_norm=0.156 margin=34.56 distance=None
+[approach] target=bin mode=bbox_height value=0.156 threshold=0.16 error_x=-0.058
+[tag] backend=pupil_apriltags id=0 center=(141.9,169.4) error_x=-0.057 yaw_deg=-2.44 height=38.2px height_norm=0.159 margin=34.53 distance=None
+[approach] target=bin mode=bbox_height value=0.159 threshold=0.16 error_x=-0.057
+[tag] backend=pupil_apriltags id=0 center=(142.1,171.1) error_x=-0.056 yaw_deg=-1.1 height=38.9px height_norm=0.162 margin=34.41 distance=None
+[approach] target=bin mode=bbox_height value=0.162 threshold=0.16 error_x=-0.056
+[map] motion direction=forward speed=0.6 effective_seconds=2.664076805114746 pose={'x_m': -0.032870424826759004, 'y_m': 0.2744364629191633, 'heading_rad': -0.11920638661486294}
+[base] continuous stop label=approach_bin_forward elapsed=2.664s
+[base] stop
+[fsm] APPROACHING --TARGET_REACHED--> FINAL_VERIFY
+[tag] backend=pupil_apriltags id=0 center=(142.5,173.6) error_x=-0.055 yaw_deg=-1.78 height=39.9px height_norm=0.166 margin=36.27 distance=None
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(142.5,175.2) error_x=-0.055 yaw_deg=-2.11 height=41.0px height_norm=0.171 margin=36.42 distance=None
+[base] stop
+[fsm] FINAL_VERIFY --SIDE_DOCK_REQUIRED--> BIN_SIDE_DOCKING
+[base] stop
+[exp2] phase=side_view_pose base_direction=left reference_base_angle_deg=90.00 servo1_fixed=70
+[arm] pose side_view_grabbing
+Succeeded to open the port
+Succeeded to change the baudrate
+[arm] TTLServo connected
+[arm] side_view_grabbing servo=5 angle=0 speed=85
+[arm] side_view_grabbing servo=4 angle=-40 speed=85
+[arm] side_view_grabbing servo=3 angle=45 speed=85
+[arm] side_view_grabbing servo=2 angle=60 speed=85
+[arm] side_view_grabbing servo=1 angle=70 speed=85
+[arm-position] side_view_grabbing waiting for motion to settle servos=[1, 2, 3, 4, 5] stability_delta=3 min_wait=0.5 timeout=10.0 stable_samples=2
+[arm-position] side_view_grabbing waiting positions={1: 508, 2: 799, 3: 718, 4: 327, 5: 510} movement={} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 522, 2: 799, 3: 718, 4: 328, 5: 510} movement={1: 14, 2: 0, 3: 0, 4: 1, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 535, 2: 799, 3: 718, 4: 328, 5: 510} movement={1: 13, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 547, 2: 799, 3: 718, 4: 328, 5: 510} movement={1: 12, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 560, 2: 799, 3: 718, 4: 328, 5: 510} movement={1: 13, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 573, 2: 799, 3: 718, 4: 328, 5: 510} movement={1: 13, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 585, 2: 799, 3: 718, 4: 328, 5: 510} movement={1: 12, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 600, 2: 799, 3: 718, 4: 328, 5: 510} movement={1: 15, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 614, 2: 799, 3: 718, 4: 328, 5: 510} movement={1: 14, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 626, 2: 799, 3: 718, 4: 328, 5: 510} movement={1: 12, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 640, 2: 799, 3: 718, 4: 328, 5: 510} movement={1: 14, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 652, 2: 799, 3: 718, 4: 328, 5: 510} movement={1: 12, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 665, 2: 799, 3: 718, 4: 328, 5: 510} movement={1: 13, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 679, 2: 799, 3: 718, 4: 328, 5: 510} movement={1: 14, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 693, 2: 799, 3: 718, 4: 328, 5: 510} movement={1: 14, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 704, 2: 799, 3: 718, 4: 328, 5: 510} movement={1: 11, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 717, 2: 799, 3: 718, 4: 328, 5: 510} movement={1: 13, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 731, 2: 799, 3: 718, 4: 328, 5: 510} movement={1: 14, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 745, 2: 799, 3: 718, 4: 328, 5: 510} movement={1: 14, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 756, 2: 799, 3: 718, 4: 328, 5: 510} movement={1: 11, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 770, 2: 799, 3: 718, 4: 328, 5: 510} movement={1: 14, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 783, 2: 799, 3: 718, 4: 328, 5: 510} movement={1: 13, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 796, 2: 799, 3: 718, 4: 328, 5: 510} movement={1: 13, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 810, 2: 799, 3: 718, 4: 328, 5: 510} movement={1: 14, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 824, 2: 799, 3: 718, 4: 328, 5: 510} movement={1: 14, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 835, 2: 799, 3: 718, 4: 328, 5: 510} movement={1: 11, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing settled positions={1: 837, 2: 799, 3: 718, 4: 328, 5: 510} movement={1: 0, 2: 0, 3: 0, 4: 0, 5: 0} elapsed=4.18s
+[base] exp2_side_entry_turn direction=left requested_speed=0.15 effective_speed=0.15 seconds=8.9
+[map] motion direction=left speed=0.15 effective_seconds=8.9 pose={'x_m': -0.032870424826759004, 'y_m': 0.2744364629191633, 'heading_rad': -1.690002713409863}
+[exp2] side entry direction=left angle_deg=90.00 speed=0.15 seconds=8.900
+[exp2] phase=camera_settle seconds=0.40 discard_frames=3
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[exp2] phase=geometry_alignment_ready
+[tag] backend=pupil_apriltags id=0 center=(112.6,181.0) error_x=-0.148 yaw_deg=-13.16 height=53.0px height_norm=0.221 margin=34.19 distance=None
+[exp2] phase=yaw center_error=-0.148 raw_yaw_deg=-13.16 calibrated_yaw_deg=-7.16 yaw_zero_deg=-6.00 yaw_source=fov_pnp corner_error_deg=8.25 height_norm=0.221
+[base] stop
+[base] exp2_yaw_align direction=left requested_speed=0.15 effective_speed=0.15 seconds=0.7078894157626116
+[map] motion direction=left speed=0.15 effective_seconds=0.7078894157626116 pose={'x_m': -0.032870424826759004, 'y_m': 0.2744364629191633, 'heading_rad': -1.8149409262252527}
+[visual-turn] label=exp2_yaw_align direction=left angle_deg=7.16 speed=0.15 seconds=0.708
+[exp2] yaw correction direction=left seconds=0.708; camera_settle_seconds=0.200
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(144.3,179.1) error_x=-0.049 yaw_deg=-16.97 height=52.3px height_norm=0.218 margin=38.00 distance=None
+[exp2] phase=yaw center_error=-0.049 raw_yaw_deg=-16.97 calibrated_yaw_deg=-10.97 yaw_zero_deg=-6.00 yaw_source=fov_pnp corner_error_deg=14.42 height_norm=0.218
+[base] stop
+[base] exp2_yaw_align direction=left requested_speed=0.15 effective_speed=0.15 seconds=1.0850536686640961
+[map] motion direction=left speed=0.15 effective_seconds=1.0850536686640961 pose={'x_m': -0.032870424826759004, 'y_m': 0.2744364629191633, 'heading_rad': -2.006446355114354}
+[visual-turn] label=exp2_yaw_align direction=left angle_deg=10.97 speed=0.15 seconds=1.085
+[exp2] yaw correction direction=left seconds=1.085; camera_settle_seconds=0.200
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(190.9,176.3) error_x=0.097 yaw_deg=-19.34 height=50.0px height_norm=0.208 margin=36.78 distance=None
+[exp2] phase=yaw center_error=0.097 raw_yaw_deg=-19.34 calibrated_yaw_deg=-13.34 yaw_zero_deg=-6.00 yaw_source=fov_pnp corner_error_deg=19.24 height_norm=0.208
+[base] stop
+[base] exp2_yaw_align direction=left requested_speed=0.15 effective_speed=0.15 seconds=1.3192861511926361
+[map] motion direction=left speed=0.15 effective_seconds=1.3192861511926361 pose={'x_m': -0.032870424826759004, 'y_m': 0.2744364629191633, 'heading_rad': -2.239292404584568}
+[visual-turn] label=exp2_yaw_align direction=left angle_deg=13.34 speed=0.15 seconds=1.319
+[exp2] yaw correction direction=left seconds=1.319; camera_settle_seconds=0.200
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(237.7,174.2) error_x=0.243 yaw_deg=-22.52 height=46.4px height_norm=0.193 margin=37.04 distance=None
+[exp2] phase=yaw center_error=0.243 raw_yaw_deg=-22.52 calibrated_yaw_deg=-16.52 yaw_zero_deg=-6.00 yaw_source=fov_pnp corner_error_deg=23.72 height_norm=0.193
+[base] stop
+[base] exp2_yaw_align direction=left requested_speed=0.15 effective_speed=0.15 seconds=1.6336973102168746
+[map] motion direction=left speed=0.15 effective_seconds=1.6336973102168746 pose={'x_m': -0.032870424826759004, 'y_m': 0.2744364629191633, 'heading_rad': -2.5276301275040667}
+[visual-turn] label=exp2_yaw_align direction=left angle_deg=16.52 speed=0.15 seconds=1.634
+[exp2] yaw correction direction=left seconds=1.634; camera_settle_seconds=0.200
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(280.8,172.2) error_x=0.378 yaw_deg=-26.15 height=40.8px height_norm=0.170 margin=39.14 distance=None
+[exp2] phase=yaw center_error=0.378 raw_yaw_deg=-26.15 calibrated_yaw_deg=-20.15 yaw_zero_deg=-6.00 yaw_source=fov_pnp corner_error_deg=24.26 height_norm=0.170
+[base] stop
+[base] exp2_yaw_align direction=left requested_speed=0.15 effective_speed=0.15 seconds=1.9922040048661884
+[map] motion direction=left speed=0.15 effective_seconds=1.9922040048661884 pose={'x_m': -0.032870424826759004, 'y_m': 0.2744364629191633, 'heading_rad': -2.8792421199838527}
+[visual-turn] label=exp2_yaw_align direction=left angle_deg=20.15 speed=0.15 seconds=1.992
+[exp2] yaw correction direction=left seconds=1.992; camera_settle_seconds=0.200
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[tag] no detections
+[base] stop
+[tag] no detections
+[base] stop
+[tag] no detections
+[base] stop
+[tag] no detections
+[base] stop
+[tag] no detections
+[base] stop
+[tag] no detections
+[base] stop
+[tag] no detections
+[base] stop
+[tag] no detections
+[base] stop
+[tag] no detections
+[base] stop
+[tag] no detections
+[base] stop
+[base] stop
+[arm] pose carry
+[arm] carry servo=5 angle=0 speed=85
+[arm] carry servo=4 angle=-40 speed=85
+[arm] carry servo=3 angle=45 speed=85
+[arm] carry servo=2 angle=60 speed=85
+[arm] carry servo=1 angle=-16 speed=85
+[exp2] side docking aborted; forward camera pose restored
+[fsm] BIN_SIDE_DOCKING --TARGET_MISSING--> INTERMEDIATE reason=exp2 side tag lost
+[bin-tune] full pipeline stopped state=INTERMEDIATE reason=exp2 side tag lost
+[bin-tune] full pipeline FAILED state=INTERMEDIATE elapsed=31.72s
+[bin-tune] FULL PIPELINE FINISHED status=FAILED log=/workspace/robot_code/temp_car/logs/bin_docking_tuning/20260903_224430/one_click_full_224506.log
+
+>>> stop_all
+[base] stop
+[arm] cancellation requested
+[base] stop
+[arm] stop_and_hold positions={1: 441, 2: 799, 3: 718, 4: 328, 5: 510}
+[camera] camera-only stopped
+[depth] stop
+[result] {'stop_requested': True, 'arm_positions': {1: 441, 2: 799, 3: 718, 4: 328, 5: 510}, 'camera_released': True}
+
+>>> start_live
+[base] stop
+[depth] stop
+[camera] starting camera-only mode 320x240 (DepthNet disabled)
+[warmup] camera-only frame 1/2 ready
+[warmup] camera-only frame 2/2 ready
+[depth] started enabled=False
+[tag] cv2=4.1.1
+[tag] has pupil_apriltags=True
+[tag] has aruco=False
+[tag] has ArucoDetector=False
+[tag] has DICT_APRILTAG_36h11=False
+[tag] calibration not loaded; pose distance disabled
+[tag] detector loaded backend=pupil_apriltags family=tag36h11 dictionary=DICT_APRILTAG_36h11
+[tag] backend=pupil_apriltags id=0 center=(272.4,164.8) error_x=0.351 yaw_deg=-26.88 height=38.1px height_norm=0.159 margin=40.26 distance=None
+[result] {'started': True, 'live': True, 'recording': True, 'frame_bytes': 22556, 'dry_run': {'camera': False, 'base': False, 'arm': False}}
+
+>>> stop_all
+[base] stop
+[arm] cancellation requested
+[base] stop
+[arm] TTLServo connected
+[arm] stop_and_hold positions={1: 523, 2: 514, 3: 514, 4: 459, 5: 510}
+[camera] camera-only stopped
+[depth] stop
+[result] {'stop_requested': True, 'arm_positions': {1: 523, 2: 514, 3: 514, 4: 459, 5: 510}, 'camera_released': True}

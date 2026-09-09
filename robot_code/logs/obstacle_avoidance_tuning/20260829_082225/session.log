@@ -1,0 +1,89 @@
+08:22:25 [job] start full_bypass
+08:22:27 [camera] DepthNet camera started frame=320x240 obstacle_roi_ignore=(top=0.300, bottom=0.150)
+08:22:27 [phase] CRUISING
+08:22:31 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+08:22:31 [candidate] avoidance_cruise left center corridor after 2 frames
+08:22:32 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+08:22:32 [candidate] avoidance_cruise confirmation 2/15
+08:22:32 [candidate] avoidance_cruise confirmation 3/15
+08:22:32 [candidate] avoidance_cruise left center corridor after 4 frames
+08:22:33 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+08:22:33 [candidate] avoidance_cruise confirmation 2/15
+08:22:33 [candidate] avoidance_cruise confirmation 3/15
+08:22:33 [candidate] avoidance_cruise confirmation 4/15
+08:22:34 [candidate] avoidance_cruise confirmation 5/15
+08:22:34 [candidate] avoidance_cruise confirmation 6/15
+08:22:34 [candidate] avoidance_cruise left center corridor after 7 frames
+08:22:34 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+08:22:35 [candidate] avoidance_cruise confirmation 2/15
+08:22:35 [candidate] avoidance_cruise confirmation 3/15
+08:22:35 [candidate] avoidance_cruise confirmation 4/15
+08:22:35 [candidate] avoidance_cruise confirmation 5/15
+08:22:36 [candidate] avoidance_cruise confirmation 6/15
+08:22:36 [candidate] avoidance_cruise confirmation 7/15
+08:22:36 [candidate] avoidance_cruise confirmation 8/15
+08:22:36 [candidate] avoidance_cruise confirmation 9/15
+08:22:36 [candidate] avoidance_cruise confirmation 10/15
+08:22:37 [candidate] avoidance_cruise confirmation 11/15
+08:22:37 [candidate] avoidance_cruise confirmation 12/15
+08:22:37 [candidate] avoidance_cruise confirmation 13/15
+08:22:37 [candidate] avoidance_cruise confirmation 14/15
+08:22:37 [candidate] avoidance_cruise confirmation 15/15
+08:22:37 [candidate] avoidance_cruise confirmed frames=15
+08:22:37 [phase] DETECTED selected_side=left locked_obstacle_depth=2.263322353363037 depth_time_factor=3.500 segment_base_seconds=7.922 geometry={'detected': True, 'path_blocked': True, 'unsafe': False, 'bbox': [124, 96, 14, 28], 'center': [131, 110], 'width_norm': 0.0625, 'height_norm': 0.125, 'center_x_norm': 0.5848214285714286, 'bbox_left_norm': 0.5535714285714286, 'bbox_right_norm': 0.6160714285714286, 'background_depth': 3.473475217819214, 'obstacle_depth': 2.263322353363037, 'left_clearance_norm': 0.5535714285714286, 'right_clearance_norm': 0.38392857142857145, 'selected_side': 'left', 'reason': 'center bbox confirmed for 15 frames', 'status': 'OBSTACLE', 'center_depth': 2.6501455307006836}
+08:22:37 [phase] TURN_TO_TANGENT direction=left
+08:22:39 [tangent] reached_streak=1/6
+08:22:39 [tangent] reached_streak=2/6
+08:22:39 [tangent] reached_streak=1/6
+08:22:40 [tangent] reached_streak=2/6
+08:22:40 [tangent] reached_streak=3/6
+08:22:40 [tangent] reached_streak=4/6
+08:22:40 [tangent] reached_streak=5/6
+08:22:40 [tangent] reached_streak=6/6
+08:22:40 [phase] tangent reached seconds=2.952
+08:22:40 [phase] OFFSET_OUT
+08:22:40 [phase] OFFSET_OUT minimum_seconds=7.922 timeout_seconds=30.000
+08:22:48 [phase] offset clear seconds=7.995 segments=1 estimated_lateral_m=2.360
+08:22:48 [phase] TURN_PARALLEL
+08:22:48 [motion] turn_parallel target_seconds=2.952 timeout_seconds=3.952
+08:22:52 [check] turn_parallel blocked_streak=1/12
+08:22:52 [check] turn_parallel clear sample resets blocked streak
+08:22:52 [check] turn_parallel clear sample resets blocked streak
+08:22:52 [check] turn_parallel clear sample resets blocked streak
+08:22:52 [check] turn_parallel blocked_streak=1/12
+08:22:53 [check] turn_parallel clear sample resets blocked streak
+08:22:53 [check] turn_parallel clear sample resets blocked streak
+08:22:53 [check] turn_parallel blocked_streak=1/12
+08:22:53 [check] turn_parallel blocked_streak=2/12
+08:22:54 [check] turn_parallel clear sample resets blocked streak
+08:22:54 [check] turn_parallel blocked_streak=1/12
+08:22:54 [check] turn_parallel clear sample resets blocked streak
+08:22:54 [check] turn_parallel blocked_streak=1/12
+08:22:54 [check] turn_parallel blocked_streak=2/12
+08:22:55 [check] turn_parallel clear sample resets blocked streak
+08:22:55 [check] turn_parallel blocked_streak=1/12
+08:22:55 [check] turn_parallel blocked_streak=2/12
+08:22:55 [check] turn_parallel blocked_streak=3/12
+08:22:55 [check] turn_parallel blocked_streak=4/12
+08:22:56 [check] turn_parallel blocked_streak=5/12
+08:22:56 [check] turn_parallel blocked_streak=6/12
+08:22:56 [check] turn_parallel blocked_streak=7/12
+08:22:56 [check] turn_parallel blocked_streak=8/12
+08:22:57 [check] turn_parallel clear sample resets blocked streak
+08:22:57 [check] turn_parallel accepted after 24 samples; no 12-frame blocked streak
+08:22:57 [phase] PASSING
+08:22:57 [phase] PASSING minimum_seconds=7.922 timeout_seconds=25.000
+08:23:05 [error] full_bypass: blocked obstacle geometry: wide wall reached absolute center stop
+08:23:05 Traceback (most recent call last):
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 758, in target
+    result = operation()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 735, in run_full
+    self.run_next_phase()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 726, in run_next_phase
+    phases[self.state]()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 631, in _phase_passing
+    minimum_seconds=minimum_seconds,
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 350, in _run_visual_motion
+    raise RuntimeError("blocked obstacle geometry: {}".format(analysis.reason))
+RuntimeError: blocked obstacle geometry: wide wall reached absolute center stop
+

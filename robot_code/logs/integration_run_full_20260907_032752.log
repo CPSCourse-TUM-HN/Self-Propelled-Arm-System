@@ -1,0 +1,62 @@
+
+>>> run_full_background log=/workspace/robot_code/temp_car/logs/integration_run_full_20260907_032752.log
+[fsm] IDLE --START--> INITIALIZING
+[depth] loading network fcn-mobilenet
+[camera] starting JetBot Camera 320x240
+[warmup] frame 1/2 processed
+[warmup] frame 2/2 processed
+[depth] started enabled=True
+[arm] pose safe_home
+Succeeded to open the port
+Succeeded to change the baudrate
+[arm] TTLServo connected
+[arm] safe_home servo=5 angle=0 speed=85
+[arm] safe_home servo=4 angle=0 speed=85
+[arm] safe_home servo=3 angle=0 speed=85
+[arm] safe_home servo=2 angle=0 speed=85
+[arm] safe_home servo=1 angle=-16 speed=85
+[base] stop
+[fsm] INITIALIZING --INITIALIZED--> PLANNING
+[fsm] PLANNING --TARGET_REQUIRED--> SEARCHING
+[can] loading native detectNet model=/workspace/robot_code/temp_car/assets/models/detectnet_native_can/can_ssd_mobilenet_v1.onnx
+[can] native detectNet loaded threshold=0.200 clustering=0.300
+[can] backend=detectnet_native no detections
+[base] Robot connected
+[base] continuous start label=search_can_routine_2_step_0 direction=forward requested_speed=0.6 effective_speed=0.6
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.0667269229888916 pose={'x_m': 0.0, 'y_m': 0.006922918260097503, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.07046222686767578 pose={'x_m': 0.0, 'y_m': 0.014233374297618864, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.06649494171142578 pose={'x_m': 0.0, 'y_m': 0.02113222450017929, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.06123805046081543 pose={'x_m': 0.0, 'y_m': 0.027485672235488888, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.061667680740356445 pose={'x_m': 0.0, 'y_m': 0.03388369411230087, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.05784344673156738 pose={'x_m': 0.0, 'y_m': 0.039884951710700986, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.047486066818237305 pose={'x_m': 0.0, 'y_m': 0.044811631143093104, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.05128812789916992 pose={'x_m': 0.0, 'y_m': 0.05013277441263198, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.049317121505737305 pose={'x_m': 0.0, 'y_m': 0.05524942576885223, 'heading_rad': 0.0}
+[can] backend=detectnet_native no detections
+[map] motion direction=forward speed=0.6 effective_seconds=0.04926156997680664 pose={'x_m': 0.0, 'y_m': 0.06036031365394592, 'heading_rad': 0.0}
+[can] backend=detectnet_native detections=1 best_confidence=0.256
+[can] backend=detectnet_native confidence=0.256 class_id=1 center=(162.3,153.1) error_x=0.007 bbox=[109.84375, 67.20703125, 214.84375, 239.0]
+[map] motion direction=forward speed=0.6 effective_seconds=0.12664318084716797 pose={'x_m': 0.0, 'y_m': 0.0734995436668396, 'heading_rad': 0.0}
+[base] continuous stop label=search_can_routine_2_step_0 elapsed=0.127s
+[base] stop
+[fsm] SEARCHING --TARGET_FOUND--> ALIGNING
+[can] backend=detectnet_native no detections
+[base] stop
+[can] backend=detectnet_native no detections
+[base] stop
+[can] backend=detectnet_native detections=1 best_confidence=0.256
+[can] backend=detectnet_native confidence=0.256 class_id=1 center=(168.1,153.8) error_x=0.025 bbox=[112.65625, 68.5546875, 223.59375, 239.0]
+[base] stop
+[fsm] ALIGNING --TARGET_ALIGNED--> APPROACHING
+[can] backend=detectnet_native detections=1 best_confidence=0.252
+[can] backend=detectnet_native confidence=0.252 class_id=1 center=(166.9,150.9) error_x=0.021 bbox=[109.375, 62.75390625, 224.375, 239.0]
+[approach] target=can mode=b

@@ -1,0 +1,24 @@
+05:26:33 [media] stop requested cleanup_owner=caller
+05:26:40 [job] start live_monitor
+05:26:43 [camera] DepthNet camera started
+05:27:57 [job] stopping live monitor before full_bypass
+05:27:57 [job] finish live_monitor result=True
+05:27:57 [job] start full_bypass
+05:27:57 [phase] CRUISING
+05:27:57 [phase] DETECTED selected_side=left geometry={'detected': True, 'path_blocked': True, 'unsafe': False, 'bbox': [108, 92, 30, 48], 'center': [123, 116], 'width_norm': 0.13392857142857142, 'height_norm': 0.21428571428571427, 'center_x_norm': 0.5491071428571429, 'bbox_left_norm': 0.48214285714285715, 'bbox_right_norm': 0.6160714285714286, 'background_depth': 3.0867505073547363, 'obstacle_depth': 1.8899701833724976, 'left_clearance_norm': 0.48214285714285715, 'right_clearance_norm': 0.38392857142857145, 'selected_side': 'left', 'reason': 'supported obstacle'}
+05:27:57 [phase] TURN_TO_TANGENT direction=left
+05:28:03 [error] full_bypass: turn_to_tangent timeout
+05:28:03 Traceback (most recent call last):
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 591, in target
+    result = operation()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 568, in run_full
+    self.run_next_phase()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 559, in run_next_phase
+    phases[self.state]()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 422, in _phase_turn_to_tangent
+    minimum_seconds=settings["minimum_tangent_turn_seconds"],
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 331, in _run_visual_motion
+    raise RuntimeError("{} timeout".format(label))
+RuntimeError: turn_to_tangent timeout
+
+05:28:14 [camera] stopped and released

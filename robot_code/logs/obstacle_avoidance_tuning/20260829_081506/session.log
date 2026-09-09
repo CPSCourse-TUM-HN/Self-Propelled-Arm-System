@@ -1,0 +1,64 @@
+08:15:06 [job] start full_bypass
+08:15:08 [camera] DepthNet camera started frame=320x240 obstacle_roi_ignore=(top=0.300, bottom=0.150)
+08:15:08 [phase] CRUISING
+08:15:08 [media] recording started /workspace/robot_code/temp_car/logs/obstacle_avoidance_tuning/20260829_081506/obstacle_avoidance_1787991308884.avi
+08:15:12 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+08:15:12 [candidate] avoidance_cruise confirmation 2/15
+08:15:12 [candidate] avoidance_cruise confirmation 3/15
+08:15:12 [candidate] avoidance_cruise confirmation 4/15
+08:15:13 [candidate] avoidance_cruise confirmation 5/15
+08:15:13 [candidate] avoidance_cruise confirmation 6/15
+08:15:13 [candidate] avoidance_cruise confirmation 7/15
+08:15:13 [candidate] avoidance_cruise confirmation 8/15
+08:15:14 [candidate] avoidance_cruise confirmation 9/15
+08:15:14 [candidate] avoidance_cruise confirmation 10/15
+08:15:14 [candidate] avoidance_cruise confirmation 11/15
+08:15:14 [candidate] avoidance_cruise confirmation 12/15
+08:15:14 [candidate] avoidance_cruise confirmation 13/15
+08:15:15 [candidate] avoidance_cruise confirmation 14/15
+08:15:15 [candidate] avoidance_cruise confirmation 15/15
+08:15:15 [candidate] avoidance_cruise confirmed frames=15
+08:15:15 [phase] DETECTED selected_side=left locked_obstacle_depth=2.311711549758911 depth_time_factor=3.500 segment_base_seconds=8.091 geometry={'detected': True, 'path_blocked': True, 'unsafe': False, 'bbox': [120, 108, 10, 10], 'center': [125, 113], 'width_norm': 0.044642857142857144, 'height_norm': 0.044642857142857144, 'center_x_norm': 0.5580357142857143, 'bbox_left_norm': 0.5357142857142857, 'bbox_right_norm': 0.5803571428571429, 'background_depth': 3.4880335330963135, 'obstacle_depth': 2.311711549758911, 'left_clearance_norm': 0.5357142857142857, 'right_clearance_norm': 0.41964285714285715, 'selected_side': 'left', 'reason': 'center bbox confirmed for 15 frames', 'status': 'OBSTACLE', 'center_depth': 2.7629058361053467}
+08:15:15 [phase] TURN_TO_TANGENT direction=left
+08:15:16 [tangent] reached_streak=1/3
+08:15:17 [tangent] reached_streak=1/3
+08:15:17 [tangent] reached_streak=2/3
+08:15:18 [tangent] reached_streak=3/3
+08:15:18 [phase] tangent reached seconds=2.702
+08:15:18 [phase] OFFSET_OUT
+08:15:18 [phase] OFFSET_OUT minimum_seconds=8.091 timeout_seconds=30.000
+08:15:26 [phase] offset clear seconds=8.186 segments=1 estimated_lateral_m=2.348
+08:15:26 [phase] TURN_PARALLEL
+08:15:26 [motion] turn_parallel target_seconds=2.702 timeout_seconds=3.702
+08:15:29 [check] turn_parallel blocked_streak=1/5
+08:15:29 [check] turn_parallel blocked_streak=2/5
+08:15:29 [check] turn_parallel blocked_streak=3/5
+08:15:30 [check] turn_parallel blocked_streak=4/5
+08:15:30 [check] turn_parallel blocked_streak=5/5
+08:15:30 [check] turn_parallel persistently blocked
+08:15:30 [correction] turn_parallel blocked; repeat tangent/offset correction=1/3
+08:15:30 [phase] TURN_TO_TANGENT direction=left
+08:15:31 [tangent] reached_streak=1/3
+08:15:31 [tangent] reached_streak=1/3
+08:15:32 [tangent] reached_streak=2/3
+08:15:32 [tangent] reached_streak=3/3
+08:15:32 [phase] tangent reached seconds=1.999
+08:15:32 [phase] OFFSET_OUT
+08:15:32 [phase] OFFSET_OUT minimum_seconds=8.091 timeout_seconds=30.000
+08:15:37 [stop] base stop requested
+08:15:37 [error] full_bypass: stop requested
+08:15:37 Traceback (most recent call last):
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 755, in target
+    result = operation()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 732, in run_full
+    self.run_next_phase()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 723, in run_next_phase
+    phases[self.state]()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 565, in _phase_offset_out
+    minimum_seconds=minimum_seconds,
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 325, in _run_visual_motion
+    raise RuntimeError("stop requested")
+RuntimeError: stop requested
+
+08:15:37 [media] recording finalized /workspace/robot_code/temp_car/logs/obstacle_avoidance_tuning/20260829_081506/obstacle_avoidance_1787991308884.avi
+08:16:12 [camera] stopped and released

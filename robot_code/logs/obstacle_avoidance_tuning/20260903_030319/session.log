@@ -1,0 +1,146 @@
+03:03:19 [parameters] reloaded /workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_parameters.json
+03:03:28 [parameters] reloaded /workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_parameters.json
+03:03:31 [job] start full_bypass
+03:04:43 [camera] DepthNet camera started frame=320x240 obstacle_roi_ignore=(top=0.300, bottom=0.150)
+03:04:43 [phase] CRUISING
+03:04:45 [media] recording started /workspace/robot_code/temp_car/logs/obstacle_avoidance_tuning/20260903_030319/obstacle_avoidance_1788404684727.avi
+03:04:47 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+03:04:47 [candidate] avoidance_cruise confirmation 2/15
+03:04:47 [candidate] avoidance_cruise left center corridor after 3 frames
+03:04:48 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+03:04:48 [candidate] avoidance_cruise left center corridor after 2 frames
+03:04:50 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+03:04:50 [candidate] avoidance_cruise left center corridor after 2 frames
+03:04:51 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+03:04:52 [candidate] avoidance_cruise confirmation 2/15
+03:04:52 [candidate] avoidance_cruise confirmation 3/15
+03:04:52 [candidate] avoidance_cruise confirmation 4/15
+03:04:52 [candidate] avoidance_cruise bbox identity changed after 5 frames
+03:04:53 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+03:04:53 [candidate] avoidance_cruise left center corridor after 2 frames
+03:04:53 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+03:04:54 [candidate] avoidance_cruise left center corridor after 2 frames
+03:04:54 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+03:04:54 [candidate] avoidance_cruise bbox identity changed after 2 frames
+03:04:54 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+03:04:55 [candidate] avoidance_cruise confirmation 2/15
+03:04:55 [candidate] avoidance_cruise confirmation 3/15
+03:04:55 [candidate] avoidance_cruise confirmation 4/15
+03:04:55 [candidate] avoidance_cruise confirmation 5/15
+03:04:56 [candidate] avoidance_cruise confirmation 6/15
+03:04:56 [candidate] avoidance_cruise confirmation 7/15
+03:04:56 [candidate] avoidance_cruise confirmation 8/15
+03:04:56 [candidate] avoidance_cruise confirmation 9/15
+03:04:57 [candidate] avoidance_cruise confirmation 10/15
+03:04:57 [candidate] avoidance_cruise confirmation 11/15
+03:04:57 [candidate] avoidance_cruise confirmation 12/15
+03:04:57 [candidate] avoidance_cruise confirmation 13/15
+03:04:58 [candidate] avoidance_cruise confirmation 14/15
+03:04:58 [candidate] avoidance_cruise confirmation 15/15
+03:04:58 [candidate] avoidance_cruise locked frames=15 bbox=(126, 108, 20, 28) depth=2.266902208328247 side=left
+03:04:58 [phase] DETECTED selected_side=left locked_obstacle_depth=2.266902208328247 depth_time_factor=4.000 segment_base_seconds=9.068 pass_depth_time_factor=1.500 pass_base_seconds=3.400 geometry={'detected': True, 'path_blocked': True, 'unsafe': False, 'bbox': [126, 108, 20, 28], 'center': [136, 122], 'width_norm': 0.08928571428571429, 'height_norm': 0.125, 'center_x_norm': 0.6071428571428571, 'bbox_left_norm': 0.5625, 'bbox_right_norm': 0.6517857142857143, 'background_depth': 2.9694011211395264, 'obstacle_depth': 2.266902208328247, 'left_clearance_norm': 0.5625, 'right_clearance_norm': 0.3482142857142857, 'selected_side': 'left', 'reason': 'same bbox confirmed for 15 frames', 'status': 'OBSTACLE', 'center_depth': 2.6680145263671875, 'candidate_bboxes': [[126, 108, 20, 26]]}
+03:04:58 [phase] TURN_TO_TANGENT direction=left locked_bbox=(126, 108, 20, 28)
+03:04:58 [tangent] safe_streak=0/6 geometry_safe=False
+03:04:58 [tangent] safe_streak=0/6 geometry_safe=False
+03:04:59 [tangent] safe_streak=0/6 geometry_safe=False
+03:04:59 [tangent] safe_streak=0/6 geometry_safe=False
+03:04:59 [tangent] safe_streak=0/6 geometry_safe=False
+03:04:59 [tangent] locked bbox absent; frame counts as outside collision corridor
+03:04:59 [tangent] safe_streak=1/6 geometry_safe=True
+03:05:00 [tangent] safe_streak=0/6 geometry_safe=False
+03:05:00 [tangent] locked bbox absent; frame counts as outside collision corridor
+03:05:00 [tangent] safe_streak=1/6 geometry_safe=True
+03:05:00 [tangent] safe_streak=2/6 geometry_safe=True
+03:05:00 [tangent] safe_streak=3/6 geometry_safe=True
+03:05:01 [tangent] safe_streak=4/6 geometry_safe=True
+03:05:01 [tangent] safe_streak=5/6 geometry_safe=True
+03:05:01 [tangent] safe_streak=6/6 geometry_safe=True
+03:05:01 [phase] tangent reached seconds=3.280
+03:05:01 [phase] OFFSET_OUT
+03:05:01 [phase] OFFSET_OUT minimum_seconds=9.068 timeout_seconds=30.000
+03:05:10 [phase] offset clear seconds=9.142 segments=1 estimated_lateral_m=2.742
+03:05:10 [phase] TURN_PARALLEL
+03:05:10 [motion] turn_parallel direction=right speed=0.150 target_seconds=3.280 timeout_seconds=4.280
+03:05:14 [motion] turn_parallel complete direction=right target_seconds=3.280 actual_seconds=3.415 delta_seconds=0.135
+03:05:14 [check] turn_parallel clear clear_streak=1/3
+03:05:14 [check] turn_parallel clear clear_streak=2/3
+03:05:14 [check] turn_parallel clear clear_streak=3/3
+03:05:14 [check] turn_parallel accepted after 3 valid samples
+03:05:14 [phase] PASSING
+03:05:14 [phase] PASSING minimum_seconds=3.400 timeout_seconds=25.000
+03:05:15 [candidate] pass_obstacle stopped for bbox confirmation 1/3
+03:05:16 [candidate] pass_obstacle confirmation 2/3
+03:05:16 [candidate] pass_obstacle confirmation 3/3
+03:05:16 [candidate] pass_obstacle locked frames=3 bbox=(128, 67, 96, 65) depth=2.137228012084961 side=left
+03:05:16 [interrupt] pass_obstacle confirmed new obstacle after moving_seconds=1.018
+03:05:16 [phase] DETECTED selected_side=left locked_obstacle_depth=2.137228012084961 depth_time_factor=4.000 segment_base_seconds=8.549 pass_depth_time_factor=1.500 pass_base_seconds=3.206 geometry={'detected': True, 'path_blocked': True, 'unsafe': False, 'bbox': [128, 67, 96, 65], 'center': [176, 100], 'width_norm': 0.42857142857142855, 'height_norm': 0.29017857142857145, 'center_x_norm': 0.7857142857142857, 'bbox_left_norm': 0.5714285714285714, 'bbox_right_norm': 1.0, 'background_depth': 2.7428536415100098, 'obstacle_depth': 2.137228012084961, 'left_clearance_norm': 0.5892857142857143, 'right_clearance_norm': 0.0, 'selected_side': 'left', 'reason': 'same bbox confirmed for 3 frames', 'status': 'OBSTACLE', 'center_depth': 2.5877294540405273, 'candidate_bboxes': [[140, 128, 22, 22], [132, 67, 92, 65]]}
+03:05:16 [phase] PASSING interrupted; starting nested avoidance
+03:05:16 [phase] TURN_TO_TANGENT direction=left locked_bbox=(128, 67, 96, 65)
+03:05:16 [tangent] safe_streak=0/6 geometry_safe=False
+03:05:17 [tangent] safe_streak=0/6 geometry_safe=False
+03:05:17 [tangent] safe_streak=0/6 geometry_safe=False
+03:05:17 [tangent] locked bbox absent; frame counts as outside collision corridor
+03:05:17 [tangent] safe_streak=1/6 geometry_safe=True
+03:05:17 [tangent] locked bbox absent; frame counts as outside collision corridor
+03:05:17 [tangent] safe_streak=2/6 geometry_safe=True
+03:05:18 [tangent] locked bbox absent; frame counts as outside collision corridor
+03:05:18 [tangent] safe_streak=3/6 geometry_safe=True
+03:05:18 [tangent] locked bbox absent; frame counts as outside collision corridor
+03:05:18 [tangent] safe_streak=4/6 geometry_safe=True
+03:05:18 [tangent] locked bbox absent; frame counts as outside collision corridor
+03:05:18 [tangent] safe_streak=5/6 geometry_safe=True
+03:05:18 [tangent] locked bbox absent; frame counts as outside collision corridor
+03:05:18 [tangent] safe_streak=6/6 geometry_safe=True
+03:05:18 [phase] tangent reached seconds=2.381
+03:05:18 [phase] OFFSET_OUT
+03:05:18 [phase] OFFSET_OUT minimum_seconds=8.549 timeout_seconds=30.000
+03:05:22 [candidate] offset_out stopped for bbox confirmation 1/3
+03:05:22 [candidate] offset_out left center corridor after 2 frames
+03:05:22 [candidate] offset_out stopped for bbox confirmation 1/3
+03:05:22 [candidate] offset_out confirmation 2/3
+03:05:23 [candidate] offset_out confirmation 3/3
+03:05:23 [candidate] offset_out locked frames=3 bbox=(128, 67, 96, 57) depth=1.926599383354187 side=left
+03:05:23 [interrupt] offset_out confirmed new obstacle after moving_seconds=3.402
+03:05:23 [phase] DETECTED selected_side=left locked_obstacle_depth=1.926599383354187 depth_time_factor=4.000 segment_base_seconds=7.706 pass_depth_time_factor=1.500 pass_base_seconds=2.890 geometry={'detected': True, 'path_blocked': True, 'unsafe': False, 'bbox': [128, 67, 96, 57], 'center': [176, 96], 'width_norm': 0.42857142857142855, 'height_norm': 0.2544642857142857, 'center_x_norm': 0.7857142857142857, 'bbox_left_norm': 0.5714285714285714, 'bbox_right_norm': 1.0, 'background_depth': 2.542140483856201, 'obstacle_depth': 1.926599383354187, 'left_clearance_norm': 0.5714285714285714, 'right_clearance_norm': 0.0, 'selected_side': 'left', 'reason': 'same bbox confirmed for 3 frames', 'status': 'OBSTACLE', 'center_depth': 2.2021634578704834, 'candidate_bboxes': [[194, 178, 30, 12], [128, 67, 96, 57]]}
+03:05:23 [phase] OFFSET_OUT interrupted after 3.402s; partial segment stored and nested avoidance started
+03:05:23 [phase] TURN_TO_TANGENT direction=left locked_bbox=(128, 67, 96, 57)
+03:05:23 [tangent] safe_streak=0/6 geometry_safe=False
+03:05:23 [tangent] safe_streak=0/6 geometry_safe=False
+03:05:24 [tangent] safe_streak=0/6 geometry_safe=False
+03:05:24 [tangent] safe_streak=0/6 geometry_safe=False
+03:05:24 [tangent] safe_streak=1/6 geometry_safe=True
+03:05:24 [tangent] safe_streak=0/6 geometry_safe=False
+03:05:25 [tangent] safe_streak=1/6 geometry_safe=True
+03:05:25 [tangent] safe_streak=2/6 geometry_safe=True
+03:05:25 [tangent] locked bbox absent; frame counts as outside collision corridor
+03:05:25 [tangent] safe_streak=3/6 geometry_safe=True
+03:05:25 [tangent] locked bbox absent; frame counts as outside collision corridor
+03:05:25 [tangent] safe_streak=4/6 geometry_safe=True
+03:05:26 [tangent] locked bbox absent; frame counts as outside collision corridor
+03:05:26 [tangent] safe_streak=5/6 geometry_safe=True
+03:05:26 [tangent] locked bbox absent; frame counts as outside collision corridor
+03:05:26 [tangent] safe_streak=6/6 geometry_safe=True
+03:05:26 [phase] tangent reached seconds=3.157
+03:05:26 [phase] OFFSET_OUT
+03:05:26 [phase] OFFSET_OUT minimum_seconds=7.706 timeout_seconds=30.000
+03:05:27 [candidate] offset_out stopped for bbox confirmation 1/3
+03:05:28 [candidate] offset_out left center corridor after 2 frames
+03:05:28 [candidate] offset_out stopped for bbox confirmation 1/3
+03:05:29 [candidate] offset_out left center corridor after 2 frames
+03:05:30 [stop] base stop requested
+03:05:30 [error] full_bypass: stop requested
+03:05:31 Traceback (most recent call last):
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 1088, in target
+    result = operation()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 1065, in run_full
+    self.run_next_phase()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 1056, in run_next_phase
+    phases[self.state]()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 835, in _phase_offset_out
+    confirm_new_obstacles=True,
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 365, in _run_visual_motion
+    raise RuntimeError("stop requested")
+RuntimeError: stop requested
+
+03:05:31 [media] recording finalized /workspace/robot_code/temp_car/logs/obstacle_avoidance_tuning/20260903_030319/obstacle_avoidance_1788404684727.avi
+03:05:32 [camera] stopped and released

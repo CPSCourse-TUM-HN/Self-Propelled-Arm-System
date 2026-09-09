@@ -1,0 +1,25 @@
+[bin-tune] session=20260907_011937 project=/workspace/robot_code/temp_car
+
+>>> start_live
+[base] stop
+[depth] stop
+[camera] starting camera-only mode 320x240 (DepthNet disabled)
+[warmup] camera-only frame 1/2 ready
+[warmup] camera-only frame 2/2 ready
+[depth] started enabled=False
+[tag] cv2=4.1.1
+[tag] has pupil_apriltags=True
+[tag] has aruco=False
+[tag] has ArucoDetector=False
+[tag] has DICT_APRILTAG_36h11=False
+[tag] calibration loaded /workspace/robot_code/temp_car/calibration_320.yaml
+[tag] detector loaded backend=pupil_apriltags family=tag36h11 dictionary=DICT_APRILTAG_36h11
+[tag] backend=pupil_apriltags id=0 center=(232.6,164.3) error_x=0.227 yaw_deg=-36.47 height=46.7px height_norm=0.195 margin=33.78 distance=0.5849536285598427
+[result] {'started': True, 'live': True, 'recording': False, 'frame_bytes': 26991, 'dry_run': {'camera': False, 'base': True, 'arm': True}}
+
+>>> release_camera
+[base] stop
+[base] stop
+[camera] camera-only stopped
+[depth] stop
+[result] {'camera_released': True, 'paused': True}

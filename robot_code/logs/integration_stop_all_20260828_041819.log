@@ -1,0 +1,19 @@
+
+>>> stop_all log=/workspace/robot_code/can_video_demo_draft/logs/integration_stop_all_20260828_041819.log
+[base] stop
+[fsm] stop_all
+[base] stop
+[arm] pose safe_home
+[arm] dry_run=True
+[arm] safe_home servo=5 angle=0 speed=85
+[arm] dry_run=True
+[arm] safe_home servo=4 angle=0 speed=85
+[arm] dry_run=True
+[arm] safe_home servo=3 angle=0 speed=85
+[arm] dry_run=True
+[arm] safe_home servo=2 angle=0 speed=85
+[arm] dry_run=True
+[arm] safe_home servo=1 angle=-16 speed=85
+[depth] stop
+[result] {'state': 'DONE', 'context': {'vague_map': {'robot_pose': {'x_m': 0.1407022422382571, 'y_m': -0.01988104055450393, 'heading_rad': 2.8902652413081933}, 'bin_marker_position': {'x_m': 0.0, 'y_m': -0.75}, 'bin_docking_pose': {'x_m': 0.0, 'y_m': -0.5, 'heading_rad': -1.57079632679}, 'patrol_index': 7, 'patrol_complete': True, 'initial_scan_complete': True, 'selected_can_id': None, 'known_cans': []}, 'distance_to_target': None, 'grabbed': False, 'completed_pickups': 1, 'target_found': False, 'obstacle_found': False, 'target_type': 'can', 'last_error': None, 'retry_counts': {}, 'metrics': {'state_seconds': {'IDLE': 3.415544033050537, 'INITIALIZING': 0.07011842727661133, 'PLANNING': 0.08086442947387695, 'SEARCHING': 0.02739858627319336, 'ALIGNING': 0.05172848701477051, 'APPROACHING': 0.05973029136657715, 'FINAL_VERIFY': 0.11071324348449707, 'FINALIZING': 0.2661740779876709, 'MAP_NAVIGATING': 0.024050235748291016, 'PATROLLING': 10.869041919708252}, 'detector_calls': {'can': 5, 'bin': 5}, 'detector_seconds': {'can': 0.022953271865844727, 'bin': 0.00028777122497558594}}}}
+[integration] SUCCESS elapsed=0.1s

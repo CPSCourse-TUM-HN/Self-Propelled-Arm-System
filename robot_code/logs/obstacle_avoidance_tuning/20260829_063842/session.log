@@ -1,0 +1,31 @@
+06:38:42 [job] start full_bypass
+06:38:44 [camera] DepthNet camera started frame=320x240 obstacle_roi_ignore=(top=0.300, bottom=0.150)
+06:38:44 [phase] CRUISING
+06:38:45 [media] recording started /workspace/robot_code/temp_car/logs/obstacle_avoidance_tuning/20260829_063842/obstacle_avoidance_1787985525078.avi
+06:38:49 [uncertain] avoidance_cruise stopped for geometry recheck 1/15
+06:38:49 [uncertain] avoidance_cruise resolved status=CLEAR after 2 frames
+06:38:50 [phase] DETECTED selected_side=left geometry={'detected': True, 'path_blocked': True, 'unsafe': False, 'bbox': [122, 94, 18, 46], 'center': [131, 117], 'width_norm': 0.08035714285714286, 'height_norm': 0.20535714285714285, 'center_x_norm': 0.5848214285714286, 'bbox_left_norm': 0.5446428571428571, 'bbox_right_norm': 0.625, 'background_depth': 3.3980259895324707, 'obstacle_depth': 2.1564459800720215, 'left_clearance_norm': 0.5446428571428571, 'right_clearance_norm': 0.375, 'selected_side': 'left', 'reason': 'obstacle with traversable tangent', 'status': 'OBSTACLE', 'center_depth': 2.6070542335510254}
+06:38:50 [phase] TURN_TO_TANGENT direction=left
+06:38:51 [phase] tangent reached seconds=1.729
+06:38:51 [phase] OFFSET_OUT
+06:38:55 [phase] offset clear seconds=3.881 stable_frames=15 estimated_lateral_m=0.847
+06:38:55 [phase] TURN_PARALLEL
+06:38:55 [motion] turn_parallel target_seconds=1.729 timeout_seconds=2.729
+06:39:01 [check] turn_parallel center path clear frames=15
+06:39:01 [phase] PASSING
+06:39:02 [error] full_bypass: blocked obstacle geometry: center obstacle has no traversable side
+06:39:02 Traceback (most recent call last):
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 623, in target
+    result = operation()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 600, in run_full
+    self.run_next_phase()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 591, in run_next_phase
+    phases[self.state]()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 526, in _phase_passing
+    minimum_seconds=settings["pass_min_seconds"],
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 332, in _run_visual_motion
+    raise RuntimeError("blocked obstacle geometry: {}".format(analysis.reason))
+RuntimeError: blocked obstacle geometry: center obstacle has no traversable side
+
+06:39:02 [media] recording finalized /workspace/robot_code/temp_car/logs/obstacle_avoidance_tuning/20260829_063842/obstacle_avoidance_1787985525078.avi
+06:40:13 [camera] stopped and released

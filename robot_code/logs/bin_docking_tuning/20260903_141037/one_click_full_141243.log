@@ -1,0 +1,115 @@
+
+>>> one-click bin pipeline log=/workspace/robot_code/temp_car/logs/bin_docking_tuning/20260903_141037/one_click_full_141243.log
+[tag] backend=pupil_apriltags id=0 center=(153.6,146.9) error_x=-0.020 yaw_deg=1.11 height=26.2px height_norm=0.109 margin=52.74 distance=None
+[base] stop
+[fsm] SEARCHING --TARGET_FOUND--> ALIGNING
+[tag] backend=pupil_apriltags id=0 center=(153.6,146.9) error_x=-0.020 yaw_deg=1.11 height=26.2px height_norm=0.109 margin=52.54 distance=None
+[base] stop
+[fsm] ALIGNING --TARGET_ALIGNED--> APPROACHING
+[tag] backend=pupil_apriltags id=0 center=(153.6,146.9) error_x=-0.020 yaw_deg=1.12 height=26.1px height_norm=0.109 margin=53.38 distance=None
+[approach] target=bin mode=bbox_height value=0.109 threshold=0.15 error_x=-0.020
+[base] Robot connected
+[base] continuous start label=approach_bin_forward direction=forward requested_speed=0.6 effective_speed=0.6
+[tag] backend=pupil_apriltags id=0 center=(153.2,148.8) error_x=-0.021 yaw_deg=3.92 height=26.6px height_norm=0.111 margin=50.30 distance=None
+[approach] target=bin mode=bbox_height value=0.111 threshold=0.15 error_x=-0.021
+[tag] backend=pupil_apriltags id=0 center=(152.7,153.8) error_x=-0.023 yaw_deg=1.91 height=30.6px height_norm=0.128 margin=45.01 distance=None
+[approach] target=bin mode=bbox_height value=0.128 threshold=0.15 error_x=-0.023
+[tag] backend=pupil_apriltags id=0 center=(154.2,161.5) error_x=-0.018 yaw_deg=1.65 height=34.8px height_norm=0.145 margin=39.38 distance=None
+[approach] target=bin mode=bbox_height value=0.145 threshold=0.15 error_x=-0.018
+[tag] backend=pupil_apriltags id=0 center=(155.0,173.5) error_x=-0.016 yaw_deg=0.37 height=41.3px height_norm=0.172 margin=39.68 distance=None
+[approach] target=bin mode=bbox_height value=0.172 threshold=0.15 error_x=-0.016
+[map] motion direction=forward speed=0.6 effective_seconds=1.4545104503631592 pose={'x_m': 0.0, 'y_m': 0.8727062702178955, 'heading_rad': 0.0}
+[base] continuous stop label=approach_bin_forward elapsed=1.455s
+[base] stop
+[fsm] APPROACHING --TARGET_REACHED--> FINAL_VERIFY
+[tag] backend=pupil_apriltags id=0 center=(156.6,200.0) error_x=-0.011 yaw_deg=0.07 height=51.4px height_norm=0.214 margin=50.83 distance=None
+[base] stop
+[tag] backend=pupil_apriltags id=0 center=(156.6,200.0) error_x=-0.011 yaw_deg=0.1 height=51.4px height_norm=0.214 margin=51.03 distance=None
+[base] stop
+[fsm] FINAL_VERIFY --SIDE_DOCK_REQUIRED--> BIN_SIDE_DOCKING
+[base] stop
+[exp2] phase=side_view_pose front_yaw_deg=0.10 base_direction=left base_angle_deg=90.10 servo1_target=70
+[arm] pose side_view_grabbing
+[arm] TTLServo connected
+[arm] side_view_grabbing servo=5 angle=0 speed=85
+[arm] side_view_grabbing servo=4 angle=-40 speed=85
+[arm] side_view_grabbing servo=3 angle=45 speed=85
+[arm] side_view_grabbing servo=2 angle=60 speed=85
+[arm] side_view_grabbing servo=1 angle=70 speed=85
+[arm-position] side_view_grabbing waiting for motion to settle servos=[1, 2, 3, 4, 5] stability_delta=3 min_wait=0.5 timeout=10.0 stable_samples=2
+[arm-position] side_view_grabbing waiting positions={1: 526, 2: 647, 3: 682, 4: 329, 5: 510} movement={} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 553, 2: 672, 3: 707, 4: 329, 5: 510} movement={1: 27, 2: 25, 3: 25, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 578, 2: 698, 3: 717, 4: 329, 5: 510} movement={1: 25, 2: 26, 3: 10, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 604, 2: 725, 3: 717, 4: 329, 5: 510} movement={1: 26, 2: 27, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 630, 2: 753, 3: 717, 4: 329, 5: 510} movement={1: 26, 2: 28, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 657, 2: 777, 3: 717, 4: 329, 5: 510} movement={1: 27, 2: 24, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 682, 2: 795, 3: 717, 4: 329, 5: 510} movement={1: 25, 2: 18, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 712, 2: 795, 3: 717, 4: 329, 5: 510} movement={1: 30, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 737, 2: 795, 3: 717, 4: 329, 5: 510} movement={1: 25, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 764, 2: 795, 3: 717, 4: 329, 5: 510} movement={1: 27, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 789, 2: 795, 3: 717, 4: 329, 5: 510} movement={1: 25, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 816, 2: 795, 3: 717, 4: 329, 5: 510} movement={1: 27, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing waiting positions={1: 836, 2: 795, 3: 717, 4: 329, 5: 510} movement={1: 20, 2: 0, 3: 0, 4: 0, 5: 0} read_errors=[]
+[arm-position] side_view_grabbing settled positions={1: 836, 2: 796, 3: 717, 4: 329, 5: 510} movement={1: 0, 2: 1, 3: 0, 4: 0, 5: 0} elapsed=4.35s
+[base] exp2_side_entry_turn direction=left requested_speed=0.15 effective_speed=0.15 seconds=8.509801488634706
+[map] motion direction=left speed=0.15 effective_seconds=8.509801488634706 pose={'x_m': 0.0, 'y_m': 0.8727062702178955, 'heading_rad': -1.572607637659061}
+[exp2] side entry direction=left angle_deg=90.10 speed=0.15 seconds=8.510
+[exp2] phase=geometry_alignment_ready
+[tag] backend=pupil_apriltags id=0 center=(131.8,198.7) error_x=-0.088 yaw_deg=-6.9 height=62.3px height_norm=0.260 margin=42.99 distance=None
+[exp2] center_error=-0.088 yaw_error_deg=-7.0 raw_yaw_deg=-6.9 arm_comp_deg=0.10 yaw_source=fov_pnp corner_error_deg=10.68 height_norm=0.260
+[base] stop
+[arm] pose side_view_grabbing
+[arm] side_view_grabbing servo=1 angle=63 speed=85
+[arm-position] exp2_yaw_arm_compensation waiting for motion to settle servos=[1] stability_delta=3 min_wait=0.5 timeout=10.0 stable_samples=2
+[arm-position] exp2_yaw_arm_compensation waiting positions={1: 813} movement={} read_errors=[]
+[arm-position] exp2_yaw_arm_compensation waiting positions={1: 813} movement={1: 0} read_errors=[]
+[arm-position] exp2_yaw_arm_compensation settled positions={1: 813} movement={1: 0} elapsed=0.94s
+[exp2] arm yaw compensation servo=1 direction=right target=63 accumulated_deg=-6.90
+[base] exp2_yaw_align direction=right requested_speed=0.15 effective_speed=0.15 seconds=0.6456356414566621
+[map] motion direction=right speed=0.15 effective_seconds=0.6456356414566621 pose={'x_m': 0.0, 'y_m': 0.8727062702178955, 'heading_rad': -1.4504194335568852}
+[visual-turn] label=exp2_yaw_align direction=right angle_deg=7.00 speed=0.15 seconds=0.646
+[exp2] yaw correction direction=right seconds=0.646
+[tag] backend=pupil_apriltags id=0 center=(195.3,183.1) error_x=0.110 yaw_deg=-5.64 height=52.1px height_norm=0.217 margin=36.65 distance=None
+[exp2] center_error=0.110 yaw_error_deg=1.25 raw_yaw_deg=-5.64 arm_comp_deg=-6.90 yaw_source=fov_pnp corner_error_deg=11.15 height_norm=0.217
+[base] continuous start label=exp2_center_align direction=backward requested_speed=0.2 effective_speed=0.2
+[exp2] longitudinal correction direction=backward
+[tag] backend=pupil_apriltags id=0 center=(183.2,183.3) error_x=0.072 yaw_deg=-2.97 height=51.1px height_norm=0.213 margin=37.31 distance=None
+[exp2] center_error=0.072 yaw_error_deg=3.92 raw_yaw_deg=-2.97 arm_comp_deg=-6.90 yaw_source=fov_pnp corner_error_deg=8.12 height_norm=0.213
+[exp2] longitudinal correction direction=backward
+[tag] backend=pupil_apriltags id=0 center=(156.8,182.5) error_x=-0.010 yaw_deg=2.85 height=49.6px height_norm=0.207 margin=42.64 distance=None
+[exp2] center_error=-0.010 yaw_error_deg=9.75 raw_yaw_deg=2.85 arm_comp_deg=-6.90 yaw_source=fov_pnp corner_error_deg=9.55 height_norm=0.207
+[map] motion direction=backward speed=0.2 effective_seconds=1.306110143661499 pose={'x_m': 0.2593316815773481, 'y_m': 0.8413370619830131, 'heading_rad': -1.4504194335568852}
+[base] continuous stop label=exp2_center_align elapsed=1.306s
+[base] stop
+[arm] pose side_view_grabbing
+[arm] side_view_grabbing servo=1 angle=73 speed=85
+[arm-position] exp2_yaw_arm_compensation waiting for motion to settle servos=[1] stability_delta=3 min_wait=0.5 timeout=10.0 stable_samples=2
+[arm-position] exp2_yaw_arm_compensation waiting positions={1: 850} movement={} read_errors=[]
+[arm-position] exp2_yaw_arm_compensation settled positions={1: 850} movement={1: 0} elapsed=0.66s
+[exp2] arm yaw compensation servo=1 direction=left target=73 accumulated_deg=2.85
+[base] exp2_yaw_align direction=left requested_speed=0.15 effective_speed=0.15 seconds=0.9207861660877797
+[map] motion direction=left speed=0.15 effective_seconds=0.9207861660877797 pose={'x_m': 0.2593316815773481, 'y_m': 0.8413370619830131, 'heading_rad': -1.620580319139748}
+[visual-turn] label=exp2_yaw_align direction=left angle_deg=9.75 speed=0.15 seconds=0.921
+[exp2] yaw correction direction=left seconds=0.921
+[tag] backend=pupil_apriltags id=0 center=(137.7,179.3) error_x=-0.070 yaw_deg=7.62 height=47.9px height_norm=0.200 margin=47.88 distance=None
+[exp2] center_error=-0.070 yaw_error_deg=4.77 raw_yaw_deg=7.62 arm_comp_deg=2.85 yaw_source=fov_pnp corner_error_deg=12.88 height_norm=0.200
+[base] continuous start label=exp2_center_align direction=forward requested_speed=0.2 effective_speed=0.2
+[exp2] longitudinal correction direction=forward
+[tag] backend=pupil_apriltags id=0 center=(149.7,179.2) error_x=-0.032 yaw_deg=4.75 height=48.7px height_norm=0.203 margin=44.59 distance=None
+[exp2] center_error=-0.032 yaw_error_deg=1.9 raw_yaw_deg=4.75 arm_comp_deg=2.85 yaw_source=fov_pnp corner_error_deg=10.39 height_norm=0.203
+[map] motion direction=forward speed=0.2 effective_seconds=0.7819209098815918 pose={'x_m': 0.10314125444533195, 'y_m': 0.8335548486268648, 'heading_rad': -1.620580319139748}
+[base] continuous stop label=exp2_center_align elapsed=0.782s
+[base] stop
+[base] stop
+[base] stop
+[base] stop
+[arm] pose carry
+[arm] carry servo=5 angle=0 speed=85
+[arm] carry servo=4 angle=-40 speed=85
+[arm] carry servo=3 angle=45 speed=85
+[arm] carry servo=2 angle=60 speed=85
+[arm] carry servo=1 angle=-16 speed=85
+[exp2] side docking aborted; forward camera pose restored
+[fsm] BIN_SIDE_DOCKING --TIMEOUT--> INTERMEDIATE reason=exp2 side docking timeout
+[bin-tune] full pipeline stopped state=INTERMEDIATE reason=exp2 side docking timeout
+[bin-tune] full pipeline FAILED state=INTERMEDIATE elapsed=39.10s

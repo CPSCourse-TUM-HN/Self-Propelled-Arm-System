@@ -9,11 +9,32 @@ class BaseController(object):
         self.robot = None
         self._motion_lock = threading.RLock()
         self._active_motion = None
+        self._blocking_motion = None
 
         self.motion_tracker = None
 
     def attach_motion_tracker(self, motion_tracker):
         self.motion_tracker = motion_tracker
+
+    def command_snapshot(self):
+        """Return the currently issued command without exposing mutable controller state."""
+        with self._motion_lock:
+            motion = self._blocking_motion or self._active_motion
+            return dict(motion) if motion is not None else None
+
+    def _begin_blocking_motion(self, direction, requested_speed, effective_speed, label):
+        with self._motion_lock:
+            self._blocking_motion = {
+                "direction": direction,
+                "speed": effective_speed,
+                "requested_speed": requested_speed,
+                "label": label,
+                "started_at": time.time(),
+            }
+
+    def _finish_blocking_motion(self):
+        with self._motion_lock:
+            self._blocking_motion = None
 
     def _effective_speed(self, direction, requested_speed):
         requested_speed = float(requested_speed)
@@ -56,6 +77,7 @@ class BaseController(object):
                 self._record_motion(motion["direction"], motion["speed"], elapsed)
                 print("[base] continuous stop label={} elapsed={:.3f}s".format(motion["label"], elapsed))
                 self._active_motion = None
+            self._blocking_motion = None
         print("[base] stop")
 
     def start_motion(self, direction, speed, label):
@@ -132,6 +154,7 @@ class BaseController(object):
             return
 
         start = time.time()
+        self._begin_blocking_motion(direction, requested_speed, speed, label)
         try:
             if direction == "forward":
                 bot.forward(float(speed))
@@ -146,105 +169,8 @@ class BaseController(object):
             time.sleep(float(seconds))
         finally:
             bot.stop()
+            self._finish_blocking_motion()
             self._record_motion(direction, speed, min(float(seconds), time.time() - start))
-
-    def drive_until(self, direction, speed, stop_check, timeout_seconds, poll_seconds, label):
-        requested_speed = float(speed)
-        speed = self._effective_speed(direction, requested_speed)
-        bot = self.connect()
-        print(
-            "[base] {} direction={} requested_speed={} effective_speed={} timeout_seconds={} poll_seconds={}".format(
-                label,
-                direction,
-                requested_speed,
-                speed,
-                timeout_seconds,
-                poll_seconds,
-            )
-        )
-
-        def drive(value):
-            if direction == "forward":
-                bot.forward(float(value))
-            elif direction == "backward":
-                bot.backward(float(value))
-            elif direction == "left":
-                bot.left(float(value))
-            elif direction == "right":
-                bot.right(float(value))
-            else:
-                raise ValueError("unknown base direction: {}".format(direction))
-
-        start = time.time()
-        timeout_seconds = max(0.1, float(timeout_seconds))
-        poll_seconds = max(0.02, float(poll_seconds))
-        try:
-            if bot is not None:
-                drive(float(speed))
-            while time.time() - start < timeout_seconds:
-                if stop_check():
-                    print("[base] {} stop condition reached elapsed={:.2f}s".format(label, time.time() - start))
-                    return True
-                time.sleep(poll_seconds)
-            print("[base] {} timeout reached elapsed={:.2f}s".format(label, time.time() - start))
-            return False
-        finally:
-            if bot is not None:
-                bot.stop()
-            self._record_motion(direction, speed, min(timeout_seconds, time.time() - start))
-
-    def smooth_pulse(self, direction, speed, seconds, label, ramp_steps=4):
-        requested_speed = float(speed)
-        speed = self._effective_speed(direction, requested_speed)
-        bot = self.connect()
-        ramp_steps = max(1, int(ramp_steps))
-        total = max(0.0, float(seconds))
-        ramp_time = min(total * 0.35, total / 2.0)
-        hold_time = max(0.0, total - 2.0 * ramp_time)
-        effective_seconds = hold_time + ramp_time
-        print(
-            "[base] {} direction={} requested_speed={} effective_speed={} seconds={} ramp_steps={}".format(
-                label,
-                direction,
-                requested_speed,
-                speed,
-                seconds,
-                ramp_steps,
-            )
-        )
-        if bot is None:
-            self._record_motion(direction, speed, effective_seconds)
-            return
-
-        def drive(value):
-            if direction == "forward":
-                bot.forward(float(value))
-            elif direction == "backward":
-                bot.backward(float(value))
-            elif direction == "left":
-                bot.left(float(value))
-            elif direction == "right":
-                bot.right(float(value))
-            else:
-                raise ValueError("unknown base direction: {}".format(direction))
-
-        try:
-            speed = float(speed)
-            step_time = ramp_time / float(ramp_steps) if ramp_steps else 0.0
-
-            for step in range(1, ramp_steps + 1):
-                drive(speed * float(step) / float(ramp_steps))
-                time.sleep(step_time)
-            if hold_time > 0:
-                drive(speed)
-                time.sleep(hold_time)
-            for step in range(ramp_steps - 1, 0, -1):
-                drive(speed * float(step) / float(ramp_steps))
-                time.sleep(step_time)
-        finally:
-            bot.stop()
-            self._record_motion(direction, speed, effective_seconds)
-
 
 class ArmController(object):
     def __init__(self, config):

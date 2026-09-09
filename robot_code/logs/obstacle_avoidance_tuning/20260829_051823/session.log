@@ -1,0 +1,20 @@
+05:18:23 [job] start full_bypass
+05:18:58 [camera] DepthNet camera started
+05:18:58 [phase] CRUISING
+05:18:58 [error] full_bypass: unsafe obstacle geometry: center obstacle outside supported cylinder geometry
+05:18:58 Traceback (most recent call last):
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 591, in target
+    result = operation()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 568, in run_full
+    self.run_next_phase()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 559, in run_next_phase
+    phases[self.state]()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 390, in _phase_cruise
+    found,
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 320, in _run_visual_motion
+    raise RuntimeError("unsafe obstacle geometry: {}".format(analysis.reason))
+RuntimeError: unsafe obstacle geometry: center obstacle outside supported cylinder geometry
+
+05:19:51 [job] start full_bypass
+05:19:51 [job] finish full_bypass result=False
+05:20:39 [camera] stopped and released

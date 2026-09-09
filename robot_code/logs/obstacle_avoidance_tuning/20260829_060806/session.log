@@ -1,0 +1,25 @@
+06:08:06 [job] start live_monitor
+06:08:08 [camera] DepthNet camera started frame=320x240 obstacle_top_ignore_ratio=0.300
+06:08:22 [job] stopping live monitor before full_bypass
+06:08:23 [job] finish live_monitor result=True
+06:08:23 [job] start full_bypass
+06:08:23 [phase] CRUISING
+06:08:23 [phase] DETECTED selected_side=right geometry={'detected': True, 'path_blocked': True, 'unsafe': False, 'bbox': [94, 92, 24, 40], 'center': [106, 112], 'width_norm': 0.10714285714285714, 'height_norm': 0.17857142857142858, 'center_x_norm': 0.4732142857142857, 'bbox_left_norm': 0.41964285714285715, 'bbox_right_norm': 0.5267857142857143, 'background_depth': 3.2907044887542725, 'obstacle_depth': 2.164139747619629, 'left_clearance_norm': 0.41964285714285715, 'right_clearance_norm': 0.4732142857142857, 'selected_side': 'right', 'reason': 'obstacle with traversable tangent', 'status': 'OBSTACLE', 'center_depth': 2.4228734970092773}
+06:08:23 [phase] TURN_TO_TANGENT direction=right
+06:08:23 [error] full_bypass: blocked obstacle geometry: center obstacle has no traversable side
+06:08:23 Traceback (most recent call last):
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 617, in target
+    result = operation()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 594, in run_full
+    self.run_next_phase()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 585, in run_next_phase
+    phases[self.state]()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 448, in _phase_turn_to_tangent
+    minimum_seconds=settings["minimum_tangent_turn_seconds"],
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 326, in _run_visual_motion
+    raise RuntimeError("blocked obstacle geometry: {}".format(analysis.reason))
+RuntimeError: blocked obstacle geometry: center obstacle has no traversable side
+
+06:08:34 [job] start live_monitor
+06:09:28 [job] finish live_monitor result=True
+06:09:29 [camera] stopped and released

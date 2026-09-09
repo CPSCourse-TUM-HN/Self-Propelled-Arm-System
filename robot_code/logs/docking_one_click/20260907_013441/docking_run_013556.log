@@ -1,0 +1,15 @@
+[docking-test] parameters={"calibration_yaml": "calibration_320.yaml", "center_correction_seconds": 0.3, "center_stage_entry_yaw_deg": 19.740282517256485, "center_tolerance_norm": 0.04, "coarse_yaw_center_guard_norm": 0.012, "front_align_tolerance_norm": 0.08, "front_approach_speed": 0.6, "front_approach_stop": {"depth_scale": 1.0, "mode": "bbox_height", "threshold": 0.17}, "marker_length_m": 0.08, "side_correction_mode": "pulse", "stable_frames": 5, "target_yaw_deg": -11.729577950181811, "yaw_correction_seconds": 0.4, "yaw_tolerance_deg": 7.341405689132189}
+[tag] backend=pupil_apriltags id=0 center=(144.4,129.3) error_x=-0.049 yaw_deg=22.94 height=17.4px height_norm=0.072 margin=31.90 distance=1.4873732279925058
+[base] stop
+[fsm] ALIGNING --TARGET_ALIGNED--> APPROACHING
+[tag] backend=pupil_apriltags id=0 center=(144.4,129.3) error_x=-0.049 yaw_deg=22.98 height=17.4px height_norm=0.072 margin=32.35 distance=1.4882848596451856
+[approach] target=bin mode=bbox_height bbox=0.072/0.17 bbox_ok=False depth_raw=n/a/0.17 depth_ok=False error_x=-0.049
+[base] Robot connected
+[base] continuous start label=approach_bin_forward direction=forward requested_speed=0.6 effective_speed=0.6
+[tag] backend=pupil_apriltags id=0 center=(144.4,129.3) error_x=-0.049 yaw_deg=22.96 height=17.4px height_norm=0.073 margin=32.06 distance=1.488279526762626
+[approach] target=bin mode=bbox_height bbox=0.073/0.17 bbox_ok=False depth_raw=n/a/0.17 depth_ok=False error_x=-0.049
+[tag] backend=pupil_apriltags id=0 center=(144.5,129.4) error_x=-0.049 yaw_deg=-26.22 height=17.4px height_norm=0.073 margin=30.84 distance=1.492457168773001
+[approach] target=bin mode=bbox_height bbox=0.073/0.17 bbox_ok=False depth_raw=n/a/0.17 depth_ok=False error_x=-0.049
+[tag] backend=pupil_apriltags id=0 center=(144.4,129.9) error_x=-0.049 yaw_deg=-27.45 height=16.9px height_norm=0.070 margin=28.67 distance=1.5044596370238907
+[approach] target=bin mode=bbox_height bbox=0.070/0.17 bbox_ok=False depth_raw=n/a/0.17 depth_ok=False error_x=-0.049
+[base] stop

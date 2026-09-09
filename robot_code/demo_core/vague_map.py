@@ -3,9 +3,109 @@ from __future__ import print_function
 import math
 import time
 
+from .turn_response import TurnResponseModel
+
 
 def normalize_heading(angle_rad):
     return (float(angle_rad) + math.pi) % (2.0 * math.pi) - math.pi
+
+
+def linear_response_coefficient(settings, speed):
+    """Return calibrated meters per (speed * second), interpolating measured speeds."""
+    speed = abs(float(speed))
+    samples = []
+    for sample in settings.get("linear_response_samples", []):
+        sample_speed = abs(float(sample["speed"]))
+        coefficient = float(sample["distance_m"]) / (
+            sample_speed * float(sample["seconds"])
+        )
+        samples.append((sample_speed, coefficient))
+    samples.sort(key=lambda item: item[0])
+    for sample_speed, coefficient in samples:
+        if abs(sample_speed - speed) <= 1e-6:
+            return coefficient
+    for lower, upper in zip(samples, samples[1:]):
+        if lower[0] < speed < upper[0]:
+            fraction = (speed - lower[0]) / (upper[0] - lower[0])
+            return lower[1] + fraction * (upper[1] - lower[1])
+    return float(settings["linear_meters_per_speed_second"])
+
+
+def linear_distance_meters(settings, speed, seconds):
+    return (
+        abs(float(speed))
+        * max(0.0, float(seconds))
+        * linear_response_coefficient(settings, speed)
+        * float(settings.get("linear_slip_factor", 1.0))
+    )
+
+
+def _rotate_planar(x_m, y_m, heading_rad):
+    """Rotate local (+X right, +Y forward) coordinates into map coordinates."""
+    cosine = math.cos(float(heading_rad))
+    sine = math.sin(float(heading_rad))
+    return (
+        float(x_m) * cosine + float(y_m) * sine,
+        -float(x_m) * sine + float(y_m) * cosine,
+    )
+
+
+def point_in_robot_frame(world_point, robot_pose):
+    """Express a world point as (+X right, +Y forward) relative to a robot pose."""
+    world_point = Point2D.from_mapping(world_point) if isinstance(world_point, dict) else world_point
+    robot_pose = Pose2D.from_mapping(robot_pose) if isinstance(robot_pose, dict) else robot_pose
+    return Point2D(*_rotate_planar(
+        world_point.x_m - robot_pose.x_m,
+        world_point.y_m - robot_pose.y_m,
+        -robot_pose.heading_rad,
+    ))
+
+
+def robot_pose_from_tag_pose(marker_pose, observation_pose, camera_mount):
+    """Recover a planar base pose from an OpenCV tag pose and a fixed camera mount.
+
+    OpenCV camera +Z is optical forward and +X is image right. Map/base +Y is
+    forward and +X is right. Positive heading turns clockwise toward +X.
+    marker_pose.heading_rad is the world heading of the
+    marker-frame +Z axis used by solvePnP. camera_mount describes the camera
+    optical center and +Z heading in the robot base frame.
+    """
+    marker_pose = Pose2D.from_mapping(marker_pose)
+    translation = observation_pose or {}
+    rotation = translation.get("rotation_matrix")
+    if not isinstance(rotation, (list, tuple)) or len(rotation) != 3:
+        raise ValueError("tag pose rotation_matrix must be 3x3")
+    if any(not isinstance(row, (list, tuple)) or len(row) != 3 for row in rotation):
+        raise ValueError("tag pose rotation_matrix must be 3x3")
+    tag_x_camera = float(translation["x"])
+    tag_z_camera = float(translation["z"])
+    tag_normal_forward = float(rotation[2][2])
+    tag_normal_right = float(rotation[0][2])
+    if not all(math.isfinite(value) for value in (
+        tag_x_camera, tag_z_camera, tag_normal_forward, tag_normal_right
+    )):
+        raise ValueError("tag pose contains non-finite planar values")
+    if math.hypot(tag_normal_forward, tag_normal_right) <= 1e-6:
+        raise ValueError("tag normal has no usable ground-plane projection")
+
+    tag_normal_in_camera = math.atan2(tag_normal_right, tag_normal_forward)
+    camera_world_heading = normalize_heading(marker_pose.heading_rad - tag_normal_in_camera)
+    marker_dx, marker_dy = _rotate_planar(
+        tag_x_camera, tag_z_camera, camera_world_heading
+    )
+    camera_world_x = marker_pose.x_m - marker_dx
+    camera_world_y = marker_pose.y_m - marker_dy
+
+    camera_heading_in_base = float(camera_mount.get("heading_rad", 0.0))
+    base_heading = normalize_heading(camera_world_heading - camera_heading_in_base)
+    camera_offset_x, camera_offset_y = _rotate_planar(
+        camera_mount.get("x_m", 0.0), camera_mount.get("y_m", 0.0), base_heading
+    )
+    return Pose2D(
+        camera_world_x - camera_offset_x,
+        camera_world_y - camera_offset_y,
+        base_heading,
+    )
 
 
 class Point2D(object):
@@ -80,15 +180,12 @@ class VagueMap(object):
         self.bounds = dict(settings["bounds_m"])
         self.initial_pose = Pose2D.from_mapping(settings["initial_pose"])
         self.robot_pose = self.initial_pose.copy()
-        self.bin_marker_position = Point2D.from_mapping(settings["bin_marker_position"])
+        self.bin_marker_pose = Pose2D.from_mapping(settings["bin_marker_position"])
+        self.bin_marker_position = Point2D(self.bin_marker_pose.x_m, self.bin_marker_pose.y_m)
         self.bin_docking_pose = Pose2D.from_mapping(settings["bin_docking_pose"])
         self.bin_side_docking_pose = Pose2D.from_mapping(
             settings.get("bin_side_docking_pose", settings["bin_docking_pose"])
         )
-        self.patrol_waypoints = [Point2D.from_mapping(value) for value in settings["patrol_waypoints"]]
-        self.patrol_index = 0
-        self.patrol_complete = len(self.patrol_waypoints) == 0
-        self.initial_scan_complete = False
         self.known_cans = {}
         self.selected_can_id = None
         self._next_can_id = 1
@@ -103,23 +200,49 @@ class VagueMap(object):
         self.robot_pose = pose.copy()
         print("[map] pose reset reason={} pose={}".format(reason, self.robot_pose.as_dict()))
 
-    def estimate_can_position(self, observation, depth_value, image_height):
-        if not observation or not observation.get("found") or depth_value is None:
+    def correct_robot_pose(self, pose, reason="landmark_correction"):
+        """Apply a docking correction and carry remembered can positions with it."""
+        corrected_pose = pose.copy()
+        previous_pose = self.robot_pose.copy()
+        for mapped_can in self.known_cans.values():
+            relative = point_in_robot_frame(mapped_can.position, previous_pose)
+            offset_x, offset_y = _rotate_planar(
+                relative.x_m, relative.y_m, corrected_pose.heading_rad
+            )
+            mapped_can.position = Point2D(
+                corrected_pose.x_m + offset_x,
+                corrected_pose.y_m + offset_y,
+            )
+        self.robot_pose = corrected_pose
+        print("[map] pose corrected reason={} pose={} transformed_cans={}".format(
+            reason, self.robot_pose.as_dict(), len(self.known_cans)
+        ))
+
+    def localize_robot_from_bin_tag(self, observation, camera_mount):
+        if not observation or not observation.get("found"):
             return None
-        center_y_norm = float(observation["center_y"]) / float(max(1, int(image_height)))
-        minimum_y = float(self.settings.get("incidental_can_min_center_y_norm", 0.45))
-        if center_y_norm < minimum_y:
-            print("[map] can rejected reason=upper_frame center_y_norm={:.3f}".format(center_y_norm))
+        observation_pose = observation.get("pose")
+        if not observation_pose:
+            return None
+        return robot_pose_from_tag_pose(
+            self.bin_marker_pose.as_dict(), observation_pose, camera_mount
+        )
+
+    def bin_position_in_robot_frame(self):
+        return point_in_robot_frame(self.bin_marker_position, self.robot_pose)
+
+    def estimate_can_position(self, observation, depth_value):
+        if not observation or not observation.get("found") or depth_value is None:
             return None
         distance_m = float(depth_value) * float(self.settings.get("depth_to_distance_scale_m_per_unit", 1.0))
         if not math.isfinite(distance_m) or distance_m <= 0.0:
             print("[map] can rejected reason=invalid_depth value={}".format(depth_value))
             return None
-        bearing_offset = -float(observation["error_x"]) * float(self.settings["camera_horizontal_fov_rad"])
+        bearing_offset = float(observation["error_x"]) * float(self.settings["camera_horizontal_fov_rad"])
         bearing = self.robot_pose.heading_rad + bearing_offset
         return Point2D(
-            self.robot_pose.x_m + distance_m * math.cos(bearing),
-            self.robot_pose.y_m + distance_m * math.sin(bearing),
+            self.robot_pose.x_m + distance_m * math.sin(bearing),
+            self.robot_pose.y_m + distance_m * math.cos(bearing),
         )
 
     def remember_can(self, position, confidence, timestamp=None):
@@ -178,36 +301,26 @@ class VagueMap(object):
         if self.selected_can_id is not None:
             self.remove_can(self.selected_can_id, "selected_can_picked")
 
-    def current_patrol_waypoint(self):
-        if self.patrol_complete or self.patrol_index >= len(self.patrol_waypoints):
-            return None
-        return self.patrol_waypoints[self.patrol_index]
-
-    def advance_patrol(self):
-        if not self.patrol_complete:
-            self.patrol_index += 1
-            self.patrol_complete = self.patrol_index >= len(self.patrol_waypoints)
-        print("[map] patrol index={} complete={}".format(self.patrol_index, self.patrol_complete))
-        return self.current_patrol_waypoint()
-
     def snapshot(self):
         return {
             "robot_pose": self.robot_pose.as_dict(),
-            "bin_marker_position": self.bin_marker_position.as_dict(),
+            "bin_marker_position": self.bin_marker_pose.as_dict(),
             "bin_docking_pose": self.bin_docking_pose.as_dict(),
             "bin_side_docking_pose": self.bin_side_docking_pose.as_dict(),
-            "patrol_index": self.patrol_index,
-            "patrol_complete": self.patrol_complete,
-            "initial_scan_complete": self.initial_scan_complete,
+            "bin_position_in_robot_frame": self.bin_position_in_robot_frame().as_dict(),
             "selected_can_id": self.selected_can_id,
             "known_cans": [item.as_dict() for item in sorted(self.known_cans.values(), key=lambda value: value.can_id)],
         }
 
 
 class CommandOdometry(object):
-    def __init__(self, vague_map, settings):
+    def __init__(self, vague_map, settings, turn_response=None):
         self.vague_map = vague_map
         self.settings = settings
+        self.turn_response = TurnResponseModel(
+            turn_response,
+            settings.get("angular_radians_per_speed_second", math.pi),
+        )
 
     def record_motion(self, direction, speed, effective_seconds):
         direction = str(direction)
@@ -216,20 +329,16 @@ class CommandOdometry(object):
         pose = self.vague_map.robot_pose
         if direction in ("forward", "backward"):
             sign = 1.0 if direction == "forward" else -1.0
-            distance = (
-                sign
-                * speed
-                * effective_seconds
-                * float(self.settings["linear_meters_per_speed_second"])
-                * float(self.settings.get("linear_slip_factor", 1.0))
+            distance = sign * linear_distance_meters(
+                self.settings, speed, effective_seconds
             )
-            pose.x_m += distance * math.cos(pose.heading_rad)
-            pose.y_m += distance * math.sin(pose.heading_rad)
+            pose.x_m += distance * math.sin(pose.heading_rad)
+            pose.y_m += distance * math.cos(pose.heading_rad)
         elif direction in ("left", "right"):
-            sign = 1.0 if direction == "left" else -1.0
+            angle = self.turn_response.angle_radians(direction, speed, effective_seconds)
             pose.heading_rad = normalize_heading(
                 pose.heading_rad
-                + sign * speed * effective_seconds * float(self.settings["angular_radians_per_speed_second"])
+                - angle
             )
         else:
             raise ValueError("unknown odometry direction: {}".format(direction))
@@ -266,14 +375,14 @@ class VagueMapNavigator(object):
             self.base.stop()
             print("[map] destination reached label={} distance_m={:.3f}".format(label, distance))
             return True
-        desired_heading = math.atan2(destination.y_m - pose.y_m, destination.x_m - pose.x_m)
+        desired_heading = math.atan2(destination.x_m - pose.x_m, destination.y_m - pose.y_m)
         heading_error = normalize_heading(desired_heading - pose.heading_rad)
         print("[map] navigate label={} distance_m={:.3f} heading_error_rad={:.3f}".format(
             label, distance, heading_error
         ))
         if abs(heading_error) > float(self.settings["heading_tolerance_rad"]):
             self.base.start_motion(
-                "left" if heading_error > 0.0 else "right",
+                "right" if heading_error > 0.0 else "left",
                 float(self.settings["turn_speed"]),
                 turn_label,
             )
@@ -282,16 +391,3 @@ class VagueMapNavigator(object):
                 "forward", float(self.settings["forward_speed"]), "map_forward_{}".format(label)
             )
         return False
-
-    def patrol_step(self):
-        waypoint = self.vague_map.current_patrol_waypoint()
-        if waypoint is None:
-            return True
-        reached = self.step_toward(
-            waypoint,
-            "patrol_{}".format(self.vague_map.patrol_index),
-            float(self.settings.get("waypoint_tolerance_m", 0.15)),
-        )
-        if reached:
-            self.vague_map.advance_patrol()
-        return self.vague_map.patrol_complete
