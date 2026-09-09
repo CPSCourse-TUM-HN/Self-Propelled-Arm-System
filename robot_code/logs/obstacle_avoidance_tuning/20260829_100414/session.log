@@ -1,0 +1,99 @@
+10:04:14 [job] start full_bypass
+10:04:16 [camera] DepthNet camera started frame=320x240 obstacle_roi_ignore=(top=0.300, bottom=0.150)
+10:04:16 [phase] CRUISING
+10:04:16 [media] recording started /workspace/robot_code/temp_car/logs/obstacle_avoidance_tuning/20260829_100414/obstacle_avoidance_1787997856289.avi
+10:04:21 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+10:04:21 [candidate] avoidance_cruise confirmation 2/15
+10:04:21 [candidate] avoidance_cruise confirmation 3/15
+10:04:21 [candidate] avoidance_cruise confirmation 4/15
+10:04:22 [candidate] avoidance_cruise confirmation 5/15
+10:04:22 [candidate] avoidance_cruise confirmation 6/15
+10:04:22 [candidate] avoidance_cruise confirmation 7/15
+10:04:22 [candidate] avoidance_cruise confirmation 8/15
+10:04:23 [candidate] avoidance_cruise confirmation 9/15
+10:04:23 [candidate] avoidance_cruise confirmation 10/15
+10:04:23 [candidate] avoidance_cruise confirmation 11/15
+10:04:23 [candidate] avoidance_cruise confirmation 12/15
+10:04:24 [candidate] avoidance_cruise confirmation 13/15
+10:04:24 [candidate] avoidance_cruise confirmation 14/15
+10:04:24 [candidate] avoidance_cruise confirmation 15/15
+10:04:24 [candidate] avoidance_cruise locked frames=15 bbox=(132, 110, 12, 22) depth=2.2832884788513184 side=left
+10:04:24 [phase] DETECTED selected_side=left locked_obstacle_depth=2.2832884788513184 depth_time_factor=4.000 segment_base_seconds=9.133 pass_depth_time_factor=1.500 pass_base_seconds=3.425 geometry={'detected': True, 'path_blocked': True, 'unsafe': False, 'bbox': [132, 110, 12, 22], 'center': [138, 121], 'width_norm': 0.05357142857142857, 'height_norm': 0.09821428571428571, 'center_x_norm': 0.6160714285714286, 'bbox_left_norm': 0.5892857142857143, 'bbox_right_norm': 0.6428571428571429, 'background_depth': 3.9150938987731934, 'obstacle_depth': 2.2832884788513184, 'left_clearance_norm': 0.5892857142857143, 'right_clearance_norm': 0.35714285714285715, 'selected_side': 'left', 'reason': 'same bbox confirmed for 15 frames', 'status': 'OBSTACLE', 'center_depth': 2.8160758018493652, 'candidate_bboxes': [[132, 110, 12, 24]]}
+10:04:24 [phase] TURN_TO_TANGENT direction=left locked_bbox=(132, 110, 12, 22)
+10:04:24 [tangent] safe_streak=0/6 geometry_safe=False
+10:04:25 [tangent] safe_streak=0/6 geometry_safe=False
+10:04:25 [tangent] safe_streak=0/6 geometry_safe=False
+10:04:25 [tangent] safe_streak=0/6 geometry_safe=False
+10:04:25 [tangent] safe_streak=1/6 geometry_safe=True
+10:04:26 [tangent] safe_streak=2/6 geometry_safe=True
+10:04:26 [tangent] safe_streak=3/6 geometry_safe=True
+10:04:26 [tangent] safe_streak=4/6 geometry_safe=True
+10:04:26 [tangent] safe_streak=5/6 geometry_safe=True
+10:04:27 [tangent] locked bbox absent; frame counts as outside collision corridor
+10:04:27 [tangent] safe_streak=6/6 geometry_safe=True
+10:04:27 [phase] tangent reached seconds=2.507
+10:04:27 [phase] OFFSET_OUT
+10:04:27 [phase] OFFSET_OUT minimum_seconds=9.133 timeout_seconds=30.000
+10:04:27 [wall] frame treated as clear path
+10:04:31 [wall] frame treated as clear path
+10:04:32 [wall] frame treated as clear path
+10:04:36 [phase] offset clear seconds=9.211 segments=1 estimated_lateral_m=2.556
+10:04:36 [phase] TURN_PARALLEL
+10:04:36 [motion] turn_parallel direction=right speed=0.150 target_seconds=2.507 timeout_seconds=3.507
+10:04:39 [motion] turn_parallel complete direction=right target_seconds=2.507 actual_seconds=2.690 delta_seconds=0.183
+10:04:39 [check] turn_parallel clear clear_streak=1/3
+10:04:39 [check] turn_parallel clear clear_streak=2/3
+10:04:39 [check] turn_parallel clear clear_streak=3/3
+10:04:39 [check] turn_parallel accepted after 3 valid samples
+10:04:39 [phase] PASSING
+10:04:39 [phase] PASSING minimum_seconds=3.425 timeout_seconds=25.000
+10:04:43 [motion] pass_obstacle complete target_seconds=3.425 actual_seconds=3.648 delta_seconds=0.223
+10:04:43 [phase] TURN_TO_LINE
+10:04:43 [motion] turn_to_line direction=right speed=0.150 target_seconds=2.507 timeout_seconds=3.507
+10:04:46 [wall] frame treated as clear path
+10:04:46 [motion] turn_to_line complete direction=right target_seconds=2.507 actual_seconds=2.694 delta_seconds=0.187
+10:04:46 [phase] OFFSET_RETURN
+10:04:46 [phase] OFFSET_RETURN seconds=9.211 segment_base_seconds=9.133
+10:04:46 [motion] offset_return direction=forward speed=0.300 target_seconds=9.211 timeout_seconds=10.211
+10:04:46 [wall] frame treated as clear path
+10:04:46 [wall] frame treated as clear path
+10:04:46 [wall] frame treated as clear path
+10:04:47 [wall] frame treated as clear path
+10:04:47 [wall] frame treated as clear path
+10:04:47 [wall] frame treated as clear path
+10:04:48 [wall] frame treated as clear path
+10:04:48 [wall] frame treated as clear path
+10:04:49 [wall] frame treated as clear path
+10:04:49 [wall] frame treated as clear path
+10:04:49 [wall] frame treated as clear path
+10:04:50 [wall] frame treated as clear path
+10:04:50 [wall] frame treated as clear path
+10:04:51 [wall] frame treated as clear path
+10:04:52 [wall] frame treated as clear path
+10:04:52 [wall] frame treated as clear path
+10:04:52 [wall] frame treated as clear path
+10:04:52 [wall] frame treated as clear path
+10:04:53 [wall] frame treated as clear path
+10:04:53 [wall] frame treated as clear path
+10:04:53 [wall] frame treated as clear path
+10:04:53 [wall] frame treated as clear path
+10:04:54 [wall] frame treated as clear path
+10:04:54 [wall] frame treated as clear path
+10:04:54 [wall] frame treated as clear path
+10:04:55 [motion] offset_return complete direction=forward target_seconds=9.211 actual_seconds=9.278 delta_seconds=0.067
+10:04:55 [phase] RESTORE_HEADING
+10:04:55 [motion] restore_heading direction=left speed=0.150 target_seconds=2.507 timeout_seconds=3.507
+10:04:55 [wall] frame treated as clear path
+10:04:57 [wall] frame treated as clear path
+10:04:57 [wall] frame treated as clear path
+10:04:58 [wall] frame treated as clear path
+10:04:58 [motion] restore_heading complete direction=left target_seconds=2.507 actual_seconds=2.760 delta_seconds=0.252
+10:04:58 [phase] VERIFY_CLEAR
+10:04:58 [motion] verify_clear direction=forward speed=0.300 target_seconds=0.350 timeout_seconds=3.350
+10:04:58 [wall] frame treated as clear path
+10:04:58 [wall] frame treated as clear path
+10:04:58 [motion] verify_clear complete direction=forward target_seconds=0.350 actual_seconds=0.566 delta_seconds=0.216
+10:04:58 [avoidance] DONE route and heading restored by symmetric timing
+10:04:58 [media] recording finalized /workspace/robot_code/temp_car/logs/obstacle_avoidance_tuning/20260829_100414/obstacle_avoidance_1787997856289.avi
+10:04:58 [job] finish full_bypass result=True
+10:05:35 [camera] stopped and released

@@ -1,0 +1,240 @@
+[log] writing /workspace/robot_code/can_video_demo_draft/logs/home_pipeline_smoke_20260828_030411.log
+[smoke] HOME PIPELINE SMOKE TEST
+[smoke] SAFETY: base dry-run=True, arm dry-run=True; no motion commands reach hardware
+[smoke] camera_real=True
+[smoke][PASS][config] configuration merged and validated
+[smoke][PASS][assets] config available details={'bytes': 801}
+[smoke][PASS][assets] parameters available details={'bytes': 5867}
+[smoke][PASS][assets] can_model available details={'bytes': 26780285}
+[smoke][PASS][assets] can_labels available details={'bytes': 14}
+[smoke][PASS][assets] apriltag_image available details={'bytes': 1462}
+[smoke][PASS][imports] cv2 import ok details=4.1.1
+[smoke][PASS][imports] jetbot import ok
+[smoke][PASS][imports] jetson_inference import ok
+[smoke][PASS][imports] jetson_utils import ok
+[smoke][PASS][imports] pupil_apriltags import ok details=1.0.4.post11
+[depth] loading network fcn-mobilenet
+[camera] starting JetBot Camera 320x240
+[warmup] frame 1/2 processed
+[warmup] frame 2/2 processed
+[depth] started enabled=True
+[smoke][PASS][camera_models] camera and DepthNet started details={'shape': [240, 320, 3], 'dtype': 'uint8'}
+[smoke][frame] 1/2 shape=(240, 320, 3)
+[smoke][frame] 2/2 shape=(240, 320, 3)
+[smoke][PASS][camera_models] camera frame continuity ok details={'frames': 2}
+[depth] lens_center_depth_roi mean=3.655 min=3.367 max=3.845
+[depth] obstacle_depth_roi mean=2.305 min=1.426 max=4.001
+[smoke][PASS][camera_models] DepthNet inference ok details={'mean': 3.655225992202759, 'min': 3.3666329383850098, 'max': 3.845104694366455}
+[can] loading native detectNet model=/workspace/robot_code/can_video_demo_draft/assets/models/detectnet_native_can/can_ssd_mobilenet_v1.onnx
+[can] native detectNet loaded threshold=0.200 clustering=0.300
+[smoke][PASS][camera_models] can detectNet loaded
+[can] backend=detectnet_native no detections
+[smoke][WARN][camera_models] can inference call succeeded but no can was visible details={'kind': 'can', 'found': False, 'confidence': 0.0, 'bbox': None, 'center_x': None, 'center_y': None, 'error_x': None}
+[tag] cv2=4.1.1
+[tag] has pupil_apriltags=True
+[tag] has aruco=False
+[tag] has ArucoDetector=False
+[tag] has DICT_APRILTAG_36h11=False
+[tag] calibration not loaded; pose distance disabled
+[tag] detector loaded backend=pupil_apriltags family=tag36h11 dictionary=DICT_APRILTAG_36h11
+[smoke][PASS][camera_models] AprilTag detector loaded details={'backend': 'pupil_apriltags'}
+[tag] no detections
+[smoke][WARN][camera_models] AprilTag inference call succeeded but no tag was visible details={'kind': 'bin_tag', 'found': False, 'confidence': 0.0, 'bbox': None, 'center_x': None, 'center_y': None, 'error_x': None}
+[camera] stopped
+[depth] stop
+[smoke][PASS][cleanup] real camera/model handles released
+[smoke][flow] [fsm] IDLE --START--> INITIALIZING
+[smoke][flow] [fsm] INITIALIZING --INITIALIZED--> PLANNING
+[smoke][flow] [fsm] PLANNING --TARGET_REQUIRED--> SEARCHING
+[smoke][flow] [fsm] SEARCHING --TARGET_FOUND--> ALIGNING
+[smoke][flow] [fsm] ALIGNING --TARGET_ALIGNED--> APPROACHING
+[smoke][flow] [fsm] APPROACHING --TARGET_REACHED--> FINAL_VERIFY
+[smoke][flow] [fsm] FINAL_VERIFY --TARGET_STABLE--> FINALIZING
+[smoke][flow] [mission] completed_pickups=1
+[smoke][flow] [fsm] FINALIZING --FINALIZED--> PLANNING
+[smoke][flow] [fsm] PLANNING --MAP_TARGET_AVAILABLE--> MAP_NAVIGATING
+[smoke][flow] [fsm] MAP_NAVIGATING --TARGET_FOUND--> ALIGNING
+[smoke][flow] [fsm] ALIGNING --TARGET_ALIGNED--> APPROACHING
+[smoke][flow] [fsm] APPROACHING --TARGET_REACHED--> FINAL_VERIFY
+[smoke][flow] [map] pose reset reason=bin_visual_docking pose={'x_m': 0.0, 'y_m': -0.5, 'heading_rad': -1.57079632679}
+[smoke][flow] [fsm] FINAL_VERIFY --TARGET_STABLE--> FINALIZING
+[smoke][flow] [fsm] FINALIZING --FINALIZED--> PLANNING
+[smoke][flow] [fsm] PLANNING --PATROL_REQUIRED--> PATROLLING
+[smoke][flow] [map] patrol index=7 complete=True
+[smoke][flow] [fsm] PATROLLING --PATROL_COMPLETE--> PLANNING
+[smoke][flow] [fsm] PLANNING --MISSION_COMPLETE--> DONE
+[smoke][PASS][simulated_mission] full dry-run FSM reached DONE details={'terminal_state': 'DONE', 'completed_pickups': 1, 'patrol_complete': True, 'patrol_index': 7, 'known_cans': 0}
+
+[smoke] FINAL SUMMARY
+{
+  "counts": {
+    "FAIL": 0,
+    "PASS": 18,
+    "WARN": 2
+  },
+  "entries": [
+    {
+      "level": "PASS",
+      "message": "configuration merged and validated",
+      "phase": "config"
+    },
+    {
+      "details": {
+        "bytes": 801
+      },
+      "level": "PASS",
+      "message": "config available",
+      "phase": "assets"
+    },
+    {
+      "details": {
+        "bytes": 5867
+      },
+      "level": "PASS",
+      "message": "parameters available",
+      "phase": "assets"
+    },
+    {
+      "details": {
+        "bytes": 26780285
+      },
+      "level": "PASS",
+      "message": "can_model available",
+      "phase": "assets"
+    },
+    {
+      "details": {
+        "bytes": 14
+      },
+      "level": "PASS",
+      "message": "can_labels available",
+      "phase": "assets"
+    },
+    {
+      "details": {
+        "bytes": 1462
+      },
+      "level": "PASS",
+      "message": "apriltag_image available",
+      "phase": "assets"
+    },
+    {
+      "details": "4.1.1",
+      "level": "PASS",
+      "message": "cv2 import ok",
+      "phase": "imports"
+    },
+    {
+      "level": "PASS",
+      "message": "jetbot import ok",
+      "phase": "imports"
+    },
+    {
+      "level": "PASS",
+      "message": "jetson_inference import ok",
+      "phase": "imports"
+    },
+    {
+      "level": "PASS",
+      "message": "jetson_utils import ok",
+      "phase": "imports"
+    },
+    {
+      "details": "1.0.4.post11",
+      "level": "PASS",
+      "message": "pupil_apriltags import ok",
+      "phase": "imports"
+    },
+    {
+      "details": {
+        "dtype": "uint8",
+        "shape": [
+          240,
+          320,
+          3
+        ]
+      },
+      "level": "PASS",
+      "message": "camera and DepthNet started",
+      "phase": "camera_models"
+    },
+    {
+      "details": {
+        "frames": 2
+      },
+      "level": "PASS",
+      "message": "camera frame continuity ok",
+      "phase": "camera_models"
+    },
+    {
+      "details": {
+        "max": 3.845104694366455,
+        "mean": 3.655225992202759,
+        "min": 3.3666329383850098
+      },
+      "level": "PASS",
+      "message": "DepthNet inference ok",
+      "phase": "camera_models"
+    },
+    {
+      "level": "PASS",
+      "message": "can detectNet loaded",
+      "phase": "camera_models"
+    },
+    {
+      "details": {
+        "bbox": null,
+        "center_x": null,
+        "center_y": null,
+        "confidence": 0.0,
+        "error_x": null,
+        "found": false,
+        "kind": "can"
+      },
+      "level": "WARN",
+      "message": "can inference call succeeded but no can was visible",
+      "phase": "camera_models"
+    },
+    {
+      "details": {
+        "backend": "pupil_apriltags"
+      },
+      "level": "PASS",
+      "message": "AprilTag detector loaded",
+      "phase": "camera_models"
+    },
+    {
+      "details": {
+        "bbox": null,
+        "center_x": null,
+        "center_y": null,
+        "confidence": 0.0,
+        "error_x": null,
+        "found": false,
+        "kind": "bin_tag"
+      },
+      "level": "WARN",
+      "message": "AprilTag inference call succeeded but no tag was visible",
+      "phase": "camera_models"
+    },
+    {
+      "level": "PASS",
+      "message": "real camera/model handles released",
+      "phase": "cleanup"
+    },
+    {
+      "details": {
+        "completed_pickups": 1,
+        "known_cans": 0,
+        "patrol_complete": true,
+        "patrol_index": 7,
+        "terminal_state": "DONE"
+      },
+      "level": "PASS",
+      "message": "full dry-run FSM reached DONE",
+      "phase": "simulated_mission"
+    }
+  ]
+}
+[smoke] RESULT=PASS_WITH_WARNINGS
+[log] closing /workspace/robot_code/can_video_demo_draft/logs/home_pipeline_smoke_20260828_030411.log

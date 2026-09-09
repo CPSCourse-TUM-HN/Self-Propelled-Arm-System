@@ -1,0 +1,793 @@
+[docking-test] parameters={"calibration_yaml": "calibration_320.yaml", "center_correction_seconds": 0.3, "center_stage_entry_yaw_deg": 19.740282517256485, "center_tolerance_norm": 0.04, "coarse_yaw_center_guard_norm": 0.012, "front_align_target_error_x_norm": -0.1, "front_align_tolerance_norm": 0.08, "front_approach_speed": 0.6, "front_approach_stop": {"depth_scale": 1.0, "mode": "bbox_height", "threshold": 0.22}, "front_bbox_height_stop_threshold": 0.22, "marker_length_m": 0.04, "pnp_maximum_distance_m": 0.32, "pnp_minimum_distance_m": 0.28, "side_correction_mode": "continuous", "stable_frames": 5, "target_yaw_deg": 0.0, "yaw_correction_seconds": 0.4, "yaw_single_correction_max_seconds": 999.0, "yaw_tolerance_deg": 7.341405689132189}
+[tag] backend=pupil_apriltags id=0 center=(145.2,163.3) error_x=-0.046 yaw_deg=-13.75 height=38.8px height_norm=0.162 margin=35.93 distance=0.31915521274059266
+[base] stop
+[fsm] ALIGNING --TARGET_ALIGNED--> APPROACHING
+[tag] backend=pupil_apriltags id=0 center=(139.1,162.3) error_x=-0.065 yaw_deg=-16.04 height=38.9px height_norm=0.162 margin=34.94 distance=0.3265679012639193
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.065
+[base] dry_run=True
+[base] continuous start label=approach_bin_forward direction=forward requested_speed=0.6 effective_speed=0.6
+[tag] backend=pupil_apriltags id=0 center=(136.3,162.1) error_x=-0.074 yaw_deg=-15.74 height=39.1px height_norm=0.163 margin=35.63 distance=0.3251397002849044
+[approach] target=bin mode=bbox_height bbox=0.163/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.074
+[tag] backend=pupil_apriltags id=0 center=(135.0,161.9) error_x=-0.078 yaw_deg=-15.07 height=39.0px height_norm=0.163 margin=36.06 distance=0.3233210452557927
+[approach] target=bin mode=bbox_height bbox=0.163/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(134.3,161.8) error_x=-0.080 yaw_deg=-15.31 height=38.8px height_norm=0.162 margin=35.81 distance=0.32467554033733353
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.080
+[tag] backend=pupil_apriltags id=0 center=(134.0,161.9) error_x=-0.081 yaw_deg=-14.75 height=39.0px height_norm=0.162 margin=35.67 distance=0.32573740718244515
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.081
+[tag] backend=pupil_apriltags id=0 center=(134.2,161.8) error_x=-0.081 yaw_deg=-15.25 height=38.9px height_norm=0.162 margin=35.69 distance=0.32469389715379526
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.081
+[tag] backend=pupil_apriltags id=0 center=(134.1,161.9) error_x=-0.081 yaw_deg=-15.26 height=39.0px height_norm=0.162 margin=36.09 distance=0.3247787188254492
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.081
+[tag] backend=pupil_apriltags id=0 center=(133.7,161.9) error_x=-0.082 yaw_deg=-16.08 height=38.8px height_norm=0.162 margin=36.09 distance=0.32583092626682747
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.082
+[tag] backend=pupil_apriltags id=0 center=(132.0,161.7) error_x=-0.088 yaw_deg=-14.26 height=38.6px height_norm=0.161 margin=36.20 distance=0.33063957680586675
+[approach] target=bin mode=bbox_height bbox=0.161/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.088
+[tag] backend=pupil_apriltags id=0 center=(130.2,161.7) error_x=-0.093 yaw_deg=-14.55 height=38.7px height_norm=0.161 margin=36.08 distance=0.33296872207870976
+[approach] target=bin mode=bbox_height bbox=0.161/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.093
+[tag] backend=pupil_apriltags id=0 center=(129.0,161.7) error_x=-0.097 yaw_deg=-14.64 height=38.8px height_norm=0.162 margin=35.58 distance=0.33123761361136755
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.097
+[tag] backend=pupil_apriltags id=0 center=(128.6,161.8) error_x=-0.098 yaw_deg=-16.29 height=38.7px height_norm=0.161 margin=35.97 distance=0.33129542282340424
+[approach] target=bin mode=bbox_height bbox=0.161/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.098
+[tag] backend=pupil_apriltags id=0 center=(128.4,161.5) error_x=-0.099 yaw_deg=-15.85 height=38.6px height_norm=0.161 margin=36.16 distance=0.3321943268192875
+[approach] target=bin mode=bbox_height bbox=0.161/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.099
+[tag] backend=pupil_apriltags id=0 center=(128.4,161.7) error_x=-0.099 yaw_deg=-16.04 height=38.7px height_norm=0.161 margin=36.32 distance=0.33181480139207126
+[approach] target=bin mode=bbox_height bbox=0.161/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.099
+[tag] backend=pupil_apriltags id=0 center=(128.5,161.6) error_x=-0.099 yaw_deg=-15.71 height=38.6px height_norm=0.161 margin=36.29 distance=0.33206867300294773
+[approach] target=bin mode=bbox_height bbox=0.161/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.099
+[tag] backend=pupil_apriltags id=0 center=(128.5,161.6) error_x=-0.098 yaw_deg=-15.71 height=38.6px height_norm=0.161 margin=35.84 distance=0.33172296739925683
+[approach] target=bin mode=bbox_height bbox=0.161/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.098
+[tag] backend=pupil_apriltags id=0 center=(128.6,161.7) error_x=-0.098 yaw_deg=-16.29 height=38.7px height_norm=0.161 margin=36.09 distance=0.3312621732514219
+[approach] target=bin mode=bbox_height bbox=0.161/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.098
+[tag] backend=pupil_apriltags id=0 center=(128.6,161.7) error_x=-0.098 yaw_deg=-16.26 height=38.6px height_norm=0.161 margin=36.44 distance=0.33119087225277916
+[approach] target=bin mode=bbox_height bbox=0.161/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.098
+[tag] backend=pupil_apriltags id=0 center=(128.7,161.7) error_x=-0.098 yaw_deg=-16.35 height=38.7px height_norm=0.161 margin=36.27 distance=0.33033680423032735
+[approach] target=bin mode=bbox_height bbox=0.161/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.098
+[tag] backend=pupil_apriltags id=0 center=(128.7,161.7) error_x=-0.098 yaw_deg=-16.14 height=38.7px height_norm=0.161 margin=36.44 distance=0.33054503704355737
+[approach] target=bin mode=bbox_height bbox=0.161/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.098
+[tag] backend=pupil_apriltags id=0 center=(128.7,161.7) error_x=-0.098 yaw_deg=-15.81 height=38.6px height_norm=0.161 margin=36.20 distance=0.330456998620802
+[approach] target=bin mode=bbox_height bbox=0.161/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.098
+[tag] backend=pupil_apriltags id=0 center=(128.7,161.7) error_x=-0.098 yaw_deg=-15.85 height=38.6px height_norm=0.161 margin=36.25 distance=0.3302491984373051
+[approach] target=bin mode=bbox_height bbox=0.161/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.098
+[tag] backend=pupil_apriltags id=0 center=(128.8,161.7) error_x=-0.098 yaw_deg=-15.1 height=38.6px height_norm=0.161 margin=36.26 distance=0.33057111259434707
+[approach] target=bin mode=bbox_height bbox=0.161/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.098
+[tag] backend=pupil_apriltags id=0 center=(128.9,161.7) error_x=-0.097 yaw_deg=-15.34 height=38.7px height_norm=0.161 margin=36.38 distance=0.32914216133093
+[approach] target=bin mode=bbox_height bbox=0.161/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.097
+[tag] backend=pupil_apriltags id=0 center=(128.8,161.8) error_x=-0.097 yaw_deg=-13.71 height=38.7px height_norm=0.161 margin=36.18 distance=0.33139622790451534
+[approach] target=bin mode=bbox_height bbox=0.161/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.097
+[tag] backend=pupil_apriltags id=0 center=(129.4,161.7) error_x=-0.096 yaw_deg=-15.45 height=38.6px height_norm=0.161 margin=36.25 distance=0.3306043708383064
+[approach] target=bin mode=bbox_height bbox=0.161/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.096
+[tag] backend=pupil_apriltags id=0 center=(129.8,161.9) error_x=-0.094 yaw_deg=-13.22 height=38.9px height_norm=0.162 margin=35.94 distance=0.33061403066568823
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.094
+[tag] backend=pupil_apriltags id=0 center=(131.7,162.0) error_x=-0.089 yaw_deg=-15.26 height=39.1px height_norm=0.163 margin=36.04 distance=0.32807628060371624
+[approach] target=bin mode=bbox_height bbox=0.163/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.089
+[tag] backend=pupil_apriltags id=0 center=(132.9,162.2) error_x=-0.085 yaw_deg=-15.28 height=39.0px height_norm=0.162 margin=35.89 distance=0.3280380536267538
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.085
+[tag] backend=pupil_apriltags id=0 center=(134.0,162.6) error_x=-0.081 yaw_deg=-15.16 height=39.1px height_norm=0.163 margin=36.18 distance=0.3258102680829535
+[approach] target=bin mode=bbox_height bbox=0.163/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.081
+[tag] backend=pupil_apriltags id=0 center=(134.9,162.7) error_x=-0.078 yaw_deg=-14.8 height=39.1px height_norm=0.163 margin=36.03 distance=0.3234725418526577
+[approach] target=bin mode=bbox_height bbox=0.163/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.0,162.7) error_x=-0.078 yaw_deg=-14.66 height=39.0px height_norm=0.162 margin=35.84 distance=0.3231820148704833
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.0,162.8) error_x=-0.078 yaw_deg=-14.73 height=39.0px height_norm=0.163 margin=36.03 distance=0.3232897072882015
+[approach] target=bin mode=bbox_height bbox=0.163/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.0,162.8) error_x=-0.078 yaw_deg=-14.79 height=39.0px height_norm=0.162 margin=35.93 distance=0.3232368211030046
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.0,162.7) error_x=-0.078 yaw_deg=-14.54 height=38.9px height_norm=0.162 margin=35.91 distance=0.32348791996769677
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.0,162.7) error_x=-0.078 yaw_deg=-14.52 height=39.0px height_norm=0.162 margin=35.84 distance=0.323332478336235
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.0,162.8) error_x=-0.078 yaw_deg=-14.85 height=39.0px height_norm=0.163 margin=35.82 distance=0.3232381500874236
+[approach] target=bin mode=bbox_height bbox=0.163/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.0,162.8) error_x=-0.078 yaw_deg=-14.64 height=39.0px height_norm=0.162 margin=35.70 distance=0.32317504469676017
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(134.9,162.9) error_x=-0.078 yaw_deg=-14.41 height=38.9px height_norm=0.162 margin=35.86 distance=0.3234979618076134
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.0,162.9) error_x=-0.078 yaw_deg=-14.56 height=38.9px height_norm=0.162 margin=35.84 distance=0.32370354337780627
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.0,162.9) error_x=-0.078 yaw_deg=-14.69 height=39.0px height_norm=0.162 margin=35.81 distance=0.3232555889031067
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.1,162.9) error_x=-0.078 yaw_deg=-14.88 height=38.9px height_norm=0.162 margin=35.82 distance=0.32249063295700703
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.1,162.9) error_x=-0.078 yaw_deg=-14.98 height=39.0px height_norm=0.162 margin=35.75 distance=0.3223919250563265
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.91 height=38.9px height_norm=0.162 margin=35.71 distance=0.3224286918837646
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.077 yaw_deg=-15.16 height=39.0px height_norm=0.162 margin=35.90 distance=0.32189550438853626
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.077
+[tag] backend=pupil_apriltags id=0 center=(135.3,162.9) error_x=-0.077 yaw_deg=-15.19 height=39.0px height_norm=0.162 margin=35.81 distance=0.3216669865603518
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.077
+[tag] backend=pupil_apriltags id=0 center=(135.3,162.9) error_x=-0.077 yaw_deg=-15.18 height=39.0px height_norm=0.162 margin=35.39 distance=0.32174200913052114
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.077
+[tag] backend=pupil_apriltags id=0 center=(135.3,162.9) error_x=-0.077 yaw_deg=-15.18 height=39.0px height_norm=0.162 margin=35.51 distance=0.3218289567790014
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.077
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.077 yaw_deg=-15.18 height=38.9px height_norm=0.162 margin=35.78 distance=0.32196070135797816
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.077
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.077 yaw_deg=-15.09 height=39.0px height_norm=0.162 margin=35.72 distance=0.3221130285690987
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.077
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.077 yaw_deg=-15.02 height=39.0px height_norm=0.162 margin=35.59 distance=0.3222080768381563
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.077
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.077 yaw_deg=-15.09 height=39.0px height_norm=0.162 margin=35.56 distance=0.32199757769859005
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.077
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.077 yaw_deg=-15.04 height=39.0px height_norm=0.162 margin=35.44 distance=0.32207626371260856
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.077
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.077 yaw_deg=-15.03 height=39.0px height_norm=0.162 margin=35.93 distance=0.32212506588045603
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.077
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.077 yaw_deg=-14.94 height=38.9px height_norm=0.162 margin=35.43 distance=0.32222582354093415
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.077
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.077 yaw_deg=-15.09 height=38.9px height_norm=0.162 margin=35.96 distance=0.32212620527174374
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.077
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.077 yaw_deg=-15.07 height=38.9px height_norm=0.162 margin=35.81 distance=0.3221075077651222
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.077
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.077 yaw_deg=-15.11 height=39.0px height_norm=0.162 margin=35.49 distance=0.3220988667649648
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.077
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.97 height=38.9px height_norm=0.162 margin=35.76 distance=0.32219172331697976
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.077 yaw_deg=-15.08 height=38.9px height_norm=0.162 margin=35.85 distance=0.32215432306519043
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.077
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.14 height=39.0px height_norm=0.162 margin=35.64 distance=0.3220614956954223
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.07 height=39.0px height_norm=0.162 margin=35.61 distance=0.32212653519095363
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.04 height=39.0px height_norm=0.162 margin=35.74 distance=0.3221372496655223
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.94 height=38.9px height_norm=0.162 margin=35.77 distance=0.32204210771417957
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.077 yaw_deg=-15.12 height=39.0px height_norm=0.162 margin=35.71 distance=0.32211467658160436
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.077
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.94 height=38.9px height_norm=0.162 margin=35.88 distance=0.32229140577535154
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.13 height=39.0px height_norm=0.162 margin=35.71 distance=0.3221158358486418
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.88 height=38.9px height_norm=0.162 margin=35.73 distance=0.3223270133232964
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.02 height=39.0px height_norm=0.162 margin=35.63 distance=0.3222018730984319
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.07 height=39.0px height_norm=0.162 margin=35.53 distance=0.3221660943886325
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.0 height=39.0px height_norm=0.162 margin=35.80 distance=0.32219239353757223
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.1 height=39.0px height_norm=0.162 margin=35.61 distance=0.32215539815425986
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.0 height=39.0px height_norm=0.162 margin=35.72 distance=0.32218120254878313
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.077 yaw_deg=-15.15 height=39.0px height_norm=0.162 margin=35.57 distance=0.32200415029465795
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.077
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.11 height=39.0px height_norm=0.162 margin=35.61 distance=0.32208212757129007
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.2 height=39.0px height_norm=0.162 margin=35.65 distance=0.322073849579285
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.06 height=39.0px height_norm=0.162 margin=35.80 distance=0.3221781302442034
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.12 height=39.0px height_norm=0.162 margin=35.70 distance=0.32212904958235344
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.12 height=39.0px height_norm=0.162 margin=35.77 distance=0.3221525674711346
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.02 height=38.9px height_norm=0.162 margin=35.73 distance=0.3222640225834003
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.08 height=39.0px height_norm=0.162 margin=35.31 distance=0.32211047744778115
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.95 height=38.9px height_norm=0.162 margin=35.46 distance=0.3223153245050149
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.14 height=39.0px height_norm=0.162 margin=35.26 distance=0.3221828033785382
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.15 height=39.0px height_norm=0.162 margin=35.45 distance=0.32206101657006464
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.06 height=39.0px height_norm=0.162 margin=35.58 distance=0.32218208472570736
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.1 height=39.0px height_norm=0.162 margin=35.52 distance=0.32209716831329865
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.94 height=38.9px height_norm=0.162 margin=35.62 distance=0.3223899153384064
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.02 height=38.9px height_norm=0.162 margin=35.79 distance=0.3222643430960676
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.86 height=38.9px height_norm=0.162 margin=35.27 distance=0.3224190081719439
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.05 height=38.9px height_norm=0.162 margin=35.73 distance=0.3222266545227092
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.08 height=39.0px height_norm=0.162 margin=35.27 distance=0.3221772116281224
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.86 height=38.9px height_norm=0.162 margin=35.33 distance=0.32238841192477724
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.82 height=38.9px height_norm=0.162 margin=35.45 distance=0.32238165821973785
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.92 height=38.9px height_norm=0.162 margin=35.46 distance=0.3223504607360032
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.86 height=38.9px height_norm=0.162 margin=35.12 distance=0.32242399779925246
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.08 height=39.0px height_norm=0.162 margin=35.13 distance=0.3221558566290933
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.86 height=38.9px height_norm=0.162 margin=34.63 distance=0.3224294272739372
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.01 height=39.0px height_norm=0.162 margin=34.81 distance=0.32231555437360804
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.01 height=38.9px height_norm=0.162 margin=34.47 distance=0.3222229622793712
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.05 height=38.9px height_norm=0.162 margin=34.45 distance=0.32215655257740017
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.0 height=39.0px height_norm=0.162 margin=34.56 distance=0.3222057959760951
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.88 height=38.9px height_norm=0.162 margin=34.45 distance=0.32229451137703363
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.02 height=39.0px height_norm=0.162 margin=34.65 distance=0.32230041604694637
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.99 height=39.0px height_norm=0.162 margin=35.08 distance=0.32225580064625586
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.98 height=39.0px height_norm=0.162 margin=35.23 distance=0.32235336452175317
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.08 height=39.0px height_norm=0.162 margin=35.34 distance=0.32218358384858975
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.93 height=38.9px height_norm=0.162 margin=35.51 distance=0.3223515405286964
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.13 height=39.0px height_norm=0.162 margin=35.65 distance=0.32209723703558296
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.11 height=39.0px height_norm=0.162 margin=35.71 distance=0.3221893923917007
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.03 height=38.9px height_norm=0.162 margin=35.66 distance=0.32222906275715535
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.077 yaw_deg=-15.23 height=39.0px height_norm=0.162 margin=35.77 distance=0.3219315483993564
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.077
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.98 height=39.0px height_norm=0.162 margin=36.11 distance=0.32230334279434814
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.94 height=38.9px height_norm=0.162 margin=36.21 distance=0.3223726878057075
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.97 height=38.9px height_norm=0.162 margin=36.49 distance=0.3222882538033276
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.12 height=39.0px height_norm=0.162 margin=36.63 distance=0.3222763967207681
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.97 height=38.9px height_norm=0.162 margin=36.47 distance=0.3223683453827442
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.077 yaw_deg=-15.06 height=38.9px height_norm=0.162 margin=36.70 distance=0.3222449749816453
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.077
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.07 height=39.0px height_norm=0.162 margin=36.84 distance=0.3222102610175005
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.99 height=39.0px height_norm=0.162 margin=36.33 distance=0.3223270031985432
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.01 height=38.9px height_norm=0.162 margin=36.68 distance=0.32246146551784155
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.92 height=38.9px height_norm=0.162 margin=36.59 distance=0.3224147446197167
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.01 height=38.9px height_norm=0.162 margin=36.63 distance=0.32230990466894427
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.13 height=38.9px height_norm=0.162 margin=36.37 distance=0.32220361254877633
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.9 height=38.9px height_norm=0.162 margin=36.68 distance=0.3223837620298963
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.97 height=38.9px height_norm=0.162 margin=36.57 distance=0.322354852382905
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.87 height=38.9px height_norm=0.162 margin=36.43 distance=0.3224655966978513
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.96 height=38.9px height_norm=0.162 margin=36.61 distance=0.3223879743634496
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.9 height=38.9px height_norm=0.162 margin=36.78 distance=0.3223750499728328
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.12 height=39.0px height_norm=0.162 margin=36.34 distance=0.32217819059888686
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.08 height=38.9px height_norm=0.162 margin=36.28 distance=0.3221921420584877
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.96 height=38.9px height_norm=0.162 margin=36.97 distance=0.32233038154167504
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.98 height=38.9px height_norm=0.162 margin=36.80 distance=0.32239766265429237
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.94 height=38.9px height_norm=0.162 margin=36.49 distance=0.32234415306427133
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.21 height=39.0px height_norm=0.162 margin=36.44 distance=0.3221222617224155
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.04 height=38.9px height_norm=0.162 margin=36.94 distance=0.32229595477274514
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.06 height=38.9px height_norm=0.162 margin=36.49 distance=0.3222872479347692
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.91 height=38.9px height_norm=0.162 margin=36.90 distance=0.32244050912128974
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.05 height=38.9px height_norm=0.162 margin=36.63 distance=0.3222309430078111
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.9 height=38.9px height_norm=0.162 margin=36.62 distance=0.322371885180988
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.97 height=38.9px height_norm=0.162 margin=36.73 distance=0.3223585895255983
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.89 height=38.9px height_norm=0.162 margin=36.44 distance=0.32245720635074004
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.9 height=38.9px height_norm=0.162 margin=36.53 distance=0.32232445907598317
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.03 height=39.0px height_norm=0.162 margin=36.46 distance=0.3223612363791785
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.91 height=38.9px height_norm=0.162 margin=36.62 distance=0.32237378740072026
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.03 height=39.0px height_norm=0.162 margin=36.79 distance=0.3222734470468436
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.08 height=38.9px height_norm=0.162 margin=36.82 distance=0.3221491189191514
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.05 height=38.9px height_norm=0.162 margin=36.58 distance=0.3221821255505523
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.87 height=38.9px height_norm=0.162 margin=36.60 distance=0.32242299592896
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.13 height=38.9px height_norm=0.162 margin=37.04 distance=0.32214264223629996
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.94 height=38.9px height_norm=0.162 margin=36.91 distance=0.32239905876504854
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.08 height=38.9px height_norm=0.162 margin=36.89 distance=0.3221905562874156
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.92 height=38.9px height_norm=0.162 margin=36.88 distance=0.32242968921203524
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.92 height=38.9px height_norm=0.162 margin=36.73 distance=0.3224237919498534
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.12 height=38.9px height_norm=0.162 margin=36.65 distance=0.322193585022244
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.94 height=38.9px height_norm=0.162 margin=36.99 distance=0.32233763998989684
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.04 height=38.9px height_norm=0.162 margin=36.86 distance=0.32222774968766615
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.98 height=38.9px height_norm=0.162 margin=36.83 distance=0.32233663287113656
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.02 height=39.0px height_norm=0.162 margin=36.47 distance=0.32228720478844414
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.83 height=38.9px height_norm=0.162 margin=36.80 distance=0.32253295534473014
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.14 height=39.0px height_norm=0.162 margin=36.71 distance=0.32214292846222814
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.85 height=38.9px height_norm=0.162 margin=37.07 distance=0.32249251785405025
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.97 height=38.9px height_norm=0.162 margin=36.96 distance=0.32234695335853203
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.1 height=38.9px height_norm=0.162 margin=36.80 distance=0.3222237855547356
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.95 height=38.9px height_norm=0.162 margin=36.85 distance=0.32239098641932545
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.86 height=38.9px height_norm=0.162 margin=37.17 distance=0.32246172309565974
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.03 height=38.9px height_norm=0.162 margin=36.75 distance=0.32227567423360537
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.98 height=38.9px height_norm=0.162 margin=36.75 distance=0.32217271854606894
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.84 height=38.9px height_norm=0.162 margin=36.83 distance=0.32244404843969365
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.81 height=38.9px height_norm=0.162 margin=36.78 distance=0.3224986690804205
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.82 height=38.9px height_norm=0.162 margin=36.91 distance=0.32242039614382184
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.9 height=38.9px height_norm=0.162 margin=36.56 distance=0.32245450465600406
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.86 height=38.9px height_norm=0.162 margin=36.72 distance=0.32235516179426416
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.8) error_x=-0.078 yaw_deg=-14.81 height=38.9px height_norm=0.162 margin=36.78 distance=0.3224940270443634
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.94 height=38.9px height_norm=0.162 margin=37.07 distance=0.32238220382689614
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.04 height=38.9px height_norm=0.162 margin=36.52 distance=0.3222856155354967
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.03 height=38.9px height_norm=0.162 margin=36.82 distance=0.3223311320605956
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.8) error_x=-0.078 yaw_deg=-15.05 height=39.0px height_norm=0.162 margin=36.85 distance=0.3222915699874988
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.9 height=38.9px height_norm=0.162 margin=36.94 distance=0.322420658243917
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.92 height=38.9px height_norm=0.162 margin=36.77 distance=0.3224347399978737
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.93 height=38.9px height_norm=0.162 margin=37.23 distance=0.3223691046539825
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.0 height=39.0px height_norm=0.162 margin=36.59 distance=0.3223497260405252
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.8) error_x=-0.078 yaw_deg=-14.93 height=38.9px height_norm=0.162 margin=36.82 distance=0.3223645022487319
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.04 height=38.9px height_norm=0.162 margin=36.99 distance=0.3222211999922791
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.05 height=38.9px height_norm=0.162 margin=36.70 distance=0.3222475704546172
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.97 height=38.9px height_norm=0.162 margin=37.24 distance=0.32238239161444254
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.19 height=39.0px height_norm=0.162 margin=36.50 distance=0.3221082856081597
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.92 height=38.9px height_norm=0.162 margin=36.85 distance=0.32247175919735016
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.9 height=38.9px height_norm=0.162 margin=37.04 distance=0.3223274236497467
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.03 height=38.9px height_norm=0.162 margin=36.79 distance=0.322238382250514
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.07 height=39.0px height_norm=0.162 margin=36.78 distance=0.32224563852915356
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.99 height=39.0px height_norm=0.162 margin=36.61 distance=0.32230290098081954
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.09 height=38.9px height_norm=0.162 margin=37.07 distance=0.3222320778678411
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.03 height=38.9px height_norm=0.162 margin=36.87 distance=0.3224120154984248
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.92 height=38.9px height_norm=0.162 margin=36.88 distance=0.32235988381144887
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.99 height=38.9px height_norm=0.162 margin=36.92 distance=0.32230938829510614
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.01 height=38.9px height_norm=0.162 margin=36.96 distance=0.3223652987030394
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.66 height=38.9px height_norm=0.162 margin=37.09 distance=0.32269651583262693
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.1,162.9) error_x=-0.078 yaw_deg=-14.7 height=38.9px height_norm=0.162 margin=36.68 distance=0.32265833237768515
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.99 height=38.9px height_norm=0.162 margin=36.95 distance=0.3224331284369882
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.11 height=38.9px height_norm=0.162 margin=37.05 distance=0.3222288833652245
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.97 height=38.9px height_norm=0.162 margin=36.98 distance=0.3223406702756324
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.88 height=38.9px height_norm=0.162 margin=36.77 distance=0.32243636883897786
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.02 height=38.9px height_norm=0.162 margin=37.13 distance=0.3223602268109804
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.0 height=38.9px height_norm=0.162 margin=36.82 distance=0.32219571239644595
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.09 height=39.0px height_norm=0.162 margin=36.91 distance=0.32218354101706415
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.98 height=38.9px height_norm=0.162 margin=36.75 distance=0.32234442448280537
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.01 height=38.9px height_norm=0.162 margin=37.08 distance=0.32235917477295517
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.73 height=38.9px height_norm=0.162 margin=36.91 distance=0.32256128815971113
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.98 height=38.9px height_norm=0.162 margin=36.97 distance=0.32226657015189936
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.93 height=38.9px height_norm=0.162 margin=36.70 distance=0.32240706086019066
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.04 height=38.9px height_norm=0.162 margin=36.85 distance=0.32227928549830764
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.89 height=38.9px height_norm=0.162 margin=36.96 distance=0.32247785337866
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.92 height=38.9px height_norm=0.162 margin=37.15 distance=0.3224067340420963
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.94 height=38.9px height_norm=0.162 margin=36.91 distance=0.3224179683012286
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.89 height=38.9px height_norm=0.162 margin=36.86 distance=0.3223981634545518
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.8) error_x=-0.078 yaw_deg=-14.83 height=38.9px height_norm=0.162 margin=37.02 distance=0.32243069146547243
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.04 height=38.9px height_norm=0.162 margin=36.81 distance=0.32228276161997843
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.91 height=38.9px height_norm=0.162 margin=36.84 distance=0.32250551284049883
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.8) error_x=-0.078 yaw_deg=-15.01 height=38.9px height_norm=0.162 margin=36.97 distance=0.32228180154256697
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.95 height=38.9px height_norm=0.162 margin=37.20 distance=0.32245820895463
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.99 height=38.9px height_norm=0.162 margin=37.11 distance=0.32234000277585506
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.08 height=38.9px height_norm=0.162 margin=37.01 distance=0.3222450872692664
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.93 height=38.9px height_norm=0.162 margin=36.69 distance=0.3223416431718883
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.8 height=38.9px height_norm=0.162 margin=36.99 distance=0.32253827980261646
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.87 height=38.9px height_norm=0.162 margin=36.89 distance=0.32251888632353726
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.02 height=38.9px height_norm=0.162 margin=36.85 distance=0.3223277220318996
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.06 height=39.0px height_norm=0.162 margin=37.13 distance=0.3222738914313984
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.97 height=38.9px height_norm=0.162 margin=36.65 distance=0.3223636198809511
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.87 height=38.9px height_norm=0.162 margin=36.59 distance=0.3224329778342486
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.98 height=38.9px height_norm=0.162 margin=36.45 distance=0.32233286515014525
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.09 height=39.0px height_norm=0.162 margin=36.62 distance=0.3222125115449687
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.8) error_x=-0.078 yaw_deg=-14.9 height=38.9px height_norm=0.162 margin=36.87 distance=0.32227393895731987
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.96 height=38.9px height_norm=0.162 margin=36.86 distance=0.32238072200427487
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.0 height=39.0px height_norm=0.162 margin=37.06 distance=0.322330812149584
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.8) error_x=-0.078 yaw_deg=-14.96 height=38.9px height_norm=0.162 margin=36.55 distance=0.32227639262899826
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.02 height=38.9px height_norm=0.162 margin=36.51 distance=0.3222494849051074
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.76 height=38.9px height_norm=0.162 margin=36.94 distance=0.3226131520644808
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.8) error_x=-0.078 yaw_deg=-14.97 height=38.9px height_norm=0.162 margin=36.53 distance=0.3223819267406665
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.98 height=38.9px height_norm=0.162 margin=36.56 distance=0.32232032569384395
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.95 height=38.9px height_norm=0.162 margin=36.75 distance=0.3222788166814835
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.96 height=38.9px height_norm=0.162 margin=36.75 distance=0.3222655887275807
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.98 height=38.9px height_norm=0.162 margin=36.37 distance=0.3223379545607749
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.94 height=38.9px height_norm=0.162 margin=36.42 distance=0.3223588022755306
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.8) error_x=-0.078 yaw_deg=-14.9 height=38.9px height_norm=0.162 margin=36.77 distance=0.3223646849229306
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.97 height=38.9px height_norm=0.162 margin=36.21 distance=0.3222969124797877
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.92 height=38.9px height_norm=0.162 margin=36.45 distance=0.32247410203572296
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.8) error_x=-0.078 yaw_deg=-14.93 height=39.0px height_norm=0.162 margin=36.18 distance=0.32234139264587375
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.16 height=39.0px height_norm=0.162 margin=36.39 distance=0.32221020852463844
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.11 height=38.9px height_norm=0.162 margin=36.38 distance=0.3222182853363368
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.9 height=38.9px height_norm=0.162 margin=36.44 distance=0.322412599831392
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.21 height=39.0px height_norm=0.162 margin=36.36 distance=0.32209409666982003
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.04 height=39.0px height_norm=0.162 margin=36.38 distance=0.3222930008225391
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.11 height=39.0px height_norm=0.162 margin=36.06 distance=0.32225818381135335
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.74 height=38.9px height_norm=0.162 margin=36.59 distance=0.32258743099422266
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.03 height=38.9px height_norm=0.162 margin=35.77 distance=0.3221943886873702
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.07 height=39.0px height_norm=0.162 margin=36.27 distance=0.3222109608031671
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.97 height=38.9px height_norm=0.162 margin=36.52 distance=0.3223871668395779
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.99 height=39.0px height_norm=0.162 margin=36.34 distance=0.32229883400717346
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.12 height=39.0px height_norm=0.162 margin=35.85 distance=0.3220934854321684
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.04 height=38.9px height_norm=0.162 margin=36.48 distance=0.322335575931229
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.9 height=38.9px height_norm=0.162 margin=36.36 distance=0.3224403872664406
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.99 height=38.9px height_norm=0.162 margin=36.32 distance=0.32233443867237455
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.09 height=39.0px height_norm=0.162 margin=36.23 distance=0.3222090476332846
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.03 height=38.9px height_norm=0.162 margin=36.36 distance=0.32217409590053236
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.08 height=38.9px height_norm=0.162 margin=36.69 distance=0.3221546056183889
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.98 height=38.9px height_norm=0.162 margin=36.34 distance=0.3223054277366043
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.9 height=38.9px height_norm=0.162 margin=36.58 distance=0.32240974986396276
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.94 height=38.9px height_norm=0.162 margin=36.19 distance=0.32239591299988424
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.0 height=38.9px height_norm=0.162 margin=36.14 distance=0.3222469739280597
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.15 height=39.0px height_norm=0.162 margin=36.15 distance=0.32213349643104455
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.07 height=38.9px height_norm=0.162 margin=36.23 distance=0.3222674128693317
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.76 height=38.9px height_norm=0.162 margin=36.73 distance=0.3225426496457973
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.06 height=38.9px height_norm=0.162 margin=36.60 distance=0.32223811805162433
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.09 height=39.0px height_norm=0.162 margin=36.47 distance=0.32228692436766937
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.8) error_x=-0.078 yaw_deg=-14.93 height=38.9px height_norm=0.162 margin=36.39 distance=0.32240140607567347
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.8) error_x=-0.078 yaw_deg=-15.06 height=38.9px height_norm=0.162 margin=36.40 distance=0.3221800100231539
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.01 height=38.9px height_norm=0.162 margin=36.13 distance=0.3222977794907144
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.97 height=39.0px height_norm=0.162 margin=36.34 distance=0.3222917798430056
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.09 height=38.9px height_norm=0.162 margin=36.34 distance=0.3221939616758004
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.02 height=38.9px height_norm=0.162 margin=36.19 distance=0.3223347720667011
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.01 height=38.9px height_norm=0.162 margin=36.40 distance=0.3223083145519116
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.07 height=39.0px height_norm=0.162 margin=36.50 distance=0.3222345197883514
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.06 height=38.9px height_norm=0.162 margin=36.44 distance=0.3221787678138759
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.96 height=38.9px height_norm=0.162 margin=36.32 distance=0.3223065058869249
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.06 height=39.0px height_norm=0.162 margin=36.33 distance=0.32213003850300775
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.02 height=38.9px height_norm=0.162 margin=36.53 distance=0.32225012893395594
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.92 height=38.9px height_norm=0.162 margin=36.44 distance=0.3224254298339151
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.94 height=38.9px height_norm=0.162 margin=36.33 distance=0.3223910728993666
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.95 height=38.9px height_norm=0.162 margin=36.72 distance=0.32234473575999917
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.93 height=38.9px height_norm=0.162 margin=36.43 distance=0.3222859740973165
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.13 height=39.0px height_norm=0.162 margin=36.41 distance=0.3222634311841165
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.01 height=39.0px height_norm=0.162 margin=36.55 distance=0.3223766198969913
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.8) error_x=-0.078 yaw_deg=-14.91 height=39.0px height_norm=0.162 margin=36.39 distance=0.3223914074193696
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.09 height=38.9px height_norm=0.162 margin=36.71 distance=0.32218965626944274
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.9 height=39.0px height_norm=0.162 margin=36.36 distance=0.3224504290986183
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.0 height=38.9px height_norm=0.162 margin=36.71 distance=0.3223103531285364
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.95 height=39.0px height_norm=0.162 margin=36.72 distance=0.32243370448341385
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.12 height=39.0px height_norm=0.162 margin=36.52 distance=0.3222121084481934
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.75 height=38.9px height_norm=0.162 margin=36.96 distance=0.3226022771326785
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.03 height=39.0px height_norm=0.162 margin=36.65 distance=0.32232373956807164
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.97 height=38.9px height_norm=0.162 margin=36.70 distance=0.32238828249309176
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.03 height=38.9px height_norm=0.162 margin=36.59 distance=0.32225088388928297
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.89 height=38.9px height_norm=0.162 margin=36.49 distance=0.3222958139537028
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.98 height=39.0px height_norm=0.162 margin=36.65 distance=0.3223349520638014
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.95 height=38.9px height_norm=0.162 margin=37.00 distance=0.3224300330634685
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.92 height=38.9px height_norm=0.162 margin=36.75 distance=0.32240198695059047
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.95 height=38.9px height_norm=0.162 margin=36.49 distance=0.32243177535512363
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.9 height=38.9px height_norm=0.162 margin=37.00 distance=0.32237623470016374
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.97 height=38.9px height_norm=0.162 margin=36.73 distance=0.3224132367829379
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.8) error_x=-0.078 yaw_deg=-15.08 height=39.0px height_norm=0.162 margin=36.66 distance=0.3222289261378815
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.11 height=39.0px height_norm=0.162 margin=36.64 distance=0.3221288651966672
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.97 height=38.9px height_norm=0.162 margin=36.52 distance=0.322329790852799
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.87 height=39.0px height_norm=0.162 margin=36.30 distance=0.32239478328165844
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.03 height=38.9px height_norm=0.162 margin=36.31 distance=0.32227754109120726
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.93 height=38.9px height_norm=0.162 margin=36.08 distance=0.32234770049167133
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.94 height=38.9px height_norm=0.162 margin=36.34 distance=0.322420039085619
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.8) error_x=-0.078 yaw_deg=-14.87 height=38.9px height_norm=0.162 margin=36.83 distance=0.3223702844523898
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.8) error_x=-0.078 yaw_deg=-14.92 height=39.0px height_norm=0.162 margin=36.58 distance=0.3224438427895553
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.8) error_x=-0.078 yaw_deg=-15.03 height=38.9px height_norm=0.162 margin=36.42 distance=0.32217028195314495
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.0 height=38.9px height_norm=0.162 margin=36.69 distance=0.32230908786802087
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.93 height=39.0px height_norm=0.162 margin=36.68 distance=0.3224006244522025
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.98 height=38.9px height_norm=0.162 margin=36.79 distance=0.3222983215588982
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.89 height=38.9px height_norm=0.162 margin=37.00 distance=0.3223950322686945
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.88 height=38.9px height_norm=0.162 margin=36.57 distance=0.32241782215882153
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.1 height=39.0px height_norm=0.162 margin=36.69 distance=0.3222987753247457
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.9 height=38.9px height_norm=0.162 margin=36.87 distance=0.3224308623677949
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.01 height=39.0px height_norm=0.162 margin=36.77 distance=0.32230837700685255
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.84 height=38.9px height_norm=0.162 margin=36.89 distance=0.32239112075054016
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.91 height=38.9px height_norm=0.162 margin=36.78 distance=0.32247047830871695
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.96 height=38.9px height_norm=0.162 margin=36.93 distance=0.32239337543360874
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.97 height=39.0px height_norm=0.162 margin=36.95 distance=0.3223611041160929
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.97 height=38.9px height_norm=0.162 margin=36.84 distance=0.3223561151990674
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.0 height=39.0px height_norm=0.162 margin=36.55 distance=0.3222882974789541
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.08 height=39.0px height_norm=0.162 margin=36.65 distance=0.3221955923829827
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.98 height=38.9px height_norm=0.162 margin=36.78 distance=0.32236090668229456
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.02 height=38.9px height_norm=0.162 margin=36.59 distance=0.3222222087309392
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.077 yaw_deg=-15.24 height=39.0px height_norm=0.162 margin=36.53 distance=0.3220379010297
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.077
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.08 height=39.0px height_norm=0.162 margin=36.94 distance=0.32222745706893363
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.8) error_x=-0.078 yaw_deg=-14.83 height=38.9px height_norm=0.162 margin=36.79 distance=0.3223910773019302
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.98 height=38.9px height_norm=0.162 margin=36.80 distance=0.32235582734445206
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.91 height=38.9px height_norm=0.162 margin=36.83 distance=0.32242945907281445
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.87 height=38.9px height_norm=0.162 margin=36.50 distance=0.32248354423368925
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.95 height=38.9px height_norm=0.162 margin=36.62 distance=0.3223279252052816
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.98 height=39.0px height_norm=0.162 margin=36.63 distance=0.32227645875500605
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.02 height=39.0px height_norm=0.162 margin=36.78 distance=0.3223768256371109
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.89 height=38.9px height_norm=0.162 margin=36.79 distance=0.3224344285918317
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.97 height=38.9px height_norm=0.162 margin=36.77 distance=0.32231548766712875
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.93 height=38.9px height_norm=0.162 margin=36.76 distance=0.3223352462010973
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.09 height=38.9px height_norm=0.162 margin=36.53 distance=0.32229023679399427
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.89 height=38.9px height_norm=0.162 margin=36.70 distance=0.3223938324806034
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.98 height=38.9px height_norm=0.162 margin=36.88 distance=0.32239429367509864
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.9 height=38.9px height_norm=0.162 margin=36.79 distance=0.32240282054463715
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.89 height=38.9px height_norm=0.162 margin=36.80 distance=0.3223896789208797
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.8) error_x=-0.078 yaw_deg=-14.95 height=38.9px height_norm=0.162 margin=37.16 distance=0.3224346474802048
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.05 height=38.9px height_norm=0.162 margin=37.33 distance=0.3223599949090918
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.88 height=38.9px height_norm=0.162 margin=36.85 distance=0.3224340282792717
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.04 height=39.0px height_norm=0.162 margin=36.84 distance=0.32232049056791884
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.81 height=38.9px height_norm=0.162 margin=36.91 distance=0.322444731318988
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.0 height=39.0px height_norm=0.162 margin=37.02 distance=0.32239999380020246
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.15 height=38.9px height_norm=0.162 margin=36.77 distance=0.32220084010899397
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.95 height=38.9px height_norm=0.162 margin=36.65 distance=0.32237544460411593
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.09 height=38.9px height_norm=0.162 margin=36.59 distance=0.322209592364813
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.99 height=39.0px height_norm=0.162 margin=36.81 distance=0.3223300880308275
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.1 height=39.0px height_norm=0.162 margin=36.65 distance=0.3222453794844071
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.0 height=38.9px height_norm=0.162 margin=36.62 distance=0.322273154293038
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.06 height=38.9px height_norm=0.162 margin=37.04 distance=0.32230076878272973
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.0 height=39.0px height_norm=0.162 margin=37.20 distance=0.32226660066057217
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.02 height=38.9px height_norm=0.162 margin=36.98 distance=0.3223052532840782
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.92 height=39.0px height_norm=0.162 margin=36.78 distance=0.3224014458045265
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.93 height=38.9px height_norm=0.162 margin=36.83 distance=0.3223144371038203
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.02 height=39.0px height_norm=0.162 margin=36.97 distance=0.3223377463128059
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.12 height=39.0px height_norm=0.162 margin=36.91 distance=0.3221965693788505
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.8) error_x=-0.078 yaw_deg=-14.87 height=38.9px height_norm=0.162 margin=36.84 distance=0.3224631020463643
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.97 height=38.9px height_norm=0.162 margin=37.01 distance=0.3223620463149894
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.94 height=38.9px height_norm=0.162 margin=37.10 distance=0.3224619610421634
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.95 height=38.9px height_norm=0.162 margin=37.03 distance=0.3224400727039027
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.94 height=38.9px height_norm=0.162 margin=36.83 distance=0.3224334522626635
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.99 height=38.9px height_norm=0.162 margin=37.10 distance=0.32224354735548477
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.85 height=38.9px height_norm=0.162 margin=36.79 distance=0.3224511055218809
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.89 height=38.9px height_norm=0.162 margin=37.03 distance=0.3224962282946389
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.9 height=38.9px height_norm=0.162 margin=36.97 distance=0.32250565183957114
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.69 height=38.9px height_norm=0.162 margin=37.05 distance=0.3225105945327121
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-15.06 height=38.9px height_norm=0.162 margin=36.61 distance=0.3221927361329484
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.87 height=38.9px height_norm=0.162 margin=36.99 distance=0.3224906542176016
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.97 height=38.9px height_norm=0.162 margin=36.97 distance=0.3223319515672847
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.96 height=38.9px height_norm=0.162 margin=36.71 distance=0.3225225953983901
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.8 height=38.9px height_norm=0.162 margin=36.76 distance=0.32256160160026676
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.92 height=38.9px height_norm=0.162 margin=36.93 distance=0.3224297593268863
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.78 height=38.9px height_norm=0.162 margin=36.70 distance=0.3224471130627433
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.9) error_x=-0.078 yaw_deg=-14.85 height=38.9px height_norm=0.162 margin=37.18 distance=0.32254428891163694
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[tag] backend=pupil_apriltags id=0 center=(135.2,162.8) error_x=-0.078 yaw_deg=-14.85 height=38.9px height_norm=0.162 margin=36.93 distance=0.32251597182541053
+[approach] target=bin mode=bbox_height bbox=0.162/0.22 bbox_ok=False depth_raw=n/a/0.22 depth_ok=False error_x=-0.078
+[map] motion direction=forward speed=0.6 effective_seconds=14.98559832572937 pose={'x_m': 0.0, 'y_m': 1.554755826294422, 'heading_rad': 0.0}
+[base] continuous stop label=approach_bin_forward elapsed=14.986s
+[base] stop
+[fsm] APPROACHING --TIMEOUT--> INTERMEDIATE reason=approach timeout
+[base] stop

@@ -7,6 +7,8 @@ import time
 import cv2
 import numpy as np
 
+from .camera_geometry import CameraRectifier, RAW_FRAME_SPACE, RECTIFIED_FRAME_SPACE
+
 from .depth_vision import CameraOnly, DepthCamera, setup_jetson_inference_paths, summarize_region
 
 
@@ -99,6 +101,19 @@ def tag_size_metrics(points, image_width, image_height):
     }
 
 
+def tag_yaw_from_rotation_matrix(rotation_matrix):
+    """Return signed left/right Tag-plane yaw around the camera Y axis."""
+    rotation = np.asarray(rotation_matrix, dtype=np.float64)
+    if rotation.shape != (3, 3) or not np.all(np.isfinite(rotation)):
+        return None
+    normal = rotation[:, 2].copy()
+    if normal[2] < 0.0:
+        normal *= -1.0
+    if abs(float(normal[0])) + abs(float(normal[2])) <= 1e-9:
+        return None
+    return float(math.atan2(float(normal[0]), float(normal[2])))
+
+
 class CanDetector(object):
     def __init__(self, config):
         self.config = config
@@ -107,6 +122,28 @@ class CanDetector(object):
         self.dry_run_target_available = True
         self.backend = "detectnet_native"
         self._cuda_from_numpy = None
+        self.rectification_enabled = bool(self.settings.get("rectification_enabled", False))
+        self.rectifier = CameraRectifier(config) if self.rectification_enabled else None
+
+    @property
+    def frame_space(self):
+        return RECTIFIED_FRAME_SPACE if self.rectification_enabled else RAW_FRAME_SPACE
+
+    def prepare_frame(self, frame):
+        if frame is None or self.rectifier is None:
+            return frame
+        return self.rectifier.rectify(frame)
+
+    def display_frame(self, frame):
+        """Return the image space in which this detector reports its bboxes."""
+        return self.prepare_frame(frame)
+
+    def observation_in_display_space(self, observation):
+        if self.rectifier is None or not observation:
+            return observation
+        if observation.get("frame_space", RAW_FRAME_SPACE) == RECTIFIED_FRAME_SPACE:
+            return observation
+        return self.rectifier.rectify_observation(observation)
 
     def confidence_threshold(self, tracking=False):
         key = "tracking_confidence_threshold" if tracking else "confidence_threshold"
@@ -126,6 +163,9 @@ class CanDetector(object):
             return
         if self.net is not None:
             return
+        print("[can] rectification enabled={} frame_space={}".format(
+            self.rectification_enabled, self.frame_space,
+        ))
         setup_jetson_inference_paths()
 
         model_path = self.config.resolve_path(self.settings["model_path"])
@@ -183,6 +223,7 @@ class CanDetector(object):
         if frame is None:
             print("[can] no frame")
             return []
+        frame = self.prepare_frame(frame)
         if self.config.get("runtime.dry_run.camera", True):
             if not self.dry_run_target_available:
                 return []
@@ -193,7 +234,7 @@ class CanDetector(object):
                 width,
                 height,
                 confidence=0.95,
-                extra={"simulated": True},
+                extra={"simulated": True, "frame_space": self.frame_space},
             )]
         if self.net is None:
             if self.settings.get("enabled", True):
@@ -235,6 +276,7 @@ class CanDetector(object):
                     "count": len(detections),
                     "raw_outputs": False,
                     "backend": self.backend,
+                    "frame_space": self.frame_space,
                 },
             ))
         print(
@@ -331,19 +373,22 @@ class AprilTagBinDetector(object):
         ))
 
     def _load_calibration(self):
-        path = self.config.resolve_path(self.settings.get("calibration_yaml"))
+        path = self.config.resolve_path(self.config.get("camera.calibration_yaml"))
         if not path or not os.path.exists(path):
-            print("[tag] calibration not loaded; pose distance disabled")
-            return
+            raise RuntimeError("AprilTag calibration file is required: {}".format(path))
         try:
             import yaml
         except ImportError:
-            print("[tag] yaml not installed; pose distance disabled")
-            return
+            raise RuntimeError("PyYAML is required to load AprilTag camera calibration")
         with open(path, "r") as f:
             calib = yaml.safe_load(f)
-        self.camera_matrix = np.array(calib["camera_matrix"], dtype=np.float32)
-        self.dist_coeffs = np.array(calib["dist_coeff"], dtype=np.float32)
+        try:
+            self.camera_matrix = np.array(calib["camera_matrix"], dtype=np.float32)
+            self.dist_coeffs = np.array(calib["dist_coeff"], dtype=np.float32)
+        except (KeyError, TypeError, ValueError) as exc:
+            raise RuntimeError("invalid AprilTag calibration file {}: {}".format(path, exc))
+        if self.camera_matrix.shape != (3, 3) or self.dist_coeffs.size < 4:
+            raise RuntimeError("invalid AprilTag calibration dimensions in {}".format(path))
         print("[tag] calibration loaded {}".format(path))
 
     def detect(self, frame):
@@ -358,7 +403,22 @@ class AprilTagBinDetector(object):
                 [width * 0.65, height * 0.75],
                 [width * 0.35, height * 0.75],
             ], dtype=np.float32)
-            extra = {"id": int(self.settings["tag_id"]), "simulated": True}
+            extra = {
+                "id": int(self.settings["tag_id"]),
+                "simulated": True,
+                "frame_space": RAW_FRAME_SPACE,
+                "pose": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.19,
+                    "rvec": [0.0, 0.0, 0.0],
+                    "rotation_matrix": [[1.0, 0.0, 0.0], [0.0, 1.0, 0.0], [0.0, 0.0, 1.0]],
+                },
+                "distance": 0.19,
+                "yaw_error_rad": 0.0,
+                "yaw_error_deg": 0.0,
+                "yaw_source": "simulated",
+            }
             extra.update(tag_size_metrics(points, width, height))
             return bbox_center_result(
                 "bin_tag",
@@ -391,11 +451,17 @@ class AprilTagBinDetector(object):
             right = float(np.max(pts[:, 0]))
             top = float(np.min(pts[:, 1]))
             bottom = float(np.max(pts[:, 1]))
-            extra = {"id": marker_id, "pose": None, "distance": None}
+            extra = {
+                "id": marker_id,
+                "pose": None,
+                "distance": None,
+                "frame_space": RAW_FRAME_SPACE,
+            }
             extra.update(tag_size_metrics(pts, image_width, image_height))
             pose = self._estimate_pose(pts)
             if pose is not None:
                 extra.update(pose)
+            extra.update(self._estimate_yaw(pts, image_width, image_height, pose))
             best_result = bbox_center_result(
                 "bin_tag",
                 [left, top, right, bottom],
@@ -411,11 +477,12 @@ class AprilTagBinDetector(object):
             return empty_detection("bin_tag")
 
         print(
-            "[tag] id={} center=({:.1f},{:.1f}) error_x={:.3f} height={:.1f}px height_norm={:.3f} distance={}".format(
+            "[tag] id={} center=({:.1f},{:.1f}) error_x={:.3f} yaw_deg={} height={:.1f}px height_norm={:.3f} distance={}".format(
                 best_result["id"],
                 best_result["center_x"],
                 best_result["center_y"],
                 best_result["error_x"],
+                None if best_result.get("yaw_error_deg") is None else round(best_result["yaw_error_deg"], 2),
                 best_result["bbox_height_px"],
                 best_result["bbox_height_norm"],
                 best_result["distance"],
@@ -451,11 +518,13 @@ class AprilTagBinDetector(object):
                 "decision_margin": float(getattr(tag, "decision_margin", 0.0)),
                 "hamming": int(getattr(tag, "hamming", 0)),
                 "backend": self.backend,
+                "frame_space": RAW_FRAME_SPACE,
             }
             extra.update(tag_size_metrics(pts, image_width, image_height))
             pose = self._estimate_pose(pts)
             if pose is not None:
                 extra.update(pose)
+            extra.update(self._estimate_yaw(pts, image_width, image_height, pose))
             best_result = bbox_center_result(
                 "bin_tag",
                 [left, top, right, bottom],
@@ -471,12 +540,13 @@ class AprilTagBinDetector(object):
             return empty_detection("bin_tag")
 
         print(
-            "[tag] backend={} id={} center=({:.1f},{:.1f}) error_x={:.3f} height={:.1f}px height_norm={:.3f} margin={:.2f} distance={}".format(
+            "[tag] backend={} id={} center=({:.1f},{:.1f}) error_x={:.3f} yaw_deg={} height={:.1f}px height_norm={:.3f} margin={:.2f} distance={}".format(
                 best_result["backend"],
                 best_result["id"],
                 best_result["center_x"],
                 best_result["center_y"],
                 best_result["error_x"],
+                None if best_result.get("yaw_error_deg") is None else round(best_result["yaw_error_deg"], 2),
                 best_result["bbox_height_px"],
                 best_result["bbox_height_norm"],
                 best_result["decision_margin"],
@@ -484,6 +554,18 @@ class AprilTagBinDetector(object):
             )
         )
         return best_result
+
+    def _estimate_yaw(self, image_points, image_width, image_height, pose_result=None):
+        rotation = None
+        if pose_result is not None:
+            rotation = (pose_result.get("pose") or {}).get("rotation_matrix")
+        yaw = tag_yaw_from_rotation_matrix(rotation) if rotation is not None else None
+        source = "calibrated_pnp"
+        return {
+            "yaw_error_rad": yaw,
+            "yaw_error_deg": None if yaw is None else math.degrees(yaw),
+            "yaw_source": source if yaw is not None else None,
+        }
 
     def _estimate_pose(self, image_points):
         if self.camera_matrix is None or self.dist_coeffs is None:
@@ -503,7 +585,20 @@ class AprilTagBinDetector(object):
             return None
         x, y, z = [float(v) for v in tvec.flatten()]
         distance = float(math.sqrt(x * x + y * y + z * z))
-        return {"pose": {"x": x, "y": y, "z": z}, "distance": distance}
+        rotation_matrix, _ = cv2.Rodrigues(rvec)
+        return {
+            "pose": {
+                "x": x,
+                "y": y,
+                "z": z,
+                "rvec": [float(value) for value in rvec.flatten()],
+                "rotation_matrix": [
+                    [float(value) for value in row]
+                    for row in rotation_matrix
+                ],
+            },
+            "distance": distance,
+        }
 
 
 class DepthSensor(object):
@@ -515,6 +610,39 @@ class DepthSensor(object):
         self._inference_lock = threading.RLock()
         self._frame_lock = threading.Lock()
         self.latest_lens_stats = None
+        self.depth_rectification_enabled = bool(
+            self.camera_settings.get("depth_rectification_enabled", False)
+        )
+        self.rectifier = CameraRectifier(config) if self.depth_rectification_enabled else None
+
+    @property
+    def depth_frame_space(self):
+        return RECTIFIED_FRAME_SPACE if self.rectifier is not None else RAW_FRAME_SPACE
+
+    def depth_input_frame(self, frame):
+        """Return the RGB frame whose pixels align with the produced depth map."""
+        if frame is None or self.rectifier is None:
+            return frame
+        return self.rectifier.rectify(frame)
+
+    def point_in_depth_space(self, center_x, center_y, source_space=RAW_FRAME_SPACE):
+        if center_x is None or center_y is None:
+            return center_x, center_y
+        if self.rectifier is not None and source_space != RECTIFIED_FRAME_SPACE:
+            return self.rectifier.rectify_point(center_x, center_y)
+        return float(center_x), float(center_y)
+
+    def error_x_in_depth_space(self, observation, image_width, image_height):
+        if not observation:
+            return 0.0
+        center_x, _ = self.point_in_depth_space(
+            observation.get("center_x"),
+            observation.get("center_y", float(image_height) / 2.0),
+            observation.get("frame_space", RAW_FRAME_SPACE),
+        )
+        if center_x is None:
+            return float(observation.get("error_x", 0.0))
+        return (float(center_x) - float(image_width) / 2.0) / float(max(1, image_width))
 
     def start(self, camera_only=False):
         if self.config.get("runtime.dry_run.camera", True):
@@ -539,6 +667,7 @@ class DepthSensor(object):
                 width=int(self.camera_settings["width"]),
                 height=int(self.camera_settings["height"]),
                 network=str(self.camera_settings.get("depth_network", "fcn-mobilenet")),
+                rectifier=self.rectifier,
             )
         else:
             self.depth = CameraOnly(
@@ -546,7 +675,9 @@ class DepthSensor(object):
                 height=int(self.camera_settings["height"]),
             )
         self.depth.start(warmup_frames=2)
-        print("[depth] started enabled={}".format(self.is_depth_available()))
+        print("[depth] started enabled={} rectification={} frame_space={}".format(
+            self.is_depth_available(), self.depth_rectification_enabled, self.depth_frame_space,
+        ))
 
     def is_depth_available(self):
         return bool(self.depth is not None and getattr(self.depth, "depth_enabled", False))
@@ -574,24 +705,9 @@ class DepthSensor(object):
         print("[depth] stop")
 
     def _roi(self, roi_name):
-        if roi_name == "target_depth_roi":
-            return self.camera_settings.get("target_depth_roi", [0.42, 0.4, 0.58, 0.65])
         if roi_name == "obstacle_depth_roi":
             return self.avoidance_settings.get("roi", [0.35, 0.52, 0.65, 0.92])
         raise KeyError("unknown depth ROI: {}".format(roi_name))
-
-    def observe(self, roi_name):
-        roi = self._roi(roi_name)
-        if self.depth is not None and not self.is_depth_available():
-            print("[depth] {} unavailable; DepthNet disabled".format(roi_name))
-            return None
-        if self.depth is None:
-            value = 2.0
-            print("[depth] placeholder {} mean={:.3f}".format(roi_name, value))
-            return {"mean": value, "min": value, "max": value, "roi": roi}
-        with self._inference_lock:
-            stats = self.depth.observe(region=tuple(roi))
-        return self._report_stats(roi_name, stats)
 
     def observe_frame(self, roi_name, frame):
         roi = self._roi(roi_name)
@@ -606,7 +722,10 @@ class DepthSensor(object):
             stats = self.depth.observe(region=tuple(roi), frame=frame)
         return self._report_stats(roi_name, stats)
 
-    def observe_center_frame(self, label, frame, center_x, center_y, width_ratio, height_ratio, report=True):
+    def observe_center_frame(
+        self, label, frame, center_x, center_y, width_ratio, height_ratio,
+        report=True, source_space=RAW_FRAME_SPACE,
+    ):
         if self.depth is not None and not self.is_depth_available():
             print("[depth] {} unavailable; DepthNet disabled".format(label))
             return None
@@ -618,6 +737,7 @@ class DepthSensor(object):
             print("[depth] {} invalid frame shape".format(label))
             return None
 
+        center_x, center_y = self.point_in_depth_space(center_x, center_y, source_space)
         cx = max(0.0, min(1.0, float(center_x) / float(image_width)))
         cy = max(0.0, min(1.0, float(center_y) / float(image_height)))
         half_w = max(0.005, float(width_ratio) / 2.0)
@@ -657,18 +777,7 @@ class DepthSensor(object):
             self.latest_lens_stats = dict(stats)
         return stats
 
-    def sample_lens_center_for_hud(self, frame):
-        """Return a fresh center-depth sample when DepthNet is idle, otherwise the cached sample."""
-        if frame is None or not self.is_depth_available():
-            return self.latest_lens_stats
-        if not self._inference_lock.acquire(False):
-            return self.latest_lens_stats
-        try:
-            return self.observe_lens_center_frame(frame, report=False)
-        finally:
-            self._inference_lock.release()
-
-    def depth_map_frame(self, frame):
+    def depth_map_frame(self, frame, frame_space=RAW_FRAME_SPACE):
         """Return the full current depth field for local path planning."""
         if frame is None:
             return None
@@ -677,7 +786,7 @@ class DepthSensor(object):
         if not self.is_depth_available() or self.depth is None:
             return None
         with self._inference_lock:
-            return self.depth.process_frame(frame)
+            return self.depth.process_frame(frame, frame_space=frame_space)
 
     def observe_center_depth_map(
         self,
@@ -689,9 +798,11 @@ class DepthSensor(object):
         image_height,
         width_ratio,
         height_ratio,
+        source_space=RAW_FRAME_SPACE,
     ):
         if depth_map is None or center_x is None or center_y is None:
             return None
+        center_x, center_y = self.point_in_depth_space(center_x, center_y, source_space)
         cx = max(0.0, min(1.0, float(center_x) / float(max(1, int(image_width)))))
         cy = max(0.0, min(1.0, float(center_y) / float(max(1, int(image_height)))))
         half_w = max(0.005, float(width_ratio) / 2.0)
@@ -721,7 +832,3 @@ class DepthSensor(object):
             return False
         stats = self.observe_frame("obstacle_depth_roi", frame)
         return bool(stats and stats["mean"] < float(self.avoidance_settings.get("obstacle_depth", 1.2)))
-
-    def grab_verified(self):
-        stats = self.observe("target_depth_roi")
-        return bool(stats and stats["mean"] < float(self.config.get("arm.verify_depth", 1.4)))

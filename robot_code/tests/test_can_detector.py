@@ -30,6 +30,7 @@ class FakeDetectNet(object):
         return [
             FakeDetection(0, 0.99, [0, 0, 20, 20]),
             FakeDetection(1, 0.81, [80, 30, 200, 210]),
+            FakeDetection(1, 0.72, [210, 70, 280, 200]),
         ]
 
 
@@ -57,6 +58,7 @@ class CanDetectorTest(unittest.TestCase):
             "jetson_utils": jetson_utils,
         }):
             detector = CanDetector(config)
+            all_results = detector.detect_all(frame)
             result = detector.detect(frame)
 
         self.assertEqual(len(created), 1)
@@ -68,11 +70,22 @@ class CanDetectorTest(unittest.TestCase):
         self.assertEqual(int(created[0].last_image[0, 0, 0]), 91)
         self.assertEqual(int(created[0].last_image[0, 0, 2]), 17)
         self.assertTrue(result["found"])
+        self.assertEqual(len(all_results), 2)
+        self.assertAlmostEqual(all_results[1]["confidence"], 0.72)
         self.assertEqual(result["backend"], "detectnet_native")
         self.assertEqual(result["class_id"], 1)
         self.assertAlmostEqual(result["confidence"], 0.81)
         self.assertAlmostEqual(result["center_x"], 140.0)
         self.assertAlmostEqual(result["bbox_height_norm"], 0.75)
+
+    def test_detect_all_keeps_candidates_while_detect_returns_best(self):
+        config = load_config()
+        detector = CanDetector(config)
+        frame = np.zeros((240, 320, 3), dtype=np.uint8)
+        detections = detector.detect_all(frame)
+        self.assertEqual(len(detections), 1)
+        self.assertTrue(detections[0]["simulated"])
+        self.assertEqual(detector.detect(frame)["confidence"], detections[0]["confidence"])
 
 if __name__ == "__main__":
     unittest.main()

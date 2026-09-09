@@ -5,6 +5,8 @@ import time
 import cv2
 import numpy as np
 
+from .camera_geometry import RAW_FRAME_SPACE
+
 
 JETSON_INFERENCE_ROOT = "/workspace/jetson-inference"
 
@@ -52,7 +54,7 @@ def summarize_region(depth_array, x1_ratio=0.4, y1_ratio=0.4, x2_ratio=0.6, y2_r
 class DepthCamera(object):
     depth_enabled = True
 
-    def __init__(self, width=320, height=240, network="fcn-mobilenet"):
+    def __init__(self, width=320, height=240, network="fcn-mobilenet", rectifier=None):
         setup_jetson_inference_paths()
 
         from jetbot import Camera
@@ -62,6 +64,7 @@ class DepthCamera(object):
         self.width = width
         self.height = height
         self.network = network
+        self.rectifier = rectifier
         self._camera_cls = Camera
         self._cuda_from_numpy = cudaFromNumpy
         self._cuda_sync = cudaDeviceSynchronize
@@ -120,19 +123,25 @@ class DepthCamera(object):
             return None
         return self.camera.value
 
-    def process_frame(self, frame):
-        rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    def prepare_frame(self, frame, frame_space=RAW_FRAME_SPACE):
+        if self.rectifier is not None and frame_space == RAW_FRAME_SPACE:
+            return self.rectifier.rectify(frame)
+        return frame
+
+    def process_frame(self, frame, frame_space=RAW_FRAME_SPACE):
+        prepared = self.prepare_frame(frame, frame_space)
+        rgb = cv2.cvtColor(prepared, cv2.COLOR_BGR2RGB)
         cuda_img = self._cuda_from_numpy(rgb)
         self.net.Process(cuda_img)
         self._cuda_sync()
         return self.depth_array
 
-    def observe(self, region=(0.4, 0.4, 0.6, 0.6), frame=None):
+    def observe(self, region=(0.4, 0.4, 0.6, 0.6), frame=None, frame_space=RAW_FRAME_SPACE):
         if frame is None:
             frame = self.read_frame()
         if frame is None:
             return None
-        depth = self.process_frame(frame)
+        depth = self.process_frame(frame, frame_space=frame_space)
         stats = summarize_region(depth, region[0], region[1], region[2], region[3])
         stats["timestamp"] = time.time()
         return stats

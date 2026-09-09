@@ -1,0 +1,18 @@
+
+>>> reset_runtime log=/workspace/robot_code/can_video_demo_draft/logs/integration_reset_runtime_20260828_042318.log
+[fsm] stop_all
+[base] stop
+[arm] pose safe_home
+[arm] dry_run=True
+[arm] safe_home servo=5 angle=0 speed=85
+[arm] dry_run=True
+[arm] safe_home servo=4 angle=0 speed=85
+[arm] dry_run=True
+[arm] safe_home servo=3 angle=0 speed=85
+[arm] dry_run=True
+[arm] safe_home servo=2 angle=0 speed=85
+[arm] dry_run=True
+[arm] safe_home servo=1 angle=-16 speed=85
+[depth] stop
+[result] True
+[integration] SUCCESS elapsed=0.1s

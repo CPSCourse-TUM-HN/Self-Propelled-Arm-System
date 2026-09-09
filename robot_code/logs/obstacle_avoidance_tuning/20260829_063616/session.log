@@ -1,0 +1,33 @@
+06:36:16 [job] start full_bypass
+06:36:18 [camera] DepthNet camera started frame=320x240 obstacle_roi_ignore=(top=0.300, bottom=0.150)
+06:36:18 [phase] CRUISING
+06:36:18 [media] recording started /workspace/robot_code/temp_car/logs/obstacle_avoidance_tuning/20260829_063616/obstacle_avoidance_1787985378608.avi
+06:36:19 [uncertain] avoidance_cruise stopped for geometry recheck 1/15
+06:36:19 [uncertain] avoidance_cruise recheck 2/15
+06:36:19 [uncertain] avoidance_cruise recheck 3/15
+06:36:20 [uncertain] avoidance_cruise recheck 4/15
+06:36:20 [uncertain] avoidance_cruise resolved status=OBSTACLE after 5 frames
+06:36:20 [phase] DETECTED selected_side=left geometry={'detected': True, 'path_blocked': True, 'unsafe': False, 'bbox': [104, 100, 14, 20], 'center': [111, 110], 'width_norm': 0.0625, 'height_norm': 0.08928571428571429, 'center_x_norm': 0.4955357142857143, 'bbox_left_norm': 0.4642857142857143, 'bbox_right_norm': 0.5267857142857143, 'background_depth': 3.3424642086029053, 'obstacle_depth': 2.240931987762451, 'left_clearance_norm': 0.4642857142857143, 'right_clearance_norm': 0.4732142857142857, 'selected_side': 'left', 'reason': 'obstacle with traversable tangent', 'status': 'OBSTACLE', 'center_depth': 2.666860342025757}
+06:36:20 [phase] TURN_TO_TANGENT direction=left
+06:36:20 [uncertain] turn_to_tangent stopped for geometry recheck 1/15
+06:36:21 [uncertain] turn_to_tangent resolved status=OBSTACLE after 2 frames
+06:36:24 [phase] tangent reached seconds=3.347
+06:36:24 [phase] OFFSET_OUT
+06:36:32 [error] full_bypass: offset_out timeout
+06:36:32 Traceback (most recent call last):
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 623, in target
+    result = operation()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 600, in run_full
+    self.run_next_phase()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 591, in run_next_phase
+    phases[self.state]()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 486, in _phase_offset_out
+    minimum_seconds=settings["minimum_offset_seconds"],
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 341, in _run_visual_motion
+    raise RuntimeError("{} timeout".format(label))
+RuntimeError: offset_out timeout
+
+06:36:32 [media] recording finalized /workspace/robot_code/temp_car/logs/obstacle_avoidance_tuning/20260829_063616/obstacle_avoidance_1787985378608.avi
+06:36:56 [job] start full_bypass
+06:36:56 [job] finish full_bypass result=False
+06:37:39 [camera] stopped and released

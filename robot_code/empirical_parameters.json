@@ -15,17 +15,29 @@
     "left": 1.0,
     "right": 1.0
   },
+  "base_turn_response": {
+    "reference_angle_rad": 1.570796326795,
+    "samples": [
+      {"speed": 0.15, "left_seconds": 10.4, "right_seconds": 9.0},
+      {"speed": 0.25, "left_seconds": 4.4, "right_seconds": 4.3},
+      {"speed": 0.3, "left_seconds": 3.6, "right_seconds": 3.4},
+      {"speed": 0.5, "left_seconds": 2.1, "right_seconds": 2.0}
+    ]
+  },
   "camera": {
     "width": 320,
     "height": 240,
     "depth_network": "fcn-mobilenet",
+    "calibration_yaml": "calibration_320.yaml",
+    "rectification_alpha": 0.0,
+    "depth_rectification_enabled": false,
     "observation_pause_seconds": 0.1,
     "lens_roi_width": 0.12,
-    "lens_roi_height": 0.18,
-    "target_depth_roi": [0.42, 0.4, 0.58, 0.65]
+    "lens_roi_height": 0.18
   },
   "detectors": {
     "can": {
+      "rectification_enabled": false,
       "model_path": "assets/models/detectnet_native_can/can_ssd_mobilenet_v1.onnx",
       "labels_path": "assets/models/detectnet_native_can/labels.txt",
       "input_blob": "input_0",
@@ -41,74 +53,94 @@
       "dictionary": "DICT_APRILTAG_36h11",
       "family": "tag36h11",
       "tag_id": 0,
-      "marker_length_m": 0.08,
-      "calibration_yaml": ""
+      "marker_length_m": 0.04
     }
   },
   "navigation": {
     "can": {
       "search": {
-        "direction": "left",
-        "speed": "turn.fast",
-        "timeout_seconds": 20.0
+        "routine": 0
       },
       "align": {
         "speed": "turn.slow",
         "tolerance_norm": 0.15,
         "max_steps": 600,
-        "lost_frame_limit": 8
+        "lost_frame_limit": 8,
+        "lost_motion_grace_frames": 2
       },
       "approach": {
-        "experimental_continuous": {
-          "enabled": true,
-          "speed": "linear.slow",
-          "duration_seconds": 1.0
-        },
         "speed": "linear.fast",
         "timeout_seconds": 15.0,
         "max_pulses": 500,
-        "min_pulses": 0,
         "lost_frame_limit": 4,
         "steering_tolerance_norm": 0.12,
         "steering_speed": "turn.slow",
         "stop": {
           "mode": "bbox_height",
-          "threshold": 0.36,
-          "depth_scale": 1.0
+          "bbox_height_threshold": 0.36,
+          "depth_raw_threshold": 2.05
         }
       },
       "near_align": {
         "enabled": true,
+        "required_stable_frames": 2,
         "speed": "turn.slow",
-        "tolerance_norm": 0.05,
+        "tolerance_norm": 0.03,
         "max_steps": 500,
         "lost_frame_limit": 6
       }
     },
     "bin": {
       "search": {
-        "direction": "left",
-        "speed": "turn.fast",
-        "timeout_seconds": 15.0
+        "routine": 0,
+        "map_arrival_routine": 4
       },
       "align": {
         "speed": "turn.slow",
+        "target_error_x_norm": -0.16,
         "tolerance_norm": 0.08,
-        "max_steps": 400,
+        "max_steps": 600,
         "lost_frame_limit": 8
+      },
+      "near_align": {
+        "required_stable_frames": 2
       },
       "approach": {
         "speed": "linear.fast",
         "timeout_seconds": 15.0,
-        "max_pulses": 400,
-        "min_pulses": 0,
+        "max_pulses": 600,
         "lost_frame_limit": 5,
         "steering_tolerance_norm": 0.1,
         "steering_speed": "turn.slow",
         "stop": {
-          "mode": "bbox_height",
-          "threshold": 0.15,
-          "depth_scale": 1.0
+          "mode": "pnp_z",
+          "pnp_z_threshold_m": 0.36
+        }
+      },
+      "side_docking": {
+        "experimental": {
+          "enabled": true,
+          "correction_mode": "continuous",
+          "center_tolerance_norm": 0.04,
+          "center_positive_drive_direction": "backward",
+          "drive_speed": "linear.slow",
+          "center_correction_seconds": 0.3,
+          "yaw_tolerance_rad": 0.128131701,
+          "target_yaw_rad": 0.0,
+          "center_stage_entry_yaw_rad": 0.3445329252,
+          "coarse_yaw_center_guard_norm": 0.03,
+          "yaw_correction_seconds": 0.4,
+          "yaw_single_correction_max_seconds": 999.0,
+          "yaw_positive_turn_direction": "right",
+          "side_entry_base_turn_direction": "left",
+          "post_entry_camera_settle_seconds": 0.4,
+          "post_entry_camera_discard_frames": 3,
+          "post_correction_camera_settle_seconds": 0.2,
+          "yaw_turn_speed": "turn.slow",
+          "stable_frames": 5,
+          "lost_frame_limit": 10,
+          "max_steps": 2000,
+          "timeout_seconds": 9999.0
         }
       },
       "side_docking": {
@@ -142,10 +174,10 @@
   },
   "vague_map": {
     "bounds_m": {
-      "min_x": -1.0,
-      "max_x": 1.0,
-      "min_y": -1.0,
-      "max_y": 1.0
+      "min_x": -20.0,
+      "max_x": 20.0,
+      "min_y": -20.0,
+      "max_y": 20.0
     },
     "initial_pose": {
       "x_m": 0.0,
@@ -153,31 +185,46 @@
       "heading_rad": 0.0
     },
     "bin_marker_position": {
-      "x_m": 0.0,
-      "y_m": -0.75
-    },
-    "bin_docking_pose": {
-      "x_m": 0.0,
-      "y_m": -0.5,
-      "heading_rad": -1.57079632679
-    },
-    "bin_side_docking_pose": {
-      "x_m": 0.0,
-      "y_m": -0.5,
+      "x_m": 1.0,
+      "y_m": -16.0,
       "heading_rad": 0.0
     },
-    "patrol_waypoints": [
-      {"x_m": 0.5, "y_m": 0.0},
-      {"x_m": 0.5, "y_m": 0.5},
-      {"x_m": -0.5, "y_m": 0.5},
-      {"x_m": -0.5, "y_m": -0.5},
-      {"x_m": 0.5, "y_m": -0.5},
-      {"x_m": 0.5, "y_m": 0.0},
-      {"x_m": 0.0, "y_m": 0.0}
-    ],
+    "bin_docking_pose": {
+      "x_m": -0.1,
+      "y_m": -48,
+      "heading_rad": 1.57079632679
+    },
+    "bin_side_docking_pose": {
+      "x_m": -0.1,
+      "y_m": -0.1,
+      "heading_rad": 0.0
+    },
+    "bin_tag_localization": {
+      "enabled": true,
+      "minimum_tag_distance_m": 0.01,
+      "maximum_tag_distance_m": 100.0,
+      "maximum_position_error_m": 666.6,
+      "maximum_heading_error_rad": 3.141592653589793,
+      "camera_mounts": {
+        "front": {
+          "x_m": 0.0,
+          "y_m": 0.0,
+          "heading_rad": 0.0
+        },
+        "side": {
+          "x_m": 0.0,
+          "y_m": 0.0,
+          "heading_rad": 1.570796326795
+        }
+      }
+    },
     "odometry": {
-      "linear_meters_per_speed_second": 1.0,
+      "linear_meters_per_speed_second": 0.171875,
       "linear_slip_factor": 1.0,
+      "linear_response_samples": [
+        {"speed": 0.2, "seconds": 4.0, "distance_m": 0.13},
+        {"speed": 0.6, "seconds": 4.0, "distance_m": 0.415}
+      ],
       "angular_radians_per_speed_second": 3.14159265359
     },
     "navigation": {
@@ -187,14 +234,12 @@
       "forward_pulse_seconds": 0.2,
       "heading_tolerance_rad": 0.12,
       "arrival_tolerance_m": 0.2,
-      "waypoint_tolerance_m": 0.15,
       "timeout_seconds": 30.0,
       "max_steps": 1000
     },
     "camera_horizontal_fov_rad": 1.0471975512,
-    "depth_to_distance_scale_m_per_unit": 1.0,
-    "incidental_can_min_center_y_norm": 0.45,
-    "can_merge_radius_m": 0.3,
+    "depth_to_distance_scale_m_per_unit": 0.1,
+    "can_merge_radius_m": 0.01,
     "pickup_clear_radius_m": 0.3,
     "can_depth_roi_width": 0.12,
     "can_depth_roi_height": 0.18
@@ -220,15 +265,13 @@
   },
   "arm": {
     "speed": 85,
-    "gripper_speed": 120,
     "servo_settle_seconds": 0.35,
     "pickup_start_delay_seconds": 2.0,
     "push": {
       "speed": "linear.slow",
-      "seconds": 7.0,
+      "seconds": 3.9,
       "post_lock_seconds": 5.0
     },
-    "verify_depth": 1.4,
     "position_wait": {
       "enabled": true,
       "stability_delta_raw": 3,
@@ -249,17 +292,27 @@
         "pause_seconds": 0.6
       },
       "grab": {
-        "angles": {"s1": -16, "s2": 105, "s3": 45, "s4": -40, "s5": 0},
+        "angles": {"s1": -16, "s2": 105, "s3": 45, "s4": -55, "s5": 0},
         "order": [5, 4, 3, 2, 1],
         "pause_seconds": 0.6
       },
       "carry": {
-        "angles": {"s1": -16, "s2": 60, "s3": 45, "s4": -40, "s5": 0},
+        "angles": {"s1": -16, "s2": 60, "s3": 45, "s4": -55, "s5": 0},
         "order": [5, 4, 3, 2, 1],
         "pause_seconds": 0.6
       },
       "release": {
-        "angles": {"s1": -16, "s2": 60, "s3": 45, "s4": 0, "s5": 0},
+        "angles": {"s1": 70, "s2": 80, "s3": 55, "s4": 0, "s5": 0},
+        "order": [5, 4, 3, 2, 1],
+        "pause_seconds": 0.6
+      },
+      "side_view_grabbing": {
+        "angles": {"s1": 70, "s2": 60, "s3": 45, "s4": -55, "s5": 0},
+        "order": [5, 4, 3, 2, 1],
+        "pause_seconds": 0.6
+      },
+      "side_view_bin_insert": {
+        "angles": {"s1": 70, "s2": 80, "s3": 55, "s4": -55, "s5": 0},
         "order": [5, 4, 3, 2, 1],
         "pause_seconds": 0.6
       },

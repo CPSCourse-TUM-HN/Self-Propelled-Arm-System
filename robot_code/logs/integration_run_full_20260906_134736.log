@@ -1,0 +1,225 @@
+
+>>> run_full_background log=/workspace/robot_code/temp_car/logs/integration_run_full_20260906_134736.log
+[fsm] IDLE --START--> INITIALIZING
+[depth] loading network fcn-mobilenet
+[camera] starting JetBot Camera 320x240
+[warmup] frame 1/2 processed
+[warmup] frame 2/2 processed
+[depth] started enabled=True
+[arm] pose safe_home
+[arm] TTLServo connected
+[arm] safe_home servo=5 angle=0 speed=85
+[arm] safe_home servo=4 angle=0 speed=85
+[arm] safe_home servo=3 angle=0 speed=85
+[arm] safe_home servo=2 angle=0 speed=85
+[arm] safe_home servo=1 angle=-16 speed=85
+[base] stop
+[fsm] INITIALIZING --INITIALIZED--> PLANNING
+[fsm] PLANNING --TARGET_REQUIRED--> SEARCHING
+[can] loading native detectNet model=/workspace/robot_code/temp_car/assets/models/detectnet_native_can/can_ssd_mobilenet_v1.onnx
+[can] native detectNet loaded threshold=0.200 clustering=0.300
+[can] backend=detectnet_native detections=1 best_confidence=0.752
+[can] backend=detectnet_native confidence=0.752 class_id=1 center=(168.0,132.2) error_x=0.025 bbox=[152.890625, 98.73046875, 183.125, 165.5859375]
+[base] stop
+[fsm] SEARCHING --TARGET_FOUND--> ALIGNING
+[can] backend=detectnet_native detections=1 best_confidence=0.805
+[can] backend=detectnet_native confidence=0.805 class_id=1 center=(167.5,132.3) error_x=0.024 bbox=[152.109375, 97.6171875, 182.96875, 166.9921875]
+[base] stop
+[fsm] ALIGNING --TARGET_ALIGNED--> APPROACHING
+[can] backend=detectnet_native detections=1 best_confidence=0.770
+[can] backend=detectnet_native confidence=0.770 class_id=1 center=(167.6,131.8) error_x=0.024 bbox=[152.5, 97.6171875, 182.65625, 166.0546875]
+[base] Robot connected
+[base] continuous start label=exp1_can_approach direction=forward requested_speed=0.6 effective_speed=0.6
+[exp1] continuous displacement speed=0.6 duration_seconds=2.4 remaining=2.400
+[can] backend=detectnet_native detections=1 best_confidence=0.766
+[can] backend=detectnet_native confidence=0.766 class_id=1 center=(167.9,132.4) error_x=0.025 bbox=[152.65625, 98.671875, 183.125, 166.171875]
+[can] backend=detectnet_native detections=1 best_confidence=0.802
+[can] backend=detectnet_native confidence=0.802 class_id=1 center=(167.3,132.5) error_x=0.023 bbox=[151.5625, 98.4375, 182.96875, 166.640625]
+[can] backend=detectnet_native detections=1 best_confidence=0.868
+[can] backend=detectnet_native confidence=0.868 class_id=1 center=(168.1,133.1) error_x=0.025 bbox=[151.875, 99.140625, 184.375, 167.109375]
+[can] backend=detectnet_native detections=1 best_confidence=0.866
+[can] backend=detectnet_native confidence=0.866 class_id=1 center=(167.9,132.3) error_x=0.025 bbox=[151.328125, 96.2109375, 184.375, 168.3984375]
+[can] backend=detectnet_native detections=1 best_confidence=0.907
+[can] backend=detectnet_native confidence=0.907 class_id=1 center=(168.0,132.4) error_x=0.025 bbox=[151.25, 96.5625, 184.84375, 168.1640625]
+[can] backend=detectnet_native detections=1 best_confidence=0.945
+[can] backend=detectnet_native confidence=0.945 class_id=1 center=(168.4,133.8) error_x=0.026 bbox=[150.9375, 96.328125, 185.9375, 171.328125]
+[can] backend=detectnet_native detections=1 best_confidence=0.941
+[can] backend=detectnet_native confidence=0.941 class_id=1 center=(168.5,133.9) error_x=0.026 bbox=[150.703125, 98.4375, 186.25, 169.3359375]
+[can] backend=detectnet_native detections=1 best_confidence=0.859
+[can] backend=detectnet_native confidence=0.859 class_id=1 center=(169.8,132.4) error_x=0.031 bbox=[152.03125, 94.21875, 187.5, 170.5078125]
+[can] backend=detectnet_native detections=1 best_confidence=0.691
+[can] backend=detectnet_native confidence=0.691 class_id=1 center=(170.0,133.0) error_x=0.031 bbox=[152.65625, 98.26171875, 187.34375, 167.6953125]
+[can] backend=detectnet_native detections=1 best_confidence=0.732
+[can] backend=detectnet_native confidence=0.732 class_id=1 center=(170.5,133.5) error_x=0.033 bbox=[153.828125, 98.96484375, 187.1875, 168.046875]
+[can] backend=detectnet_native detections=1 best_confidence=0.732
+[can] backend=detectnet_native confidence=0.732 class_id=1 center=(170.7,135.1) error_x=0.034 bbox=[154.140625, 100.25390625, 187.34375, 170.0390625]
+[can] backend=detectnet_native detections=1 best_confidence=0.733
+[can] backend=detectnet_native confidence=0.733 class_id=1 center=(171.6,135.4) error_x=0.036 bbox=[154.21875, 99.140625, 188.90625, 171.5625]
+[can] backend=detectnet_native detections=1 best_confidence=0.954
+[can] backend=detectnet_native confidence=0.954 class_id=1 center=(171.3,135.2) error_x=0.035 bbox=[152.8125, 97.265625, 189.84375, 173.203125]
+[can] backend=detectnet_native detections=1 best_confidence=0.962
+[can] backend=detectnet_native confidence=0.962 class_id=1 center=(172.1,132.6) error_x=0.038 bbox=[153.515625, 92.16796875, 190.625, 172.96875]
+[can] backend=detectnet_native detections=1 best_confidence=0.974
+[can] backend=detectnet_native confidence=0.974 class_id=1 center=(172.2,135.4) error_x=0.038 bbox=[154.0625, 96.5625, 190.3125, 174.2578125]
+[can] backend=detectnet_native detections=1 best_confidence=0.988
+[can] backend=detectnet_native confidence=0.988 class_id=1 center=(173.1,135.9) error_x=0.041 bbox=[153.203125, 92.9296875, 192.96875, 178.828125]
+[can] backend=detectnet_native detections=1 best_confidence=0.988
+[can] backend=detectnet_native confidence=0.988 class_id=1 center=(172.2,135.6) error_x=0.038 bbox=[152.890625, 93.33984375, 191.5625, 177.890625]
+[can] backend=detectnet_native detections=1 best_confidence=0.996
+[can] backend=detectnet_native confidence=0.996 class_id=1 center=(174.1,135.5) error_x=0.044 bbox=[154.375, 91.9921875, 193.75, 179.0625]
+[can] backend=detectnet_native detections=1 best_confidence=0.997
+[can] backend=detectnet_native confidence=0.997 class_id=1 center=(174.1,136.5) error_x=0.044 bbox=[153.828125, 92.9296875, 194.375, 180.1171875]
+[can] backend=detectnet_native detections=1 best_confidence=0.999
+[can] backend=detectnet_native confidence=0.999 class_id=1 center=(175.4,137.3) error_x=0.048 bbox=[153.4375, 90.9375, 197.34375, 183.75]
+[can] backend=detectnet_native detections=1 best_confidence=1.000
+[can] backend=detectnet_native confidence=1.000 class_id=1 center=(176.5,138.5) error_x=0.052 bbox=[154.375, 91.5234375, 198.59375, 185.390625]
+[can] backend=detectnet_native detections=1 best_confidence=0.999
+[can] backend=detectnet_native confidence=0.999 class_id=1 center=(176.7,138.4) error_x=0.052 bbox=[153.515625, 91.40625, 199.84375, 185.390625]
+[can] backend=detectnet_native detections=1 best_confidence=0.999
+[can] backend=detectnet_native confidence=0.999 class_id=1 center=(177.1,140.1) error_x=0.054 bbox=[153.515625, 92.51953125, 200.78125, 187.734375]
+[can] backend=detectnet_native detections=1 best_confidence=0.999
+[can] backend=detectnet_native confidence=0.999 class_id=1 center=(180.5,138.3) error_x=0.064 bbox=[153.28125, 85.3125, 207.65625, 191.25]
+[can] backend=detectnet_native detections=1 best_confidence=1.000
+[can] backend=detectnet_native confidence=1.000 class_id=1 center=(180.3,140.4) error_x=0.063 bbox=[154.21875, 89.4140625, 206.40625, 191.3671875]
+[can] backend=detectnet_native detections=1 best_confidence=0.998
+[can] backend=detectnet_native confidence=0.998 class_id=1 center=(179.6,141.0) error_x=0.061 bbox=[153.671875, 88.59375, 205.625, 193.359375]
+[can] backend=detectnet_native detections=1 best_confidence=0.998
+[can] backend=detectnet_native confidence=0.998 class_id=1 center=(179.8,141.6) error_x=0.062 bbox=[153.28125, 89.6484375, 206.25, 193.4765625]
+[can] backend=detectnet_native detections=1 best_confidence=0.992
+[can] backend=detectnet_native confidence=0.992 class_id=1 center=(180.4,142.6) error_x=0.064 bbox=[153.4375, 89.6484375, 207.34375, 195.46875]
+[can] backend=detectnet_native detections=1 best_confidence=0.977
+[can] backend=detectnet_native confidence=0.977 class_id=1 center=(183.3,139.1) error_x=0.073 bbox=[154.375, 79.921875, 212.1875, 198.28125]
+[can] backend=detectnet_native detections=1 best_confidence=0.938
+[can] backend=detectnet_native confidence=0.938 class_id=1 center=(183.1,140.4) error_x=0.072 bbox=[155.3125, 82.265625, 210.9375, 198.515625]
+[can] backend=detectnet_native detections=1 best_confidence=0.955
+[can] backend=detectnet_native confidence=0.955 class_id=1 center=(182.9,142.3) error_x=0.071 bbox=[154.453125, 83.02734375, 211.25, 201.5625]
+[can] backend=detectnet_native detections=1 best_confidence=0.982
+[can] backend=detectnet_native confidence=0.982 class_id=1 center=(183.8,144.1) error_x=0.074 bbox=[155.234375, 85.01953125, 212.34375, 203.203125]
+[can] backend=detectnet_native detections=1 best_confidence=0.984
+[can] backend=detectnet_native confidence=0.984 class_id=1 center=(184.0,146.2) error_x=0.075 bbox=[153.75, 84.84375, 214.21875, 207.65625]
+[can] backend=detectnet_native detections=1 best_confidence=0.988
+[can] backend=detectnet_native confidence=0.988 class_id=1 center=(184.4,144.2) error_x=0.076 bbox=[152.1875, 80.33203125, 216.5625, 208.125]
+[can] backend=detectnet_native detections=1 best_confidence=0.989
+[can] backend=detectnet_native confidence=0.989 class_id=1 center=(185.3,146.5) error_x=0.079 bbox=[154.21875, 84.84375, 216.40625, 208.125]
+[can] backend=detectnet_native detections=1 best_confidence=0.987
+[can] backend=detectnet_native confidence=0.987 class_id=1 center=(185.4,145.3) error_x=0.079 bbox=[153.125, 80.2734375, 217.65625, 210.3515625]
+[can] backend=detectnet_native detections=1 best_confidence=0.993
+[can] backend=detectnet_native confidence=0.993 class_id=1 center=(187.5,147.7) error_x=0.086 bbox=[153.90625, 78.6328125, 221.09375, 216.796875]
+[can] backend=detectnet_native detections=1 best_confidence=0.998
+[can] backend=detectnet_native confidence=0.998 class_id=1 center=(189.2,147.7) error_x=0.091 bbox=[150.703125, 77.8125, 227.65625, 217.5]
+[can] backend=detectnet_native detections=1 best_confidence=0.998
+[can] backend=detectnet_native confidence=0.998 class_id=1 center=(190.8,147.8) error_x=0.096 bbox=[150.15625, 76.9921875, 231.40625, 218.671875]
+[can] backend=detectnet_native detections=1 best_confidence=0.997
+[can] backend=detectnet_native confidence=0.997 class_id=1 center=(191.4,147.9) error_x=0.098 bbox=[150.859375, 74.8828125, 231.875, 221.015625]
+[can] backend=detectnet_native detections=1 best_confidence=0.998
+[can] backend=detectnet_native confidence=0.998 class_id=1 center=(192.3,147.8) error_x=0.101 bbox=[151.5625, 73.76953125, 233.125, 221.8359375]
+[can] backend=detectnet_native detections=1 best_confidence=0.997
+[can] backend=detectnet_native confidence=0.997 class_id=1 center=(188.0,150.0) error_x=0.087 bbox=[140.15625, 71.66015625, 235.78125, 228.28125]
+[can] backend=detectnet_native detections=1 best_confidence=0.997
+[can] backend=detectnet_native confidence=0.997 class_id=1 center=(189.0,149.7) error_x=0.091 bbox=[142.65625, 71.30859375, 235.3125, 228.046875]
+[can] backend=detectnet_native detections=1 best_confidence=0.989
+[can] backend=detectnet_native confidence=0.989 class_id=1 center=(192.5,146.7) error_x=0.102 bbox=[144.375, 66.2109375, 240.625, 227.2265625]
+[can] backend=detectnet_native detections=1 best_confidence=0.970
+[can] backend=detectnet_native confidence=0.970 class_id=1 center=(194.1,149.5) error_x=0.106 bbox=[145.15625, 70.078125, 242.96875, 228.984375]
+[can] backend=detectnet_native detections=1 best_confidence=0.977
+[can] backend=detectnet_native confidence=0.977 class_id=1 center=(195.9,151.9) error_x=0.112 bbox=[143.90625, 68.671875, 247.96875, 235.078125]
+[can] backend=detectnet_native detections=1 best_confidence=0.910
+[can] backend=detectnet_native confidence=0.910 class_id=1 center=(195.5,150.7) error_x=0.111 bbox=[141.40625, 67.55859375, 249.53125, 233.90625]
+[can] backend=detectnet_native detections=1 best_confidence=0.827
+[can] backend=detectnet_native confidence=0.827 class_id=1 center=(199.8,150.6) error_x=0.125 bbox=[144.21875, 66.15234375, 255.46875, 235.078125]
+[map] motion direction=forward speed=0.6 effective_seconds=2.3761041164398193 pose={'x_m': 0.0, 'y_m': 0.24652080208063124, 'heading_rad': 0.0}
+[base] continuous stop label=exp1_can_approach elapsed=2.376s
+[base] stop
+[base] continuous start label=exp1_can_steer direction=right requested_speed=0.15 effective_speed=0.15
+[visual-turn] label=exp1_can_steer direction=right speed=0.15
+[exp1] visual steering direction=right error_x=0.125
+[can] backend=detectnet_native detections=1 best_confidence=0.959
+[can] backend=detectnet_native confidence=0.959 class_id=1 center=(217.8,140.0) error_x=0.181 bbox=[156.5625, 50.625, 279.0625, 229.453125]
+[exp1] visual steering direction=right error_x=0.181
+[can] backend=detectnet_native detections=1 best_confidence=0.983
+[can] backend=detectnet_native confidence=0.983 class_id=1 center=(216.2,142.2) error_x=0.176 bbox=[157.5, 59.47265625, 274.84375, 225.0]
+[exp1] visual steering direction=right error_x=0.176
+[can] backend=detectnet_native detections=1 best_confidence=0.991
+[can] backend=detectnet_native confidence=0.991 class_id=1 center=(220.0,143.3) error_x=0.187 bbox=[157.890625, 55.13671875, 282.03125, 231.5625]
+[exp1] visual steering direction=right error_x=0.187
+[can] backend=detectnet_native detections=1 best_confidence=0.994
+[can] backend=detectnet_native confidence=0.994 class_id=1 center=(219.6,143.5) error_x=0.186 bbox=[157.421875, 53.61328125, 281.875, 233.4375]
+[exp1] visual steering direction=right error_x=0.186
+[can] backend=detectnet_native detections=1 best_confidence=0.989
+[can] backend=detectnet_native confidence=0.989 class_id=1 center=(220.2,144.9) error_x=0.188 bbox=[157.8125, 57.0703125, 282.5, 232.734375]
+[exp1] visual steering direction=right error_x=0.188
+[can] backend=detectnet_native detections=1 best_confidence=0.989
+[can] backend=detectnet_native confidence=0.989 class_id=1 center=(218.7,143.9) error_x=0.183 bbox=[157.5, 57.36328125, 279.84375, 230.390625]
+[exp1] visual steering direction=right error_x=0.183
+[can] backend=detectnet_native detections=1 best_confidence=0.983
+[can] backend=detectnet_native confidence=0.983 class_id=1 center=(218.2,142.6) error_x=0.182 bbox=[156.71875, 55.48828125, 279.6875, 229.6875]
+[exp1] visual steering direction=right error_x=0.182
+[can] backend=detectnet_native detections=1 best_confidence=0.961
+[can] backend=detectnet_native confidence=0.961 class_id=1 center=(215.8,144.0) error_x=0.174 bbox=[154.609375, 58.59375, 277.03125, 229.453125]
+[exp1] visual steering direction=right error_x=0.174
+[can] backend=detectnet_native detections=1 best_confidence=0.932
+[can] backend=detectnet_native confidence=0.932 class_id=1 center=(215.3,141.4) error_x=0.173 bbox=[154.0625, 54.2578125, 276.5625, 228.515625]
+[exp1] visual steering direction=right error_x=0.173
+[can] backend=detectnet_native detections=1 best_confidence=0.955
+[can] backend=detectnet_native confidence=0.955 class_id=1 center=(197.1,144.9) error_x=0.116 bbox=[138.671875, 56.3671875, 255.625, 233.4375]
+[map] motion direction=right speed=0.15 effective_seconds=0.4950227737426758 pose={'x_m': 0.0, 'y_m': 0.24652080208063124, 'heading_rad': 0.08639777274165183}
+[base] continuous stop label=exp1_can_steer elapsed=0.495s
+[base] stop
+[base] continuous start label=exp1_can_approach direction=forward requested_speed=0.6 effective_speed=0.6
+[exp1] continuous displacement speed=0.6 duration_seconds=2.4 remaining=0.042
+[can] backend=detectnet_native detections=1 best_confidence=0.971
+[can] backend=detectnet_native confidence=0.971 class_id=1 center=(189.7,146.0) error_x=0.093 bbox=[123.828125, 56.8359375, 255.625, 235.078125]
+[can] backend=detectnet_native detections=1 best_confidence=0.982
+[can] backend=detectnet_native confidence=0.982 class_id=1 center=(192.9,145.0) error_x=0.103 bbox=[134.53125, 56.015625, 251.25, 233.90625]
+[map] motion direction=forward speed=0.6 effective_seconds=0.1118621826171875 pose={'x_m': 0.0010014597582716656, 'y_m': 0.25808321464975476, 'heading_rad': 0.08639777274165183}
+[base] continuous stop label=exp1_can_approach elapsed=0.112s
+[base] stop
+[exp1] continuous can approach complete active_seconds=2.426
+[fsm] APPROACHING --TARGET_REACHED--> FINAL_VERIFY
+[can] backend=detectnet_native detections=1 best_confidence=0.967
+[can] backend=detectnet_native confidence=0.967 class_id=1 center=(193.4,145.9) error_x=0.104 bbox=[133.671875, 57.71484375, 253.125, 234.140625]
+[base] continuous start label=align_can direction=right requested_speed=0.15 effective_speed=0.15
+[visual-turn] label=align_can direction=right speed=0.15
+[can] backend=detectnet_native detections=1 best_confidence=0.896
+[can] backend=detectnet_native confidence=0.896 class_id=1 center=(194.1,143.5) error_x=0.107 bbox=[134.84375, 53.0859375, 253.4375, 233.90625]
+[can] backend=detectnet_native detections=1 best_confidence=0.849
+[can] backend=detectnet_native confidence=0.849 class_id=1 center=(193.4,139.2) error_x=0.104 bbox=[133.4375, 51.4453125, 253.28125, 226.9921875]
+[can] backend=detectnet_native detections=1 best_confidence=0.759
+[can] backend=detectnet_native confidence=0.759 class_id=1 center=(194.6,140.8) error_x=0.108 bbox=[134.84375, 51.38671875, 254.375, 230.2734375]
+[can] backend=detectnet_native detections=1 best_confidence=0.832
+[can] backend=detectnet_native confidence=0.832 class_id=1 center=(192.0,140.9) error_x=0.100 bbox=[131.40625, 54.0234375, 252.5, 227.8125]
+[can] backend=detectnet_native detections=1 best_confidence=0.914
+[can] backend=detectnet_native confidence=0.914 class_id=1 center=(187.3,143.3) error_x=0.085 bbox=[127.03125, 52.96875, 247.5, 233.5546875]
+[can] backend=detectnet_native detections=1 best_confidence=0.932
+[can] backend=detectnet_native confidence=0.932 class_id=1 center=(187.5,141.7) error_x=0.086 bbox=[125.390625, 50.7421875, 249.6875, 232.734375]
+[can] backend=detectnet_native detections=1 best_confidence=0.880
+[can] backend=detectnet_native confidence=0.880 class_id=1 center=(181.1,141.1) error_x=0.066 bbox=[119.375, 48.046875, 242.8125, 234.140625]
+[can] backend=detectnet_native detections=1 best_confidence=0.904
+[can] backend=detectnet_native confidence=0.904 class_id=1 center=(180.3,139.3) error_x=0.063 bbox=[119.21875, 45.87890625, 241.40625, 232.734375]
+[can] backend=detectnet_native detections=1 best_confidence=0.884
+[can] backend=detectnet_native confidence=0.884 class_id=1 center=(180.1,139.9) error_x=0.063 bbox=[117.8125, 44.4140625, 242.34375, 235.3125]
+[can] backend=detectnet_native detections=1 best_confidence=0.840
+[can] backend=detectnet_native confidence=0.840 class_id=1 center=(175.4,138.6) error_x=0.048 bbox=[115.15625, 44.70703125, 235.625, 232.5]
+[can] backend=detectnet_native detections=1 best_confidence=0.852
+[can] backend=detectnet_native confidence=0.852 class_id=1 center=(168.7,140.4) error_x=0.027 bbox=[104.296875, 44.53125, 233.125, 236.25]
+[map] motion direction=right speed=0.15 effective_seconds=0.5430986881256104 pose={'x_m': 0.0010014597582716656, 'y_m': 0.25808321464975476, 'heading_rad': 0.1811863754521954}
+[base] continuous stop label=align_can elapsed=0.543s
+[base] stop
+[can] backend=detectnet_native detections=1 best_confidence=0.726
+[can] backend=detectnet_native confidence=0.726 class_id=1 center=(168.7,139.7) error_x=0.027 bbox=[106.484375, 46.23046875, 230.9375, 233.0859375]
+[base] stop
+[fsm] FINAL_VERIFY --TARGET_STABLE--> FINALIZING
+[fsm] stop requested; ending run without mission failure
+[media] shutdown result={'stopped': True, 'stopping': False, 'last_recording': None, 'last_events': None}
+[fsm] stop_all owner=Thread-15
+[base] stop
+[arm] pose safe_home
+[arm] safe_home servo=5 angle=0 speed=85
+[arm] safe_home servo=4 angle=0 speed=85
+[arm] safe_home servo=3 angle=0 speed=85
+[arm] safe_home servo=2 angle=0 speed=85
+[arm] safe_home servo=1 angle=-16 speed=85
+[camera] stopped
+[depth] stop
+[result] False
+[integration] STOPPED elapsed=14.6s

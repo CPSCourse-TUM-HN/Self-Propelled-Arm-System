@@ -1,5 +1,6 @@
 from __future__ import print_function
 
+import copy
 from enum import Enum
 import time
 
@@ -10,7 +11,6 @@ class MissionState(Enum):
     PLANNING = "PLANNING"
     VERIFY_TARGET = "VERIFY_TARGET"
     SEARCHING = "SEARCHING"
-    PATROLLING = "PATROLLING"
     MAP_NAVIGATING = "MAP_NAVIGATING"
     ALIGNING = "ALIGNING"
     APPROACHING = "APPROACHING"
@@ -27,7 +27,6 @@ class MissionEvent(Enum):
     START = "START"
     INITIALIZED = "INITIALIZED"
     TARGET_REQUIRED = "TARGET_REQUIRED"
-    PATROL_REQUIRED = "PATROL_REQUIRED"
     MAP_TARGET_AVAILABLE = "MAP_TARGET_AVAILABLE"
     TARGET_FOUND = "TARGET_FOUND"
     TARGET_MISSING = "TARGET_MISSING"
@@ -35,11 +34,11 @@ class MissionEvent(Enum):
     TARGET_REACHED = "TARGET_REACHED"
     TARGET_STABLE = "TARGET_STABLE"
     SIDE_DOCK_REQUIRED = "SIDE_DOCK_REQUIRED"
-    PATROL_COMPLETE = "PATROL_COMPLETE"
     MAP_DESTINATION_REACHED = "MAP_DESTINATION_REACHED"
     REPLAN = "REPLAN"
     OBSTACLE_FOUND = "OBSTACLE_FOUND"
     PATH_CLEAR = "PATH_CLEAR"
+    ROUTINE_RESUME = "ROUTINE_RESUME"
     FINALIZED = "FINALIZED"
     RETRY = "RETRY"
     RETRY_EXHAUSTED = "RETRY_EXHAUSTED"
@@ -68,6 +67,7 @@ class MissionContext(object):
         self.last_error = None
         self.retry_counts = {}
         self.state_data = {}
+        self.searching_routine_data = {}
         self.history = []
         self.metrics = {
             "state_seconds": {},
@@ -146,5 +146,6 @@ class MissionContext(object):
             "target_type": self.target_type.value if self.target_type else None,
             "last_error": self.last_error,
             "retry_counts": dict(self.retry_counts),
+            "searching_routine": copy.deepcopy(self.searching_routine_data),
             "metrics": self.metrics,
         }

@@ -1,0 +1,24 @@
+04:47:28 [camera] DepthNet camera started
+04:47:41 [job] start full_bypass
+04:47:41 [phase] CRUISING
+04:47:41 [phase] DETECTED selected_side=left geometry={'detected': True, 'path_blocked': True, 'unsafe': False, 'bbox': [108, 86, 32, 74], 'center': [124, 123], 'width_norm': 0.14285714285714285, 'height_norm': 0.33035714285714285, 'background_depth': 3.198054790496826, 'obstacle_depth': 1.8948694467544556, 'left_clearance_norm': 0.48214285714285715, 'right_clearance_norm': 0.375, 'selected_side': 'left', 'reason': 'supported obstacle'}
+04:47:41 [phase] TURN_TO_TANGENT direction=left
+04:47:43 [phase] tangent reached seconds=1.954
+04:47:43 [phase] OFFSET_OUT
+04:47:44 [phase] TURN_PARALLEL
+04:47:47 [error] full_bypass: turn_parallel timeout
+04:47:47 Traceback (most recent call last):
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 521, in target
+    result = operation()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 498, in run_full
+    self.run_next_phase()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 490, in run_next_phase
+    phases[self.state]()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 418, in _phase_turn_parallel
+    self._run_timed_motion(self._opposite(), self.parameters["motion"]["turn_speed"], self.tangent_turn_seconds, "turn_parallel")
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 341, in _run_timed_motion
+    return self._run_visual_motion(direction, speed, timeout, label, stop_condition, minimum_seconds=seconds)
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 327, in _run_visual_motion
+    raise RuntimeError("{} timeout".format(label))
+RuntimeError: turn_parallel timeout
+

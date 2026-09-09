@@ -1,0 +1,18 @@
+[bin-tune] session=20260903_040433 project=/workspace/robot_code/temp_car
+
+>>> start_camera_and_tag
+[depth] camera dry-run
+[tag] camera dry-run; skip detector load
+[result] {'frame_shape': (240, 320, 3), 'tag_loaded': True}
+
+>>> prepare_bin_mission
+[depth] camera dry-run
+[tag] camera dry-run; skip detector load
+[base] stop
+[bin-tune] prepared at SEARCHING; exp2 is forced on in memory only
+[result] {'state': 'SEARCHING', 'target': 'bin', 'grabbed': True, 'state_data': {'entered_at': 1788408333.4356418, 'steps': 0, 'lost_frames': 0}, 'last_error': None}
+
+>>> run_search
+[result] {'started': True, 'node': 'search', 'state': 'SEARCHING', 'log': '/workspace/robot_code/temp_car/logs/bin_docking_tuning/20260903_040433/node_search_040543.log'}
+>>> node=search expected=SEARCHING log=/workspace/robot_code/temp_car/logs/bin_docking_tuning/20260903_040433/node_search_040543.log
+

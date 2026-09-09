@@ -1,0 +1,119 @@
+-- Conditional proof of side docking pose quality in x, z, and yaw.
+-- z is established before the fixed turn; x/yaw are corrected in side view.
+
+MODULE main
+IVAR
+  actuator_result : {WAIT, SETTLED, FAILED_RESULT};
+VAR
+  level : {D0_SEQUENCE_ONLY, D1_CALIBRATED_ENTRY, D2_XY_CLOSED_LOOP, D3_FULL_POSE_BOUND};
+  state : {
+    FRONT_PNP_APPROACH, Z_STANDOFF_REACHED, ARM_SIDE_POSE,
+    FIXED_90_DEGREE_TURN, CAMERA_SETTLED, CORRECT_X,
+    CORRECT_YAW, STABLE_FRAMES, DOCKED, FAILED
+  };
+  wait_count : 0..1;
+  z_ok : boolean;
+  x_ok : boolean;
+  yaw_ok : boolean;
+  side_view_valid : boolean;
+
+DEFINE
+  A_pnp_z := level in {D1_CALIBRATED_ENTRY, D2_XY_CLOSED_LOOP, D3_FULL_POSE_BOUND};
+  A_turn90 := level in {D1_CALIBRATED_ENTRY, D2_XY_CLOSED_LOOP, D3_FULL_POSE_BOUND};
+  A_xy_convergence := level in {D2_XY_CLOSED_LOOP, D3_FULL_POSE_BOUND};
+  A_z_coupling := level = D3_FULL_POSE_BOUND;
+  A_actuator := level in {D1_CALIBRATED_ENTRY, D2_XY_CLOSED_LOOP, D3_FULL_POSE_BOUND};
+  terminal := state in {DOCKED, FAILED};
+  operation_settled := actuator_result = SETTLED | (A_actuator & wait_count = 1);
+  operation_failed := actuator_result = FAILED_RESULT & !A_actuator;
+
+ASSIGN
+  init(level) := {D0_SEQUENCE_ONLY, D1_CALIBRATED_ENTRY, D2_XY_CLOSED_LOOP, D3_FULL_POSE_BOUND};
+  next(level) := level;
+  init(state) := FRONT_PNP_APPROACH;
+  init(wait_count) := 0;
+  init(z_ok) := FALSE;
+  init(x_ok) := FALSE;
+  init(yaw_ok) := FALSE;
+  init(side_view_valid) := FALSE;
+
+  next(state) := case
+    state = FRONT_PNP_APPROACH & operation_failed : FAILED;
+    state = FRONT_PNP_APPROACH & operation_settled : Z_STANDOFF_REACHED;
+    state = Z_STANDOFF_REACHED : ARM_SIDE_POSE;
+    state = ARM_SIDE_POSE & operation_failed : FAILED;
+    state = ARM_SIDE_POSE & operation_settled : FIXED_90_DEGREE_TURN;
+    state = FIXED_90_DEGREE_TURN & operation_failed : FAILED;
+    state = FIXED_90_DEGREE_TURN & operation_settled : CAMERA_SETTLED;
+    state = CAMERA_SETTLED & operation_failed : FAILED;
+    state = CAMERA_SETTLED & operation_settled & side_view_valid : CORRECT_X;
+    state = CAMERA_SETTLED & operation_settled & !side_view_valid : FAILED;
+    state = CORRECT_X & operation_failed : FAILED;
+    state = CORRECT_X & operation_settled & A_xy_convergence : CORRECT_YAW;
+    state = CORRECT_YAW & operation_failed : FAILED;
+    state = CORRECT_YAW & operation_settled & A_xy_convergence : STABLE_FRAMES;
+    state = STABLE_FRAMES & operation_settled : DOCKED;
+    TRUE : state;
+  esac;
+
+  next(wait_count) := case
+    terminal : wait_count;
+    state = Z_STANDOFF_REACHED : 0;
+    operation_settled | operation_failed : 0;
+    wait_count < 1 : wait_count + 1;
+    TRUE : wait_count;
+  esac;
+
+  next(z_ok) := case
+    state = FRONT_PNP_APPROACH & operation_settled & A_pnp_z : TRUE;
+    state = FRONT_PNP_APPROACH & operation_settled & !A_pnp_z : {FALSE, TRUE};
+    state in {CORRECT_X, CORRECT_YAW} & operation_settled & A_z_coupling : z_ok;
+    state in {CORRECT_X, CORRECT_YAW} & operation_settled & !A_z_coupling : {FALSE, TRUE};
+    TRUE : z_ok;
+  esac;
+
+  next(side_view_valid) := case
+    state = FIXED_90_DEGREE_TURN & operation_settled & A_turn90 : TRUE;
+    state = FIXED_90_DEGREE_TURN & operation_settled & !A_turn90 : {FALSE, TRUE};
+    TRUE : side_view_valid;
+  esac;
+
+  next(x_ok) := case
+    state = CORRECT_X & operation_settled & A_xy_convergence : TRUE;
+    state = CORRECT_X & operation_settled & !A_xy_convergence : {FALSE, TRUE};
+    state = CORRECT_YAW & operation_settled & A_xy_convergence : TRUE;
+    TRUE : x_ok;
+  esac;
+
+  next(yaw_ok) := case
+    state = CORRECT_X & operation_settled & !A_xy_convergence : {FALSE, TRUE};
+    state = CORRECT_YAW & operation_settled & A_xy_convergence : TRUE;
+    state = CORRECT_YAW & operation_settled & !A_xy_convergence : {FALSE, TRUE};
+    TRUE : yaw_ok;
+  esac;
+
+-- Current final acceptance directly establishes x/yaw, but not a new z measurement.
+INVARSPEC NAME docked_requires_x_and_yaw := state = DOCKED -> (x_ok & yaw_ok);
+CTLSPEC NAME docked_absorbing := AG (state = DOCKED -> AX state = DOCKED);
+
+LTLSPEC NAME EXPECTED_FALSE_unconfigured_pnp_stop_bounds_z :=
+  G ((state = FRONT_PNP_APPROACH & operation_settled) -> X z_ok);
+LTLSPEC NAME configured_pnp_stop_bounds_z :=
+  G ((state = FRONT_PNP_APPROACH & operation_settled & A_pnp_z) -> X z_ok);
+
+LTLSPEC NAME EXPECTED_FALSE_uncalibrated_turn_establishes_side_view :=
+  G ((state = FIXED_90_DEGREE_TURN & operation_settled) -> X side_view_valid);
+LTLSPEC NAME calibrated_90_degree_turn_establishes_side_view :=
+  G ((state = FIXED_90_DEGREE_TURN & operation_settled & A_turn90) -> X side_view_valid);
+
+LTLSPEC NAME EXPECTED_FALSE_entry_calibration_alone_reaches_docked :=
+  (level = D1_CALIBRATED_ENTRY) -> F (state = DOCKED);
+LTLSPEC NAME xy_closed_loop_reaches_x_yaw_acceptance :=
+  (level = D2_XY_CLOSED_LOOP) -> F (state = DOCKED & x_ok & yaw_ok);
+
+LTLSPEC NAME EXPECTED_FALSE_xy_correction_preserves_z_without_bound :=
+  (level = D2_XY_CLOSED_LOOP) -> G (state = DOCKED -> z_ok);
+LTLSPEC NAME full_contract_reaches_bounded_xyz_docking :=
+  (level = D3_FULL_POSE_BOUND) -> F (state = DOCKED & x_ok & z_ok & yaw_ok);
+INVARSPEC NAME full_contract_docked_pose_is_bounded :=
+  (level = D3_FULL_POSE_BOUND & state = DOCKED) -> (x_ok & z_ok & yaw_ok);

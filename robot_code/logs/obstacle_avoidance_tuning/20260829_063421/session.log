@@ -1,0 +1,26 @@
+06:34:21 [job] start full_bypass
+06:34:23 [camera] DepthNet camera started frame=320x240 obstacle_roi_ignore=(top=0.300, bottom=0.150)
+06:34:23 [phase] CRUISING
+06:34:23 [media] recording started /workspace/robot_code/temp_car/logs/obstacle_avoidance_tuning/20260829_063421/obstacle_avoidance_1787985263792.avi
+06:34:26 [uncertain] avoidance_cruise stopped for geometry recheck 1/3
+06:34:26 [uncertain] avoidance_cruise recheck 2/3
+06:34:27 [uncertain] avoidance_cruise recheck 3/3
+06:34:27 [error] full_bypass: uncertain obstacle persisted for 3 frames
+06:34:27 Traceback (most recent call last):
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 623, in target
+    result = operation()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 600, in run_full
+    self.run_next_phase()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 591, in run_next_phase
+    phases[self.state]()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 422, in _phase_cruise
+    found,
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 330, in _run_visual_motion
+    analysis = self._resolve_uncertain_while_stopped(analysis, direction, speed, label)
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 365, in _resolve_uncertain_while_stopped
+    raise RuntimeError("uncertain obstacle persisted for {} frames".format(needed))
+RuntimeError: uncertain obstacle persisted for 3 frames
+
+06:34:27 [media] recording finalized /workspace/robot_code/temp_car/logs/obstacle_avoidance_tuning/20260829_063421/obstacle_avoidance_1787985263792.avi
+06:36:11 [parameters] reloaded /workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_parameters.json
+06:36:13 [camera] stopped and released

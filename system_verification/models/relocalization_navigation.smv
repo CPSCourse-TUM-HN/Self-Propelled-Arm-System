@@ -1,0 +1,162 @@
+-- Highlight model: Tag relocalization -> map correctness -> next-cycle navigation.
+-- The finite capability level represents explicit contracts, not hardware names.
+
+MODULE main
+IVAR
+  event : {
+    NONE, TAG_FIX, START_NEXT_CYCLE, CAN_MAP_UPDATE, SELECT_CAN,
+    NAVIGATE_TO_CAN, PICK_CAN, SELECT_BIN, NAVIGATE_TO_BIN, NEXT_DOCKING
+  };
+VAR
+  level : {L0_STRUCTURE_ONLY, L1_TAG_BOUND, L2_NAV_BOUND, L3_CAN_BOUND, L4_PROGRESS_BOUND};
+  phase : {
+    WAITING_FOR_TAG, READY_FOR_NEXT_CYCLE, CAN_MAPPING, CAN_MAPPED,
+    CAN_NAVIGATING, CAN_REACHED, BIN_SEARCH, BIN_NAVIGATING,
+    BIN_FINAL_APPROACH, DOCKED
+  };
+  wait_count : 0..1;
+  pose_source : {ODOMETRY_POSE, TAG_DERIVED_POSE};
+  robot_pose_bounded : boolean;
+  bin_relative_correct : boolean;
+  can_coordinate_correct : boolean;
+  can_selection_correct : boolean;
+  bin_selection_correct : boolean;
+
+DEFINE
+  A_tag := level in {L1_TAG_BOUND, L2_NAV_BOUND, L3_CAN_BOUND, L4_PROGRESS_BOUND};
+  A_nav := level in {L2_NAV_BOUND, L3_CAN_BOUND, L4_PROGRESS_BOUND};
+  P1_can := level in {L3_CAN_BOUND, L4_PROGRESS_BOUND};
+  A_progress := level = L4_PROGRESS_BOUND;
+  legal_event :=
+    (phase = WAITING_FOR_TAG & event in {NONE, TAG_FIX}) |
+    (phase = READY_FOR_NEXT_CYCLE & event in {NONE, START_NEXT_CYCLE}) |
+    (phase = CAN_MAPPING & event in {NONE, CAN_MAP_UPDATE}) |
+    (phase = CAN_MAPPED & event in {NONE, SELECT_CAN}) |
+    (phase = CAN_NAVIGATING & event in {NONE, NAVIGATE_TO_CAN}) |
+    (phase = CAN_REACHED & event in {NONE, PICK_CAN}) |
+    (phase = BIN_SEARCH & event in {NONE, SELECT_BIN}) |
+    (phase = BIN_NAVIGATING & event in {NONE, NAVIGATE_TO_BIN}) |
+    (phase = BIN_FINAL_APPROACH & event in {NONE, NEXT_DOCKING}) |
+    (phase = DOCKED & event = NONE);
+  expected_progress_event := case
+    phase = WAITING_FOR_TAG : event = TAG_FIX;
+    phase = READY_FOR_NEXT_CYCLE : event = START_NEXT_CYCLE;
+    phase = CAN_MAPPING : event = CAN_MAP_UPDATE;
+    phase = CAN_MAPPED : event = SELECT_CAN;
+    phase = CAN_NAVIGATING : event = NAVIGATE_TO_CAN;
+    phase = CAN_REACHED : event = PICK_CAN;
+    phase = BIN_SEARCH : event = SELECT_BIN;
+    phase = BIN_NAVIGATING : event = NAVIGATE_TO_BIN;
+    phase = BIN_FINAL_APPROACH : event = NEXT_DOCKING;
+    TRUE : event = NONE;
+  esac;
+
+TRANS legal_event
+TRANS A_progress & wait_count = 1 -> expected_progress_event
+
+ASSIGN
+  init(level) := {L0_STRUCTURE_ONLY, L1_TAG_BOUND, L2_NAV_BOUND, L3_CAN_BOUND, L4_PROGRESS_BOUND};
+  next(level) := level;
+  init(phase) := WAITING_FOR_TAG;
+  init(wait_count) := 0;
+  init(pose_source) := ODOMETRY_POSE;
+  init(robot_pose_bounded) := FALSE;
+  init(bin_relative_correct) := FALSE;
+  init(can_coordinate_correct) := FALSE;
+  init(can_selection_correct) := FALSE;
+  init(bin_selection_correct) := FALSE;
+
+  next(phase) := case
+    phase = WAITING_FOR_TAG & event = TAG_FIX : READY_FOR_NEXT_CYCLE;
+    phase = READY_FOR_NEXT_CYCLE & event = START_NEXT_CYCLE : CAN_MAPPING;
+    phase = CAN_MAPPING & event = CAN_MAP_UPDATE : CAN_MAPPED;
+    phase = CAN_MAPPED & event = SELECT_CAN : CAN_NAVIGATING;
+    phase = CAN_NAVIGATING & event = NAVIGATE_TO_CAN : CAN_REACHED;
+    phase = CAN_REACHED & event = PICK_CAN : BIN_SEARCH;
+    phase = BIN_SEARCH & event = SELECT_BIN : BIN_NAVIGATING;
+    phase = BIN_NAVIGATING & event = NAVIGATE_TO_BIN : BIN_FINAL_APPROACH;
+    phase = BIN_FINAL_APPROACH & event = NEXT_DOCKING : DOCKED;
+    TRUE : phase;
+  esac;
+
+  next(wait_count) := case
+    phase = DOCKED : wait_count;
+    event != NONE : 0;
+    wait_count < 1 : wait_count + 1;
+    TRUE : wait_count;
+  esac;
+
+  next(pose_source) := case
+    event = TAG_FIX : TAG_DERIVED_POSE;
+    TRUE : pose_source;
+  esac;
+
+  next(robot_pose_bounded) := case
+    event = TAG_FIX & A_tag : TRUE;
+    event = TAG_FIX & !A_tag : {FALSE, TRUE};
+    event in {NAVIGATE_TO_CAN, NAVIGATE_TO_BIN} & A_nav : robot_pose_bounded;
+    event in {NAVIGATE_TO_CAN, NAVIGATE_TO_BIN} & !A_nav : {FALSE, TRUE};
+    TRUE : robot_pose_bounded;
+  esac;
+
+  next(bin_relative_correct) := case
+    event = TAG_FIX & A_tag : TRUE;
+    event = TAG_FIX & !A_tag : {FALSE, TRUE};
+    event in {NAVIGATE_TO_CAN, NAVIGATE_TO_BIN} & A_nav : bin_relative_correct;
+    event in {NAVIGATE_TO_CAN, NAVIGATE_TO_BIN} & !A_nav : {FALSE, TRUE};
+    TRUE : bin_relative_correct;
+  esac;
+
+  next(can_coordinate_correct) := case
+    event = CAN_MAP_UPDATE & P1_can : TRUE;
+    event = CAN_MAP_UPDATE & !P1_can : {FALSE, TRUE};
+    TRUE : can_coordinate_correct;
+  esac;
+
+  next(can_selection_correct) := case
+    event = SELECT_CAN : can_coordinate_correct;
+    TRUE : can_selection_correct;
+  esac;
+
+  next(bin_selection_correct) := case
+    event = SELECT_BIN : bin_relative_correct;
+    TRUE : bin_selection_correct;
+  esac;
+
+-- Direct postcondition: the robot pose is assigned from the accepted Tag fix.
+LTLSPEC NAME tag_fix_sets_pose_source :=
+  G (event = TAG_FIX -> X (pose_source = TAG_DERIVED_POSE));
+LTLSPEC NAME EXPECTED_FALSE_tag_fix_without_accuracy_contract :=
+  G (event = TAG_FIX -> X robot_pose_bounded);
+LTLSPEC NAME tag_fix_with_A_tag_bounds_robot_pose :=
+  G ((event = TAG_FIX & A_tag) -> X robot_pose_bounded);
+
+-- Weak-until is written as (p U q) | G p for nuXmv portability.
+LTLSPEC NAME EXPECTED_FALSE_bin_correct_without_navigation_bound :=
+  G ((event = TAG_FIX & A_tag) ->
+    X ((bin_relative_correct U phase = DOCKED) | G bin_relative_correct));
+LTLSPEC NAME bin_correct_weak_until_next_docking_with_A_nav :=
+  G ((event = TAG_FIX & A_tag & A_nav) ->
+    X ((bin_relative_correct U phase = DOCKED) | G bin_relative_correct));
+
+-- P1 is deliberately an observation contract, not a derived current-system fact.
+LTLSPEC NAME EXPECTED_FALSE_can_update_without_P1 :=
+  G (event = CAN_MAP_UPDATE -> X can_coordinate_correct);
+LTLSPEC NAME can_update_with_P1_is_bounded :=
+  G ((event = CAN_MAP_UPDATE & P1_can) -> X can_coordinate_correct);
+LTLSPEC NAME P1_implies_correct_can_selection :=
+  G ((event = SELECT_CAN & P1_can) -> X can_selection_correct);
+LTLSPEC NAME bounded_navigation_implies_correct_bin_selection :=
+  G ((event = SELECT_BIN & A_tag & A_nav) -> X bin_selection_correct);
+
+-- L3 has coordinate contracts but no liveness contract; L4 forces bounded progress.
+LTLSPEC NAME EXPECTED_FALSE_coordinate_strength_alone_reaches_next_docking :=
+  (level = L3_CAN_BOUND) -> F (phase = DOCKED);
+LTLSPEC NAME L4_progress_reaches_next_docking :=
+  (level = L4_PROGRESS_BOUND) -> F (phase = DOCKED);
+LTLSPEC NAME composed_relocalization_to_docking_result :=
+  G ((event = TAG_FIX & level = L4_PROGRESS_BOUND) ->
+    F (phase = DOCKED & bin_relative_correct & can_selection_correct & bin_selection_correct));
+
+CTLSPEC NAME tag_relocalization_reachable := EF pose_source = TAG_DERIVED_POSE;
+CTLSPEC NAME next_docking_reachable := EF phase = DOCKED;

@@ -1,0 +1,76 @@
+10:11:23 [job] start full_bypass
+10:11:25 [camera] DepthNet camera started frame=320x240 obstacle_roi_ignore=(top=0.300, bottom=0.150)
+10:11:25 [phase] CRUISING
+10:11:25 [media] recording started /workspace/robot_code/temp_car/logs/obstacle_avoidance_tuning/20260829_101123/obstacle_avoidance_1787998285438.avi
+10:11:25 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+10:11:25 [candidate] avoidance_cruise confirmation 2/15
+10:11:26 [candidate] avoidance_cruise reclassified as wall; confirmation cancelled
+10:11:26 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+10:11:26 [candidate] avoidance_cruise reclassified as wall; confirmation cancelled
+10:11:26 [wall] frame treated as clear path
+10:11:27 [wall] frame treated as clear path
+10:11:27 [candidate] avoidance_cruise stopped for bbox confirmation 1/15
+10:11:27 [candidate] avoidance_cruise confirmation 2/15
+10:11:28 [candidate] avoidance_cruise reclassified as wall; confirmation cancelled
+10:11:28 [wall] frame treated as clear path
+10:11:28 [wall] frame treated as clear path
+10:11:28 [wall] frame treated as clear path
+10:11:29 [wall] frame treated as clear path
+10:11:29 [wall] frame treated as clear path
+10:11:29 [wall] frame treated as clear path
+10:11:29 [wall] frame treated as clear path
+10:11:30 [wall] frame treated as clear path
+10:11:30 [wall] frame treated as clear path
+10:11:30 [wall] frame treated as clear path
+10:11:30 [wall] frame treated as clear path
+10:11:31 [wall] frame treated as clear path
+10:11:31 [wall] frame treated as clear path
+10:11:31 [wall] frame treated as clear path
+10:11:32 [wall] frame treated as clear path
+10:11:32 [wall] frame treated as clear path
+10:11:32 [wall] frame treated as clear path
+10:11:32 [wall] frame treated as clear path
+10:11:33 [wall] frame treated as clear path
+10:11:33 [wall] frame treated as clear path
+10:11:33 [wall] frame treated as clear path
+10:11:33 [wall] frame treated as clear path
+10:11:34 [wall] frame treated as clear path
+10:11:34 [wall] frame treated as clear path
+10:11:34 [wall] frame treated as clear path
+10:11:34 [wall] frame treated as clear path
+10:11:35 [wall] frame treated as clear path
+10:11:35 [wall] frame treated as clear path
+10:11:35 [wall] frame treated as clear path
+10:11:36 [wall] frame treated as clear path
+10:11:36 [wall] frame treated as clear path
+10:11:36 [wall] frame treated as clear path
+10:11:36 [wall] frame treated as clear path
+10:11:37 [wall] frame treated as clear path
+10:11:37 [wall] frame treated as clear path
+10:11:37 [wall] frame treated as clear path
+10:11:37 [wall] frame treated as clear path
+10:11:38 [wall] frame treated as clear path
+10:11:38 [wall] frame treated as clear path
+10:11:38 [wall] frame treated as clear path
+10:11:39 [wall] frame treated as clear path
+10:11:39 [wall] frame treated as clear path
+10:11:39 [wall] frame treated as clear path
+10:11:39 [wall] frame treated as clear path
+10:11:40 [wall] frame treated as clear path
+10:11:40 [wall] frame treated as clear path
+10:11:40 [error] full_bypass: avoidance_cruise timeout
+10:11:40 Traceback (most recent call last):
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 997, in target
+    result = operation()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 974, in run_full
+    self.run_next_phase()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 965, in run_next_phase
+    phases[self.state]()
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 650, in _phase_cruise
+    found,
+  File "/workspace/robot_code/temp_car/tuning_tools/obstacle_avoidance_tuning.py", line 399, in _run_visual_motion
+    raise RuntimeError("{} timeout".format(label))
+RuntimeError: avoidance_cruise timeout
+
+10:11:40 [media] recording finalized /workspace/robot_code/temp_car/logs/obstacle_avoidance_tuning/20260829_101123/obstacle_avoidance_1787998285438.avi
+10:12:38 [camera] stopped and released
